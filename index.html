@@ -7,6 +7,7 @@
 <title>Donohoo & Sons Insurance | Milwaukee</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
 <style>
 :root{
   --ink:#111827;
@@ -15,31 +16,46 @@
   --navy:#0f1c3a;
   --soft:#f6f7f9;
 }
+
 body{
   margin:0;
   font-family:Inter,system-ui,sans-serif;
   background:#fff;
   color:var(--ink);
   line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
+
 .wrap{
   max-width:880px;
   margin:auto;
   padding:clamp(80px,10vw,140px) 24px 120px;
 }
+
+/* HERO */
 .hero{
   text-align:center;
   margin-bottom:70px;
   border-bottom:1px solid var(--line);
   padding-bottom:60px;
 }
+
 .logo{
   width:200px;
-  margin-bottom:36px;
+  margin:0 auto 36px;
   display:block;
-  margin-left:auto;
-  margin-right:auto;
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity 1.2s cubic-bezier(.22,.61,.36,1),
+             transform 1.2s cubic-bezier(.22,.61,.36,1);
 }
+
+body.loaded .logo{
+  opacity:1;
+  transform:none;
+}
+
 h1{
   font-family:'Playfair Display',serif;
   font-size:clamp(42px,6vw,58px);
@@ -47,38 +63,57 @@ h1{
   letter-spacing:-1px;
   margin-bottom:18px;
 }
+
 .tagline{font-size:20px;color:var(--muted);margin-bottom:12px;}
 .subtle{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#9ca3af;margin-bottom:28px;}
+
 .phone{font-size:20px;}
 .phone a{color:var(--navy);text-decoration:none;font-weight:600;}
+
+/* DIVIDER */
 .rule{
   height:1px;
   background:linear-gradient(to right,transparent,var(--line),transparent);
   margin:70px 0;
 }
-.benefits{max-width:620px;margin:auto;font-size:19px;}
+
+/* BENEFITS */
+.benefits{max-width:620px;margin:auto;font-size:19px;text-align:center;}
 .benefits p{margin:10px 0;}
-@media (max-width:600px){
-  .benefits{font-size:17px;max-width:90vw;margin:0 5vw;}
-  .benefits p{margin:12px 0;}
-}
+
+/* SERVICES */
 .services{margin:70px 0;}
 .services h2{font-family:'Playfair Display',serif;text-align:center;font-size:34px;margin-bottom:36px;}
+
 .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+
 .card{
   background:var(--soft);
   padding:28px;
   border-radius:14px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.04);
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+  transition:transform .45s cubic-bezier(.22,.61,.36,1),
+             box-shadow .45s cubic-bezier(.22,.61,.36,1);
 }
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.12);
+}
+
 .card h3{margin:0 0 8px;font-size:18px;}
 .card p{margin:0;color:var(--muted);font-size:16px;}
+
+/* ABOUT */
 .about{margin:80px 0 40px;}
 .about h2{font-family:'Playfair Display',serif;text-align:center;font-size:34px;margin-bottom:40px;}
+
 .story{max-width:640px;margin:auto;font-size:19px;}
 .story p{margin:14px 0;font-size:18px;}
+
 .story-section{margin-bottom:48px;}
 .story-section:last-child{margin-bottom:24px;}
+
 .mini-head{
   font-size:14px;
   letter-spacing:.12em;
@@ -86,22 +121,35 @@ h1{
   color:#9ca3af;
   margin-bottom:8px;
 }
+
 .pull{
   font-family:'Playfair Display',serif;
   font-size:26px;
   letter-spacing:-0.3px;
   margin:30px 0;
 }
+
 .family-photo{
   width:260px;
   border-radius:16px;
   border:3px solid var(--navy);
   margin-top:14px;
   box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  transition:transform .45s cubic-bezier(.22,.61,.36,1),
+             box-shadow .45s cubic-bezier(.22,.61,.36,1);
 }
+
+.family-photo:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 40px rgba(0,0,0,0.15);
+}
+
 .caption{font-size:14px;color:var(--muted);font-style:italic;margin-top:12px;}
+
+/* CTA */
 .cta{text-align:center;margin:50px 0 30px;}
 .cta .intro{font-size:19px;color:#374151;font-weight:500;margin-bottom:24px;line-height:1.4;}
+
 .cta-btn{
   display:inline-block;
   background:var(--navy);
@@ -111,14 +159,50 @@ h1{
   font-size:22px;
   font-weight:600;
   text-decoration:none;
+  transition:transform .35s cubic-bezier(.22,.61,.36,1),
+             box-shadow .35s cubic-bezier(.22,.61,.36,1);
 }
+
+.cta-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px rgba(15,28,58,0.25);
+}
+
 .sub-cta{margin-top:20px;font-size:18px;color:#374151;font-weight:500;}
 .sub-cta a{color:var(--navy);text-decoration:none;font-weight:600;margin:0 8px;}
+
 .footer{text-align:center;margin-top:60px;font-size:14px;color:#9ca3af;}
+
+/* ======================
+   APPLE-SMOOTH ANIMATIONS
+====================== */
+
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity 0.9s cubic-bezier(.22,.61,.36,1),
+             transform 0.9s cubic-bezier(.22,.61,.36,1);
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:none;
+}
+
+/* Mobile performance */
+@media (max-width:640px){
+  .reveal{
+    transition-duration:0.6s;
+  }
+}
+
 </style>
+
 </head>
+
 <body>
 <div class="wrap">
+
   <div class="hero">
     <img src="logo.png" class="logo" alt="Donohoo & Sons Insurance">
     <h1>Real advice.<br>No call centers.</h1>
@@ -129,15 +213,15 @@ h1{
     </div>
   </div>
 
-  <div class="rule"></div>
+  <div class="rule reveal"></div>
 
-  <div class="benefits">
+  <div class="benefits reveal">
     <p>Independent advice, not tied to one carrier.</p>
     <p>Clear answers without insurance jargon.</p>
     <p>A real relationship when life gets complicated.</p>
   </div>
 
-  <div class="services">
+  <div class="services reveal">
     <h2>What I Help With</h2>
     <div class="card-grid">
       <div class="card">
@@ -155,7 +239,7 @@ h1{
     </div>
   </div>
 
-  <div class="about">
+  <div class="about reveal">
     <h2>About Andy</h2>
     <div class="story">
       <div class="story-section">
@@ -180,7 +264,7 @@ h1{
 
   </div>
 
-  <div class="cta">
+  <div class="cta reveal">
     <p class="intro">Talk it through or just get a quick quote — whatever works for you.</p>
     <a href="tel:+14146981729" class="cta-btn">
       Call or Text Andy — 414.698.1729
@@ -193,4 +277,32 @@ h1{
 
   <div class="footer">
     Donohoo & Sons Insurance • Milwaukee, Wisconsin<br>
-    Affiliated of Unisource Insuran
+    Affiliated of Unisource Insurance Associates
+  </div>
+
+</div>
+
+<script>
+// Apple-smooth reveal animations
+window.addEventListener('load', () => {
+  document.body.classList.add('loaded');
+
+  const elements = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -8% 0px'
+  });
+
+  elements.forEach(el => observer.observe(el));
+});
+</script>
+
+</body>
+</html>
