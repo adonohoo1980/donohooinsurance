@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -26,7 +27,6 @@ body{
   margin:auto;
   padding:clamp(80px,10vw,140px) 24px 120px;
 }
-/* HERO */
 .hero{
   text-align:center;
   margin-bottom:70px;
@@ -39,14 +39,6 @@ body{
   display:block;
   margin-left:auto;
   margin-right:auto;
-  opacity:0;
-  transform:translateY(12px);
-  transition:opacity 1.4s cubic-bezier(0.25,0.1,0.25,1) 0.3s,
-              transform 1.4s cubic-bezier(0.25,0.1,0.25,1) 0.3s;
-}
-body.loaded .logo{
-  opacity:1;
-  transform:none;
 }
 h1{
   font-family:'Playfair Display',serif;
@@ -59,23 +51,17 @@ h1{
 .subtle{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#9ca3af;margin-bottom:28px;}
 .phone{font-size:20px;}
 .phone a{color:var(--navy);text-decoration:none;font-weight:600;}
-/* DIVIDER */
 .rule{
   height:1px;
   background:linear-gradient(to right,transparent,var(--line),transparent);
   margin:70px 0;
-  opacity:0;
-  transform:translateY(20px);
-  transition:opacity 1.2s cubic-bezier(0.25,0.1,0.25,1) .4s, transform 1.2s cubic-bezier(0.25,0.1,0.25,1) .4s;
 }
-/* BENEFITS */
 .benefits{max-width:620px;margin:auto;font-size:19px;}
 .benefits p{margin:10px 0;}
 @media (max-width:600px){
   .benefits{font-size:17px;max-width:90vw;margin:0 5vw;}
   .benefits p{margin:12px 0;}
 }
-/* SERVICES */
 .services{margin:70px 0;}
 .services h2{font-family:'Playfair Display',serif;text-align:center;font-size:34px;margin-bottom:36px;}
 .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
@@ -84,33 +70,15 @@ h1{
   padding:28px;
   border-radius:14px;
   box-shadow:0 4px 12px rgba(0,0,0,0.04);
-  opacity:0;
-  transform:translateY(30px);
-  transition:opacity 0.8s cubic-bezier(0.25,0.1,0.25,1), transform 0.8s cubic-bezier(0.25,0.1,0.25,1);
-  will-change:opacity,transform;
 }
-.card.visible{opacity:1;transform:none;}
-.card:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 20px 40px rgba(0,0,0,0.12);}
 .card h3{margin:0 0 8px;font-size:18px;}
 .card p{margin:0;color:var(--muted);font-size:16px;}
-/* ABOUT */
 .about{margin:80px 0 40px;}
 .about h2{font-family:'Playfair Display',serif;text-align:center;font-size:34px;margin-bottom:40px;}
 .story{max-width:640px;margin:auto;font-size:19px;}
-
-.story p{
-  margin:14px 0;
-  font-size:18px;
-}
-
-.story-section{
-  margin-bottom:48px;
-}
-
-.story-section:last-child{
-  margin-bottom:24px;
-}
-
+.story p{margin:14px 0;font-size:18px;}
+.story-section{margin-bottom:48px;}
+.story-section:last-child{margin-bottom:24px;}
 .mini-head{
   font-size:14px;
   letter-spacing:.12em;
@@ -118,29 +86,20 @@ h1{
   color:#9ca3af;
   margin-bottom:8px;
 }
-
 .pull{
   font-family:'Playfair Display',serif;
   font-size:26px;
   letter-spacing:-0.3px;
   margin:30px 0;
 }
-
 .family-photo{
   width:260px;
   border-radius:16px;
   border:3px solid var(--navy);
   margin-top:14px;
   box-shadow:0 10px 30px rgba(0,0,0,0.08);
-  opacity:0;
-  transform:translateY(30px);
-  transition:opacity 0.9s cubic-bezier(0.25,0.1,0.25,1), transform 0.9s cubic-bezier(0.25,0.1,0.25,1);
-  will-change:opacity,transform;
 }
-.family-photo.visible{opacity:1;transform:none;}
-.family-photo:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.12);}
 .caption{font-size:14px;color:var(--muted);font-style:italic;margin-top:12px;}
-/* CTA */
 .cta{text-align:center;margin:50px 0 30px;}
 .cta .intro{font-size:19px;color:#374151;font-weight:500;margin-bottom:24px;line-height:1.4;}
 .cta-btn{
@@ -152,20 +111,16 @@ h1{
   font-size:22px;
   font-weight:600;
   text-decoration:none;
-  transition:all 0.4s cubic-bezier(0.165,0.84,0.44,1);
 }
-.cta-btn:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(15,28,58,0.18);}
 .sub-cta{margin-top:20px;font-size:18px;color:#374151;font-weight:500;}
 .sub-cta a{color:var(--navy);text-decoration:none;font-weight:600;margin:0 8px;}
-/* FOOTER */
 .footer{text-align:center;margin-top:60px;font-size:14px;color:#9ca3af;}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <!-- HERO -->
   <div class="hero">
-    <img src="logo.png" class="logo" alt="Donohoo & Sons Insurance" loading="eager">
+    <img src="logo.png" class="logo" alt="Donohoo & Sons Insurance">
     <h1>Real advice.<br>No call centers.</h1>
     <div class="tagline">Insurance guidance for families and business owners in Wisconsin</div>
     <div class="subtle">Independent • Personal • Local</div>
@@ -173,102 +128,69 @@ h1{
       Call or text Andy directly — <a href="tel:+14146981729">414.698.1729</a>
     </div>
   </div>
+
   <div class="rule"></div>
-  <!-- BENEFITS -->
-<div class="benefits">
-  <p>Independent advice, not tied to one carrier.</p>
-  <p>Clear answers without insurance jargon.</p>
-  <p>A real relationship when life gets complicated.</p>
-</div>
-  <!-- SERVICES -->
+
+  <div class="benefits">
+    <p>Independent advice, not tied to one carrier.</p>
+    <p>Clear answers without insurance jargon.</p>
+    <p>A real relationship when life gets complicated.</p>
+  </div>
+
   <div class="services">
     <h2>What I Help With</h2>
     <div class="card-grid">
-
-  <div class="card">
-    <h3>Families</h3>
-    <p>Protection for your home, your vehicles and the people who matter most.</p>
+      <div class="card">
+        <h3>Families</h3>
+        <p>Protection for your home, your vehicles and the people who matter most.</p>
+      </div>
+      <div class="card">
+        <h3>Business Owners</h3>
+        <p>Clear coverage and straight advice so you can focus on running your business.</p>
+      </div>
+      <div class="card">
+        <h3>Long-Term Planning</h3>
+        <p>Protection strategies that look beyond the next renewal.</p>
+      </div>
+    </div>
   </div>
 
-  <div class="card">
-    <h3>Business Owners</h3>
-    <p>Clear coverage and straight advice so you can focus on running your business.</p>
-  </div>
-
-  <div class="card">
-    <h3>Long-Term Planning</h3>
-    <p>Protection strategies that look beyond the next renewal.</p>
-  </div>
-
-</div>
-
-  </div>
-  <!-- ABOUT -->
   <div class="about">
     <h2>About Andy</h2>
     <div class="story">
       <div class="story-section">
         <div class="mini-head">Built on real relationships</div>
-        <p>Hi, I’m Andy Donohoo. I run Donohoo & Sons Insurance here in Milwaukee.</p>
-        <p>I went independent for a simple reason — people deserve real advice. No quotas. No call-center handoffs. Just honest guidance tailored to your life.</p>
+        <p>Hi, I’m Andy Donohoo. I’m behind Donohoo & Sons Insurance here in Milwaukee. At the end of the day, people want something simple — one person who knows their situation and picks up when it matters.</p>
       </div>
-      <div class="story-section">
-        <div class="pull">One person. One number. Real accountability.</div>
-        <p>Most of my clients stay for years because they want someone who actually knows their situation and picks up when it matters.</p>
-      </div>
-      <div class="story-section">
-        <div class="mini-head">Why it’s personal</div>
-        <p>My wife Katie and our boys are the reason this work means so much to me. Protecting families isn’t a pitch — it’s something I believe in.</p>
-        <img src="boys.jpg" class="family-photo" alt="Andy with his sons" loading="eager">
-        <div class="caption">With my boys — the reason I take protecting families so seriously.</div>
-      </div>
-    </div>
+
+```
+  <div class="story-section">
+    <div class="pull">One person. One number. Always reachable.</div>
+    <p>Over time, it becomes a real relationship. People don’t want to start over every year — they want someone who knows their situation and is still there when life changes.</p>
   </div>
-  <!-- CTA -->
-  <div class="cta">
-    <p class="intro">Ready for a real conversation about your coverage?</p>
-    <a href="tel:+14146981729" class="cta-btn">
-      Let's Talk About Your Insurance<br>
-      Call or Text Andy Directly — 414.698.1729
-    </a>
-    <div class="sub-cta">Honest chat first. Quotes when it makes sense for you.</div>
-    <div style="margin-top:16px; font-size:15px;">
-      Or <a href="mailto:andy@donohooinsurance.com?subject=Let%27s%20talk%20about%20my%20insurance">send a quick email</a> to get started.
-    </div>
-  </div>
-  <div class="footer">
-    Donohoo & Sons Insurance • Milwaukee, Wisconsin<br>
-    Independent agency • Partnered with Unisource Insurance
+
+  <div class="story-section">
+    <div class="mini-head">Why it’s personal</div>
+    <p>My wife Katie and our boys are a big part of who I am. Being a husband and a dad keeps things in perspective and shapes how I show up for the people I help</p>
+    <img src="boys.jpg" class="family-photo" alt="Andy with his sons">
+    <div class="caption">With my boys — they keep me grounded.</div>
   </div>
 </div>
+```
 
-<script>
-// Trigger logo fade-in after load + one-time section reveals
-window.addEventListener('load', function() {
-  document.body.classList.add('loaded');
-});
+  </div>
 
-if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -10% 0px'
-  });
+  <div class="cta">
+    <p class="intro">Talk it through or just get a quick quote — whatever works for you.</p>
+    <a href="tel:+14146981729" class="cta-btn">
+      Call or Text Andy — 414.698.1729
+    </a>
+    <div class="sub-cta">Honest conversation first. Quotes when it makes sense.</div>
+    <div style="margin-top:16px; font-size:15px;">
+      Or <a href="mailto:adonohoo@unisource-ins.com?subject=Let%27s%20talk%20about%20my%20insurance">send a quick email</a> to get started.
+    </div>
+  </div>
 
-  document.querySelectorAll('.benefits, .services, .card, .about, .story-section, .family-photo, .cta, .rule')
-    .forEach(el => observer.observe(el));
-}
-</script>
-</body>
-</html>
-
-
-
-
-
+  <div class="footer">
+    Donohoo & Sons Insurance • Milwaukee, Wisconsin<br>
+    Affiliated of Unisource Insuran
