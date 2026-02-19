@@ -26,7 +26,7 @@ body{
   margin:auto;
   padding:clamp(80px,10vw,140px) 24px 120px;
 }
-/* HERO */
+/* HERO (load only) */
 .hero{text-align:center;margin-bottom:70px;}
 .logo{
   width:200px;
@@ -63,7 +63,7 @@ h1{
   text-decoration:none;
   font-weight:600;
 }
-/* DIVIDER */
+/* DIVIDER (load only) */
 .rule{
   height:1px;
   background:linear-gradient(to right,transparent,var(--line),transparent);
@@ -109,6 +109,7 @@ h1{
   border-radius:14px;
   box-shadow:0 4px 12px rgba(0,0,0,0.04);
   transition:all 0.4s cubic-bezier(0.165,0.84,0.44,1);
+  will-change: transform, box-shadow, opacity;
 }
 .card:hover{
   transform:translateY(-8px) scale(1.03);
@@ -164,6 +165,7 @@ h1{
   margin-top:14px;
   box-shadow:0 10px 30px rgba(0,0,0,0.08);
   transition:transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, opacity;
 }
 .family-photo:hover{
   transform:translateY(-4px);
@@ -226,11 +228,11 @@ h1{
   to{opacity:1;transform:none;}
 }
 @keyframes revealUp{
-  from{opacity:0;transform:translateY(40px);}
+  from{opacity:0;transform:translateY(32px);} /* shorter distance = snappier */
   to{opacity:1;transform:none;}
 }
 
-/* Scroll-driven as base (progressive enhancement) */
+/* Scroll-driven – smooth scrubbing both ways */
 .services,
 .about,
 .benefits,
@@ -239,19 +241,19 @@ h1{
 .family-photo,
 .cta{
   opacity:0;
-  transform:translateY(40px);
-  transition:opacity 0.8s ease, transform 0.8s ease; /* fallback smooth if no scroll anim */
+  animation:revealUp 0.9s cubic-bezier(0.25,0.1,0.25,1) forwards;
+  animation-timeline:view();
+  animation-range:entry 0% cover 90%; /* finishes earlier for less edge jank */
   will-change:transform, opacity;
 }
 
-/* Once revealed via JS: lock forever */
-.revealed {
-  opacity:1 !important;
-  transform:none !important;
-  transition:none !important; /* no more changes */
-}
-
-/* Stagger delays via JS now (or keep if you want) */
+/* Staggers – shorter for quicker cascade */
+.card:nth-child(1){animation-delay:0.08s;}
+.card:nth-child(2){animation-delay:0.16s;}
+.card:nth-child(3){animation-delay:0.24s;}
+.story-section:nth-child(1){animation-delay:0.12s;}
+.story-section:nth-child(2){animation-delay:0.24s;}
+.story-section:nth-child(3){animation-delay:0.36s;}
 </style>
 </head>
 <body>
@@ -331,29 +333,5 @@ h1{
   Independent agency • Partnered with Unisource Insurance
 </div>
 </div>
-
-<script>
-// One-time reveal: fade in once, then lock forever (Apple-style)
-if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        // Optional: unobserve after first reveal to save perf
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,          // start when 10% visible
-    rootMargin: '0px 0px -10% 0px' // trigger a bit earlier
-  });
-
-  // Target all revealable elements
-  document.querySelectorAll('.services, .about, .benefits, .card, .story-section, .family-photo, .cta')
-    .forEach(el => {
-      observer.observe(el);
-    });
-}
-</script>
 </body>
 </html>
