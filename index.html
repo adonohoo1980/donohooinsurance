@@ -7,15 +7,233 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
-/* Your existing :root and global styles here – unchanged */
-
-/* ... rest of your CSS ... */
-
-/* Add these small overrides at the end */
-.card p { line-height: 1.5; }
-@media (max-width: 480px) {
-  .card { padding: 24px 20px; }
-  .card p { font-size: 15px; }
+:root{
+  --ink:#111827;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+  --navy:#0f1c3a;
+  --soft:#f6f7f9;
+}
+/* ===== GLOBAL ===== */
+body{
+  margin:0;
+  font-family:Inter,system-ui,sans-serif;
+  background:#fff;
+  color:var(--ink);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+.wrap{
+  max-width:880px;
+  margin:auto;
+  padding:clamp(80px,10vw,140px) 24px 120px;
+}
+/* ===== HERO ===== */
+.hero{
+  text-align:center;
+  margin-bottom:80px;
+  border-bottom:1px solid var(--line);
+  padding-bottom:70px;
+  will-change:transform;
+}
+.logo{
+  width:200px;
+  margin:0 auto 40px;
+  display:block;
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity 1.2s cubic-bezier(.22,.61,.36,1),
+             transform 1.2s cubic-bezier(.22,.61,.36,1);
+}
+body.loaded .logo{
+  opacity:1;
+  transform:none;
+}
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(44px,6vw,60px);
+  line-height:1.08;
+  letter-spacing:-0.8px;
+  margin-bottom:20px;
+}
+.tagline{
+  font-size:20px;
+  color:var(--muted);
+  margin-bottom:14px;
+  letter-spacing:-0.1px;
+}
+.subtle{
+  font-size:13px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#9ca3af;
+  margin-bottom:32px;
+}
+.phone{font-size:20px;}
+.phone a{
+  color:var(--navy);
+  text-decoration:none;
+  font-weight:600;
+  padding:6px 4px;
+}
+/* ===== DIVIDER ===== */
+.rule{
+  height:1px;
+  background:linear-gradient(to right,transparent,var(--line),transparent);
+  margin:80px 0;
+}
+/* ===== BENEFITS ===== */
+.benefits{
+  max-width:640px;
+  margin:auto;
+  font-size:19px;
+  text-align:center;
+}
+.benefits p{margin:12px 0;}
+/* ===== SERVICES ===== */
+.services{margin:80px 0;}
+.services h2{
+  font-family:'Playfair Display',serif;
+  text-align:center;
+  font-size:34px;
+  margin-bottom:44px;
+}
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:22px;
+}
+.card{
+  background:var(--soft);
+  padding:28px;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+  transition:transform .45s cubic-bezier(.22,.61,.36,1),
+             box-shadow .45s cubic-bezier(.22,.61,.36,1);
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.12);
+}
+.card h3{margin:0 0 8px;font-size:18px;}
+.card p{margin:0;color:var(--muted);font-size:16px;}
+/* ===== ABOUT ===== */
+.about{margin:90px 0 50px;}
+.about h2{
+  font-family:'Playfair Display',serif;
+  text-align:center;
+  font-size:34px;
+  margin-bottom:44px;
+}
+.story{
+  max-width:640px;
+  margin:auto;
+  font-size:19px;
+}
+.story p{
+  margin:16px 0;
+  font-size:18px;
+  letter-spacing:-0.1px;
+}
+.story-section{margin-bottom:52px;}
+.story-section:last-child{margin-bottom:26px;}
+.mini-head{
+  font-size:13px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#9ca3af;
+  margin-bottom:10px;
+}
+.pull{
+  font-family:'Playfair Display',serif;
+  font-size:26px;
+  letter-spacing:-0.3px;
+  margin:32px 0;
+}
+.family-photo{
+  width:260px;
+  border-radius:16px;
+  border:3px solid var(--navy);
+  margin-top:16px;
+  box-shadow:0 12px 34px rgba(0,0,0,0.1);
+  transition:transform .45s cubic-bezier(.22,.61,.36,1),
+             box-shadow .45s cubic-bezier(.22,.61,.36,1);
+}
+.family-photo:hover{
+  transform:translateY(-4px);
+  box-shadow:0 20px 50px rgba(0,0,0,0.15);
+}
+.caption{
+  font-size:14px;
+  color:var(--muted);
+  font-style:italic;
+  margin-top:12px;
+}
+/* ===== CTA ===== */
+.cta{
+  text-align:center;
+  margin:60px 0 40px;
+}
+.cta .intro{
+  font-size:20px;
+  color:#374151;
+  font-weight:500;
+  margin-bottom:28px;
+  line-height:1.45;
+  letter-spacing:-0.1px;
+}
+.cta-btn{
+  display:inline-block;
+  background:var(--navy);
+  color:#fff;
+  padding:18px 46px;
+  border-radius:12px;
+  font-size:22px;
+  font-weight:600;
+  text-decoration:none;
+  transition:transform .35s cubic-bezier(.22,.61,.36,1),
+             box-shadow .35s cubic-bezier(.22,.61,.36,1);
+  min-height:54px;
+}
+.cta-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px rgba(15,28,58,0.25);
+}
+.sub-cta{
+  margin-top:20px;
+  font-size:18px;
+  color:#374151;
+  font-weight:500;
+}
+.sub-cta a{
+  color:var(--navy);
+  text-decoration:none;
+  font-weight:600;
+  margin:0 8px;
+  padding:6px 4px;
+}
+.footer{
+  text-align:center;
+  margin-top:70px;
+  font-size:14px;
+  color:#9ca3af;
+}
+/* ===== REVEAL ANIMATIONS ===== */
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity 0.9s cubic-bezier(.22,.61,.36,1),
+             transform 0.9s cubic-bezier(.22,.61,.36,1);
+}
+.reveal.visible{
+  opacity:1;
+  transform:none;
+}
+/* Mobile tuning */
+@media (max-width:640px){
+  .reveal{transition-duration:.6s}
+  .hero{padding-bottom:60px}
 }
 </style>
 </head>
@@ -29,11 +247,13 @@
     <div class="phone">
       Call or text Andy directly — <a href="tel:+14146981729">414.698.1729</a>
     </div>
-    <p style="font-size:15px; color:#6b7280; margin-top:12px;">Direct to Andy — no forms, no hold times.</p>
   </div>
-
-  <!-- rule, benefits unchanged -->
-
+  <div class="rule reveal"></div>
+  <div class="benefits reveal">
+    <p>Independent advice, not tied to one carrier.</p>
+    <p>Clear answers without insurance jargon.</p>
+    <p>A real relationship when life gets complicated.</p>
+  </div>
   <div class="services reveal">
     <h2>What I Help With</h2>
     <div class="card-grid">
@@ -51,11 +271,17 @@
       </div>
     </div>
   </div>
-
   <div class="about reveal">
     <h2>About Andy</h2>
     <div class="story">
-      <!-- story sections unchanged -->
+      <div class="story-section">
+        <div class="mini-head">Built on real relationships</div>
+        <p>Hi, I’m Andy Donohoo. I’m behind Donohoo & Sons Insurance here in Milwaukee. At the end of the day, people want something simple — one person who knows their situation and picks up when it matters.</p>
+      </div>
+      <div class="story-section">
+        <div class="pull">One person. One number. Always reachable.</div>
+        <p>Over time, it becomes a real relationship. People don’t want to start over every year — they want someone who knows their situation and is still there when life changes.</p>
+      </div>
       <div class="story-section">
         <div class="mini-head">Why it’s personal</div>
         <p>My wife Katie and our boys are a big part of who I am. Being a husband and a dad keeps things in perspective and shapes how I show up for the people I help.</p>
@@ -63,25 +289,50 @@
         <div class="caption">With my boys — they keep me grounded.</div>
       </div>
     </div>
-    <p style="text-align:center; font-size:18px; color:#374151; margin:40px 0 0; font-style:italic;">
-      If you're looking for that kind of relationship with your insurance, I'd love to talk.
-    </p>
   </div>
-
   <div class="cta reveal">
-    <p class="intro">Ready to talk it through or get a quick quote? Whatever works for you.</p>
+    <p class="intro">Talk it through or just get a quick quote — whatever works for you.</p>
     <a href="tel:+14146981729" class="cta-btn">
-      Call or Text Andy Now
+      Call or Text Andy — 414.698.1729
     </a>
     <div class="sub-cta">Honest conversation first. Quotes when it makes sense.</div>
     <div style="margin-top:16px; font-size:15px;">
       Or <a href="mailto:adonohoo@unisource-ins.com?subject=Let%27s%20talk%20about%20my%20insurance">send a quick email</a> to get started.
     </div>
   </div>
-
-  <!-- footer unchanged -->
+  <div class="footer">
+    Donohoo & Sons Insurance • Milwaukee, Wisconsin<br>
+    Affiliated of Unisource Insurance Associates
+  </div>
 </div>
 
-<!-- scripts unchanged -->
+<script>
+// ===== Apple-style load animation =====
+window.addEventListener('load', () => {
+  document.body.classList.add('loaded');
+});
+// ===== Apple-smooth reveal =====
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.15,
+  rootMargin: '0px 0px -8% 0px'
+});
+reveals.forEach(el => observer.observe(el));
+// ===== Subtle hero parallax (disabled on mobile) =====
+if (window.innerWidth > 768) {
+  const hero = document.getElementById('hero');
+  window.addEventListener('scroll', () => {
+    const offset = window.scrollY * 0.08;
+    hero.style.transform = `translateY(${offset}px)`;
+  }, { passive:true });
+}
+</script>
 </body>
 </html>
