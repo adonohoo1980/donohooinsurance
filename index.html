@@ -78,6 +78,17 @@ h1{
   font-size:19px;
 }
 .benefits p{margin:10px 0;}
+/* Mobile fix for benefits – prevent wrapping */
+@media (max-width: 600px) {
+  .benefits {
+    font-size: 17px;
+    max-width: 90vw;
+    margin: 0 5vw;
+  }
+  .benefits p {
+    margin: 12px 0;
+  }
+}
 /* SERVICES - APPLE CARDS */
 .services{
   margin:70px 0;
@@ -211,6 +222,7 @@ h1{
   animation:revealUp 1.1s cubic-bezier(0.25,0.1,0.25,1) forwards;
   animation-timeline:view(0% 40%);
   animation-range:entry 0% cover 50%;
+  will-change: transform, opacity;
 }
 
 /* Stagger cards */
