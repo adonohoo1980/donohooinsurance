@@ -20,7 +20,6 @@ body{
   background:#fff;
   color:var(--ink);
   line-height:1.65;
-  scroll-behavior:smooth; /* nice bonus for any internal jumps */
 }
 .wrap{
   max-width:880px;
@@ -79,7 +78,7 @@ h1{
   font-size:19px;
 }
 .benefits p{margin:10px 0;}
-/* SERVICES */
+/* SERVICES - APPLE CARDS */
 .services{
   margin:70px 0;
 }
@@ -99,12 +98,11 @@ h1{
   padding:28px;
   border-radius:14px;
   box-shadow:0 4px 12px rgba(0,0,0,0.04);
-  transition:all 0.35s cubic-bezier(0.165,0.84,0.44,1);
-  will-change:transform, box-shadow; /* promote to GPU layer */
+  transition:all 0.4s cubic-bezier(0.165,0.84,0.44,1);
 }
 .card:hover{
-  transform:translateY(-6px) scale(1.02);
-  box-shadow:0 16px 32px rgba(0,0,0,0.1);
+  transform:translateY(-8px) scale(1.03);
+  box-shadow:0 20px 40px rgba(0,0,0,0.12);
 }
 .card h3{
   margin:0 0 8px;
@@ -115,7 +113,7 @@ h1{
   color:var(--muted);
   font-size:16px;
 }
-/* ABOUT */
+/* ABOUT - EDITORIAL */
 .about{
   margin-top:80px;
 }
@@ -167,12 +165,11 @@ h1{
   font-size:22px;
   font-weight:600;
   text-decoration:none;
-  transition:all 0.35s cubic-bezier(0.165,0.84,0.44,1);
-  will-change:transform, box-shadow;
+  transition:all 0.4s cubic-bezier(0.165,0.84,0.44,1);
 }
 .cta-btn:hover{
   transform:translateY(-3px);
-  box-shadow:0 12px 24px rgba(15,28,58,0.15);
+  box-shadow:0 12px 24px rgba(15,28,58,0.18);
 }
 .sub-cta{
   margin-top:16px;
@@ -195,59 +192,36 @@ h1{
 @keyframes fadeUp{
   to{opacity:1;transform:none;}
 }
+
+/* Scroll-driven reveal (Apple-style smooth entrance) */
 @keyframes revealUp{
-  from{opacity:0;transform:translateY(24px);} /* reduced distance */
+  from{opacity:0;transform:translateY(40px);}
   to{opacity:1;transform:none;}
 }
 
-/* Scroll-driven reveals — only on larger screens / no motion preference */
-@media (min-width: 769px) and (prefers-reduced-motion: no-preference) {
-  .services,
-  .about,
-  .benefits,
-  .card,
-  .story-section,
-  .family-photo,
-  .cta{
-    opacity:0;
-    animation:revealUp 0.9s cubic-bezier(0.25,0.1,0.25,1) forwards;
-    animation-timeline:view(0% 35%);
-    animation-range:entry 0% cover 45%;
-    will-change:transform, opacity;
-  }
-
-  /* Staggers — kept but shorter delays */
-  .card:nth-child(1){animation-delay:0.08s;}
-  .card:nth-child(2){animation-delay:0.16s;}
-  .card:nth-child(3){animation-delay:0.24s;}
-
-  .story-section:nth-child(1){animation-delay:0.12s;}
-  .story-section:nth-child(2){animation-delay:0.24s;}
-  .story-section:nth-child(3){animation-delay:0.36s;}
+/* Apply scroll reveal to major blocks */
+.services,
+.about,
+.benefits,
+.card,
+.story-section,
+.family-photo,
+.cta{
+  opacity:0;
+  animation:revealUp 1.1s cubic-bezier(0.25,0.1,0.25,1) forwards;
+  animation-timeline:view(0% 40%);
+  animation-range:entry 0% cover 50%;
 }
 
-/* Mobile / reduced-motion fallback: instant or simple fade-in on load */
-@media (max-width: 768px), (prefers-reduced-motion) {
-  .services,
-  .about,
-  .benefits,
-  .card,
-  .story-section,
-  .family-photo,
-  .cta{
-    opacity:1;
-    transform:none;
-    animation:none;
-  }
-  /* Optional: very light load fade for mobile if wanted */
-  .card, .story-section, .family-photo {
-    opacity:0;
-    animation:fadeUp 0.8s ease forwards;
-  }
-  .card:nth-child(1){animation-delay:0.1s;}
-  .card:nth-child(2){animation-delay:0.2s;}
-  .card:nth-child(3){animation-delay:0.3s;}
-}
+/* Stagger cards */
+.card:nth-child(1){animation-delay:0.1s;}
+.card:nth-child(2){animation-delay:0.2s;}
+.card:nth-child(3){animation-delay:0.3s;}
+
+/* Stagger story sections */
+.story-section:nth-child(1){animation-delay:0.15s;}
+.story-section:nth-child(2){animation-delay:0.3s;}
+.story-section:nth-child(3){animation-delay:0.45s;}
 </style>
 </head>
 <body>
