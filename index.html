@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Donohoo & Sons Insurance | Milwaukee</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#111827;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+  --navy:#0f1c3a;
+  --soft:#f6f7f9;
+}
+
+body{
+  margin:0;
+  font-family:Inter,system-ui,sans-serif;
+  background:#fff;
+  color:var(--ink);
+  line-height:1.65;
+}
+
+.wrap{
+  max-width:880px;
+  margin:auto;
+  padding:clamp(80px,10vw,140px) 24px 120px;
+}
+
+/* HERO */
+.hero{text-align:center;margin-bottom:70px;}
+
+.logo{
+  width:200px;
+  margin-bottom:36px;
+  opacity:0;
+  transform:translateY(12px);
+  animation:fadeUp 1s ease forwards;
+}
+
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(42px,6vw,58px);
+  line-height:1.1;
+  letter-spacing:-1px;
+  margin-bottom:18px;
+  opacity:0;
+  transform:translateY(16px);
+  animation:fadeUp 1.2s ease forwards .2s;
+}
+
+.tagline{
+  font-size:20px;
+  color:var(--muted);
+  margin-bottom:12px;
+}
+
+.subtle{
+  font-size:13px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#9ca3af;
+  margin-bottom:28px;
+}
+
+.phone{font-size:20px;}
+.phone a{
+  color:var(--navy);
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* DIVIDER */
+.rule{
+  height:1px;
+  background:linear-gradient(to right,transparent,var(--line),transparent);
+  margin:70px 0;
+}
+
+/* BENEFITS */
+.benefits{
+  max-width:620px;
+  margin:auto;
+  font-size:19px;
+}
+
+.benefits p{margin:10px 0;}
+
+/* SERVICES - APPLE CARDS */
+.services{
+  margin:70px 0;
+}
+
+.services h2{
+  font-family:'Playfair Display',serif;
+  text-align:center;
+  font-size:34px;
+  margin-bottom:36px;
+}
+
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:var(--soft);
+  padding:28px;
+  border-radius:14px;
+}
+
+.card h3{
+  margin:0 0 8px;
+  font-size:18px;
+}
+
+.card p{
+  margin:0;
+  color:var(--muted);
+  font-size:16px;
+}
+
+/* ABOUT - EDITORIAL */
+.about{
+  margin-top:80px;
+}
+
+.about h2{
+  font-family:'Playfair Display',serif;
+  text-align:center;
+  font-size:34px;
+  margin-bottom:40px;
+}
+
+.story{
+  max-width:640px;
+  margin:auto;
+  font-size:19px;
+}
+
+.story-section{
+  margin-bottom:36px;
+}
+
+.mini-head{
+  font-size:14px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#9ca3af;
+  margin-bottom:8px;
+}
+
+.pull{
+  font-family:'Playfair Display',serif;
+  font-size:24px;
+  margin:26px 0;
+}
+
+.family-photo{
+  width:260px;
+  border-radius:10px;
+  border:3px solid var(--navy);
+  margin-top:14px;
+}
+
+.caption{
+  font-size:14px;
+  color:var(--muted);
+  font-style:italic;
+}
+
+/* CTA */
+.cta{text-align:center;margin:90px 0 30px;}
+
+.cta-btn{
+  display:inline-block;
+  background:var(--navy);
+  color:#fff;
+  padding:18px 46px;
+  border-radius:10px;
+  font-size:22px;
+  font-weight:600;
+  text-decoration:none;
+}
+
+.sub-cta{
+  margin-top:16px;
+  font-size:15px;
+}
+
+.sub-cta a{
+  color:var(--navy);
+  text-decoration:none;
+  font-weight:600;
+  margin:0 10px;
+}
+
+/* FOOTER */
+.footer{
+  text-align:center;
+  margin-top:60px;
+  font-size:14px;
+  color:#9ca3af;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+  to{opacity:1;transform:none;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+<!-- HERO -->
+<div class="hero">
+  <img src="logo.png" class="logo" alt="Donohoo & Sons Insurance">
+
+  <h1>Real advice.<br>No call centers.</h1>
+
+  <div class="tagline">Insurance guidance for families and business owners in Wisconsin</div>
+
+  <div class="subtle">Independent • Personal • Local</div>
+
+  <div class="phone">
+    Call or text Andy directly — <a href="tel:+14146981729">414.698.1729</a>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- BENEFITS -->
+<div class="benefits">
+  <p>Independent guidance not tied to one company.</p>
+  <p>Straight answers, no insurance jargon.</p>
+  <p>One trusted relationship when things actually matter.</p>
+</div>
+
+<!-- SERVICES -->
+<div class="services">
+  <h2>What I Help With</h2>
+
+  <div class="card-grid">
+    <div class="card">
+      <h3>Protection</h3>
+      <p>Home, auto and umbrella coverage built to hold up when life gets unpredictable.</p>
+    </div>
+
+    <div class="card">
+      <h3>Guidance</h3>
+      <p>Business coverage and risk advice that actually makes sense.</p>
+    </div>
+
+    <div class="card">
+      <h3>Long View</h3>
+      <p>Planning ahead so your family and future stay protected.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="about">
+  <h2>About Andy</h2>
+
+  <div class="story">
+
+    <div class="story-section">
+      <div class="mini-head">Built on real relationships</div>
+      <p>Hi, I’m Andy Donohoo. I run Donohoo & Sons Insurance here in Milwaukee.</p>
+      <p>I went independent for a simple reason — people deserve real advice. No quotas. No call-center handoffs. Just honest guidance tailored to your life.</p>
+    </div>
+
+    <div class="story-section">
+      <div class="pull">One person. One number. Real accountability.</div>
+      <p>Most of my clients stay for years because they want someone who actually knows their situation and picks up when it matters.</p>
+    </div>
+
+    <div class="story-section">
+      <div class="mini-head">Why it’s personal</div>
+      <p>My wife Katie and our boys are the reason this work means so much to me. Protecting families isn’t a pitch — it’s something I believe in.</p>
+
+      <img src="boys.JPEG" class="family-photo" alt="Andy with his sons">
+      <div class="caption">With my boys — the reason behind every policy I write.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <a href="tel:+14146981729" class="cta-btn">
+    Call or Text Andy<br>
+    414.698.1729
+  </a>
+
+  <div class="sub-cta">
+    <a href="sms:+14146981729">Text</a> |
+    <a href="mailto:andy@donohooinsurance.com">Email</a>
+  </div>
+</div>
+
+<div class="footer">
+  Donohoo & Sons Insurance • Milwaukee, Wisconsin<br>
+  Independent agency • Partnered with Unisource Insurance
+</div>
+
+</div>
+</body>
+</html>
