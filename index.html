@@ -34,9 +34,14 @@ body{
   display:block;
   margin-left:auto;
   margin-right:auto;
-  opacity:1 !important;
-  transform:none !important;
-  animation:none !important;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity 1.4s cubic-bezier(0.25,0.1,0.25,1) 0.3s,
+              transform 1.4s cubic-bezier(0.25,0.1,0.25,1) 0.3s;
+}
+body.loaded .logo{
+  opacity:1;
+  transform:none;
 }
 h1{
   font-family:'Playfair Display',serif;
@@ -194,7 +199,11 @@ h1{
 </div>
 
 <script>
-// One-time reveal: add .visible when element enters viewport → smooth fade in, stays forever
+// Trigger logo fade-in after load + one-time section reveals
+window.addEventListener('load', function() {
+  document.body.classList.add('loaded');
+});
+
 if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
