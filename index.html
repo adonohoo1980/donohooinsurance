@@ -28,15 +28,15 @@ body{
 }
 /* HERO */
 .hero{text-align:center;margin-bottom:70px;}
- .logo {
-  width: 200px;
-  margin-bottom: 36px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  opacity: 0;
-  transform: translateY(12px);
-  animation: fadeUp 1.4s cubic-bezier(0.25,0.1,0.25,1) forwards;
+.logo{
+  width:200px;
+  margin-bottom:36px;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  opacity:1 !important;
+  transform:none !important;
+  animation:none !important;
 }
 h1{
   font-family:'Playfair Display',serif;
@@ -44,9 +44,6 @@ h1{
   line-height:1.1;
   letter-spacing:-1px;
   margin-bottom:18px;
-  opacity:0;
-  transform:translateY(16px);
-  transition:opacity 1.6s cubic-bezier(0.25,0.1,0.25,1) .15s, transform 1.6s cubic-bezier(0.25,0.1,0.25,1) .15s;
 }
 .tagline{font-size:20px;color:var(--muted);margin-bottom:12px;}
 .subtle{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#9ca3af;margin-bottom:28px;}
@@ -133,7 +130,7 @@ h1{
 <div class="wrap">
   <!-- HERO -->
   <div class="hero">
-    <img src="logo.png" class="logo" alt="Donohoo & Sons Insurance">
+    <img src="logo.png" class="logo" alt="Donohoo & Sons Insurance" loading="eager">
     <h1>Real advice.<br>No call centers.</h1>
     <div class="tagline">Insurance guidance for families and business owners in Wisconsin</div>
     <div class="subtle">Independent • Personal • Local</div>
@@ -173,7 +170,7 @@ h1{
       <div class="story-section">
         <div class="mini-head">Why it’s personal</div>
         <p>My wife Katie and our boys are the reason this work means so much to me. Protecting families isn’t a pitch — it’s something I believe in.</p>
-        <img src="boys.jpg" class="family-photo" alt="Andy with his sons">
+        <img src="boys.jpg" class="family-photo" alt="Andy with his sons" loading="eager">
         <div class="caption">With my boys — the reason I take protecting families so seriously.</div>
       </div>
     </div>
@@ -197,27 +194,23 @@ h1{
 </div>
 
 <script>
-// Reveal once: add .visible when element enters viewport → smooth fade in, stays forever
+// One-time reveal: add .visible when element enters viewport → smooth fade in, stays forever
 if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // stop watching after first reveal
+        observer.unobserve(entry.target);
       }
     });
   }, {
-    threshold: 0.15,          // trigger when ~15% visible
-    rootMargin: '0px 0px -10% 0px' // start a bit earlier
+    threshold: 0.15,
+    rootMargin: '0px 0px -10% 0px'
   });
 
-  // Observe all sections/cards/elements we want to reveal
   document.querySelectorAll('.benefits, .services, .card, .about, .story-section, .family-photo, .cta, .rule')
     .forEach(el => observer.observe(el));
 }
 </script>
 </body>
 </html>
-
-
-
