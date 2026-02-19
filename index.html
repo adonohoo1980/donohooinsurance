@@ -13,6 +13,7 @@
   --line:#e5e7eb;
   --navy:#0f1c3a;
   --soft:#f6f7f9;
+  --ease: cubic-bezier(0.25, 0.1, 0.25, 1); /* Apple-style smooth ease */
 }
 body{
   margin:0;
@@ -26,14 +27,14 @@ body{
   margin:auto;
   padding:clamp(80px,10vw,140px) 24px 120px;
 }
-/* HERO */
+/* HERO (unchanged) */
 .hero{text-align:center;margin-bottom:70px;}
 .logo{
   width:200px;
   margin-bottom:36px;
   opacity:0;
   transform:translateY(12px);
-  animation:fadeUp 1.4s cubic-bezier(0.25,0.1,0.25,1) forwards;
+  animation:fadeUp 1.4s var(--ease) forwards;
 }
 h1{
   font-family:'Playfair Display',serif;
@@ -43,7 +44,7 @@ h1{
   margin-bottom:18px;
   opacity:0;
   transform:translateY(16px);
-  animation:fadeUp 1.6s cubic-bezier(0.25,0.1,0.25,1) forwards .15s;
+  animation:fadeUp 1.6s var(--ease) forwards .15s;
 }
 .tagline{
   font-size:20px;
@@ -69,7 +70,7 @@ h1{
   background:linear-gradient(to right,transparent,var(--line),transparent);
   margin:70px 0;
   opacity:0;
-  animation:fadeUp 1.2s cubic-bezier(0.25,0.1,0.25,1) forwards .4s;
+  animation:fadeUp 1.2s var(--ease) forwards .4s;
 }
 /* BENEFITS */
 .benefits{
@@ -88,7 +89,7 @@ h1{
     margin: 12px 0;
   }
 }
-/* SERVICES - APPLE CARDS */
+/* SERVICES */
 .services{
   margin:70px 0;
 }
@@ -123,7 +124,7 @@ h1{
   color:var(--muted);
   font-size:16px;
 }
-/* ABOUT - EDITORIAL */
+/* ABOUT */
 .about{
   margin-top:80px;
   margin-bottom:40px;
@@ -141,6 +142,10 @@ h1{
 }
 .story-section{
   margin-bottom:36px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  will-change:transform, opacity;
 }
 .story-section:last-child {
   margin-bottom: 20px;
@@ -221,37 +226,17 @@ h1{
   font-size:14px;
   color:#9ca3af;
 }
-/* ANIMATIONS */
-@keyframes fadeUp{
-  to{opacity:1;transform:none;}
-}
-@keyframes revealUp{
-  from{opacity:0;transform:translateY(40px);}
-  to{opacity:1;transform:none;}
-}
-
-/* Scroll-driven as base (progressive enhancement) */
-.services,
-.about,
-.benefits,
-.card,
-.story-section,
-.family-photo,
-.cta{
-  opacity:0;
-  transform:translateY(40px);
-  transition:opacity 0.8s ease, transform 0.8s ease; /* fallback smooth if no scroll anim */
-  will-change:transform, opacity;
-}
-
-/* Once revealed via JS: lock forever */
+/* One-time reveal lock */
 .revealed {
   opacity:1 !important;
   transform:none !important;
-  transition:none !important; /* no more changes */
+  transition:none !important; /* lock, no more changes */
 }
 
-/* Stagger delays via JS now (or keep if you want) */
+/* Stagger via CSS for cards/story (optional visual polish) */
+.card:nth-child(1), .story-section:nth-child(1) { transition-delay: 0.1s; }
+.card:nth-child(2), .story-section:nth-child(2) { transition-delay: 0.2s; }
+.card:nth-child(3), .story-section:nth-child(3) { transition-delay: 0.3s; }
 </style>
 </head>
 <body>
@@ -333,26 +318,22 @@ h1{
 </div>
 
 <script>
-// One-time reveal: fade in once, then lock forever (Apple-style)
+// Smooth one-time reveal (Apple-like: fade in once, stay visible forever)
 if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('revealed');
-        // Optional: unobserve after first reveal to save perf
-        observer.unobserve(entry.target);
+        observer.unobserve(entry.target); // stop watching after first reveal
       }
     });
   }, {
-    threshold: 0.1,          // start when 10% visible
-    rootMargin: '0px 0px -10% 0px' // trigger a bit earlier
+    threshold: 0.05, // start earlier for smoother feel
+    rootMargin: '0px 0px -5% 0px' // trigger a bit before fully in view
   });
 
-  // Target all revealable elements
   document.querySelectorAll('.services, .about, .benefits, .card, .story-section, .family-photo, .cta')
-    .forEach(el => {
-      observer.observe(el);
-    });
+    .forEach(el => observer.observe(el));
 }
 </script>
 </body>
