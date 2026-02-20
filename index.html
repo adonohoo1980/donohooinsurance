@@ -16,7 +16,6 @@
   --white: #ffffff;
 }
 
-/* ===== GLOBAL REFINEMENTS ===== */
 body {
   margin: 0;
   font-family: 'Inter', system-ui, sans-serif;
@@ -24,7 +23,6 @@ body {
   color: var(--ink);
   line-height: 1.8;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
 }
 
 .wrap {
@@ -33,7 +31,7 @@ body {
   padding: clamp(100px, 12vw, 160px) 24px 120px;
 }
 
-/* ===== HERO: BOUTIQUE FEEL ===== */
+/* ===== HERO ===== */
 .hero {
   text-align: center;
   margin-bottom: 100px;
@@ -50,10 +48,7 @@ body {
               transform 1.5s cubic-bezier(.22,1,.36,1);
 }
 
-body.loaded .logo {
-  opacity: 1;
-  transform: none;
-}
+body.loaded .logo { opacity: 1; transform: none; }
 
 h1 {
   font-family: 'Playfair Display', serif;
@@ -68,7 +63,6 @@ h1 {
   font-size: 22px;
   color: var(--muted);
   margin-bottom: 20px;
-  letter-spacing: -0.01em;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
@@ -89,21 +83,11 @@ h1 {
   font-weight: 600;
   border-bottom: 1px solid var(--line);
   padding-bottom: 2px;
-  transition: border-color 0.3s ease;
-}
-.phone a:hover { border-color: var(--navy); }
-
-/* ===== SECTION HEADERS ===== */
-h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 42px;
-  margin-bottom: 40px;
-  letter-spacing: -0.02em;
 }
 
-/* ===== SERVICES: CLEAN GRID ===== */
+/* ===== SERVICES ===== */
 .services { margin: 120px 0; }
-.services h2 { text-align: center; margin-bottom: 60px; }
+.services h2 { font-family: 'Playfair Display', serif; text-align: center; font-size: 42px; margin-bottom: 60px; }
 
 .card-grid {
   display: grid;
@@ -124,27 +108,12 @@ h2 {
   box-shadow: 0 40px 80px rgba(0,0,0,0.04);
 }
 
-.card h3 {
-  font-family: 'Playfair Display', serif;
-  margin: 0 0 16px;
-  font-size: 24px;
-}
+.card h3 { font-family: 'Playfair Display', serif; margin: 0 0 16px; font-size: 24px; }
+.card p { margin: 0; color: var(--muted); font-size: 16px; }
 
-.card p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 16px;
-}
-
-/* ===== ABOUT: ASYMMETRIC EDITORIAL ===== */
+/* ===== ABOUT (New Language) ===== */
 .about { margin: 140px 0; }
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
+.about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; }
 
 .mini-head {
   font-size: 11px;
@@ -166,109 +135,44 @@ h2 {
   padding-left: 30px;
 }
 
-.image-container {
-  position: relative;
-  padding: 20px;
-}
-
-/* Luxury accent behind the photo */
+.image-container { position: relative; padding: 20px; }
 .image-container::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 80%;
-  height: 90%;
-  background: var(--line);
-  opacity: 0.3;
-  z-index: 0;
+  content: ""; position: absolute; top: 0; right: 0; width: 80%; height: 90%; background: var(--line); opacity: 0.3; z-index: 0;
 }
 
 .family-photo-v2 {
-  width: 100%;
-  position: relative;
-  z-index: 1;
-  filter: grayscale(15%) contrast(1.02);
+  width: 100%; position: relative; z-index: 1; filter: grayscale(15%); 
   box-shadow: 20px 20px 60px rgba(0,0,0,0.08);
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.family-photo-v2:hover {
-  transform: scale(1.02) translateX(-10px);
 }
 
 .caption-v2 {
-  font-size: 12px;
-  letter-spacing: 0.05em;
-  color: var(--muted);
-  margin-top: 20px;
-  text-transform: uppercase;
-  display: block;
-  text-align: right;
+  font-size: 12px; letter-spacing: 0.05em; color: var(--muted); margin-top: 20px; text-transform: uppercase; display: block; text-align: right;
 }
 
-/* ===== CTA: ARCHITECTURAL ===== */
+/* ===== CTA (Updated for Quotes) ===== */
 .cta {
-  text-align: center;
-  margin: 120px 0 60px;
-  padding: 100px 40px;
-  background: var(--white);
-  border: 1px solid var(--line);
+  text-align: center; margin: 120px 0 60px; padding: 100px 40px; background: var(--white); border: 1px solid var(--line);
 }
 
-.cta .intro {
-  font-size: 24px;
-  font-family: 'Playfair Display', serif;
-  margin-bottom: 40px;
-}
+.cta .intro { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 15px; }
+.cta .sub-intro { color: var(--muted); margin-bottom: 40px; font-size: 18px; }
 
 .cta-btn {
-  display: inline-block;
-  background: var(--navy);
-  color: var(--white);
-  padding: 24px 60px;
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  transition: all 0.4s ease;
+  display: inline-block; background: var(--navy); color: var(--white); padding: 24px 60px; 
+  font-size: 13px; font-weight: 600; text-decoration: none; text-transform: uppercase; letter-spacing: 0.2em; transition: all 0.4s ease;
 }
 
-.cta-btn:hover {
-  background: #1e315e;
-  letter-spacing: 0.25em;
-  transform: scale(1.02);
-}
+.cta-btn:hover { background: #1e315e; transform: scale(1.02); }
 
-/* ===== FOOTER ===== */
-.footer {
-  text-align: center;
-  margin-top: 100px;
-  font-size: 12px;
-  color: #9ca3af;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
+.footer { text-align: center; margin-top: 100px; font-size: 12px; color: #9ca3af; letter-spacing: 0.05em; text-transform: uppercase; }
 
-/* ===== REVEAL ANIMATIONS ===== */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: none;
-}
+.reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.visible { opacity: 1; transform: none; }
 
 @media (max-width: 850px) {
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .image-container { order: -1; }
   h1 { font-size: 42px; }
-  .wrap { padding-top: 80px; }
 }
 </style>
 </head>
@@ -277,28 +181,28 @@ h2 {
 <div class="wrap">
   <header class="hero" id="hero">
     <img src="logo.png" class="logo" alt="Donohoo & Sons Insurance">
-    <h1>Real advice.<br>No call centers.</h1>
-    <p class="tagline">Providing sophisticated insurance guidance for Wisconsin’s families and business owners.</p>
-    <div class="subtle">Independent • Personal • Local</div>
+    <h1>Real advice.<br>Direct access.</h1>
+    <p class="tagline">Personalized insurance strategies for Wisconsin families and business owners.</p>
+    <div class="subtle">Independent • Local • Always Available</div>
     <div class="phone">
       Call or text Andy directly — <a href="tel:+14146981729">414.698.1729</a>
     </div>
   </header>
 
   <section class="services reveal">
-    <h2>Areas of Expertise</h2>
+    <h2>Areas of Focus</h2>
     <div class="card-grid">
       <div class="card">
-        <h3>Private Clients</h3>
-        <p>Bespoke protection for your home, vehicles, and the assets your family has worked hard to build.</p>
+        <h3>Families</h3>
+        <p>Comprehensive protection for your home, vehicles, and the assets you've worked hard to build.</p>
       </div>
       <div class="card">
-        <h3>Commercial</h3>
-        <p>Strategic risk advice for business owners—allowing you to focus on growth while we secure the foundation.</p>
+        <h3>Business</h3>
+        <p>Professional risk management that allows you to focus on your company while I handle the details.</p>
       </div>
       <div class="card">
-        <h3>Legacy Planning</h3>
-        <p>Protection strategies that look beyond the next renewal, ensuring long-term stability for your estate.</p>
+        <h3>Future Planning</h3>
+        <p>Strategic coverage that looks beyond the next renewal to ensure your long-term stability.</p>
       </div>
     </div>
   </section>
@@ -306,27 +210,28 @@ h2 {
   <section class="about reveal">
     <div class="about-grid">
       <div class="story-content">
-        <span class="mini-head">Heritage & Values</span>
+        <span class="mini-head">The Personal Standard</span>
         <h2>About Andy</h2>
-        <p>Hi, I’m Andy Donohoo. I founded Donohoo & Sons Insurance on a simple premise: high-stakes protection requires a human connection. You aren't just a policy number; you are a neighbor.</p>
+        <p>Hi, I’m Andy Donohoo. I founded Donohoo & Sons Insurance because I believe insurance should be straightforward. You deserve one person who understands your situation and answers the phone when you call.</p>
         
-        <div class="pull">"In an era of automated queues, I choose to remain reachable."</div>
+        <div class="pull">"I am always available to my clients—no middlemen, no waiting."</div>
         
-        <p>My wife Katie and our boys are the core of my world. Being a husband and father shapes my perspective on risk—I protect your family the same way I protect my own.</p>
+        <p>The "& Sons" in my agency name is a constant reminder of why I do this. My boys keep me grounded and drive the standard of service I provide to every family I represent.</p>
       </div>
 
       <div class="image-container">
-        <img src="boys.jpg" class="family-photo-v2" alt="Andy with his family">
-        <span class="caption-v2">// The Donohoo Family, Milwaukee</span>
+        <img src="boys.jpg" class="family-photo-v2" alt="Donohoo & Sons">
+        <span class="caption-v2">// Donohoo & Sons</span>
       </div>
     </div>
   </section>
 
   <section class="cta reveal">
-    <p class="intro">Let’s begin a conversation about your coverage.</p>
-    <a href="tel:+14146981729" class="cta-btn">Request a Consultation</a>
+    <p class="intro">Need a quick quote?</p>
+    <p class="sub-intro">I respect your time. Whether you need a fast comparison or a deep dive, I'm ready to help.</p>
+    <a href="tel:+14146981729" class="cta-btn">Call or Text for a Quote</a>
     <div style="margin-top:32px; font-size:15px; color: var(--muted);">
-      Or <a href="mailto:adonohoo@unisource-ins.com" style="color:var(--navy); font-weight:600; text-decoration:none;">Email Andy Directly</a>
+      Prefer email? <a href="mailto:adonohoo@unisource-ins.com" style="color:var(--navy); font-weight:600; text-decoration:none;">Send a message to Andy</a>
     </div>
   </section>
 
@@ -337,31 +242,11 @@ h2 {
 </div>
 
 <script>
-// Apple-style fade in on load
-window.addEventListener('load', () => {
-  document.body.classList.add('loaded');
-});
-
-// Scroll Observer for smooth reveals
+window.addEventListener('load', () => { document.body.classList.add('loaded'); });
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
+  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } });
 }, { threshold: 0.1 });
-
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Parallax Hero Effect
-if (window.innerWidth > 768) {
-  const hero = document.getElementById('hero');
-  window.addEventListener('scroll', () => {
-    const offset = window.scrollY * 0.1;
-    hero.style.transform = `translateY(${offset}px)`;
-    hero.style.opacity = 1 - (window.scrollY / 700);
-  }, { passive:true });
-}
 </script>
 
 </body>
