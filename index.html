@@ -16,7 +16,7 @@
   --white: #ffffff;
 }
 
-/* ===== GLOBAL ===== */
+/* ===== GLOBAL REFINEMENTS ===== */
 body {
   margin: 0;
   font-family: 'Inter', system-ui, sans-serif;
@@ -33,7 +33,7 @@ body {
   padding: clamp(100px, 12vw, 160px) 24px 120px;
 }
 
-/* ===== HERO ===== */
+/* ===== HERO: BOUTIQUE FEEL ===== */
 .hero {
   text-align: center;
   margin-bottom: 100px;
@@ -101,7 +101,7 @@ h2 {
   letter-spacing: -0.02em;
 }
 
-/* ===== SERVICES ===== */
+/* ===== SERVICES: CLEAN GRID ===== */
 .services { margin: 120px 0; }
 .services h2 { text-align: center; margin-bottom: 60px; }
 
@@ -113,7 +113,7 @@ h2 {
 
 .card {
   background: var(--white);
-  padding: 48px 40px;
+  padding: 56px 40px;
   border: 1px solid var(--line);
   transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -136,7 +136,7 @@ h2 {
   font-size: 16px;
 }
 
-/* ===== ABOUT (Editorial Layout) ===== */
+/* ===== ABOUT: ASYMMETRIC EDITORIAL ===== */
 .about { margin: 140px 0; }
 
 .about-grid {
@@ -171,6 +171,7 @@ h2 {
   padding: 20px;
 }
 
+/* Luxury accent behind the photo */
 .image-container::before {
   content: "";
   position: absolute;
@@ -206,7 +207,7 @@ h2 {
   text-align: right;
 }
 
-/* ===== CTA ===== */
+/* ===== CTA: ARCHITECTURAL ===== */
 .cta {
   text-align: center;
   margin: 120px 0 60px;
@@ -240,6 +241,7 @@ h2 {
   transform: scale(1.02);
 }
 
+/* ===== FOOTER ===== */
 .footer {
   text-align: center;
   margin-top: 100px;
@@ -335,10 +337,12 @@ h2 {
 </div>
 
 <script>
+// Apple-style fade in on load
 window.addEventListener('load', () => {
   document.body.classList.add('loaded');
 });
 
+// Scroll Observer for smooth reveals
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -349,6 +353,7 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+// Parallax Hero Effect
 if (window.innerWidth > 768) {
   const hero = document.getElementById('hero');
   window.addEventListener('scroll', () => {
