@@ -12,7 +12,7 @@
   --muted: #595959;
   --line: #d1d5db;
   --navy: #0f1c3a;
-  --cream: #faf9f6; /* Point 3: Sophisticated Warm White */
+  --cream: #faf9f6; 
   --white: #ffffff;
 }
 
@@ -22,13 +22,13 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   background: var(--cream);
   color: var(--ink);
-  line-height: 1.8; /* Point 1: Increased line height */
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 .wrap {
-  max-width: 1040px; /* Point 4: Wider layout for luxury feel */
+  max-width: 1040px;
   margin: auto;
   padding: clamp(100px, 12vw, 160px) 24px 120px;
 }
@@ -59,7 +59,7 @@ h1 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(48px, 7vw, 72px);
   line-height: 1.05;
-  letter-spacing: -0.03em; /* Point 1: Tighter serif tracking */
+  letter-spacing: -0.03em;
   margin-bottom: 24px;
   font-weight: 700;
 }
@@ -75,8 +75,8 @@ h1 {
 }
 
 .subtle {
-  font-size: 12px;
-  letter-spacing: 0.25em; /* Elegantly tracked out */
+  font-size: 11px;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: #9ca3af;
   margin-bottom: 40px;
@@ -96,14 +96,14 @@ h1 {
 /* ===== SECTION HEADERS ===== */
 h2 {
   font-family: 'Playfair Display', serif;
-  text-align: center;
   font-size: 42px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   letter-spacing: -0.02em;
 }
 
-/* ===== SERVICES (Point 2: Refined Cards) ===== */
+/* ===== SERVICES ===== */
 .services { margin: 120px 0; }
+.services h2 { text-align: center; margin-bottom: 60px; }
 
 .card-grid {
   display: grid;
@@ -114,10 +114,8 @@ h2 {
 .card {
   background: var(--white);
   padding: 48px 40px;
-  border: 1px solid var(--line); /* Point 2: Thin border instead of shadow */
+  border: 1px solid var(--line);
   transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex;
-  flex-direction: column;
 }
 
 .card:hover {
@@ -136,20 +134,16 @@ h2 {
   margin: 0;
   color: var(--muted);
   font-size: 16px;
-  line-height: 1.7;
 }
 
-/* ===== ABOUT ===== */
+/* ===== ABOUT (Editorial Layout) ===== */
 .about { margin: 140px 0; }
 
-.story {
-  max-width: 700px;
-  margin: auto;
-}
-
-.story p {
-  margin: 24px 0;
-  font-size: 19px;
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
 }
 
 .mini-head {
@@ -172,18 +166,47 @@ h2 {
   padding-left: 30px;
 }
 
-.family-photo {
-  width: 100%;
-  max-width: 400px;
-  filter: grayscale(20%);
-  border-radius: 2px; /* Point 5: Sharp/Architectural corners */
-  margin-top: 32px;
-  transition: filter 0.8s ease;
+.image-container {
+  position: relative;
+  padding: 20px;
 }
 
-.family-photo:hover { filter: grayscale(0%); }
+.image-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 90%;
+  background: var(--line);
+  opacity: 0.3;
+  z-index: 0;
+}
 
-/* ===== CTA (Architectural Button) ===== */
+.family-photo-v2 {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  filter: grayscale(15%) contrast(1.02);
+  box-shadow: 20px 20px 60px rgba(0,0,0,0.08);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.family-photo-v2:hover {
+  transform: scale(1.02) translateX(-10px);
+}
+
+.caption-v2 {
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-top: 20px;
+  text-transform: uppercase;
+  display: block;
+  text-align: right;
+}
+
+/* ===== CTA ===== */
 .cta {
   text-align: center;
   margin: 120px 0 60px;
@@ -220,9 +243,10 @@ h2 {
 .footer {
   text-align: center;
   margin-top: 100px;
-  font-size: 13px;
+  font-size: 12px;
   color: #9ca3af;
   letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 /* ===== REVEAL ANIMATIONS ===== */
@@ -238,10 +262,11 @@ h2 {
   transform: none;
 }
 
-@media (max-width: 768px) {
-  .wrap { padding-top: 80px; }
+@media (max-width: 850px) {
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .image-container { order: -1; }
   h1 { font-size: 42px; }
-  .card { padding: 32px; }
+  .wrap { padding-top: 80px; }
 }
 </style>
 </head>
@@ -277,19 +302,20 @@ h2 {
   </section>
 
   <section class="about reveal">
-    <div class="story">
-      <div class="story-section">
-        <span class="mini-head">The Personal Standard</span>
+    <div class="about-grid">
+      <div class="story-content">
+        <span class="mini-head">Heritage & Values</span>
         <h2>About Andy</h2>
         <p>Hi, I’m Andy Donohoo. I founded Donohoo & Sons Insurance on a simple premise: high-stakes protection requires a human connection. You aren't just a policy number; you are a neighbor.</p>
-      </div>
-      
-      <div class="pull">"In an era of automated queues, I choose to remain reachable."</div>
-
-      <div class="story-section">
-        <span class="mini-head">Wisconsin Roots</span>
+        
+        <div class="pull">"In an era of automated queues, I choose to remain reachable."</div>
+        
         <p>My wife Katie and our boys are the core of my world. Being a husband and father shapes my perspective on risk—I protect your family the same way I protect my own.</p>
-        <img src="boys.jpg" class="family-photo" alt="Andy with his family">
+      </div>
+
+      <div class="image-container">
+        <img src="boys.jpg" class="family-photo-v2" alt="Andy with his family">
+        <span class="caption-v2">// The Donohoo Family, Milwaukee</span>
       </div>
     </div>
   </section>
@@ -304,7 +330,7 @@ h2 {
 
   <footer class="footer">
     DONOHOO & SONS INSURANCE • MILWAUKEE, WISCONSIN<br>
-    <span style="font-size: 11px; opacity: 0.7;">AN AFFILIATE OF UNISOURCE INSURANCE ASSOCIATES</span>
+    <span style="font-size: 10px; opacity: 0.6;">Affiliate of Unisource Insurance Associates</span>
   </footer>
 </div>
 
@@ -328,7 +354,7 @@ if (window.innerWidth > 768) {
   window.addEventListener('scroll', () => {
     const offset = window.scrollY * 0.1;
     hero.style.transform = `translateY(${offset}px)`;
-    hero.style.opacity = 1 - (window.scrollY / 600);
+    hero.style.opacity = 1 - (window.scrollY / 700);
   }, { passive:true });
 }
 </script>
