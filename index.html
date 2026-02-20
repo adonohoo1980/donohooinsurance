@@ -38,14 +38,19 @@ body {
   padding-bottom: 80px;
 }
 
+/* Responsive Logo Size */
 .logo {
-  width: 180px;
+  width: 180px; /* Mobile size */
   margin: 0 auto 50px;
   display: block;
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 1.5s cubic-bezier(.22,1,.36,1),
               transform 1.5s cubic-bezier(.22,1,.36,1);
+}
+
+@media (min-width: 1024px) {
+  .logo { width: 260px; } /* Laptop size */
 }
 
 body.loaded .logo { opacity: 1; transform: none; }
@@ -85,31 +90,50 @@ h1 {
   padding-bottom: 2px;
 }
 
-/* ===== SERVICES ===== */
+/* ===== SERVICES (High-End Box Redesign) ===== */
 .services { margin: 120px 0; }
 .services h2 { font-family: 'Playfair Display', serif; text-align: center; font-size: 42px; margin-bottom: 60px; }
 
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
+  gap: 40px;
 }
 
 .card {
   background: var(--white);
-  padding: 56px 40px;
+  padding: 60px 45px;
   border: 1px solid var(--line);
-  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* The "Floating Hairline" effect for high-end feel */
+.card::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border: 1px solid rgba(15, 28, 58, 0.05);
+  pointer-events: none;
 }
 
 .card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-8px);
   border-color: var(--navy);
-  box-shadow: 0 40px 80px rgba(0,0,0,0.04);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.03);
 }
 
-.card h3 { font-family: 'Playfair Display', serif; margin: 0 0 16px; font-size: 24px; }
-.card p { margin: 0; color: var(--muted); font-size: 16px; }
+.card h3 { 
+  font-family: 'Playfair Display', serif; 
+  margin: 0 0 18px; 
+  font-size: 26px; 
+  color: var(--navy);
+}
+
+.card p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
 
 /* ===== ABOUT ===== */
 .about { margin: 140px 0; }
@@ -149,7 +173,7 @@ h1 {
   font-size: 12px; letter-spacing: 0.05em; color: var(--muted); margin-top: 20px; text-transform: uppercase; display: block; text-align: right;
 }
 
-/* ===== CTA (Katie's "Get a Quote" Strategy) ===== */
+/* ===== CTA ===== */
 .cta {
   text-align: center; margin: 120px 0 60px; padding: 100px 40px; background: var(--white); border: 1px solid var(--line);
 }
@@ -198,7 +222,7 @@ h1 {
       </div>
       <div class="card">
         <h3>Business</h3>
-        <p>Professional risk management that allows you to focus on your company while I handle the details.</p>
+        <p>Professional risk management that allows you to focus on your company while I manage the coverage.</p>
       </div>
       <div class="card">
         <h3>Future Planning</h3>
@@ -212,9 +236,9 @@ h1 {
       <div class="story-content">
         <span class="mini-head">Our Family Legacy</span>
         <h2>Meet the Donohoos</h2>
-        <p>Hi, I’m Andy Donohoo. I founded Donohoo & Sons Insurance alongside my wife, Katie, because we believe insurance should be straightforward. You deserve a real person who knows your situation and answers the phone when you call.</p>
+        <p>Hi, I’m Andy Donohoo. I founded Donohoo & Sons Insurance alongside my wife, Katie, because we believe insurance should be straightforward. You deserve a real person who knows your situation and answers when you call.</p>
         
-        <div class="pull">"I am always available to my clients—no waiting, just a direct conversation."</div>
+        <div class="pull">"I am always available to my clients—no waiting, just professional guidance."</div>
         
         <p>The "& Sons" in our agency name is a constant reminder of why we do this. Katie and I are building a legacy for our boys by providing the same standard of service to your family that we expect for our own.</p>
       </div>
