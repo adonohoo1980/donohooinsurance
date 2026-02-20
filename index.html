@@ -8,195 +8,189 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --ink: #1a1a1a;
-  --muted: #595959;
-  --line: #d1d5db;
+  --ink: #1d1d1f; /* Apple's specific text color */
+  --muted: #86868b; /* Apple's muted text */
+  --line: rgba(0,0,0,0.08);
   --navy: #0f1c3a;
-  --cream: #faf9f6; 
+  --cream: #f5f5f7; /* Apple's soft grey/white background */
   --white: #ffffff;
 }
 
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--cream);
   color: var(--ink);
-  line-height: 1.8;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
 .wrap {
   max-width: 1040px;
   margin: auto;
-  padding: clamp(100px, 12vw, 160px) 24px 120px;
+  padding: clamp(80px, 10vw, 140px) 24px;
 }
 
 /* ===== HERO ===== */
 .hero {
   text-align: center;
-  margin-bottom: 100px;
-  padding-bottom: 80px;
+  margin-bottom: 80px;
 }
 
-/* Responsive Logo Size */
 .logo {
-  width: 180px; /* Mobile size */
-  margin: 0 auto 50px;
+  width: 180px; 
+  margin: 0 auto 40px;
   display: block;
   opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 1.5s cubic-bezier(.22,1,.36,1),
-              transform 1.5s cubic-bezier(.22,1,.36,1);
+  transform: scale(0.95);
+  transition: all 1.2s cubic-bezier(0.15, 1, 0.3, 1);
 }
 
 @media (min-width: 1024px) {
-  .logo { width: 260px; } /* Laptop size */
+  .logo { width: 280px; } 
 }
 
-body.loaded .logo { opacity: 1; transform: none; }
+body.loaded .logo { opacity: 1; transform: scale(1); }
 
 h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(48px, 7vw, 72px);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  margin-bottom: 24px;
+  font-size: clamp(44px, 6vw, 68px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
   font-weight: 700;
 }
 
 .tagline {
-  font-size: 22px;
+  font-size: 21px;
   color: var(--muted);
-  margin-bottom: 20px;
-  max-width: 700px;
+  margin-bottom: 24px;
+  max-width: 650px;
   margin-left: auto;
   margin-right: auto;
+  font-weight: 400;
 }
 
 .subtle {
-  font-size: 11px;
-  letter-spacing: 0.3em;
+  font-size: 12px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #9ca3af;
-  margin-bottom: 40px;
+  color: var(--muted);
+  margin-bottom: 32px;
 }
 
-.phone { font-size: 19px; }
+.phone { font-size: 18px; }
 .phone a {
   color: var(--navy);
   text-decoration: none;
   font-weight: 600;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 2px;
+  padding: 8px 16px;
+  background: rgba(15, 28, 58, 0.04);
+  border-radius: 40px;
+  transition: background 0.3s;
 }
+.phone a:hover { background: rgba(15, 28, 58, 0.08); }
 
-/* ===== SERVICES (High-End Box Redesign) ===== */
-.services { margin: 120px 0; }
-.services h2 { font-family: 'Playfair Display', serif; text-align: center; font-size: 42px; margin-bottom: 60px; }
+/* ===== THE APPLE-STYLE CARDS ===== */
+.services { margin: 100px 0; }
+.services h2 { font-family: 'Playfair Display', serif; text-align: center; font-size: 40px; margin-bottom: 50px; }
 
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px;
+  gap: 24px; /* Tighter gap like Apple grids */
 }
 
 .card {
   background: var(--white);
-  padding: 60px 45px;
-  border: 1px solid var(--line);
-  position: relative;
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* The "Floating Hairline" effect for high-end feel */
-.card::after {
-  content: "";
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  right: 8px;
-  bottom: 8px;
-  border: 1px solid rgba(15, 28, 58, 0.05);
-  pointer-events: none;
+  padding: 48px 36px;
+  border-radius: 28px; /* Apple's signature large radius */
+  border: 1px solid rgba(0,0,0,0.02); /* Almost invisible border */
+  /* Layered Shadow: Subtle depth */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02), 
+              0 12px 20px rgba(0,0,0,0.03);
+  transition: transform 0.5s cubic-bezier(0.15, 1, 0.3, 1), 
+              box-shadow 0.5s cubic-bezier(0.15, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  border-color: var(--navy);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.03);
+  transform: scale(1.02); /* Scale up instead of just floating */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
 }
 
 .card h3 { 
-  font-family: 'Playfair Display', serif; 
-  margin: 0 0 18px; 
-  font-size: 26px; 
-  color: var(--navy);
+  font-family: 'Inter', sans-serif; /* Clean sans-serif for card titles */
+  font-weight: 600;
+  margin: 0 0 14px; 
+  font-size: 22px; 
 }
 
-.card p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
+.card p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.6; }
 
-/* ===== ABOUT ===== */
-.about { margin: 140px 0; }
-.about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; }
-
-.mini-head {
-  font-size: 11px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: #9ca3af;
-  margin-bottom: 12px;
-  display: block;
-}
+/* ===== ABOUT SECTION ===== */
+.about { margin: 120px 0; }
+.about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center; }
 
 .pull {
   font-family: 'Playfair Display', serif;
-  font-size: 32px;
+  font-size: 28px;
   font-style: italic;
-  line-height: 1.3;
-  margin: 48px 0;
+  line-height: 1.4;
+  margin: 40px 0;
   color: var(--navy);
-  border-left: 2px solid var(--navy);
-  padding-left: 30px;
+  font-weight: 500;
 }
 
-.image-container { position: relative; padding: 20px; }
-.image-container::before {
-  content: ""; position: absolute; top: 0; right: 0; width: 80%; height: 90%; background: var(--line); opacity: 0.3; z-index: 0;
-}
-
+.image-container { position: relative; }
 .family-photo-v2 {
-  width: 100%; position: relative; z-index: 1; filter: grayscale(10%); 
-  box-shadow: 20px 20px 60px rgba(0,0,0,0.08);
+  width: 100%; 
+  border-radius: 32px; 
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  filter: saturate(0.9);
 }
 
-.caption-v2 {
-  font-size: 12px; letter-spacing: 0.05em; color: var(--muted); margin-top: 20px; text-transform: uppercase; display: block; text-align: right;
-}
-
-/* ===== CTA ===== */
+/* ===== THE CTA (Apple Button Style) ===== */
 .cta {
-  text-align: center; margin: 120px 0 60px; padding: 100px 40px; background: var(--white); border: 1px solid var(--line);
+  text-align: center; 
+  margin: 80px 0; 
+  padding: 80px 40px; 
+  background: var(--white); 
+  border-radius: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
 }
 
-.cta .intro { font-family: 'Playfair Display', serif; font-size: 32px; margin-bottom: 15px; }
-.cta .sub-intro { color: var(--muted); margin-bottom: 40px; font-size: 18px; max-width: 600px; margin-left: auto; margin-right: auto; }
+.cta .intro { font-family: 'Playfair Display', serif; font-size: 36px; margin-bottom: 12px; }
+.cta .sub-intro { color: var(--muted); margin-bottom: 40px; font-size: 18px; }
 
 .cta-btn {
-  display: inline-block; background: var(--navy); color: var(--white); padding: 24px 60px; 
-  font-size: 13px; font-weight: 600; text-decoration: none; text-transform: uppercase; letter-spacing: 0.2em; transition: all 0.4s ease;
+  display: inline-block; 
+  background: var(--navy); 
+  color: var(--white); 
+  padding: 18px 36px; 
+  border-radius: 30px; /* Rounded pill shape */
+  font-size: 16px; 
+  font-weight: 600; 
+  text-decoration: none; 
+  transition: all 0.3s cubic-bezier(0.15, 1, 0.3, 1);
 }
 
-.cta-btn:hover { background: #1e315e; transform: scale(1.02); }
+.cta-btn:hover { 
+  background: #000;
+  transform: scale(1.05); 
+}
 
-.footer { text-align: center; margin-top: 100px; font-size: 12px; color: #9ca3af; letter-spacing: 0.05em; text-transform: uppercase; }
+.footer { text-align: center; margin-top: 80px; font-size: 12px; color: var(--muted); }
 
-.reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+/* Reveal Logic */
+.reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
 .reveal.visible { opacity: 1; transform: none; }
 
 @media (max-width: 850px) {
-  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-grid { grid-template-columns: 1fr; }
   .image-container { order: -1; }
-  h1 { font-size: 42px; }
+  .wrap { padding-top: 60px; }
 }
 </style>
 </head>
@@ -209,12 +203,11 @@ h1 {
     <p class="tagline">Personalized insurance strategies for Wisconsin families and business owners.</p>
     <div class="subtle">Independent • Local • Always Available</div>
     <div class="phone">
-      Call or text Andy directly — <a href="tel:+14146981729">414.698.1729</a>
+      <a href="tel:+14146981729">Call or text Andy — 414.698.1729</a>
     </div>
   </header>
 
   <section class="services reveal">
-    <h2>Areas of Focus</h2>
     <div class="card-grid">
       <div class="card">
         <h3>Families</h3>
@@ -245,16 +238,15 @@ h1 {
 
       <div class="image-container">
         <img src="family.jpg" class="family-photo-v2" alt="The Donohoo Family">
-        <span class="caption-v2">// The Donohoo Family</span>
       </div>
     </div>
   </section>
 
   <section class="cta reveal">
     <p class="intro">Need a quick quote?</p>
-    <p class="sub-intro">I respect your time. Whether you need a simple price comparison or a full review of your current plan, I make it fast and easy.</p>
+    <p class="sub-intro">I respect your time. Whether you need a simple price comparison or a full review, I make it fast and easy.</p>
     <a href="tel:+14146981729" class="cta-btn">Call or Text for a Quote</a>
-    <div style="margin-top:32px; font-size:15px; color: var(--muted);">
+    <div style="margin-top:32px; font-size:14px; color: var(--muted);">
       Prefer email? <a href="mailto:adonohoo@unisource-ins.com" style="color:var(--navy); font-weight:600; text-decoration:none;">Send a message to Andy</a>
     </div>
   </section>
