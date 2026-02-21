@@ -9,282 +9,539 @@
 <link rel="apple-touch-icon" href="favicon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --ink: #1a1a1a;
-  --muted: #6e6e73;
-  --navy: #0f1c3a;
-  --champagne: #faf9f6;
+:root{
+  --ink:#111114;
+  --muted:#6e6e73;
+  --navy:#0f1c3a;
+  --champagne:#faf9f6;
+  --card:#ffffff;
+  --hair:rgba(15,28,58,.10);
+  --shadow:0 18px 60px rgba(0,0,0,.08);
+  --shadowSoft:0 10px 30px rgba(0,0,0,.05);
+  --radius:28px;
+  --ease:cubic-bezier(.2,.8,.2,1);
 }
 
-html {
-  scroll-behavior: smooth;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color:var(--ink);
+  background:var(--champagne);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
 }
 
-body {
-  margin: 0;
-  font-family: 'Inter', -apple-system, sans-serif;
-  background: var(--champagne);
-  color: var(--ink);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+/* --- subtle “Apple” background --- */
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:
+    radial-gradient(1200px 500px at 50% -10%, rgba(15,28,58,.10), transparent 60%),
+    radial-gradient(900px 600px at 10% 20%, rgba(0,0,0,.04), transparent 60%),
+    radial-gradient(900px 600px at 90% 30%, rgba(0,0,0,.03), transparent 55%),
+    linear-gradient(180deg, #fbfaf7 0%, #f7f6f2 50%, #fbfaf7 100%);
+}
+.noise{
+  position:fixed;
+  inset:-40%;
+  z-index:-1;
+  opacity:.10;
+  pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+  transform:rotate(8deg);
 }
 
-.wrap {
-  max-width: 1100px;
-  margin: auto;
-  padding: 80px 24px;
+/* --- layout --- */
+.wrap{
+  max-width:1120px;
+  margin:0 auto;
+  padding:26px 22px 90px;
+}
+.section{margin-top:62px}
+
+/* --- top nav --- */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  backdrop-filter:saturate(180%) blur(18px);
+  -webkit-backdrop-filter:saturate(180%) blur(18px);
+  background:rgba(250,249,246,.70);
+  border-bottom:1px solid rgba(0,0,0,.05);
+}
+.nav-inner{
+  max-width:1120px;
+  margin:0 auto;
+  padding:12px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  color:var(--ink);
+}
+.brand-dot{
+  width:10px; height:10px; border-radius:999px;
+  background:linear-gradient(180deg, rgba(15,28,58,.95), rgba(15,28,58,.65));
+  box-shadow:0 8px 18px rgba(15,28,58,.18);
+}
+.brand-name{
+  font-weight:600;
+  letter-spacing:-0.02em;
+  font-size:13px;
+  text-transform:uppercase;
+  opacity:.92;
+}
+.nav-links{
+  display:flex; align-items:center; gap:18px;
+}
+.nav-links a{
+  font-size:13px;
+  color:var(--muted);
+  text-decoration:none;
+  letter-spacing:-0.01em;
+  padding:8px 10px;
+  border-radius:999px;
+  transition:background .35s var(--ease), color .35s var(--ease);
+}
+.nav-links a:hover{
+  background:rgba(15,28,58,.06);
+  color:var(--ink);
+}
+.nav-cta{
+  display:flex; gap:10px; align-items:center;
+}
+.pill{
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:-0.01em;
+  padding:10px 14px;
+  border-radius:999px;
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .35s var(--ease);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+.pill.primary{background:var(--navy); color:#fff; box-shadow:0 14px 30px rgba(15,28,58,.18)}
+.pill.ghost{background:rgba(255,255,255,.65); color:var(--navy); border:1px solid rgba(15,28,58,.14)}
+.pill:hover{transform:translateY(-1px)}
+.pill:focus-visible{
+  outline:3px solid rgba(15,28,58,.20);
+  outline-offset:2px;
 }
 
-/* ===== ULTRA-PREMIUM ANIMATION ===== */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px) scale(0.98);
-  transition: 
-    opacity 1.4s cubic-bezier(0.2, 0.8, 0.2, 1), 
-    transform 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-  will-change: transform, opacity;
-  backface-visibility: hidden;
+/* --- hero --- */
+.hero{
+  text-align:center;
+  padding:48px 0 6px;
+}
+.logo{
+  width:clamp(190px, 22vw, 320px);
+  height:auto;
+  display:block;
+  margin:0 auto 22px;
+  filter:drop-shadow(0 18px 40px rgba(0,0,0,.10));
+}
+.kicker{
+  font-size:12px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  margin:0 0 14px;
+}
+h1{
+  font-family:"Playfair Display", serif;
+  font-size:clamp(40px, 6.8vw, 78px);
+  line-height:1.02;
+  letter-spacing:-0.04em;
+  margin:0 0 14px;
+}
+.tagline{
+  font-size:18px;
+  color:var(--muted);
+  letter-spacing:-0.01em;
+  max-width:720px;
+  margin:0 auto 22px;
+}
+.hero-actions{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+.hero-actions .pill{
+  padding:12px 18px;
+  font-size:14px;
 }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
+/* --- cards --- */
+.card-grid{
+  margin-top:42px;
+  display:grid;
+  grid-template-columns:repeat(12, 1fr);
+  gap:18px;
+}
+.card{
+  grid-column:span 4;
+  padding:26px 24px 24px;
+  border-radius:var(--radius);
+  background:rgba(255,255,255,.78);
+  border:1px solid rgba(0,0,0,.06);
+  box-shadow:var(--shadowSoft);
+  position:relative;
+  overflow:hidden;
+  transform:translateZ(0);
+  transition:transform .55s var(--ease), box-shadow .55s var(--ease), border-color .55s var(--ease);
+}
+.card:before{
+  content:"";
+  position:absolute; inset:-1px;
+  background:radial-gradient(700px 240px at 20% 0%, rgba(15,28,58,.10), transparent 50%);
+  opacity:.8;
+  pointer-events:none;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow);
+  border-color:rgba(15,28,58,.14);
+}
+.card h3{
+  margin:0 0 8px;
+  font-size:18px;
+  letter-spacing:-0.02em;
+}
+.card p{
+  margin:0;
+  color:var(--muted);
+  font-size:15px;
+  letter-spacing:-0.01em;
 }
 
-.card-grid .card:nth-child(1) { transition-delay: 0.1s; }
-.card-grid .card:nth-child(2) { transition-delay: 0.25s; }
-.card-grid .card:nth-child(3) { transition-delay: 0.4s; }
-
-/* ===== HERO & LARGER LOGO ===== */
-.hero {
-  text-align: center;
-  margin-bottom: 60px;
+/* --- about --- */
+.about{
+  margin-top:72px;
+}
+.about-shell{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap:28px;
+  align-items:stretch;
+}
+.about-card{
+  border-radius:36px;
+  background:rgba(255,255,255,.78);
+  border:1px solid rgba(0,0,0,.06);
+  box-shadow:var(--shadowSoft);
+  padding:34px 32px;
+}
+.h2{
+  font-family:"Playfair Display", serif;
+  font-size:40px;
+  letter-spacing:-0.03em;
+  margin:0 0 10px;
+  line-height:1.1;
+}
+.lede{
+  color:var(--muted);
+  font-size:16px;
+  letter-spacing:-0.01em;
+  margin:0 0 18px;
+  max-width:62ch;
+}
+.pull{
+  margin:18px 0 18px;
+  padding:16px 18px;
+  border-radius:20px;
+  background:rgba(15,28,58,.05);
+  border:1px solid rgba(15,28,58,.10);
+  color:var(--navy);
+  font-family:"Playfair Display", serif;
+  font-style:italic;
+  font-size:22px;
+  line-height:1.25;
+  letter-spacing:-0.02em;
+}
+.about-card p{
+  margin:12px 0 0;
+  color:var(--ink);
+  letter-spacing:-0.01em;
+}
+.photo{
+  border-radius:36px;
+  overflow:hidden;
+  border:1px solid rgba(0,0,0,.06);
+  box-shadow:var(--shadowSoft);
+  position:relative;
+  background:#fff;
+}
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transform:scale(1.01);
+  transition:transform 1.2s var(--ease);
+}
+.photo:hover img{transform:scale(1.04)}
+.photo .caption{
+  position:absolute;
+  left:18px; right:18px; bottom:16px;
+  padding:12px 14px;
+  border-radius:18px;
+  background:rgba(255,255,255,.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border:1px solid rgba(0,0,0,.06);
+  color:rgba(17,17,20,.85);
+  font-size:13px;
+  letter-spacing:-0.01em;
 }
 
-.logo {
-  width: clamp(200px, 30vw, 380px); 
-  margin: 0 auto 40px;
-  display: block;
-  height: auto;
+/* --- CTA --- */
+.cta{
+  margin-top:68px;
+  border-radius:44px;
+  background:
+    radial-gradient(900px 380px at 30% 0%, rgba(15,28,58,.12), transparent 55%),
+    rgba(255,255,255,.80);
+  border:1px solid rgba(0,0,0,.06);
+  box-shadow:var(--shadowSoft);
+  padding:56px 28px;
+  text-align:center;
+  overflow:hidden;
+  position:relative;
+}
+.cta p{
+  margin:10px auto 0;
+  color:var(--muted);
+  font-size:16px;
+  letter-spacing:-0.01em;
+  max-width:70ch;
+}
+.cta-actions{
+  margin-top:22px;
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.cta .pill{padding:14px 22px; font-size:14px}
+.smallline{
+  margin-top:18px;
+  font-size:14px;
+  color:var(--muted);
+}
+.smallline a{
+  color:var(--navy);
+  text-decoration:none;
+  border-bottom:1px solid rgba(15,28,58,.18);
+  font-weight:600;
 }
 
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(38px, 8vw, 72px);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  margin-bottom: 20px;
+/* --- footer --- */
+footer{
+  text-align:center;
+  margin-top:70px;
+  font-size:11px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  opacity:.65;
 }
 
-.tagline {
-  font-size: 20px;
-  color: var(--muted);
-  max-width: 650px;
-  margin: 0 auto 30px;
+/* --- reveal --- */
+.reveal{
+  opacity:0;
+  transform:translateY(18px) scale(.99);
+  transition:opacity 1.05s var(--ease), transform 1.05s var(--ease);
+  will-change:transform, opacity;
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+.card-grid .card:nth-child(1){transition-delay:.05s}
+.card-grid .card:nth-child(2){transition-delay:.12s}
+.card-grid .card:nth-child(3){transition-delay:.19s}
+
+/* --- reduce motion accessibility --- */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1; transform:none; transition:none}
+  .card, .photo img, .pill{transition:none}
 }
 
-/* ===== CARDS (Narrow Mobile Fix) ===== */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-  margin: 60px 0;
+/* --- responsive --- */
+@media (max-width: 980px){
+  .card{grid-column:span 6}
+  .about-shell{grid-template-columns:1fr}
+  .photo{min-height:340px}
 }
-
-.card {
-  background: #ffffff;
-  padding: 45px 35px;
-  border-radius: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-}
-
-.card h3 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-/* ===== ABOUT SECTION ===== */
-.about-grid { 
-  display: grid; 
-  grid-template-columns: 1.2fr 1.1fr; 
-  gap: 80px; 
-  align-items: center; 
-  margin: 100px 0;
-}
-
-.pull {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(24px, 4vw, 32px);
-  font-style: italic;
-  margin: 30px 0;
-  color: var(--navy);
-  line-height: 1.3;
-  border-left: 3px solid var(--navy);
-  padding-left: 20px;
-}
-
-.boys-photo {
-  width: 100%;
-  border-radius: 32px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-}
-
-/* ===== THE CTA (RE-RESTORED TEXT) ===== */
-.cta {
-  text-align: center;
-  background: #ffffff;
-  padding: 80px 40px;
-  border-radius: 40px;
-  border: 1px solid rgba(0,0,0,0.02);
-}
-
-.cta-actions {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.btn-base {
-  flex: 1;
-  min-width: 200px;
-  padding: 18px 32px;
-  border-radius: 100px;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 16px;
-  transition: all 0.4s cubic-bezier(0.15, 1, 0.3, 1);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn-call { background: var(--navy); color: #fff; }
-.btn-text { background: #fff; color: var(--navy); border: 1px solid rgba(15, 28, 58, 0.15); }
-
-.btn-base:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.08);
-}
-
-.email-line { margin-top: 35px; font-size: 15px; color: var(--muted); }
-.email-link { color: var(--navy); font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(15,28,58,0.1); }
-
-/* ===== MOBILE OVERRIDES ===== */
-@media (max-width: 768px) {
-  .wrap { padding: 40px 30px; }
-  
-  .logo {
-    width: 240px; 
-    margin-bottom: 30px;
-  }
-
-  .card-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .card {
-    width: 100%;
-    max-width: 320px; 
-    padding: 35px 25px;
-    text-align: center;
-  }
-
-  .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .image-container { order: -1; }
-  
-  .cta { padding: 50px 25px; }
-  .btn-base { min-width: 100%; }
+@media (max-width: 640px){
+  .wrap{padding:18px 16px 74px}
+  .nav-links{display:none}
+  .hero{padding:34px 0 4px}
+  .tagline{font-size:16px}
+  .card{grid-column:span 12}
+  .about-card{padding:28px 22px}
+  .h2{font-size:34px}
+  .pull{font-size:20px}
+  .cta{padding:44px 18px}
 }
 </style>
 </head>
 <body>
+<div class="bg" aria-hidden="true"></div>
+<div class="noise" aria-hidden="true"></div>
 
-<div class="wrap">
-  <header class="hero">
-    <img src="logo.png" class="logo" alt="Donohoo & Sons">
-    <h1 class="reveal">From day one<br>to claim day.</h1>
-    <p class="tagline reveal">Helping Wisconsin families and business owners get the right coverage without the runaround.</p>
-  </header>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="Donohoo & Sons Insurance">
+      <span class="brand-dot" aria-hidden="true"></span>
+      <span class="brand-name">Donohoo & Sons</span>
+    </a>
 
-  <div class="card-grid">
-    <div class="card reveal">
-      <h3>Families</h3>
-      <p>Protection for your home, vehicles, and the assets you've worked hard to build.</p>
+    <div class="nav-links" aria-label="Site">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#quote">Quote</a>
     </div>
-    <div class="card reveal">
-      <h3>Business</h3>
-      <p>Risk management that lets you focus on your company while I manage the coverage.</p>
-    </div>
-    <div class="card reveal">
-      <h3>Planning</h3>
-      <p>Coverage that looks beyond the next renewal to ensure your long-term stability.</p>
+
+    <div class="nav-cta">
+      <a class="pill ghost" href="sms:+14146981729">Text</a>
+      <a class="pill primary" href="tel:+14146981729">Call Andy</a>
     </div>
   </div>
+</nav>
 
-  <section class="about reveal">
-    <div class="about-grid">
-      <div class="story-content">
-        <h2 style="font-family:'Playfair Display'; font-size: 38px;">A Personal Approach</h2>
-        <p>Hi, I’m Andy Donohoo. I founded Donohoo & Sons Insurance alongside my wife, Katie, because I think insurance should be simple. You deserve a real person who knows your situation and answers the phone when you call.</p>
-        <div class="pull">"I am always available to my clients for direct help—no waiting, just a conversation."</div>
-        <p>The "& Sons" in our name is a reminder of why I do this. I treat your family's protection with the same care I give my own.</p>
+<div class="wrap" id="top">
+  <header class="hero">
+    <img src="logo.png" class="logo reveal" alt="Donohoo & Sons">
+    <p class="kicker reveal">Milwaukee • Home • Auto • Business</p>
+    <h1 class="reveal">From day one<br>to claim day.</h1>
+    <p class="tagline reveal">Helping Wisconsin families and business owners get the right coverage without the runaround.</p>
+
+    <div class="hero-actions reveal">
+      <a class="pill primary" href="tel:+14146981729">Call Andy</a>
+      <a class="pill ghost" href="sms:+14146981729">Text Andy</a>
+    </div>
+  </header>
+
+  <section class="section" id="services">
+    <div class="card-grid">
+      <div class="card reveal">
+        <h3>Families</h3>
+        <p>Protection for your home, vehicles, and the assets you've worked hard to build.</p>
       </div>
-      <div class="image-container">
-        <img src="boys.jpg" class="boys-photo" alt="The Donohoo Sons">
+      <div class="card reveal">
+        <h3>Business</h3>
+        <p>Risk management that lets you focus on your company while I manage the coverage.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Planning</h3>
+        <p>Coverage that looks beyond the next renewal to support long-term stability.</p>
       </div>
     </div>
   </section>
 
-  <section class="cta reveal">
-    <h2 style="font-family:'Playfair Display'; font-size: 38px; margin-bottom: 10px;">Need a quick quote?</h2>
-    <p style="color: var(--muted); font-size: 18px; margin-bottom: 35px; max-width: 600px; margin-left: auto; margin-right: auto;">
-      I respect your time. Whether you need a simple price comparison or a broader coverage review, I make the process fast and easy.
+  <section class="about section" id="about">
+    <div class="about-shell">
+      <div class="about-card reveal">
+        <div class="h2">A personal approach</div>
+        <p class="lede">
+          Hi, I’m Andy Donohoo. I founded Donohoo & Sons Insurance alongside my wife, Katie, because insurance should be simple.
+          You deserve a real person who knows your situation and answers the phone when you call.
+        </p>
+
+        <div class="pull">“Direct help — no waiting, no shuffle. Just a conversation.”</div>
+
+        <p>
+          The “& Sons” in our name is a reminder of why I do this. I treat your family’s protection with the same care I give my own.
+        </p>
+      </div>
+
+      <div class="photo reveal">
+        <img src="boys.jpg" alt="The Donohoo Sons">
+        <div class="caption">Local. Responsive. Built on relationships.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta section reveal" id="quote">
+    <div class="h2" style="margin:0;">Need a quick quote?</div>
+    <p>
+      Whether you want a simple price comparison or a broader coverage review, I’ll keep it fast, clear, and easy.
     </p>
-    
+
     <div class="cta-actions">
-      <a href="tel:+14146981729" class="btn-base btn-call">Call Andy</a>
-      <a href="sms:+14146981729" class="btn-base btn-text">Text Andy</a>
+      <a class="pill primary" href="tel:+14146981729">Call Andy</a>
+      <a class="pill ghost" href="sms:+14146981729">Text Andy</a>
     </div>
 
-    <div class="email-line">
-      Prefer email? <a href="mailto:adonohoo@unisource-ins.com" class="email-link">adonohoo@unisource-ins.com</a>
+    <div class="smallline">
+      Prefer email? <a href="mailto:adonohoo@unisource-ins.com">adonohoo@unisource-ins.com</a>
     </div>
   </section>
 
-  <footer style="text-align: center; margin-top: 80px; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6;">
+  <footer>
     DONOHOO & SONS INSURANCE • MILWAUKEE, WI
   </footer>
 </div>
 
 <script>
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -10% 0px"
-};
+/* ultra-light parallax (Apple subtle) */
+(() => {
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, observerOptions);
+  const hero = document.querySelector('.hero');
+  let ticking = false;
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY || 0;
+      const amt = Math.min(18, y * 0.06); // VERY light
+      hero.style.transform = `translateY(${amt * -0.35}px)`;
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
+/* reveal on scroll */
+(() => {
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const els = document.querySelectorAll('.reveal');
+  if (reduce) { els.forEach(el => el.classList.add('visible')); return; }
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -10% 0px" });
+
+  els.forEach(el => obs.observe(el));
+})();
 </script>
-
 </body>
 </html>
