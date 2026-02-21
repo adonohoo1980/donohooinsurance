@@ -141,7 +141,7 @@ h1 {
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
-/* ===== THE CTA ===== */
+/* ===== THE CTA (Updated with Dual Buttons) ===== */
 .cta {
   text-align: center;
   background: #ffffff;
@@ -150,21 +150,68 @@ h1 {
   border: 1px solid rgba(0,0,0,0.03);
 }
 
-.cta-btn {
-  display: inline-block;
-  background: var(--navy);
-  color: #fff;
-  padding: 20px 44px;
+.cta-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap; 
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.btn-base {
+  flex: 1;
+  min-width: 200px;
+  padding: 18px 30px;
   border-radius: 100px;
   font-weight: 600;
   text-decoration: none;
   font-size: 16px;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.15, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.btn-call { background: var(--navy); color: #fff; }
+.btn-text { background: #fff; color: var(--navy); border: 1px solid rgba(15, 28, 58, 0.2); }
+
+.btn-base:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+}
+
+.btn-call:hover { background: #000; }
+.btn-text:hover { border-color: var(--navy); background: #fcfcfc; }
+
+.email-line {
+  margin-top: 32px;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.email-link {
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(15, 28, 58, 0.2);
+  transition: all 0.2s ease;
+}
+
+.email-link:hover { border-bottom-color: var(--navy); }
+
+/* Reveal animations */
+.reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
+.reveal.visible { opacity: 1; transform: none; }
 
 @media (max-width: 768px) {
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .image-container { order: -1; }
+}
+
+@media (max-width: 480px) {
+  .btn-base { width: 100%; flex: none; }
+  .cta-actions { gap: 12px; }
 }
 </style>
 </head>
@@ -216,7 +263,15 @@ h1 {
     <p style="color: var(--muted); font-size: 18px; margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto;">
       I respect your time. Whether you need a simple price comparison or a full review, I make the process fast and easy.
     </p>
-    <a href="tel:+14146981729" class="cta-btn">Call or Text for a Quote</a>
+    
+    <div class="cta-actions">
+      <a href="tel:+14146981729" class="btn-base btn-call">Call Andy</a>
+      <a href="sms:+14146981729" class="btn-base btn-text">Text Andy</a>
+    </div>
+
+    <div class="email-line">
+      Prefer email? <a href="mailto:adonohoo@unisource-ins.com" class="email-link">adonohoo@unisource-ins.com</a>
+    </div>
   </section>
 
   <footer style="text-align: center; margin-top: 80px; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">
@@ -234,4 +289,3 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 </body>
 </html>
-
