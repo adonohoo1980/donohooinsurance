@@ -1,13 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Donohoo & Sons Insurance | Milwaukee</title>
+
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
 <style>
-/* 1. THE REFINED ANIMATION SETTINGS */
+:root {
+  --ink: #1a1a1a;
+  --muted: #6e6e73;
+  --navy: #0f1c3a;
+  --champagne: #faf9f6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--champagne);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.wrap {
+  max-width: 1100px;
+  margin: auto;
+  padding: 80px 24px;
+}
+
+/* ===== ULTRA-PREMIUM ANIMATION ===== */
 .reveal {
   opacity: 0;
-  transform: translateY(30px) scale(0.98); /* Added slight scale for depth */
+  transform: translateY(30px) scale(0.98);
   transition: 
     opacity 1.4s cubic-bezier(0.2, 0.8, 0.2, 1), 
     transform 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-  will-change: transform, opacity; /* Tells the phone to use the GPU */
-  backface-visibility: hidden; /* Fixes "jitter" on mobile browsers */
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 .reveal.visible {
@@ -15,29 +55,224 @@
   transform: translateY(0) scale(1);
 }
 
-/* 2. STAGGERED TIMING (The 'Waterfall' Effect) */
+/* Staggered "Waterfall" entry for the 3 cards */
 .card-grid .card:nth-child(1) { transition-delay: 0.1s; }
 .card-grid .card:nth-child(2) { transition-delay: 0.25s; }
 .card-grid .card:nth-child(3) { transition-delay: 0.4s; }
 
-/* 3. SMOOTHING THE SCROLL (Add to your body tag) */
-html {
-  scroll-behavior: smooth;
+/* ===== HERO ===== */
+.hero {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.logo {
+  width: clamp(140px, 18vw, 240px);
+  margin: 0 auto 25px;
+  display: block;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 8vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+
+.tagline {
+  font-size: 20px;
+  color: var(--muted);
+  max-width: 650px;
+  margin: 0 auto 30px;
+}
+
+/* ===== CARDS (Narrow Mobile Fix) ===== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin: 60px 0;
+}
+
+.card {
+  background: #ffffff;
+  padding: 45px 35px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+.card h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* ===== ABOUT SECTION ===== */
+.about-grid { 
+  display: grid; 
+  grid-template-columns: 1.2fr 1.1fr; 
+  gap: 80px; 
+  align-items: center; 
+  margin: 100px 0;
+}
+
+.pull {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 4vw, 32px);
+  font-style: italic;
+  margin: 30px 0;
+  color: var(--navy);
+  line-height: 1.3;
+  border-left: 3px solid var(--navy);
+  padding-left: 20px;
+}
+
+.boys-photo {
+  width: 100%;
+  border-radius: 32px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+/* ===== THE CTA ===== */
+.cta {
+  text-align: center;
+  background: #ffffff;
+  padding: 80px 40px;
+  border-radius: 40px;
+  border: 1px solid rgba(0,0,0,0.02);
+}
+
+.cta-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.btn-base {
+  flex: 1;
+  min-width: 200px;
+  padding: 18px 32px;
+  border-radius: 100px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.4s cubic-bezier(0.15, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-call { background: var(--navy); color: #fff; }
+.btn-text { background: #fff; color: var(--navy); border: 1px solid rgba(15, 28, 58, 0.15); }
+
+.btn-base:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+}
+
+.email-line { margin-top: 35px; font-size: 15px; color: var(--muted); }
+.email-link { color: var(--navy); font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(15,28,58,0.1); }
+
+/* ===== MOBILE OVERRIDES ===== */
+@media (max-width: 768px) {
+  .wrap { padding: 40px 30px; }
+  
+  .card-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 320px; /* Fixing the "too wide" issue for iPhone */
+    padding: 35px 25px;
+    text-align: center;
+  }
+
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .image-container { order: -1; }
+  
+  .cta { padding: 50px 25px; }
+  .btn-base { min-width: 100%; }
 }
 </style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <img src="logo.png" class="logo" alt="Donohoo & Sons">
+    <h1>From day one<br>to claim day.</h1>
+    <p class="tagline">Helping Wisconsin families and business owners get the right coverage without the runaround.</p>
+  </header>
+
+  <div class="card-grid">
+    <div class="card reveal">
+      <h3>Families</h3>
+      <p>Protection for your home, vehicles, and the assets you've worked hard to build.</p>
+    </div>
+    <div class="card reveal">
+      <h3>Business</h3>
+      <p>Risk management that lets you focus on your company while I manage the coverage.</p>
+    </div>
+    <div class="card reveal">
+      <h3>Planning</h3>
+      <p>Coverage that looks beyond the next renewal to ensure your long-term stability.</p>
+    </div>
+  </div>
+
+  <section class="about reveal">
+    <div class="about-grid">
+      <div class="story-content">
+        <h2 style="font-family:'Playfair Display'; font-size: 38px;">A Personal Approach</h2>
+        <p>Hi, I’m Andy Donohoo. I founded Donohoo & Sons Insurance alongside my wife, Katie, because I think insurance should be simple. You deserve a real person who knows your situation and answers the phone when you call.</p>
+        <div class="pull">"I am always available to my clients for direct help—no waiting, just a conversation."</div>
+        <p>The "& Sons" in our name is a reminder of why I do this. I treat your family's protection with the same care I give my own.</p>
+      </div>
+      <div class="image-container">
+        <img src="boys.jpg" class="boys-photo" alt="The Donohoo Sons">
+      </div>
+    </div>
+  </section>
+
+  <section class="cta reveal">
+    <h2 style="font-family:'Playfair Display'; font-size: 38px; margin-bottom: 10px;">Need a quick quote?</h2>
+    <p style="color: var(--muted); font-size: 18px; margin-bottom: 35px;">I respect your time. I make the process fast and easy.</p>
+    
+    <div class="cta-actions">
+      <a href="tel:+14146981729" class="btn-base btn-call">Call Andy</a>
+      <a href="sms:+14146981729" class="btn-base btn-text">Text Andy</a>
+    </div>
+
+    <div class="email-line">
+      Prefer email? <a href="mailto:adonohoo@unisource-ins.com" class="email-link">adonohoo@unisource-ins.com</a>
+    </div>
+  </section>
+
+  <footer style="text-align: center; margin-top: 80px; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6;">
+    DONOHOO & SONS INSURANCE • MILWAUKEE, WI
+  </footer>
+</div>
 
 <script>
-// THE OPTIMIZED OBSERVER
+// Optimized Intersection Observer for smooth hardware-accelerated entry
 const observerOptions = {
-  threshold: 0.1, // Starts the animation as soon as 10% is visible
-  rootMargin: "0px 0px -10% 0px" // Trigger slightly before it hits the viewport
+  threshold: 0.1,
+  rootMargin: "0px 0px -10% 0px"
 };
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
-      // Once it's visible, we stop observing to save battery/memory
+      // Stop observing after reveal to save resources
       observer.unobserve(entry.target);
     }
   });
@@ -45,3 +280,6 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
+
+</body>
+</html>
