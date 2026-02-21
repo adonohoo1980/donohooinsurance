@@ -1,35 +1,36 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Donohoo & Sons Insurance | Milwaukee</title>
 
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="favicon.png">
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="apple-touch-icon" href="favicon.png" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <style>
 :root{
-  --ink:#111114;
+  --ink:#0b0b0f;
   --muted:#6e6e73;
   --navy:#0f1c3a;
   --champagne:#faf9f6;
   --card:#ffffff;
-  --hair:rgba(15,28,58,.10);
+  --hair:rgba(15,28,58,.12);
+  --hair2:rgba(0,0,0,.06);
   --shadow:0 18px 60px rgba(0,0,0,.08);
   --shadowSoft:0 10px 30px rgba(0,0,0,.05);
   --radius:28px;
   --ease:cubic-bezier(.2,.8,.2,1);
 }
 
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
 body{
   margin:0;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color:var(--ink);
   background:var(--champagne);
   line-height:1.5;
@@ -44,10 +45,10 @@ body{
   inset:0;
   z-index:-2;
   background:
-    radial-gradient(1200px 500px at 50% -10%, rgba(15,28,58,.10), transparent 60%),
-    radial-gradient(900px 600px at 10% 20%, rgba(0,0,0,.04), transparent 60%),
-    radial-gradient(900px 600px at 90% 30%, rgba(0,0,0,.03), transparent 55%),
-    linear-gradient(180deg, #fbfaf7 0%, #f7f6f2 50%, #fbfaf7 100%);
+    radial-gradient(1100px 520px at 50% -10%, rgba(15,28,58,.11), transparent 60%),
+    radial-gradient(900px 620px at 10% 20%, rgba(0,0,0,.035), transparent 60%),
+    radial-gradient(900px 620px at 90% 30%, rgba(0,0,0,.028), transparent 55%),
+    linear-gradient(180deg, #fbfaf7 0%, #f7f6f2 55%, #fbfaf7 100%);
 }
 .noise{
   position:fixed;
@@ -65,7 +66,7 @@ body{
   margin:0 auto;
   padding:26px 22px 90px;
 }
-.section{margin-top:62px}
+.section{ margin-top:62px; }
 
 /* --- top nav --- */
 .nav{
@@ -74,7 +75,7 @@ body{
   z-index:20;
   backdrop-filter:saturate(180%) blur(18px);
   -webkit-backdrop-filter:saturate(180%) blur(18px);
-  background:rgba(250,249,246,.70);
+  background:rgba(250,249,246,.72);
   border-bottom:1px solid rgba(0,0,0,.05);
 }
 .nav-inner{
@@ -99,14 +100,16 @@ body{
   box-shadow:0 8px 18px rgba(15,28,58,.18);
 }
 .brand-name{
-  font-weight:600;
+  font-weight:700;
   letter-spacing:-0.02em;
   font-size:13px;
   text-transform:uppercase;
   opacity:.92;
 }
 .nav-links{
-  display:flex; align-items:center; gap:18px;
+  display:flex;
+  align-items:center;
+  gap:18px;
 }
 .nav-links a{
   font-size:13px;
@@ -122,12 +125,16 @@ body{
   color:var(--ink);
 }
 .nav-cta{
-  display:flex; gap:10px; align-items:center;
+  display:flex;
+  gap:10px;
+  align-items:center;
 }
+
+/* --- buttons --- */
 .pill{
   text-decoration:none;
   font-size:13px;
-  font-weight:600;
+  font-weight:700;
   letter-spacing:-0.01em;
   padding:10px 14px;
   border-radius:999px;
@@ -135,47 +142,74 @@ body{
   display:inline-flex;
   align-items:center;
   justify-content:center;
+  -webkit-tap-highlight-color: transparent;
 }
-.pill.primary{background:var(--navy); color:#fff; box-shadow:0 14px 30px rgba(15,28,58,.18)}
-.pill.ghost{background:rgba(255,255,255,.65); color:var(--navy); border:1px solid rgba(15,28,58,.14)}
-.pill:hover{transform:translateY(-1px)}
+.pill.primary{
+  background:var(--navy);
+  color:#fff;
+  box-shadow:0 14px 30px rgba(15,28,58,.18);
+}
+.pill.ghost{
+  background:rgba(255,255,255,.70);
+  color:var(--navy);
+  border:1px solid rgba(15,28,58,.14);
+}
+.pill:hover{ transform:translateY(-1px); }
+.pill:active{ transform:translateY(0px) scale(.99); }
 .pill:focus-visible{
-  outline:3px solid rgba(15,28,58,.20);
+  outline:3px solid rgba(15,28,58,.22);
   outline-offset:2px;
 }
 
 /* --- hero --- */
 .hero{
   text-align:center;
-  padding:48px 0 6px;
+  padding:46px 0 6px;
+  transform:translateZ(0);
 }
 .logo{
   width:clamp(190px, 22vw, 320px);
   height:auto;
   display:block;
-  margin:0 auto 22px;
+  margin:0 auto 18px;
   filter:drop-shadow(0 18px 40px rgba(0,0,0,.10));
 }
-.kicker{
-  font-size:12px;
-  color:var(--muted);
-  text-transform:uppercase;
-  letter-spacing:.18em;
-  margin:0 0 14px;
+
+/* Trust bar (single line, Apple-clean) */
+.trustbar{
+  display:inline-flex;
+  gap:10px;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.68);
+  border:1px solid rgba(0,0,0,.06);
+  box-shadow:0 10px 22px rgba(0,0,0,.04);
+  margin:6px auto 18px;
+  color:rgba(17,17,20,.82);
+  font-size:13px;
+  letter-spacing:-0.01em;
 }
+.trustbar .dot{
+  width:4px; height:4px; border-radius:999px;
+  background:rgba(15,28,58,.40);
+}
+
+/* Apple-ish headline: system display vibe, not Playfair */
 h1{
-  font-family:"Playfair Display", serif;
-  font-size:clamp(40px, 6.8vw, 78px);
+  font-weight:700;
+  font-size:clamp(40px, 6.6vw, 78px);
   line-height:1.02;
-  letter-spacing:-0.04em;
+  letter-spacing:-0.045em;
   margin:0 0 14px;
 }
 .tagline{
   font-size:18px;
   color:var(--muted);
-  letter-spacing:-0.01em;
-  max-width:720px;
-  margin:0 auto 22px;
+  letter-spacing:-0.012em;
+  max-width:740px;
+  margin:0 auto 18px;
 }
 .hero-actions{
   display:flex;
@@ -184,10 +218,7 @@ h1{
   flex-wrap:wrap;
   margin-top:14px;
 }
-.hero-actions .pill{
-  padding:12px 18px;
-  font-size:14px;
-}
+.hero-actions .pill{ padding:12px 18px; font-size:14px; }
 
 /* --- cards --- */
 .card-grid{
@@ -200,7 +231,7 @@ h1{
   grid-column:span 4;
   padding:26px 24px 24px;
   border-radius:var(--radius);
-  background:rgba(255,255,255,.78);
+  background:rgba(255,255,255,.80);
   border:1px solid rgba(0,0,0,.06);
   box-shadow:var(--shadowSoft);
   position:relative;
@@ -210,9 +241,10 @@ h1{
 }
 .card:before{
   content:"";
-  position:absolute; inset:-1px;
-  background:radial-gradient(700px 240px at 20% 0%, rgba(15,28,58,.10), transparent 50%);
-  opacity:.8;
+  position:absolute;
+  inset:-1px;
+  background:radial-gradient(720px 240px at 20% 0%, rgba(15,28,58,.10), transparent 50%);
+  opacity:.85;
   pointer-events:none;
 }
 .card:hover{
@@ -223,6 +255,7 @@ h1{
 .card h3{
   margin:0 0 8px;
   font-size:18px;
+  font-weight:700;
   letter-spacing:-0.02em;
 }
 .card p{
@@ -233,35 +266,33 @@ h1{
 }
 
 /* --- about --- */
-.about{
-  margin-top:72px;
-}
+.about{ margin-top:72px; }
 .about-shell{
   display:grid;
-  grid-template-columns: 1.1fr .9fr;
+  grid-template-columns: 1.08fr .92fr;
   gap:28px;
   align-items:stretch;
 }
 .about-card{
   border-radius:36px;
-  background:rgba(255,255,255,.78);
+  background:rgba(255,255,255,.80);
   border:1px solid rgba(0,0,0,.06);
   box-shadow:var(--shadowSoft);
   padding:34px 32px;
 }
 .h2{
-  font-family:"Playfair Display", serif;
-  font-size:40px;
-  letter-spacing:-0.03em;
+  font-weight:750;
+  font-size:36px;
+  letter-spacing:-0.035em;
   margin:0 0 10px;
-  line-height:1.1;
+  line-height:1.08;
 }
 .lede{
   color:var(--muted);
   font-size:16px;
-  letter-spacing:-0.01em;
+  letter-spacing:-0.012em;
   margin:0 0 18px;
-  max-width:62ch;
+  max-width:64ch;
 }
 .pull{
   margin:18px 0 18px;
@@ -270,9 +301,8 @@ h1{
   background:rgba(15,28,58,.05);
   border:1px solid rgba(15,28,58,.10);
   color:var(--navy);
-  font-family:"Playfair Display", serif;
-  font-style:italic;
-  font-size:22px;
+  font-weight:650;
+  font-size:18px;
   line-height:1.25;
   letter-spacing:-0.02em;
 }
@@ -281,6 +311,8 @@ h1{
   color:var(--ink);
   letter-spacing:-0.01em;
 }
+
+/* Photo: remove “bubble” caption entirely */
 .photo{
   border-radius:36px;
   overflow:hidden;
@@ -297,20 +329,7 @@ h1{
   transform:scale(1.01);
   transition:transform 1.2s var(--ease);
 }
-.photo:hover img{transform:scale(1.04)}
-.photo .caption{
-  position:absolute;
-  left:18px; right:18px; bottom:16px;
-  padding:12px 14px;
-  border-radius:18px;
-  background:rgba(255,255,255,.72);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border:1px solid rgba(0,0,0,.06);
-  color:rgba(17,17,20,.85);
-  font-size:13px;
-  letter-spacing:-0.01em;
-}
+.photo:hover img{ transform:scale(1.04); }
 
 /* --- CTA --- */
 .cta{
@@ -318,13 +337,20 @@ h1{
   border-radius:44px;
   background:
     radial-gradient(900px 380px at 30% 0%, rgba(15,28,58,.12), transparent 55%),
-    rgba(255,255,255,.80);
+    rgba(255,255,255,.82);
   border:1px solid rgba(0,0,0,.06);
   box-shadow:var(--shadowSoft);
   padding:56px 28px;
   text-align:center;
   overflow:hidden;
   position:relative;
+}
+.cta h2{
+  margin:0;
+  font-weight:750;
+  font-size:34px;
+  letter-spacing:-0.03em;
+  line-height:1.1;
 }
 .cta p{
   margin:10px auto 0;
@@ -340,7 +366,7 @@ h1{
   justify-content:center;
   flex-wrap:wrap;
 }
-.cta .pill{padding:14px 22px; font-size:14px}
+.cta .pill{ padding:14px 22px; font-size:14px; }
 .smallline{
   margin-top:18px;
   font-size:14px;
@@ -350,7 +376,7 @@ h1{
   color:var(--navy);
   text-decoration:none;
   border-bottom:1px solid rgba(15,28,58,.18);
-  font-weight:600;
+  font-weight:700;
 }
 
 /* --- footer --- */
@@ -375,36 +401,36 @@ footer{
   opacity:1;
   transform:translateY(0) scale(1);
 }
-.card-grid .card:nth-child(1){transition-delay:.05s}
-.card-grid .card:nth-child(2){transition-delay:.12s}
-.card-grid .card:nth-child(3){transition-delay:.19s}
+.card-grid .card:nth-child(1){ transition-delay:.05s; }
+.card-grid .card:nth-child(2){ transition-delay:.12s; }
+.card-grid .card:nth-child(3){ transition-delay:.19s; }
 
 /* --- reduce motion accessibility --- */
 @media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto}
-  .reveal{opacity:1; transform:none; transition:none}
-  .card, .photo img, .pill{transition:none}
+  html{ scroll-behavior:auto; }
+  .reveal{ opacity:1; transform:none; transition:none; }
+  .card, .photo img, .pill{ transition:none; }
 }
 
 /* --- responsive --- */
 @media (max-width: 980px){
-  .card{grid-column:span 6}
-  .about-shell{grid-template-columns:1fr}
-  .photo{min-height:340px}
+  .card{ grid-column:span 6; }
+  .about-shell{ grid-template-columns:1fr; }
+  .photo{ min-height:340px; }
 }
 @media (max-width: 640px){
-  .wrap{padding:18px 16px 74px}
-  .nav-links{display:none}
-  .hero{padding:34px 0 4px}
-  .tagline{font-size:16px}
-  .card{grid-column:span 12}
-  .about-card{padding:28px 22px}
-  .h2{font-size:34px}
-  .pull{font-size:20px}
-  .cta{padding:44px 18px}
+  .wrap{ padding:18px 16px 74px; }
+  .nav-links{ display:none; }
+  .hero{ padding:34px 0 4px; }
+  .tagline{ font-size:16px; }
+  .card{ grid-column:span 12; }
+  .about-card{ padding:28px 22px; }
+  .h2{ font-size:32px; }
+  .cta{ padding:44px 18px; }
 }
 </style>
 </head>
+
 <body>
 <div class="bg" aria-hidden="true"></div>
 <div class="noise" aria-hidden="true"></div>
@@ -431,8 +457,15 @@ footer{
 
 <div class="wrap" id="top">
   <header class="hero">
-    <img src="logo.png" class="logo reveal" alt="Donohoo & Sons">
-    <p class="kicker reveal">Milwaukee • Home • Auto • Business</p>
+    <img src="logo.png" class="logo reveal" alt="Donohoo & Sons" />
+
+    <!-- Trust bar: minimal credibility signal -->
+    <div class="trustbar reveal" role="note" aria-label="Highlights">
+      <span>One agent</span><span class="dot" aria-hidden="true"></span>
+      <span>Total protection</span><span class="dot" aria-hidden="true"></span>
+      <span>Milwaukee-based</span>
+    </div>
+
     <h1 class="reveal">From day one<br>to claim day.</h1>
     <p class="tagline reveal">Helping Wisconsin families and business owners get the right coverage without the runaround.</p>
 
@@ -468,7 +501,7 @@ footer{
           You deserve a real person who knows your situation and answers the phone when you call.
         </p>
 
-        <div class="pull">“Direct help — no waiting, no shuffle. Just a conversation.”</div>
+        <div class="pull">Direct help — no waiting, no shuffle. Just a conversation.</div>
 
         <p>
           The “& Sons” in our name is a reminder of why I do this. I treat your family’s protection with the same care I give my own.
@@ -476,14 +509,13 @@ footer{
       </div>
 
       <div class="photo reveal">
-        <img src="boys.jpg" alt="The Donohoo Sons">
-        <div class="caption">Local. Responsive. Built on relationships.</div>
+        <img src="boys.jpg" alt="The Donohoo Sons" />
       </div>
     </div>
   </section>
 
   <section class="cta section reveal" id="quote">
-    <div class="h2" style="margin:0;">Need a quick quote?</div>
+    <h2>Need a quick quote?</h2>
     <p>
       Whether you want a simple price comparison or a broader coverage review, I’ll keep it fast, clear, and easy.
     </p>
