@@ -12,7 +12,6 @@
   --muted: #6e6e73;
   --navy: #0f1c3a;
   --champagne: #faf9f6;
-  --glass: rgba(255, 255, 255, 0.8);
 }
 
 body {
@@ -30,14 +29,14 @@ body {
   padding: clamp(60px, 10vw, 120px) 24px;
 }
 
-/* ===== FIXED HERO & HEADER ===== */
+/* ===== HERO ===== */
 .hero {
   text-align: center;
   margin-bottom: 60px;
 }
 
 .logo {
-  width: clamp(160px, 20vw, 280px); /* Fluid sizing */
+  width: clamp(160px, 20vw, 280px);
   margin: 0 auto 30px;
   display: block;
   opacity: 0;
@@ -55,17 +54,23 @@ h1 {
   margin-bottom: 20px;
 }
 
+.tagline {
+  font-size: 20px;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
 .phone-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
 }
 
 .phone-btn {
   display: inline-flex;
   align-items: center;
-  background: var(--white);
-  padding: 12px 20px;
+  background: #ffffff;
+  padding: 12px 24px;
   border-radius: 100px;
   text-decoration: none;
   color: var(--navy);
@@ -74,10 +79,14 @@ h1 {
   border: 1px solid rgba(0,0,0,0.05);
   box-shadow: 0 4px 12px rgba(0,0,0,0.03);
   transition: all 0.3s ease;
-  white-space: nowrap; /* Prevents awkward mobile wrapping */
 }
 
-/* ===== THE "APPLE GLASS" CARDS ===== */
+.phone-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+/* ===== APPLE-STYLE CARDS ===== */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -89,19 +98,14 @@ h1 {
   background: #ffffff;
   padding: 50px 40px;
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.7); /* The "Light" edge */
-  box-shadow: 
-    0 1px 2px rgba(0,0,0,0.02),
-    0 8px 24px rgba(0,0,0,0.04);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
   transition: all 0.5s cubic-bezier(0.15, 1, 0.3, 1);
-  position: relative;
-  overflow: hidden;
 }
 
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 40px rgba(15, 28, 58, 0.08);
-  border-color: var(--navy);
 }
 
 .card h3 {
@@ -127,6 +131,8 @@ h1 {
   margin: 30px 0;
   color: var(--navy);
   line-height: 1.3;
+  border-left: 3px solid var(--navy);
+  padding-left: 20px;
 }
 
 .family-photo-v2 {
@@ -135,14 +141,13 @@ h1 {
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
-/* ===== THE CTA (Refined) ===== */
+/* ===== THE CTA ===== */
 .cta {
   text-align: center;
   background: #ffffff;
-  padding: clamp(60px, 10vw, 100px) 30px;
+  padding: 80px 30px;
   border-radius: 32px;
   border: 1px solid rgba(0,0,0,0.03);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
 }
 
 .cta-btn {
@@ -157,17 +162,9 @@ h1 {
   transition: all 0.3s ease;
 }
 
-.cta-btn:hover {
-  background: #000;
-  transform: scale(1.03);
-}
-
-/* Mobile Tweaks */
 @media (max-width: 768px) {
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .image-container { order: -1; }
-  .phone-btn { font-size: 14px; padding: 10px 16px; }
-  .card { padding: 40px 30px; }
 }
 </style>
 </head>
@@ -176,11 +173,11 @@ h1 {
 <div class="wrap">
   <header class="hero" id="hero">
     <img src="logo.png" class="logo" alt="Donohoo & Sons">
-    <h1>Real advice.<br>Direct access.</h1>
-    <p class="tagline">Personalized insurance strategies for Wisconsin families and business owners.</p>
+    <h1>Private protection for<br>what matters most.</h1>
+    <p class="tagline">Providing Wisconsin families and business owners with direct access and professional advocacy—from day one to claim day.</p>
     <div class="phone-container">
       <a href="tel:+14146981729" class="phone-btn">
-        <span>Call or text Andy • 414.698.1729</span>
+        Call or text Andy • 414.698.1729
       </a>
     </div>
   </header>
@@ -195,7 +192,7 @@ h1 {
       <p>Professional risk management that allows you to focus on your company while I manage the coverage.</p>
     </div>
     <div class="card">
-      <h3>Future Planning</h3>
+      <h3>Planning</h3>
       <p>Strategic coverage that looks beyond the next renewal to ensure your long-term stability.</p>
     </div>
   </div>
@@ -203,13 +200,13 @@ h1 {
   <section class="about reveal">
     <div class="about-grid">
       <div class="story-content">
-        <h2 style="font-family:'Playfair Display'; font-size: 38px;">Meet the Donohoos</h2>
-        <p>Hi, I’m Andy Donohoo. I founded Donohoo & Sons Insurance alongside my wife, Katie, because we believe insurance should be straightforward. You deserve a real person who knows your situation and answers when you call.</p>
-        <div class="pull">"I am always available to my clients—no waiting, just professional guidance."</div>
-        <p>The "& Sons" in our agency name is a constant reminder of why we do this. Katie and I are building a legacy for our boys by providing the same standard of service to your family that we expect for our own.</p>
+        <h2 style="font-family:'Playfair Display'; font-size: 38px;">A Family Legacy</h2>
+        <p>Hi, I’m Andy Donohoo. I founded Donohoo & Sons Insurance alongside my wife, Katie, to provide a different kind of experience. We believe you deserve an advisor who knows your situation personally and answers the phone when you call.</p>
+        <div class="pull">"I am always available to my clients for professional guidance—no waiting, no runaround."</div>
+        <p>The "& Sons" in our agency name is a reminder of our commitment. We are building a legacy by providing the same standard of service to your family that we expect for our own.</p>
       </div>
       <div class="image-container">
-        <img src="boys.jpg" class="family-photo-v2" alt="The Donohoo Family">
+        <img src="family.jpg" class="family-photo-v2" alt="The Donohoo Family">
       </div>
     </div>
   </section>
@@ -217,7 +214,7 @@ h1 {
   <section class="cta reveal">
     <h2 style="font-family:'Playfair Display'; font-size: 42px; margin-bottom: 10px;">Need a quick quote?</h2>
     <p style="color: var(--muted); font-size: 18px; margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto;">
-      I respect your time. Whether you need a simple price comparison or a full review, I make it fast and easy.
+      I respect your time. Whether you need a simple price comparison or a full review, I make the process fast and easy.
     </p>
     <a href="tel:+14146981729" class="cta-btn">Call or Text for a Quote</a>
   </section>
@@ -237,4 +234,3 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 </body>
 </html>
-
