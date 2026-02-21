@@ -55,7 +55,6 @@ body {
   transform: translateY(0) scale(1);
 }
 
-/* Staggered entry for the 3 cards */
 .card-grid .card:nth-child(1) { transition-delay: 0.1s; }
 .card-grid .card:nth-child(2) { transition-delay: 0.25s; }
 .card-grid .card:nth-child(3) { transition-delay: 0.4s; }
@@ -67,7 +66,6 @@ body {
 }
 
 .logo {
-  /* Larger logo sizing for Laptop/Desktop */
   width: clamp(200px, 30vw, 380px); 
   margin: 0 auto 40px;
   display: block;
@@ -137,7 +135,7 @@ h1 {
   box-shadow: 0 20px 50px rgba(0,0,0,0.08);
 }
 
-/* ===== THE CTA ===== */
+/* ===== THE CTA (RE-RESTORED TEXT) ===== */
 .cta {
   text-align: center;
   background: #ffffff;
@@ -185,7 +183,7 @@ h1 {
   .wrap { padding: 40px 30px; }
   
   .logo {
-    width: 240px; /* Larger mobile logo */
+    width: 240px; 
     margin-bottom: 30px;
   }
 
@@ -198,7 +196,7 @@ h1 {
 
   .card {
     width: 100%;
-    max-width: 320px; /* Card width fix */
+    max-width: 320px; 
     padding: 35px 25px;
     text-align: center;
   }
@@ -251,7 +249,9 @@ h1 {
 
   <section class="cta reveal">
     <h2 style="font-family:'Playfair Display'; font-size: 38px; margin-bottom: 10px;">Need a quick quote?</h2>
-    <p style="color: var(--muted); font-size: 18px; margin-bottom: 35px;">I respect your time. I make the process fast and easy.</p>
+    <p style="color: var(--muted); font-size: 18px; margin-bottom: 35px; max-width: 600px; margin-left: auto; margin-right: auto;">
+      I respect your time. Whether you need a simple price comparison or a broader coverage review, I make the process fast and easy.
+    </p>
     
     <div class="cta-actions">
       <a href="tel:+14146981729" class="btn-base btn-call">Call Andy</a>
