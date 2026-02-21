@@ -81,12 +81,7 @@ h1 {
   transition: all 0.3s ease;
 }
 
-.phone-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-}
-
-/* ===== APPLE-STYLE CARDS ===== */
+/* ===== CARDS ===== */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -141,7 +136,7 @@ h1 {
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
-/* ===== THE CTA (Updated with Dual Buttons) ===== */
+/* ===== THE CTA ===== */
 .cta {
   text-align: center;
   background: #ffffff;
@@ -176,14 +171,6 @@ h1 {
 .btn-call { background: var(--navy); color: #fff; }
 .btn-text { background: #fff; color: var(--navy); border: 1px solid rgba(15, 28, 58, 0.2); }
 
-.btn-base:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.06);
-}
-
-.btn-call:hover { background: #000; }
-.btn-text:hover { border-color: var(--navy); background: #fcfcfc; }
-
 .email-line {
   margin-top: 32px;
   font-size: 15px;
@@ -195,18 +182,28 @@ h1 {
   text-decoration: none;
   font-weight: 600;
   border-bottom: 1px solid rgba(15, 28, 58, 0.2);
-  transition: all 0.2s ease;
 }
-
-.email-link:hover { border-bottom-color: var(--navy); }
 
 /* Reveal animations */
 .reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
 .reveal.visible { opacity: 1; transform: none; }
 
+/* ===== MOBILE OVERRIDES ===== */
 @media (max-width: 768px) {
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .image-container { order: -1; }
+  
+  .cta { 
+    padding: 40px 20px; /* Tightens the box on mobile */
+    margin-top: 40px;
+  }
+  
+  .cta h2 {
+    font-size: 32px !important; 
+    margin-bottom: 15px;
+  }
+
+  .tagline { font-size: 18px; }
 }
 
 @media (max-width: 480px) {
@@ -259,7 +256,7 @@ h1 {
   </section>
 
   <section class="cta reveal">
-    <h2 style="font-family:'Playfair Display'; font-size: 42px; margin-bottom: 10px;">Need a quick quote?</h2>
+    <h2 style="font-family:'Playfair Display'; margin-top: 0;">Need a quick quote?</h2>
     <p style="color: var(--muted); font-size: 18px; margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto;">
       I respect your time. Whether you need a simple price comparison or a full review, I make the process fast and easy.
     </p>
