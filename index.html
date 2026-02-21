@@ -175,7 +175,7 @@ body{
   filter:drop-shadow(0 18px 40px rgba(0,0,0,.10));
 }
 
-/* Trust bar (single line, Apple-clean) */
+/* Trust bar */
 .trustbar{
   display:inline-flex;
   gap:10px;
@@ -196,7 +196,7 @@ body{
   background:rgba(15,28,58,.40);
 }
 
-/* Apple-ish headline: system display vibe, not Playfair */
+/* Apple-ish headline: system display vibe */
 h1{
   font-weight:700;
   font-size:clamp(40px, 6.6vw, 78px);
@@ -312,7 +312,7 @@ h1{
   letter-spacing:-0.01em;
 }
 
-/* Photo: remove “bubble” caption entirely */
+/* Photo: no caption bubble */
 .photo{
   border-radius:36px;
   overflow:hidden;
@@ -459,11 +459,10 @@ footer{
   <header class="hero">
     <img src="logo.png" class="logo reveal" alt="Donohoo & Sons" />
 
-    <!-- Trust bar: minimal credibility signal -->
     <div class="trustbar reveal" role="note" aria-label="Highlights">
       <span>One agent</span><span class="dot" aria-hidden="true"></span>
       <span>Total protection</span><span class="dot" aria-hidden="true"></span>
-      <span>Milwaukee-based</span>
+      <span>No call-center shuffle</span>
     </div>
 
     <h1 class="reveal">From day one<br>to claim day.</h1>
@@ -549,7 +548,7 @@ footer{
     ticking = true;
     requestAnimationFrame(() => {
       const y = window.scrollY || 0;
-      const amt = Math.min(18, y * 0.06); // VERY light
+      const amt = Math.min(18, y * 0.06);
       hero.style.transform = `translateY(${amt * -0.35}px)`;
       ticking = false;
     });
