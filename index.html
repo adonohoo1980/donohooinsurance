@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Donohoo & Sons Insurance | Milwaukee</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:400,500,600&family=Playfair+Display:600,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,700&family=Allura&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -13,109 +14,242 @@
   --muted:#6e6e73;
   --navy:#0f1c3a;
   --champagne:#faf9f6;
+  --paper:#ffffff;
 }
 
-html,body{overflow-x:hidden;}
+html, body { overflow-x: hidden; }
 body{
   margin:0;
-  font-family:'Inter',sans-serif;
+  font-family:'Inter', -apple-system, sans-serif;
   background:var(--champagne);
   color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
 }
 
-/* MOBILE BAR */
-.mobile-bar{display:none;}
-@media(max-width:768px){
+/* ===== MOBILE CALL/TEXT BAR ===== */
+.mobile-bar{ display:none; }
+@media (max-width:768px){
   .mobile-bar{
-    position:fixed;top:0;left:0;right:0;
+    position:fixed; top:0; left:0; right:0;
     height:58px;
-    background:rgba(250,249,246,.9);
+    background:rgba(250,249,246,.90);
     backdrop-filter:blur(12px);
-    display:flex;justify-content:center;align-items:center;
-    gap:10px;z-index:999;
-    border-bottom:1px solid rgba(0,0,0,.05);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    z-index:999;
+    border-bottom:1px solid rgba(0,0,0,.06);
   }
-  body{padding-top:58px;}
+  body{ padding-top:58px; }
   .mobile-btn{
     padding:8px 16px;
-    border-radius:100px;
+    border-radius:999px;
     font-weight:600;
     font-size:14px;
     text-decoration:none;
+    white-space:nowrap;
   }
-  .mobile-call{background:var(--navy);color:#fff;}
-  .mobile-text{background:#fff;color:var(--navy);border:1px solid rgba(15,28,58,.15);}
+  .mobile-call{ background:var(--navy); color:#fff; }
+  .mobile-text{ background:#fff; color:var(--navy); border:1px solid rgba(15,28,58,.15); }
 }
 
-/* LAYOUT */
-.wrap{max-width:1080px;margin:auto;padding:80px 20px;}
+/* ===== WRAP ===== */
+.wrap{
+  max-width:1080px;
+  margin:auto;
+  padding:80px 20px;
+}
 
-/* HERO */
-.hero{text-align:center;margin-bottom:55px;}
-.logo{width:clamp(200px,24vw,330px);margin:auto;}
+/* ===== HERO ===== */
+.hero{
+  text-align:center;
+  margin-bottom:58px;
+}
+.logo{
+  width:clamp(200px, 24vw, 340px);
+  margin:0 auto 24px;
+  display:block;
+}
 h1{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(38px,8vw,70px);
+  font-family:'Playfair Display', serif;
+  font-size:clamp(38px, 8vw, 72px);
   line-height:1.05;
+  letter-spacing:-0.03em;
+  margin:0 0 18px;
 }
-.tagline{color:var(--muted);font-size:20px;max-width:640px;margin:auto;}
+.tagline{
+  font-size:20px;
+  color:var(--muted);
+  max-width:650px;
+  margin:0 auto;
+}
 
-/* CARDS */
+/* ===== CARDS ===== */
 .card-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;margin:60px 0;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:20px;
+  margin:62px 0;
 }
 .card{
-  background:#fff;
+  background:var(--paper);
   padding:38px 28px;
   border-radius:26px;
   box-shadow:0 10px 25px rgba(0,0,0,.03);
 }
+.card h3{
+  margin:0 0 10px;
+  font-size:22px;
+}
 
-/* ABOUT */
-.about-grid{
+/* ===== “WSJ PROFILE” ABOUT SECTION ===== */
+.about{
+  margin:90px 0 0;
+}
+.profile{
+  background:var(--paper);
+  border-radius:30px;
+  padding:42px 38px;
+  box-shadow:0 14px 35px rgba(0,0,0,.04);
+  border:1px solid rgba(0,0,0,.03);
+}
+.profile-top{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:18px;
+}
+.eyebrow{
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(26,26,26,.55);
+}
+.profile-title{
+  font-family:'Playfair Display', serif;
+  font-size:36px;
+  margin:6px 0 0;
+  letter-spacing:-0.02em;
+}
+.rule{
+  height:1px;
+  background:rgba(0,0,0,.08);
+  margin:18px 0 26px;
+}
+.profile-grid{
   display:grid;
-  grid-template-columns:1.2fr 1.1fr;
-  gap:65px;
-  align-items:center;
+  grid-template-columns: 1.18fr 1fr;
+  gap:40px;
+  align-items:start;
 }
-.pull{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(26px,4vw,34px);
-  font-weight:600;
+
+/* “WSJ-ish” body copy treatment */
+.story p{
+  margin:0 0 14px;
+  font-size:16.5px;
+}
+.story p.lede{
+  font-size:17.5px;
+  color:rgba(26,26,26,.92);
+}
+.story p.lede::first-letter{
+  float:left;
+  font-family:'Playfair Display', serif;
+  font-size:54px;
+  line-height:0.92;
+  padding-right:10px;
+  padding-top:3px;
   color:var(--navy);
-  margin:28px 0;
-  padding-left:20px;
-  border-left:4px solid var(--navy);
-  line-height:1.25;
 }
+
+/* Quote: premium pull-quote + scroll-responsive */
+.pull{
+  font-family:'Playfair Display', serif;
+  font-style:italic;
+  font-weight:500;
+  font-size:clamp(24px, 4vw, 32px);
+  line-height:1.35;
+  color:var(--navy);
+  margin:22px 0 18px;
+  padding-left:18px;
+  border-left:3px solid rgba(15,28,58,0.55);
+  letter-spacing:-0.01em;
+
+  /* base for animation */
+  opacity:0;
+  transform:translateY(14px);
+  filter:blur(2px);
+  will-change: opacity, transform, filter;
+}
+
+/* subtle fade-in just for quote (classy) */
+.pull.fade-in{
+  transition:
+    opacity 900ms cubic-bezier(0.15, 1, 0.3, 1),
+    transform 900ms cubic-bezier(0.15, 1, 0.3, 1),
+    filter 900ms cubic-bezier(0.15, 1, 0.3, 1);
+}
+.pull.fade-in.visible{
+  opacity:1;
+  transform:translateY(0);
+  filter:blur(0);
+}
+
+/* Handwritten signature accent */
+.signature{
+  margin-top:10px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.sig-line{
+  height:1px;
+  flex:1;
+  background:rgba(15,28,58,0.18);
+}
+.sig-text{
+  font-family:'Allura', cursive;
+  font-size:30px;
+  color:rgba(15,28,58,0.78);
+  white-space:nowrap;
+}
+
+/* Right column image */
 .boys-photo{
   width:100%;
   border-radius:26px;
   box-shadow:0 20px 45px rgba(0,0,0,.08);
 }
 
-/* CTA */
+/* ===== CTA ===== */
 .cta{
-  background:#fff;
+  background:var(--paper);
   border-radius:30px;
   text-align:center;
-  padding:55px 26px 40px; /* reduced top padding */
+  padding:52px 26px 38px;
   margin-top:60px;
+  box-shadow:0 14px 35px rgba(0,0,0,.04);
+  border:1px solid rgba(0,0,0,.03);
 }
-
 .cta h2{
-  font-family:'Playfair Display',serif;
+  font-family:'Playfair Display', serif;
   font-size:34px;
-  margin-bottom:8px;
+  margin:0 0 8px;
+}
+.cta p.sub{
+  margin:0;
+  color:var(--muted);
+  font-size:17px;
 }
 
 .cta-actions{
   display:flex;
   justify-content:center;
   gap:10px;
-  margin-top:22px;
+  margin-top:20px;
   flex-wrap:wrap;
   max-width:460px;
   margin-left:auto;
@@ -123,58 +257,91 @@ h1{
 }
 
 .btn{
-  padding:12px 20px;
-  border-radius:100px;
+  padding:12px 18px;            /* tightened */
+  border-radius:999px;
   font-weight:600;
   font-size:15px;
   text-decoration:none;
   white-space:nowrap;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
 }
+.btn.call{ background:var(--navy); color:#fff; }
+.btn.text{ background:#fff; color:var(--navy); border:1px solid rgba(15,28,58,.15); }
+.btn.email{ background:#efefef; color:var(--navy); }
 
-.call{background:var(--navy);color:#fff;}
-.text{background:#fff;color:var(--navy);border:1px solid rgba(15,28,58,.15);}
-.email{background:#efefef;color:var(--navy);}
-
-/* SAVE CONTACT */
 .save{
-  margin-top:16px;
+  margin-top:14px;
   font-size:14px;
 }
 .save a{
   color:var(--navy);
   font-weight:600;
   text-decoration:none;
+  border-bottom:1px solid rgba(15,28,58,0.18);
 }
 
-/* TRUST */
 .trust{
-  margin-top:18px;
+  margin-top:16px;
   font-size:13px;
   color:var(--muted);
 }
 
-/* MOBILE */
-@media(max-width:768px){
-  .wrap{padding:40px 16px;}
+/* ===== FOOTER ===== */
+footer{
+  text-align:center;
+  margin-top:60px;
+  font-size:11px;
+  color:var(--muted);
+  opacity:.65;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+/* ===== MOBILE PERFECT ===== */
+@media (max-width:768px){
+  .wrap{ padding:40px 16px; }
 
   .card-grid{
     display:flex;
     flex-direction:column;
     align-items:center;
+    gap:14px;
   }
-  .card{max-width:330px;width:100%;text-align:center;}
+  .card{
+    width:100%;
+    max-width:330px;
+    padding:28px 20px;
+    text-align:center;
+  }
 
-  .about-grid{grid-template-columns:1fr;}
-  .boys-photo{margin-top:20px;}
+  .profile{
+    padding:34px 20px;
+  }
+  .profile-top{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+  }
+  .profile-title{ font-size:32px; }
+
+  .profile-grid{
+    grid-template-columns:1fr;
+    gap:22px;
+  }
 
   .cta{
-    padding:40px 18px 30px;
+    padding:36px 18px 30px; /* reduce the blank space on top */
   }
 
   .cta-actions{
     flex-direction:column;
     max-width:300px;
   }
+  .btn{ width:100%; }
+
+  .sig-text{ font-size:28px; }
 }
 </style>
 </head>
@@ -189,54 +356,157 @@ h1{
 <div class="wrap">
 
 <header class="hero">
-  <img src="logo.png" class="logo">
+  <img src="logo.png" class="logo" alt="Donohoo & Sons">
   <h1>From day one<br>to claim day.</h1>
   <p class="tagline">Helping Wisconsin families and business owners get the right coverage without the runaround.</p>
 </header>
 
 <div class="card-grid">
-  <div class="card"><h3>Families</h3><p>Protection for your home, vehicles, and everything you’ve built.</p></div>
-  <div class="card"><h3>Business</h3><p>Coverage that lets you focus on running your company.</p></div>
-  <div class="card"><h3>Planning</h3><p>Long-term protection designed around your future.</p></div>
+  <div class="card">
+    <h3>Families</h3>
+    <p>Protection for your home, vehicles, and everything you’ve built.</p>
+  </div>
+  <div class="card">
+    <h3>Business</h3>
+    <p>Coverage that lets you focus on running your company.</p>
+  </div>
+  <div class="card">
+    <h3>Planning</h3>
+    <p>Long-term protection designed around your future.</p>
+  </div>
 </div>
 
 <section class="about">
-  <div class="about-grid">
-    <div>
-      <h2 style="font-family:'Playfair Display';font-size:34px;">A Personal Approach</h2>
-      <p>Hi, I’m Andy Donohoo. I built Donohoo & Sons Insurance with my wife Katie because insurance should feel simple and personal.</p>
-      <div class="pull">“I’m always available to my clients — no waiting, just a conversation.”</div>
-      <p>The “& Sons” reminds me why I do this. I treat your protection like my own family’s.</p>
+  <div class="profile">
+    <div class="profile-top">
+      <div>
+        <div class="eyebrow">Profile</div>
+        <div class="profile-title">A Personal Approach</div>
+      </div>
+      <div class="eyebrow">Milwaukee • Wisconsin</div>
     </div>
-    <div>
-      <img src="boys.jpg" class="boys-photo">
+
+    <div class="rule"></div>
+
+    <div class="profile-grid">
+      <div class="story">
+        <p class="lede">Hi, I’m Andy Donohoo. I built Donohoo &amp; Sons Insurance with my wife, Katie, because insurance should feel simple and personal.</p>
+
+        <div id="pullQuote" class="pull fade-in">
+          I’m always available to my clients — no waiting, just a conversation.
+        </div>
+
+        <div class="signature" aria-label="Signature accent">
+          <div class="sig-line"></div>
+          <div class="sig-text">Andy Donohoo</div>
+          <div class="sig-line"></div>
+        </div>
+
+        <p>The “&amp; Sons” reminds me why I do this. I treat your protection like my own family’s.</p>
+        <p>Whether it’s a quick quote or a full policy review, you’ll get straight answers and coverage that fits — without the runaround.</p>
+      </div>
+
+      <div class="image-container">
+        <img src="boys.jpg" class="boys-photo" alt="The Donohoo Sons">
+      </div>
     </div>
   </div>
 </section>
 
 <section class="cta">
   <h2>Need a quick quote or coverage review?</h2>
-  <p style="color:var(--muted);font-size:17px;">I respect your time. I make the process fast and easy.</p>
+  <p class="sub">I respect your time. I make the process fast and easy.</p>
 
   <div class="cta-actions">
     <a href="tel:+14146981729" class="btn call">Call Andy</a>
     <a href="sms:+14146981729" class="btn text">Text Andy</a>
+    <!-- Email opens your address but does not display it -->
     <a href="mailto:adonohoo@unisource-ins.com" class="btn email">Email</a>
   </div>
 
+  <!-- IMPORTANT: this is a download link, not a tel: link -->
   <div class="save">
     <a href="andy-donohoo.vcf" download>Save my contact</a>
   </div>
 
-  <div class="trust">
-    Independent agent serving Wisconsin families and business owners.
-  </div>
+  <div class="trust">Independent agent serving Wisconsin families and business owners.</div>
 </section>
 
-<footer style="text-align:center;margin-top:60px;font-size:11px;color:var(--muted);opacity:.6;">
-  DONOHOO & SONS INSURANCE • MILWAUKEE, WI
-</footer>
+<footer>DONOHOO &amp; SONS INSURANCE • MILWAUKEE, WI</footer>
 
 </div>
+
+<script>
+/**
+ * 1) Subtle fade-in animation just for the quote (IntersectionObserver)
+ * 2) Quote responsive to scroll depth (premium feel)
+ *    - As you scroll through the quote area, it gently “settles in”
+ *    - Uses requestAnimationFrame for smoothness
+ */
+
+(function () {
+  const quote = document.getElementById('pullQuote');
+  if (!quote) return;
+
+  // ---- Fade-in (classy) ----
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        quote.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.35 });
+  io.observe(quote);
+
+  // ---- Scroll depth responsiveness ----
+  let ticking = false;
+
+  function clamp01(x){ return Math.max(0, Math.min(1, x)); }
+
+  function updateQuoteByScroll() {
+    ticking = false;
+
+    const rect = quote.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+
+    // Define the "active" scroll band around the middle of viewport
+    // progress = 0 when quote enters band, 1 when it leaves
+    const start = vh * 0.85;   // lower part of screen
+    const end   = vh * 0.25;   // upper part of screen
+    const raw = (start - rect.top) / (start - end);
+    const p = clamp01(raw);
+
+    // Easing for premium feel (smooth settle)
+    const eased = 1 - Math.pow(1 - p, 2.2);
+
+    // Apply gentle transform that responds to scroll
+    // Keep it very subtle; let typography do the work.
+    const translate = (1 - eased) * 10;     // px
+    const blur = (1 - eased) * 1.6;         // px
+    const opacity = 0.65 + (eased * 0.35);  // 0.65 -> 1.0
+
+    // Only apply if it's on-screen-ish (avoid weirdness far away)
+    const isNear = rect.bottom > 0 && rect.top < vh;
+    if (isNear) {
+      quote.style.opacity = opacity.toFixed(3);
+      quote.style.transform = `translateY(${translate.toFixed(2)}px)`;
+      quote.style.filter = `blur(${blur.toFixed(2)}px)`;
+    }
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(updateQuoteByScroll);
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  // initialize
+  onScroll();
+})();
+</script>
+
 </body>
 </html>
