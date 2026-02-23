@@ -1,272 +1,269 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Donohoo & Sons Insurance | Milwaukee</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
 <style>
-:root {
-  --ink: #1a1a1a;
-  --muted: #6e6e73;
-  --navy: #0f1c3a;
-  --champagne: #faf9f6;
+:root{
+  --ink:#0b0b0f;
+  --muted:#515154;
+  --navy:#0f1c3a;
+  --champagne:#faf9f6;
+  --card:#ffffff;
+  --hair:rgba(15,28,58,.12);
+  --shadow:0 18px 60px rgba(0,0,0,.08);
+  --shadowSoft:0 10px 30px rgba(0,0,0,.05);
+  --radius:28px;
+  --ease:cubic-bezier(.2,.8,.2,1);
 }
 
-body {
-  margin: 0;
-  font-family: 'Inter', -apple-system, sans-serif;
-  background: var(--champagne);
-  color: var(--ink);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+  color:var(--ink);
+  background:var(--champagne);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
 }
 
-.wrap {
-  max-width: 1100px;
-  margin: auto;
-  padding: 80px 24px;
+/* --- background --- */
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:
+    radial-gradient(1100px 520px at 50% -10%, rgba(15,28,58,.11), transparent 60%),
+    linear-gradient(180deg, #fbfaf7 0%, #f7f6f2 55%, #fbfaf7 100%);
+}
+.noise{
+  position:fixed;
+  inset:-40%;
+  z-index:-1;
+  opacity:.08;
+  pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
 }
 
-/* ===== ANIMATION FOUNDATION ===== */
-.reveal {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: opacity 1.2s cubic-bezier(0.15, 1, 0.3, 1), 
-              transform 1.2s cubic-bezier(0.15, 1, 0.3, 1);
-  will-change: transform, opacity;
+/* --- layout --- */
+.wrap{ max-width:1120px; margin:0 auto; padding:26px 22px 90px; }
+.section{ margin-top:62px; }
+
+/* --- nav --- */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  background:rgba(250,249,246,.75);
+  border-bottom:1px solid rgba(0,0,0,.05);
 }
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+.nav-inner{
+  max-width:1120px;
+  margin:0 auto;
+  padding:14px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
 }
+.brand{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink); flex-shrink: 0; }
+.brand-dot{ width:10px; height:10px; border-radius:50%; background:var(--navy); }
+.brand-name{ font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing: -0.01em; }
 
-/* Staggering the cards */
-.card:nth-child(1) { transition-delay: 0.1s; }
-.card:nth-child(2) { transition-delay: 0.2s; }
-.card:nth-child(3) { transition-delay: 0.3s; }
+.nav-cta { display: flex; gap: 8px; align-items: center; }
 
-/* ===== HERO ===== */
-.hero {
-  text-align: center;
-  margin-bottom: 60px;
+/* --- buttons --- */
+.pill{
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  padding:10px 18px;
+  border-radius:999px;
+  transition:all .3s var(--ease);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  white-space: nowrap;
 }
+.pill.primary{ background:var(--navy); color:#fff; box-shadow:0 10px 20px rgba(15,28,58,0.15); }
+.pill.ghost{ background:rgba(255,255,255,.6); color:var(--navy); border:1px solid rgba(15,28,58,.1); }
+.pill:hover{ transform:scale(1.03); }
 
-.logo {
-  width: clamp(140px, 18vw, 240px);
-  margin: 0 auto 25px;
-  display: block;
+/* --- hero --- */
+.hero{ text-align:center; padding:40px 0 20px; }
+.logo{ 
+    width: clamp(240px, 30vw, 420px); /* Bigger Logo */
+    height: auto; 
+    margin-bottom: 30px; 
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.12)); 
 }
+h1{ font-weight:800; font-size:clamp(42px, 7vw, 84px); line-height:0.95; letter-spacing:-0.05em; margin-bottom:20px; }
+.tagline{ font-size:20px; color:var(--muted); max-width:600px; margin:0 auto 30px; }
 
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(38px, 8vw, 72px);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  margin-bottom: 20px;
-}
-
-.tagline {
-  font-size: 20px;
-  color: var(--muted);
-  max-width: 650px;
-  margin: 0 auto 30px;
-}
-
-/* ===== CARDS (Narrow Fix) ===== */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-  margin: 60px 0;
-}
-
+/* --- card glow effect --- */
+.card-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; margin-top:40px; }
 .card {
-  background: #ffffff;
-  padding: 45px 35px;
-  border-radius: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  position: relative;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius);
+  padding: 40px 30px;
+  overflow: hidden;
+  transition: transform 0.5s var(--ease);
 }
+.card:hover { transform: translateY(-5px); }
 
-.card h3 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 12px;
+.glow {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(15,28,58,0.08) 0%, transparent 80%);
+  opacity: 0;
+  transition: opacity 0.3s;
 }
+.card:hover .glow { opacity: 1; }
 
-/* ===== ABOUT SECTION ===== */
-.about-grid { 
-  display: grid; 
-  grid-template-columns: 1.2fr 1.1fr; 
-  gap: 80px; 
-  align-items: center; 
-  margin: 100px 0;
+.card h3{ margin:0 0 10px; font-size:22px; font-weight:700; }
+.card p{ margin:0; color:var(--muted); font-size:16px; }
+
+/* --- about --- */
+.about-shell{ display:grid; grid-template-columns: 1fr 1fr; gap:30px; margin-top:40px; }
+.about-card{ background:white; padding:40px; border-radius:36px; border:1px solid rgba(0,0,0,0.05); }
+.photo{ border-radius:36px; overflow:hidden; aspect-ratio: 1/1; }
+.photo img{ width:100%; height:100%; object-fit:cover; }
+
+/* --- CTA --- */
+.cta{ text-align:center; padding:80px 20px; background:white; border-radius:44px; margin-top:80px; border:1px solid rgba(0,0,0,0.05); }
+.email-link { 
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--navy);
+    text-decoration: none;
+    font-weight: 700;
+    border-bottom: 2px solid rgba(15,28,58,0.1);
+    padding-bottom: 2px;
+    transition: border-color 0.3s;
 }
+.email-link:hover { border-color: var(--navy); }
 
-.pull {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(24px, 4vw, 32px);
-  font-style: italic;
-  margin: 30px 0;
-  color: var(--navy);
-  line-height: 1.3;
-  border-left: 3px solid var(--navy);
-  padding-left: 20px;
-}
-
-.boys-photo {
-  width: 100%;
-  border-radius: 32px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-}
-
-/* ===== THE CTA ===== */
-.cta {
-  text-align: center;
-  background: #ffffff;
-  padding: 80px 40px;
-  border-radius: 40px;
-  border: 1px solid rgba(0,0,0,0.02);
-}
-
-.cta-actions {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.btn-base {
-  flex: 1;
-  min-width: 200px;
-  padding: 18px 32px;
-  border-radius: 100px;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 16px;
-  transition: all 0.4s cubic-bezier(0.15, 1, 0.3, 1);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn-call { background: var(--navy); color: #fff; }
-.btn-text { background: #fff; color: var(--navy); border: 1px solid rgba(15, 28, 58, 0.15); }
-
-.btn-base:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.08);
-}
-
-.email-line { margin-top: 35px; font-size: 15px; color: var(--muted); }
-.email-link { color: var(--navy); font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(15,28,58,0.1); }
-
-/* ===== MOBILE OVERRIDES ===== */
-@media (max-width: 768px) {
-  .wrap { padding: 40px 30px; }
+/* --- Mobile Specific Fixes --- */
+@media (max-width: 640px){
+  .nav-inner { padding: 10px 12px; }
+  .brand-name { font-size: 11px; } /* Slightly smaller text to fit buttons */
   
-  .card-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
+  .nav-cta .pill {
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 800;
   }
-
-  .card {
-    width: 100%;
-    max-width: 320px; /* Fixing the "too wide" issue */
-    padding: 35px 25px;
-    text-align: center;
-  }
-
-  .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .image-container { order: -1; }
   
-  .cta { padding: 50px 25px; }
-  .btn-base { min-width: 100%; }
+  .card-grid, .about-shell { grid-template-columns: 1fr; }
+  h1 { font-size: 48px; }
+  .logo { width: 280px; } /* Fixed larger size for mobile */
 }
+
+/* Animations */
+.reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s var(--ease); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
+
 <body>
+<div class="bg"></div>
+<div class="noise"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#">
+      <span class="brand-dot"></span>
+      <span class="brand-name">Donohoo & Sons</span>
+    </a>
+    <div class="nav-cta">
+      <a class="pill ghost" href="sms:+14146981729">Text Andy</a>
+      <a class="pill primary" href="tel:+14146981729">Call Andy</a>
+    </div>
+  </div>
+</nav>
 
 <div class="wrap">
   <header class="hero">
-    <img src="logo.png" class="logo" alt="Donohoo & Sons">
-    <h1>From day one<br>to claim day.</h1>
-    <p class="tagline">Helping Wisconsin families and business owners get the right coverage without the runaround.</p>
+    <img src="logo.png" class="logo reveal" alt="Donohoo & Sons Logo" />
+    <h1 class="reveal">From day one<br>to claim day.</h1>
+    <p class="tagline reveal">Helping Wisconsin families and business owners get the right coverage without the runaround.</p>
+    <div class="hero-actions reveal">
+      <a class="pill primary" style="padding:16px 28px; font-size:16px;" href="tel:+14146981729">Get Started</a>
+    </div>
   </header>
 
-  <div class="card-grid">
+  <section class="card-grid">
     <div class="card reveal">
+      <div class="glow"></div>
       <h3>Families</h3>
       <p>Protection for your home, vehicles, and the assets you've worked hard to build.</p>
     </div>
     <div class="card reveal">
+      <div class="glow"></div>
       <h3>Business</h3>
       <p>Risk management that lets you focus on your company while I manage the coverage.</p>
     </div>
     <div class="card reveal">
+      <div class="glow"></div>
       <h3>Planning</h3>
-      <p>Coverage that looks beyond the next renewal to ensure your long-term stability.</p>
+      <p>Coverage that looks beyond the next renewal to support long-term stability.</p>
     </div>
-  </div>
+  </section>
 
-  <section class="about reveal">
-    <div class="about-grid">
-      <div class="story-content">
-        <h2 style="font-family:'Playfair Display'; font-size: 38px;">A Personal Approach</h2>
-        <p>Hi, I’m Andy Donohoo. I founded Donohoo & Sons Insurance alongside my wife, Katie, because I think insurance should be simple. You deserve a real person who knows your situation and answers the phone when you call.</p>
-        <div class="pull">"I am always available to my clients for direct help—no waiting, just a conversation."</div>
-        <p>The "& Sons" in our name is a reminder of why I do this. I treat your family's protection with the same care I give our own.</p>
-      </div>
-      <div class="image-container">
-        <img src="boys.jpg" class="boys-photo" alt="The Donohoo Sons">
-      </div>
+  <section class="about-shell">
+    <div class="about-card reveal">
+      <h2 style="font-size:32px; font-weight:800; letter-spacing:-0.03em;">A personal approach</h2>
+      <p>Hi, I’m Andy Donohoo. I founded Donohoo & Sons Insurance because insurance should be simple. You deserve a real person who knows your situation and answers the phone when you call.</p>
+    </div>
+    <div class="photo reveal">
+       <img src="boys.jpg" alt="Donohoo family" />
     </div>
   </section>
 
   <section class="cta reveal">
-    <h2 style="font-family:'Playfair Display'; font-size: 38px; margin-bottom: 10px;">Need a quick quote?</h2>
-    <p style="color: var(--muted); font-size: 18px; margin-bottom: 35px;">I respect your time. I make the process fast and easy.</p>
-    
-    <div class="cta-actions">
-      <a href="tel:+14146981729" class="btn-base btn-call">Call Andy</a>
-      <a href="sms:+14146981729" class="btn-base btn-text">Text Andy</a>
+    <h2 style="font-size:36px; font-weight:800;">Need a quick quote?</h2>
+    <p>I’ll keep it fast, clear, and easy.</p>
+    <div style="margin-top:30px;">
+      <a class="pill primary" href="tel:+14146981729">Call Andy Now</a>
     </div>
-
-    <div class="email-line">
-      Prefer email? <a href="mailto:adonohoo@unisource-ins.com" class="email-link">adonohoo@unisource-ins.com</a>
-    </div>
+    <a href="mailto:adonohoo@unisource-ins.com" class="email-link">Email Andy</a>
   </section>
-
-  <footer style="text-align: center; margin-top: 80px; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6;">
-    DONOHOO & SONS INSURANCE • MILWAUKEE, WI
-  </footer>
 </div>
 
 <script>
-// The "Intersection Observer" logic for the premium float animation
-const observerOptions = {
-  threshold: 0.12,
-  rootMargin: "0px 0px -50px 0px"
-};
+/* Glow Effect Script */
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  });
+});
 
+/* Simple Reveal Script */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
     }
   });
-}, observerOptions);
+}, { threshold: 0.1 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
-
 </body>
 </html>
