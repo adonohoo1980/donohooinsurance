@@ -32,7 +32,7 @@ section{padding:70px 0}
 
 /* Header */
 .header{
-  padding:18px 0;
+  padding:16px 0;
   border-bottom:1px solid var(--line);
 }
 .nav{
@@ -40,9 +40,9 @@ section{padding:70px 0}
   align-items:center;
   justify-content:space-between;
 }
-.logo{
-  font-weight:600;
-  letter-spacing:-0.02em;
+.logo-img{
+  height:34px;
+  width:auto;
 }
 .menu a{
   margin-left:20px;
@@ -99,6 +99,7 @@ p{font-size:17px;line-height:1.65;color:var(--muted)}
   h1{font-size:32px}
   h2{font-size:24px}
   section{padding:55px 0}
+  .menu{display:none;} /* clean mobile look */
 }
 </style>
 </head>
@@ -108,7 +109,9 @@ p{font-size:17px;line-height:1.65;color:var(--muted)}
 <!-- HEADER -->
 <div class="header">
   <div class="wrap nav">
-    <div class="logo">Donohoo & Sons</div>
+    <a href="/">
+      <img src="/logo.png" alt="Donohoo & Sons Insurance" class="logo-img">
+    </a>
     <div class="menu">
       <a href="/">Home</a>
       <a href="/business.html">Business</a>
@@ -143,7 +146,7 @@ p{font-size:17px;line-height:1.65;color:var(--muted)}
   </div>
 </section>
 
-<!-- ONE AGENT -->
+<!-- ONE RELATIONSHIP -->
 <section class="alt">
   <div class="wrap">
     <h2>One Relationship. Done Right.</h2>
