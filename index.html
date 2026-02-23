@@ -6,195 +6,255 @@
 <title>Donohoo & Sons Insurance | Milwaukee</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:400,500,600&family=Playfair+Display:700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --ink: #1a1a1a;
-  --muted: #6e6e73;
-  --navy: #0f1c3a;
-  --champagne: #faf9f6;
+  --ink:#1a1a1a;
+  --muted:#6e6e73;
+  --navy:#0f1c3a;
+  --champagne:#faf9f6;
+}
+
+html, body {
+  overflow-x:hidden;
 }
 
 body {
-  margin: 0;
-  font-family: 'Inter', -apple-system, sans-serif;
-  background: var(--champagne);
-  color: var(--ink);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  margin:0;
+  font-family:'Inter', -apple-system, sans-serif;
+  background:var(--champagne);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
 }
 
-/* ===== MOBILE TOP BAR ===== */
+/* ===== MOBILE CALL BAR ===== */
 .mobile-bar {
-  display: none;
+  display:none;
 }
 
-@media (max-width: 768px) {
-  .mobile-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 64px;
-    background: rgba(250,249,246,0.85);
-    backdrop-filter: blur(12px);
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    align-items: center;
-    z-index: 999;
-    border-bottom: 1px solid rgba(0,0,0,0.06);
+@media (max-width:768px){
+  .mobile-bar{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:64px;
+    background:rgba(250,249,246,.88);
+    backdrop-filter:blur(14px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    z-index:999;
+    border-bottom:1px solid rgba(0,0,0,.05);
   }
 
-  body { padding-top: 64px; }
+  body{ padding-top:64px; }
 
-  .mobile-btn {
-    padding: 10px 18px;
-    border-radius: 100px;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 14px;
+  .mobile-btn{
+    padding:10px 18px;
+    border-radius:100px;
+    font-weight:600;
+    text-decoration:none;
+    font-size:14px;
   }
 
-  .mobile-call {
-    background: var(--navy);
-    color: #fff;
-  }
-
-  .mobile-text {
-    background: #fff;
-    color: var(--navy);
-    border: 1px solid rgba(15,28,58,0.15);
+  .mobile-call{ background:var(--navy); color:#fff; }
+  .mobile-text{
+    background:#fff;
+    color:var(--navy);
+    border:1px solid rgba(15,28,58,.15);
   }
 }
 
-.wrap {
-  max-width: 1100px;
-  margin: auto;
-  padding: 80px 24px;
+/* ===== WRAP ===== */
+.wrap{
+  max-width:1100px;
+  margin:auto;
+  padding:80px 24px;
 }
 
-/* ===== REVEAL ANIMATIONS ===== */
-.reveal {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: opacity 1.2s cubic-bezier(0.15, 1, 0.3, 1),
-              transform 1.2s cubic-bezier(0.15, 1, 0.3, 1);
+/* ===== REVEAL ===== */
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:all 1.2s cubic-bezier(.15,1,.3,1);
 }
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+.reveal.visible{
+  opacity:1;
+  transform:none;
 }
 
 /* ===== HERO ===== */
-.hero {
-  text-align: center;
-  margin-bottom: 60px;
+.hero{
+  text-align:center;
+  margin-bottom:60px;
 }
 
-.logo {
-  width: clamp(200px, 24vw, 320px); /* BIGGER */
-  margin: 0 auto 25px;
-  display: block;
+.logo{
+  width:clamp(200px,24vw,340px);
+  margin:0 auto 25px;
+  display:block;
 }
 
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(38px, 8vw, 72px);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  margin-bottom: 20px;
+h1{
+  font-family:'Playfair Display', serif;
+  font-size:clamp(38px,8vw,72px);
+  line-height:1.05;
+  letter-spacing:-.03em;
+  margin-bottom:20px;
 }
 
-.tagline {
-  font-size: 20px;
-  color: var(--muted);
-  max-width: 650px;
-  margin: 0 auto 30px;
+.tagline{
+  font-size:20px;
+  color:var(--muted);
+  max-width:650px;
+  margin:0 auto 30px;
 }
 
 /* ===== CARDS ===== */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-  margin: 60px 0;
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:24px;
+  margin:60px 0;
 }
 
-.card {
-  background: #fff;
-  padding: 45px 35px;
-  border-radius: 28px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+.card{
+  background:#fff;
+  padding:45px 35px;
+  border-radius:28px;
+  box-shadow:0 10px 30px rgba(0,0,0,.03);
+  transition:transform .4s cubic-bezier(.15,1,.3,1), box-shadow .4s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 40px rgba(0,0,0,.06);
+}
+
+.card h3{
+  font-size:24px;
+  margin-bottom:10px;
 }
 
 /* ===== ABOUT ===== */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1.1fr;
-  gap: 80px;
-  align-items: center;
-  margin: 100px 0;
+.about-grid{
+  display:grid;
+  grid-template-columns:1.2fr 1.1fr;
+  gap:80px;
+  align-items:center;
+  margin:100px 0;
 }
 
-.pull {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(24px, 4vw, 32px);
-  font-style: italic;
-  margin: 30px 0;
-  color: var(--navy);
-  border-left: 3px solid var(--navy);
-  padding-left: 20px;
+.pull{
+  font-family:'Playfair Display', serif;
+  font-size:clamp(24px,4vw,32px);
+  font-style:italic;
+  margin:30px 0;
+  color:var(--navy);
+  border-left:3px solid var(--navy);
+  padding-left:20px;
 }
 
-.boys-photo {
-  width: 100%;
-  border-radius: 32px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+.boys-photo{
+  width:100%;
+  border-radius:32px;
+  box-shadow:0 20px 50px rgba(0,0,0,.08);
 }
 
 /* ===== CTA ===== */
-.cta {
-  text-align: center;
-  background: #fff;
-  padding: 80px 40px;
-  border-radius: 40px;
+.cta{
+  text-align:center;
+  background:#fff;
+  padding:80px 40px;
+  border-radius:40px;
 }
 
-.cta-actions {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 500px;
-  margin: 0 auto;
+.cta-actions{
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  flex-wrap:wrap;
+  max-width:520px;
+  margin:30px auto 0;
 }
 
-.btn-base {
-  flex: 1;
-  min-width: 200px;
-  padding: 18px 32px;
-  border-radius: 100px;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 16px;
+.btn-base{
+  flex:1;
+  min-width:200px;
+  padding:18px 32px;
+  border-radius:100px;
+  font-weight:600;
+  text-decoration:none;
+  font-size:16px;
+  transition:.35s;
 }
 
-.btn-call { background: var(--navy); color: #fff; }
-.btn-text { background: #fff; color: var(--navy); border: 1px solid rgba(15,28,58,0.15); }
+.btn-call{ background:var(--navy); color:#fff; }
+.btn-text{
+  background:#fff;
+  color:var(--navy);
+  border:1px solid rgba(15,28,58,.15);
+}
 
-/* ===== MOBILE LAYOUT FIXES ===== */
-@media (max-width: 768px) {
-  .wrap { padding: 40px 30px; }
+.btn-base:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 20px rgba(0,0,0,.08);
+}
 
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
+/* ===== MOBILE PERFECT LAYOUT ===== */
+@media (max-width:768px){
+
+  .wrap{
+    padding:40px 18px;
   }
 
-  .image-container { order: -1; }
+  .card-grid{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+  }
+
+  .card{
+    width:100%;
+    max-width:340px;
+    padding:30px 22px;
+    text-align:center;
+  }
+
+  .about-grid{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+
+  .image-container{
+    order:-1;
+  }
+
+  .cta{
+    padding:50px 24px;
+  }
+
+  .cta-actions{
+    flex-direction:column;
+    max-width:340px;
+  }
+
+  .btn-base{
+    width:100%;
+  }
+
+  h1{
+    letter-spacing:-.02em;
+  }
+
+  .tagline{
+    font-size:18px;
+  }
 }
 </style>
 </head>
@@ -208,53 +268,65 @@ h1 {
 </div>
 
 <div class="wrap">
-  <header class="hero">
-    <img src="logo.png" class="logo" alt="Donohoo & Sons">
-    <h1>From day one<br>to claim day.</h1>
-    <p class="tagline">Helping Wisconsin families and business owners get the right coverage without the runaround.</p>
-  </header>
 
-  <div class="card-grid">
-    <div class="card reveal"><h3>Families</h3><p>Protection for your home, vehicles, and your assets.</p></div>
-    <div class="card reveal"><h3>Business</h3><p>Risk management so you can focus on running your company.</p></div>
-    <div class="card reveal"><h3>Planning</h3><p>Coverage built for long-term stability.</p></div>
+<header class="hero">
+  <img src="logo.png" class="logo" alt="Donohoo & Sons">
+  <h1>From day one<br>to claim day.</h1>
+  <p class="tagline">Helping Wisconsin families and business owners get the right coverage without the runaround.</p>
+</header>
+
+<div class="card-grid">
+  <div class="card reveal">
+    <h3>Families</h3>
+    <p>Protection for your home, vehicles, and the assets you've built.</p>
   </div>
+  <div class="card reveal">
+    <h3>Business</h3>
+    <p>Coverage that lets you focus on your company while I manage the risk.</p>
+  </div>
+  <div class="card reveal">
+    <h3>Planning</h3>
+    <p>Long-term protection designed around your future.</p>
+  </div>
+</div>
 
-  <section class="about reveal">
-    <div class="about-grid">
-      <div>
-        <h2 style="font-family:'Playfair Display'; font-size: 38px;">A Personal Approach</h2>
-        <p>Hi, I’m Andy Donohoo. I founded Donohoo & Sons Insurance alongside my wife, Katie, because insurance should be simple and personal.</p>
-        <div class="pull">"I am always available to my clients — no waiting, just a conversation."</div>
-        <p>The "& Sons" is a reminder of why I do this. I treat your protection like my own family’s.</p>
-      </div>
-      <div class="image-container">
-        <img src="boys.jpg" class="boys-photo" alt="The Donohoo Sons">
-      </div>
+<section class="about reveal">
+  <div class="about-grid">
+    <div>
+      <h2 style="font-family:'Playfair Display'; font-size:38px;">A Personal Approach</h2>
+      <p>Hi, I’m Andy Donohoo. I built Donohoo & Sons Insurance with my wife Katie because insurance should feel personal and simple.</p>
+      <div class="pull">"I’m always available to my clients — no waiting, just a conversation."</div>
+      <p>The “& Sons” reminds me why I do this. I treat your protection the same way I protect my own family.</p>
     </div>
-  </section>
-
-  <section class="cta reveal">
-    <h2 style="font-family:'Playfair Display'; font-size: 38px;">Need a quick quote?</h2>
-    <p style="color: var(--muted); font-size: 18px;">I respect your time. I make the process fast and easy.</p>
-    <div class="cta-actions">
-      <a href="tel:+14146981729" class="btn-base btn-call">Call Andy</a>
-      <a href="sms:+14146981729" class="btn-base btn-text">Text Andy</a>
+    <div class="image-container">
+      <img src="boys.jpg" class="boys-photo" alt="Donohoo Sons">
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer style="text-align:center; margin-top:80px; font-size:11px; color:var(--muted); opacity:.6;">
-    DONOHOO & SONS INSURANCE • MILWAUKEE, WI
-  </footer>
+<section class="cta reveal">
+  <h2 style="font-family:'Playfair Display'; font-size:38px;">Need a quick quote?</h2>
+  <p style="color:var(--muted); font-size:18px;">I respect your time. I make the process fast and easy.</p>
+
+  <div class="cta-actions">
+    <a href="tel:+14146981729" class="btn-base btn-call">Call Andy</a>
+    <a href="sms:+14146981729" class="btn-base btn-text">Text Andy</a>
+  </div>
+</section>
+
+<footer style="text-align:center; margin-top:80px; font-size:11px; color:var(--muted); opacity:.6;">
+  DONOHOO & SONS INSURANCE • MILWAUKEE, WI
+</footer>
+
 </div>
 
 <script>
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting)e.target.classList.add('visible');
   });
 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
 
 </body>
