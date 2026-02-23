@@ -59,6 +59,12 @@ p{font-size:17px;line-height:1.65;color:var(--muted)}
   color:#fff;
   text-decoration:none;
   font-weight:500;
+  transition:all .25s ease;
+  cursor:pointer;
+}
+.cta:hover{
+  transform:translateY(-1px);
+  box-shadow:0 8px 22px rgba(0,0,0,.18);
 }
 
 /* Sections */
@@ -81,10 +87,18 @@ p{font-size:17px;line-height:1.65;color:var(--muted)}
   position:fixed;
   inset:0;
   background:rgba(0,0,0,.35);
-  display:none;
+  display:flex;
   align-items:center;
   justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .25s ease;
   z-index:999;
+}
+
+.overlay.active{
+  opacity:1;
+  pointer-events:auto;
 }
 
 .modal{
@@ -93,9 +107,16 @@ p{font-size:17px;line-height:1.65;color:var(--muted)}
   border-radius:22px;
   width:min(90%,420px);
   text-align:center;
-  box-shadow:0 25px 60px rgba(0,0,0,.15);
+  box-shadow:0 30px 70px rgba(0,0,0,.2);
+  transform:translateY(12px) scale(.97);
+  transition:all .25s ease;
 }
 
+.overlay.active .modal{
+  transform:translateY(0) scale(1);
+}
+
+/* Modal content */
 .modal h3{
   font-family:'Playfair Display',serif;
   font-size:24px;
@@ -107,6 +128,7 @@ p{font-size:17px;line-height:1.65;color:var(--muted)}
   margin-bottom:20px;
 }
 
+/* Contact buttons */
 .contact-btn{
   display:block;
   padding:12px;
@@ -114,11 +136,18 @@ p{font-size:17px;line-height:1.65;color:var(--muted)}
   margin:8px 0;
   text-decoration:none;
   font-weight:600;
+  transition:all .2s ease;
+  cursor:pointer;
 }
 
 .call{background:#111827;color:#fff;}
+.call:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.2);}
+
 .text{border:1px solid #111827;color:#111827;}
+.text:hover{background:#111827;color:#fff;}
+
 .email{background:#f1f5f9;color:#111827;}
+.email:hover{background:#e2e8f0;}
 
 .close{
   margin-top:14px;
@@ -167,25 +196,21 @@ p{font-size:17px;line-height:1.65;color:var(--muted)}
   </div>
 </section>
 
-<!-- WHERE IT STARTED -->
+<!-- CONTENT -->
 <section>
   <div class="wrap">
     <h2>Where It Started</h2>
     <p>
       My foundation was built working with specialized commercial risks,
-      including auto dealerships and complex liability programs. That background
-      still shapes how I approach every client today: understand the business first,
-      then build protection around it.
+      including auto dealerships and complex liability programs.
+      That background still shapes how I approach every client today.
     </p>
   </div>
 </section>
 
-<!-- ONE RELATIONSHIP -->
 <section class="alt">
   <div class="wrap">
     <h2>One Relationship. Done Right.</h2>
-    <p>Most business owners end up with multiple agents. I built my practice differently.</p>
-
     <div class="bullets">
       <div>Business insurance done right</div>
       <div>Personal and umbrella protection</div>
@@ -195,13 +220,12 @@ p{font-size:17px;line-height:1.65;color:var(--muted)}
   </div>
 </section>
 
-<!-- CLOSING -->
 <section>
   <div class="wrap" style="text-align:center;max-width:620px;">
     <h2>Let’s Keep Insurance Simple</h2>
     <p>
       If you want one person who understands both your business and personal world,
-      I’m always happy to connect. No pressure — just a straightforward conversation.
+      I’m always happy to connect.
     </p>
     <a class="cta" onclick="openContact()">Reach Out Anytime</a>
   </div>
@@ -223,10 +247,10 @@ p{font-size:17px;line-height:1.65;color:var(--muted)}
 
 <script>
 function openContact(){
-  document.getElementById('contactOverlay').style.display='flex';
+  document.getElementById('contactOverlay').classList.add('active');
 }
 function closeContact(){
-  document.getElementById('contactOverlay').style.display='none';
+  document.getElementById('contactOverlay').classList.remove('active');
 }
 </script>
 
