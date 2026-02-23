@@ -6,7 +6,7 @@
 <title>Business Insurance | Donohoo & Sons Insurance</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -23,7 +23,6 @@ body{
   font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   color:var(--ink);
   background:var(--bg);
-  -webkit-font-smoothing:antialiased;
 }
 
 /* Layout */
@@ -31,25 +30,10 @@ body{
 section{padding:70px 0}
 
 /* Header */
-.header{
-  padding:16px 0;
-  border-bottom:1px solid var(--line);
-}
-.nav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.logo-img{
-  height:34px;
-  width:auto;
-}
-.menu a{
-  margin-left:20px;
-  text-decoration:none;
-  color:var(--muted);
-  font-weight:500;
-}
+.header{border-bottom:1px solid var(--line);padding:16px 0;}
+.nav{display:flex;justify-content:space-between;align-items:center;}
+.logo-img{height:34px}
+.menu a{margin-left:20px;text-decoration:none;color:var(--muted);font-weight:500;}
 .menu a:hover{color:var(--ink)}
 
 /* Typography */
@@ -57,13 +41,15 @@ h1,h2{
   font-family:'Playfair Display',serif;
   letter-spacing:-0.02em;
 }
-h1{font-size:38px;line-height:1.15;margin-bottom:16px}
+h1{font-size:36px;line-height:1.2;margin-bottom:14px}
 h2{font-size:28px;margin-bottom:14px}
 p{font-size:17px;line-height:1.65;color:var(--muted)}
 
 /* Hero */
-.hero{text-align:center;padding:90px 0 70px}
+.hero{text-align:center;padding:85px 0 65px}
 .hero p{max-width:620px;margin:auto}
+
+/* Button */
 .cta{
   display:inline-block;
   margin-top:26px;
@@ -87,19 +73,65 @@ p{font-size:17px;line-height:1.65;color:var(--muted)}
 .bullets div{
   margin-bottom:12px;
   font-weight:600;
-  letter-spacing:-0.01em;
   color:#1f2937;
 }
 
-/* Closing */
-.closer{text-align:center;max-width:640px;margin:auto}
+/* Overlay */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.35);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+
+.modal{
+  background:#fff;
+  padding:30px 26px;
+  border-radius:22px;
+  width:min(90%,420px);
+  text-align:center;
+  box-shadow:0 25px 60px rgba(0,0,0,.15);
+}
+
+.modal h3{
+  font-family:'Playfair Display',serif;
+  font-size:24px;
+  margin-bottom:8px;
+}
+
+.modal p{
+  font-size:15px;
+  margin-bottom:20px;
+}
+
+.contact-btn{
+  display:block;
+  padding:12px;
+  border-radius:999px;
+  margin:8px 0;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.call{background:#111827;color:#fff;}
+.text{border:1px solid #111827;color:#111827;}
+.email{background:#f1f5f9;color:#111827;}
+
+.close{
+  margin-top:14px;
+  font-size:13px;
+  color:var(--muted);
+  cursor:pointer;
+}
 
 /* Mobile */
-@media (max-width:600px){
-  h1{font-size:32px}
+@media(max-width:600px){
+  h1{font-size:30px}
   h2{font-size:24px}
-  section{padding:55px 0}
-  .menu{display:none;} /* clean mobile look */
+  .menu{display:none;}
 }
 </style>
 </head>
@@ -109,9 +141,7 @@ p{font-size:17px;line-height:1.65;color:var(--muted)}
 <!-- HEADER -->
 <div class="header">
   <div class="wrap nav">
-    <a href="/">
-      <img src="/logo.png" alt="Donohoo & Sons Insurance" class="logo-img">
-    </a>
+    <a href="/"><img src="/logo.png" class="logo-img" alt="Donohoo & Sons"></a>
     <div class="menu">
       <a href="/">Home</a>
       <a href="/business.html">Business</a>
@@ -123,25 +153,29 @@ p{font-size:17px;line-height:1.65;color:var(--muted)}
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <h1>Built in Commercial Insurance.<br>Built for Business Owners.</h1>
+    <h1>
+      I started on the commercial side of insurance.<br>
+      That experience still drives how I help business owners today.
+    </h1>
+
     <p>
-      I started my career working on complex commercial risks at Sentry.
-      Today, I help business owners simplify both business and personal
-      coverage — under one relationship.
+      I help business owners simplify both business and personal coverage —
+      under one trusted relationship.
     </p>
-    <a class="cta" href="mailto:adonohoo@unisource-ins.com">Start a Conversation</a>
+
+    <a class="cta" onclick="openContact()">Start a Conversation</a>
   </div>
 </section>
 
-<!-- SENTRY -->
+<!-- WHERE IT STARTED -->
 <section>
   <div class="wrap">
     <h2>Where It Started</h2>
     <p>
-      My foundation in insurance was built working with specialized
-      commercial programs, including auto dealerships and complex liability
-      risks. That background still shapes how I work today:
-      understand the business first, then build protection around it.
+      My foundation was built working with specialized commercial risks,
+      including auto dealerships and complex liability programs. That background
+      still shapes how I approach every client today: understand the business first,
+      then build protection around it.
     </p>
   </div>
 </section>
@@ -150,14 +184,7 @@ p{font-size:17px;line-height:1.65;color:var(--muted)}
 <section class="alt">
   <div class="wrap">
     <h2>One Relationship. Done Right.</h2>
-    <p>
-      Most business owners end up with multiple agents — one for business,
-      another for personal — and no one seeing the full picture.
-    </p>
-    <p>
-      I built my practice to be different. One relationship that covers both
-      sides of your world.
-    </p>
+    <p>Most business owners end up with multiple agents. I built my practice differently.</p>
 
     <div class="bullets">
       <div>Business insurance done right</div>
@@ -168,54 +195,40 @@ p{font-size:17px;line-height:1.65;color:var(--muted)}
   </div>
 </section>
 
-<!-- INDUSTRIES -->
-<section>
-  <div class="wrap">
-    <h2>Comfortable Across Industries</h2>
-    <p>
-      I work with a wide range of business owners across Wisconsin —
-      from contractors and dealerships to professionals and
-      family-owned companies.
-    </p>
-
-    <div class="bullets">
-      <div>Contractors and trades</div>
-      <div>Auto dealers and automotive</div>
-      <div>Real estate investors</div>
-      <div>Professional services</div>
-      <div>Family-owned businesses</div>
-      <div>Retail and hospitality</div>
-    </div>
-  </div>
-</section>
-
-<!-- INTEGRATION -->
-<section class="alt">
-  <div class="wrap">
-    <h2>Where Business and Personal Connect</h2>
-    <p>
-      The biggest gaps I see aren’t inside policies — they’re between them.
-      Business owners carry risks that don’t stop at the office.
-    </p>
-    <p>
-      When everything is coordinated under one strategy, coverage is
-      clearer and decisions are easier.
-    </p>
-  </div>
-</section>
-
 <!-- CLOSING -->
 <section>
-  <div class="wrap closer">
+  <div class="wrap" style="text-align:center;max-width:620px;">
     <h2>Let’s Keep Insurance Simple</h2>
     <p>
-      If you want one person who understands both your business and
-      personal world, I’m always happy to connect.
-      No pressure — just a straightforward conversation.
+      If you want one person who understands both your business and personal world,
+      I’m always happy to connect. No pressure — just a straightforward conversation.
     </p>
-    <a class="cta" href="mailto:adonohoo@unisource-ins.com">Reach Out Anytime</a>
+    <a class="cta" onclick="openContact()">Reach Out Anytime</a>
   </div>
 </section>
+
+<!-- CONTACT OVERLAY -->
+<div class="overlay" id="contactOverlay">
+  <div class="modal">
+    <h3>Let’s connect — whatever’s easiest.</h3>
+    <p>Direct access. No call centers.</p>
+
+    <a href="tel:+14146981729" class="contact-btn call">📞 Call Andy</a>
+    <a href="sms:+14146981729" class="contact-btn text">💬 Text Andy</a>
+    <a href="mailto:adonohoo@unisource-ins.com" class="contact-btn email">✉️ Email</a>
+
+    <div class="close" onclick="closeContact()">Close</div>
+  </div>
+</div>
+
+<script>
+function openContact(){
+  document.getElementById('contactOverlay').style.display='flex';
+}
+function closeContact(){
+  document.getElementById('contactOverlay').style.display='none';
+}
+</script>
 
 </body>
 </html>
