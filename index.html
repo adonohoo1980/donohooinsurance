@@ -29,7 +29,7 @@ body{
 .topbar{border-bottom:1px solid var(--line);padding:14px 0}
 .nav{max-width:1050px;margin:auto;padding:0 18px;display:flex;justify-content:space-between;align-items:center}
 .logo-img{height:34px}
-.menu a{margin-left:20px;text-decoration:none;color:var(--muted);font-weight:500}
+.menu a{margin-left:20px;text-decoration:none;color:var(--muted);font-weight:500;cursor:pointer}
 .menu a:hover{color:var(--ink)}
 
 /* HERO */
@@ -71,7 +71,7 @@ h1{font-family:'Playfair Display';font-size:clamp(38px,8vw,70px);line-height:1.0
 
 .btn{
   display:block;
-  padding:13px;
+  padding:14px;
   border-radius:100px;
   font-weight:600;
   text-decoration:none;
@@ -85,20 +85,30 @@ h1{font-family:'Playfair Display';font-size:clamp(38px,8vw,70px);line-height:1.0
 
 footer{text-align:center;margin-top:60px;font-size:11px;color:var(--muted);opacity:.6}
 
-/* OVERLAY */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.25s}
+/* ===== UNIFIED OVERLAY ===== */
+.overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.35);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:.25s ease;z-index:999;
+}
 .overlay.active{opacity:1;pointer-events:auto}
 .modal{
-  background:#fff;padding:30px 26px;border-radius:22px;width:min(90%,420px);
-  text-align:center;box-shadow:0 30px 70px rgba(0,0,0,.2);
-  transform:translateY(10px) scale(.97);transition:.25s
+  background:#fff;padding:28px 24px;border-radius:22px;
+  width:min(90%,420px);text-align:center;
+  box-shadow:0 30px 70px rgba(0,0,0,.2);
+  transform:translateY(10px) scale(.97);transition:.25s ease;
 }
 .overlay.active .modal{transform:none}
 
-.contact-btn{display:block;padding:12px;border-radius:999px;margin:8px 0;font-weight:600;text-decoration:none}
+.contact-btn{
+  display:block;padding:14px;border-radius:999px;margin:8px 0;
+  font-weight:600;text-decoration:none;cursor:pointer;
+}
 .call{background:#111827;color:#fff}
 .text{border:1px solid #111827;color:#111827}
 .email{background:#f1f5f9;color:#111827}
+
+.close{margin-top:12px;font-size:13px;color:#6e6e73;cursor:pointer}
 
 @media(max-width:768px){
   .menu{display:none}
@@ -153,17 +163,22 @@ footer{text-align:center;margin-top:60px;font-size:11px;color:var(--muted);opaci
 <footer>DONOHOO & SONS INSURANCE • MILWAUKEE, WI</footer>
 </div>
 
-<div class="overlay" id="overlay">
+<!-- CONTACT OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeOverlay(event)">
   <div class="modal">
     <h3>Let’s connect — whatever’s easiest.</h3>
     <a href="tel:+14146981729" class="contact-btn call">📞 Call Andy</a>
     <a href="sms:+14146981729" class="contact-btn text">💬 Text Andy</a>
-    <a href="mailto:adonohoo@unisource-ins.com" class="contact-btn email">✉️ Email</a>
+    <a href="mailto:adonohoo@unisource-ins.com" class="contact-btn email">✉️ Email Andy</a>
+    <div class="close" onclick="forceClose()">Close</div>
   </div>
 </div>
 
 <script>
 function openContact(){document.getElementById('overlay').classList.add('active')}
+function closeOverlay(e){if(e.target.id==='overlay'){forceClose()}}
+function forceClose(){document.getElementById('overlay').classList.remove('active')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')forceClose()})
 </script>
 
 </body>
