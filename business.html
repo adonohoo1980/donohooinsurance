@@ -18,11 +18,6 @@
 }
 
 *{box-sizing:border-box}
-
-html{
-  scroll-behavior:smooth;
-}
-
 body{
   margin:0;
   font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
@@ -32,142 +27,117 @@ body{
 }
 
 /* Layout */
-.wrap{
-  max-width:1080px;
-  margin:auto;
-  padding:0 22px;
-}
+.wrap{max-width:1080px;margin:auto;padding:0 22px;}
+section{padding:70px 0}
 
-section{
-  padding:80px 0;
+/* Header */
+.header{
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
 }
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo{
+  font-weight:600;
+  letter-spacing:-0.02em;
+}
+.menu a{
+  margin-left:20px;
+  text-decoration:none;
+  color:var(--muted);
+  font-weight:500;
+}
+.menu a:hover{color:var(--ink)}
 
 /* Typography */
-h1,h2,h3{
+h1,h2{
   font-family:'Playfair Display',serif;
   letter-spacing:-0.02em;
 }
-
-h1{
-  font-size:42px;
-  line-height:1.15;
-  margin-bottom:18px;
-}
-
-h2{
-  font-size:30px;
-  margin-bottom:16px;
-}
-
-p{
-  font-size:17px;
-  line-height:1.7;
-  color:var(--muted);
-}
+h1{font-size:38px;line-height:1.15;margin-bottom:16px}
+h2{font-size:28px;margin-bottom:14px}
+p{font-size:17px;line-height:1.65;color:var(--muted)}
 
 /* Hero */
-.hero{
-  padding:110px 0 90px;
-  text-align:center;
-  animation:fadeIn 1.2s ease;
-}
-
-.hero p{
-  font-size:19px;
-  max-width:640px;
-  margin:auto;
-}
-
+.hero{text-align:center;padding:90px 0 70px}
+.hero p{max-width:620px;margin:auto}
 .cta{
   display:inline-block;
-  margin-top:28px;
+  margin-top:26px;
   padding:14px 26px;
   border-radius:999px;
   background:var(--accent);
   color:#fff;
   text-decoration:none;
   font-weight:500;
-  transition:all .25s ease;
 }
 
-.cta:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 22px rgba(0,0,0,.15);
-}
-
-/* Divider sections */
+/* Sections */
 .alt{
   background:#f9fafb;
   border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
 }
 
-/* Grid */
-.grid{
-  display:grid;
-  gap:26px;
-}
-
-.cols{
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-}
-
 /* Bullets */
-.bullets{
-  margin-top:14px;
-}
-
+.bullets{margin-top:18px}
 .bullets div{
-  margin-bottom:10px;
-  font-weight:500;
+  margin-bottom:12px;
+  font-weight:600;
+  letter-spacing:-0.01em;
   color:#1f2937;
 }
 
-/* Footer CTA */
-.closer{
-  text-align:center;
-  max-width:640px;
-  margin:auto;
-}
+/* Closing */
+.closer{text-align:center;max-width:640px;margin:auto}
 
-/* Animations */
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(20px)}
-  to{opacity:1; transform:translateY(0)}
-}
-
-/* Mobile polish */
+/* Mobile */
 @media (max-width:600px){
-  h1{font-size:34px}
-  h2{font-size:26px}
-  section{padding:60px 0}
+  h1{font-size:32px}
+  h2{font-size:24px}
+  section{padding:55px 0}
 }
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
+<div class="header">
+  <div class="wrap nav">
+    <div class="logo">Donohoo & Sons</div>
+    <div class="menu">
+      <a href="/">Home</a>
+      <a href="/business.html">Business</a>
+      <a href="mailto:adonohoo@unisource-ins.com">Contact</a>
+    </div>
+  </div>
+</div>
+
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <h1>Built in the Commercial World.<br>Designed for Business Owners.</h1>
+    <h1>Built in Commercial Insurance.<br>Built for Business Owners.</h1>
     <p>
-      I started my career working with complex commercial insurance at Sentry.
-      Today, I bring that same expertise to business owners who want one trusted
-      advisor for everything they protect.
+      I started my career working on complex commercial risks at Sentry.
+      Today, I help business owners simplify both business and personal
+      coverage — under one relationship.
     </p>
-    <a class="cta" href="mailto:adonohoo@unisource-ins.com">Schedule a Business Review</a>
+    <a class="cta" href="mailto:adonohoo@unisource-ins.com">Start a Conversation</a>
   </div>
 </section>
 
-<!-- SENTRY STORY -->
+<!-- SENTRY -->
 <section>
   <div class="wrap">
     <h2>Where It Started</h2>
     <p>
-      I began my insurance career at Sentry Insurance, working in highly
-      specialized commercial programs — including auto dealerships and complex
-      liability risks. That experience shaped how I approach every client today:
+      My foundation in insurance was built working with specialized
+      commercial programs, including auto dealerships and complex liability
+      risks. That background still shapes how I work today:
       understand the business first, then build protection around it.
     </p>
   </div>
@@ -176,22 +146,21 @@ p{
 <!-- ONE AGENT -->
 <section class="alt">
   <div class="wrap">
-    <h2>One Advisor. Total Protection.</h2>
+    <h2>One Relationship. Done Right.</h2>
     <p>
-      Most business owners are forced to split their insurance across multiple
-      agents — one for business, another for personal, and no one truly seeing
-      the full picture.
+      Most business owners end up with multiple agents — one for business,
+      another for personal — and no one seeing the full picture.
     </p>
     <p>
-      Donohoo & Sons was built to be different. My clients rely on one
-      relationship that covers both their business and personal world.
+      I built my practice to be different. One relationship that covers both
+      sides of your world.
     </p>
 
-    <div class="grid cols bullets">
-      <div>Business insurance strategy</div>
-      <div>Personal & umbrella coverage</div>
-      <div>Life and long-term planning</div>
-      <div>Claim advocacy when it matters most</div>
+    <div class="bullets">
+      <div>Business insurance done right</div>
+      <div>Personal and umbrella protection</div>
+      <div>Long-term planning guidance</div>
+      <div>Real help at claim time</div>
     </div>
   </div>
 </section>
@@ -199,67 +168,49 @@ p{
 <!-- INDUSTRIES -->
 <section>
   <div class="wrap">
-    <h2>Built for Complexity. Comfortable Anywhere.</h2>
+    <h2>Comfortable Across Industries</h2>
     <p>
-      While my background includes highly specialized industries, today I work
-      with a wide range of business owners across Wisconsin — from contractors
-      and dealerships to professional services and family-owned companies.
+      I work with a wide range of business owners across Wisconsin —
+      from contractors and dealerships to professionals and
+      family-owned companies.
     </p>
 
-    <div class="grid cols bullets">
-      <div>Contractors & Trades</div>
-      <div>Auto Dealers & Automotive</div>
-      <div>Real Estate Investors</div>
-      <div>Professional Services</div>
-      <div>Family-Owned Businesses</div>
-      <div>Light Manufacturing</div>
-      <div>Retail & Hospitality</div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY CLIENTS CHOOSE YOU -->
-<section class="alt">
-  <div class="wrap">
-    <h2>Why Business Owners Choose Donohoo & Sons</h2>
-
-    <div class="grid cols bullets">
-      <div>Direct access to your agent</div>
-      <div>No call centers</div>
-      <div>Multi-carrier strategy</div>
-      <div>Commercial + personal integration</div>
-      <div>Wisconsin-based relationships</div>
-      <div>Long-term partnership mindset</div>
+    <div class="bullets">
+      <div>Contractors and trades</div>
+      <div>Auto dealers and automotive</div>
+      <div>Real estate investors</div>
+      <div>Professional services</div>
+      <div>Family-owned businesses</div>
+      <div>Retail and hospitality</div>
     </div>
   </div>
 </section>
 
 <!-- INTEGRATION -->
-<section>
+<section class="alt">
   <div class="wrap">
-    <h2>Where Business and Personal Coverage Connect</h2>
+    <h2>Where Business and Personal Connect</h2>
     <p>
-      The biggest coverage gaps I see aren’t inside policies — they’re between
-      them. Business owners face unique exposures that don’t stop at the office.
-      Personal umbrellas, vehicles, rental properties, and estate planning all
-      tie together.
+      The biggest gaps I see aren’t inside policies — they’re between them.
+      Business owners carry risks that don’t stop at the office.
     </p>
     <p>
-      That’s why I manage both sides — so nothing falls through the cracks.
+      When everything is coordinated under one strategy, coverage is
+      clearer and decisions are easier.
     </p>
   </div>
 </section>
 
-<!-- CLOSER -->
-<section class="alt">
+<!-- CLOSING -->
+<section>
   <div class="wrap closer">
-    <h2>If You Value Having One Trusted Advisor</h2>
+    <h2>Let’s Keep Insurance Simple</h2>
     <p>
-      If you’re looking for a long-term insurance partner — not just another
-      quote — I’d be glad to connect. Whether you’re starting a business,
-      growing one, or simply want a second opinion, I’m always happy to talk.
+      If you want one person who understands both your business and
+      personal world, I’m always happy to connect.
+      No pressure — just a straightforward conversation.
     </p>
-    <a class="cta" href="mailto:adonohoo@unisource-ins.com">Start a Conversation</a>
+    <a class="cta" href="mailto:adonohoo@unisource-ins.com">Reach Out Anytime</a>
   </div>
 </section>
 
