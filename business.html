@@ -19,11 +19,11 @@
 body{margin:0;font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink)}
 .wrap{max-width:900px;margin:auto;padding:70px 18px}
 
-/* header matches homepage */
+/* HEADER */
 .topbar{border-bottom:1px solid var(--line);padding:14px 0}
 .nav{max-width:1050px;margin:auto;padding:0 18px;display:flex;justify-content:space-between;align-items:center}
 .logo-img{height:34px}
-.menu a{margin-left:20px;text-decoration:none;color:var(--muted);font-weight:500}
+.menu a{margin-left:20px;text-decoration:none;color:var(--muted);font-weight:500;cursor:pointer}
 .menu a:hover{color:var(--ink)}
 
 h1,h2{font-family:'Playfair Display';letter-spacing:-.02em}
@@ -39,9 +39,15 @@ p{color:var(--muted);line-height:1.7}
 }
 .cta:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
 
+/* SHARED OVERLAY */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.25s}
 .overlay.active{opacity:1;pointer-events:auto}
-.modal{background:#fff;padding:30px;border-radius:22px;text-align:center}
+.modal{background:#fff;padding:28px 24px;border-radius:22px;text-align:center;width:min(90%,420px)}
+.contact-btn{display:block;padding:14px;border-radius:999px;margin:8px 0;font-weight:600;text-decoration:none}
+.call{background:#111827;color:#fff}
+.text{border:1px solid #111827;color:#111827}
+.email{background:#f1f5f9;color:#111827}
+.close{margin-top:12px;font-size:13px;color:#6e6e73;cursor:pointer}
 
 @media(max-width:768px){.menu{display:none}}
 </style>
@@ -68,7 +74,7 @@ p{color:var(--muted);line-height:1.7}
     That experience still drives how I help business owners today.
   </h1>
   <p style="text-align:center;margin-top:14px">
-    I help business owners simplify both business and personal coverage under one relationship.
+    I help business owners simplify both business and personal coverage under one trusted relationship.
   </p>
   <div style="text-align:center">
     <div class="cta" onclick="openContact()">Start a Conversation</div>
@@ -80,11 +86,6 @@ p{color:var(--muted);line-height:1.7}
   <p>My foundation was built working with complex commercial risks, including dealerships and specialized liability programs.</p>
 </div>
 
-<div class="section">
-  <h2>One Relationship. Done Right.</h2>
-  <p>Business insurance, personal coverage, and long-term planning — handled together.</p>
-</div>
-
 <div class="section" style="text-align:center">
   <h2>Let’s Keep Insurance Simple</h2>
   <p>If you want one person who understands both sides, I’m always happy to connect.</p>
@@ -93,17 +94,22 @@ p{color:var(--muted);line-height:1.7}
 
 </div>
 
-<div class="overlay" id="overlay">
+<!-- SHARED OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeOverlay(event)">
   <div class="modal">
     <h3>Let’s connect — whatever’s easiest.</h3>
-    <a href="tel:+14146981729">📞 Call Andy</a><br><br>
-    <a href="sms:+14146981729">💬 Text Andy</a><br><br>
-    <a href="mailto:adonohoo@unisource-ins.com">✉️ Email</a>
+    <a href="tel:+14146981729" class="contact-btn call">📞 Call Andy</a>
+    <a href="sms:+14146981729" class="contact-btn text">💬 Text Andy</a>
+    <a href="mailto:adonohoo@unisource-ins.com" class="contact-btn email">✉️ Email Andy</a>
+    <div class="close" onclick="forceClose()">Close</div>
   </div>
 </div>
 
 <script>
 function openContact(){document.getElementById('overlay').classList.add('active')}
+function closeOverlay(e){if(e.target.id==='overlay'){forceClose()}}
+function forceClose(){document.getElementById('overlay').classList.remove('active')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')forceClose()})
 </script>
 
 </body>
