@@ -25,7 +25,7 @@ body{
 
 .wrap{max-width:1050px;margin:auto;padding:70px 18px}
 
-/* HEADER — MATCHES HOMEPAGE */
+/* HEADER */
 .topbar{border-bottom:1px solid var(--line);padding:14px 0}
 .nav{max-width:1050px;margin:auto;padding:0 18px;display:flex;justify-content:space-between;align-items:center}
 .logo-img{height:34px}
@@ -37,7 +37,6 @@ body{
 h1{
   font-family:'Playfair Display';
   font-size:clamp(36px,6vw,56px);
-  line-height:1.1;
 }
 .sub{
   color:var(--muted);
@@ -45,8 +44,6 @@ h1{
   max-width:640px;
   margin:auto;
 }
-
-/* CONTACT BUTTON */
 .contact-btn{
   margin-top:28px;
   display:inline-block;
@@ -56,14 +53,9 @@ h1{
   color:#fff;
   font-weight:600;
   cursor:pointer;
-  transition:.2s ease;
-}
-.contact-btn:hover{
-  transform:translateY(-1px);
-  box-shadow:0 8px 20px rgba(0,0,0,.2);
 }
 
-/* CARDS */
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -81,10 +73,38 @@ h1{
   margin-top:0;
 }
 
+/* TRUST SECTION */
+.trust{
+  margin:70px 0;
+  text-align:center;
+}
+.trust h2{
+  font-family:'Playfair Display';
+  font-size:32px;
+}
+.trust p{
+  max-width:640px;
+  margin:10px auto;
+  color:var(--muted);
+}
+
+/* DIFFERENCE SECTION */
+.diff{
+  background:#fff;
+  padding:45px 30px;
+  border-radius:22px;
+  margin:50px 0;
+  box-shadow:0 12px 30px rgba(0,0,0,.04);
+}
+.diff h3{
+  font-family:'Playfair Display';
+  margin-top:0;
+}
+
 /* FOOTER */
 footer{text-align:center;margin-top:60px;font-size:11px;color:var(--muted);opacity:.6}
 
-/* OVERLAY (same system as homepage) */
+/* OVERLAY */
 .overlay{
   position:fixed;inset:0;background:rgba(0,0,0,.35);
   display:flex;align-items:center;justify-content:center;
@@ -94,15 +114,10 @@ footer{text-align:center;margin-top:60px;font-size:11px;color:var(--muted);opaci
 .modal{
   background:#fff;padding:28px 24px;border-radius:22px;
   width:min(90%,420px);text-align:center;
-  box-shadow:0 30px 70px rgba(0,0,0,.2);
 }
 .contact-option{
-  display:block;
-  padding:14px;
-  border-radius:999px;
-  margin:8px 0;
-  font-weight:600;
-  text-decoration:none;
+  display:block;padding:14px;border-radius:999px;margin:8px 0;
+  font-weight:600;text-decoration:none;
 }
 .call{background:#111827;color:#fff}
 .text{border:1px solid #111827;color:#111827}
@@ -113,7 +128,6 @@ footer{text-align:center;margin-top:60px;font-size:11px;color:var(--muted);opaci
 
 <body>
 
-<!-- HEADER (IDENTICAL STYLE) -->
 <div class="topbar">
   <div class="nav">
     <a href="/"><img src="logo.png" class="logo-img"></a>
@@ -133,25 +147,39 @@ footer{text-align:center;margin-top:60px;font-size:11px;color:var(--muted);opaci
     Home, auto, and umbrella coverage built around real relationships —
     not call centers or shortcuts.
   </p>
-
   <div class="contact-btn" onclick="openContact()">Contact Andy</div>
 </header>
 
 <section class="grid">
   <div class="card">
     <h3>Home Insurance</h3>
-    <p>Coverage built properly from the start — replacement cost clarity, water risks, and real protection where it matters.</p>
+    <p>Replacement cost clarity, water risk protection, and policies built the right way from day one.</p>
   </div>
-
   <div class="card">
     <h3>Auto Insurance</h3>
-    <p>Smart protection without guesswork. The right deductibles, liability limits, and guidance if something happens.</p>
+    <p>Smart deductibles, proper liability limits, and real help if you ever need to file a claim.</p>
   </div>
-
   <div class="card">
-    <h3>Umbrella Protection</h3>
-    <p>Extra liability coverage for families building assets and wanting peace of mind beyond basic policies.</p>
+    <h3>Umbrella Coverage</h3>
+    <p>Extra protection for families building assets who want peace of mind beyond basic policies.</p>
   </div>
+</section>
+
+<section class="trust">
+  <h2>Why Clients Stay With Me</h2>
+  <p>No call centers. No handoffs. Just long-term relationships and honest advice.</p>
+  <p>Most of my new clients come from referrals — which tells you everything.</p>
+</section>
+
+<section class="diff">
+  <h3>A Different Kind of Insurance Experience</h3>
+  <p>
+    Most people don’t realize how different policies can be until something happens.
+    I built this agency to make insurance simple, personal, and done right from the start.
+  </p>
+  <p>
+    You’ll always know who you’re calling. And I’ll always be available when it matters.
+  </p>
 </section>
 
 <footer>DONOHOO & SONS INSURANCE • MILWAUKEE, WI</footer>
