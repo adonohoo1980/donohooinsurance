@@ -30,7 +30,7 @@ body{
   padding:70px 18px;
 }
 
-/* HEADER */
+/* HEADER (MATCH HOMEPAGE) */
 .topbar{border-bottom:1px solid var(--line);padding:14px 0}
 .nav{
   max-width:1050px;
@@ -41,6 +41,14 @@ body{
   align-items:center;
 }
 .logo-img{height:34px}
+.menu a{
+  margin-left:20px;
+  text-decoration:none;
+  color:var(--muted);
+  font-weight:500;
+  cursor:pointer;
+}
+.menu a:hover{color:var(--ink)}
 
 /* HERO */
 .hero{
@@ -120,38 +128,63 @@ h1{
   margin-top:80px;
 }
 
+/* ===== CONTACT OVERLAY (FIXED + MATCH HOMEPAGE) ===== */
 .overlay{
-  position:fixed;
-  inset:0;
+  position:fixed; inset:0;
   background:rgba(0,0,0,.35);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  opacity:0;
-  pointer-events:none;
-  transition:.25s;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:.25s ease;
+  z-index:999;
 }
 .overlay.active{opacity:1;pointer-events:auto}
 .modal{
   background:#fff;
-  padding:28px;
-  border-radius:20px;
+  padding:28px 24px;
+  border-radius:22px;
+  width:min(90%,420px);
   text-align:center;
+  box-shadow:0 30px 70px rgba(0,0,0,.2);
+  transform:translateY(10px) scale(.97);
+  transition:.25s ease;
 }
+.overlay.active .modal{transform:none}
+
+.contact-btn{
+  display:block;
+  padding:14px;
+  border-radius:999px;
+  margin:8px 0;
+  font-weight:600;
+  text-decoration:none;
+  cursor:pointer;
+}
+.call{background:#111827;color:#fff}
+.text{border:1px solid #111827;color:#111827}
+.email{background:#f1f5f9;color:#111827}
+.close{margin-top:12px;font-size:13px;color:#6e6e73;cursor:pointer}
 
 /* MOBILE */
 @media(max-width:900px){
   .split{grid-template-columns:1fr;gap:30px}
   h1{font-size:32px}
 }
+@media(max-width:768px){
+  .menu{display:none}
+}
 </style>
 </head>
 
 <body>
 
+<!-- HEADER (NOW MATCHES HOMEPAGE) -->
 <div class="topbar">
   <div class="nav">
-    <img src="logo.png" class="logo-img">
+    <a href="/"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
+    <div class="menu">
+      <a href="/">Home</a>
+      <a href="/business.html">Business</a>
+      <a onclick="openContact()">Contact</a>
+    </div>
   </div>
 </div>
 
@@ -194,6 +227,24 @@ h1{
 </div>
 
 </div>
+
+<!-- CONTACT OVERLAY (THIS WAS MISSING — BUTTONS NOW WORK) -->
+<div class="overlay" id="overlay" onclick="closeOverlay(event)">
+  <div class="modal">
+    <h3>Let’s connect — whatever’s easiest.</h3>
+    <a href="tel:+14146981729" class="contact-btn call">📞 Call Andy</a>
+    <a href="sms:+14146981729" class="contact-btn text">💬 Text Andy</a>
+    <a href="mailto:adonohoo@unisource-ins.com" class="contact-btn email">✉️ Email Andy</a>
+    <div class="close" onclick="forceClose()">Close</div>
+  </div>
+</div>
+
+<script>
+function openContact(){document.getElementById('overlay').classList.add('active')}
+function closeOverlay(e){if(e.target.id==='overlay'){forceClose()}}
+function forceClose(){document.getElementById('overlay').classList.remove('active')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')forceClose()})
+</script>
 
 </body>
 </html>
