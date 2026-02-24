@@ -23,6 +23,7 @@ body{
   color:var(--ink);
 }
 
+/* MATCH HOMEPAGE WIDTH */
 .wrap{
   max-width:1050px;
   margin:auto;
@@ -38,10 +39,8 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:12px;
 }
 .logo-img{height:34px;display:block}
-
 .menu a{
   margin-left:20px;
   text-decoration:none;
@@ -51,21 +50,9 @@ body{
 }
 .menu a:hover{color:var(--ink)}
 
-/* Mobile menu button */
-.mobile-actions{display:none;align-items:center;gap:10px}
-.mobile-btn{
-  border:1px solid var(--line);
-  background:#fff;
-  color:var(--ink);
-  border-radius:999px;
-  padding:10px 14px;
-  font-weight:600;
-  font-size:14px;
-  cursor:pointer;
-}
-
 /* HERO */
 .hero{text-align:center;margin-bottom:60px}
+
 h1{
   font-family:'Playfair Display';
   font-size:40px;
@@ -73,11 +60,14 @@ h1{
   max-width:780px;
   margin:auto;
 }
+
 .hero p{
   color:var(--muted);
   margin-top:16px;
   font-size:18px;
 }
+
+/* BUTTON */
 .cta{
   display:inline-block;
   margin-top:28px;
@@ -94,7 +84,7 @@ h1{
   box-shadow:0 10px 25px rgba(0,0,0,.2);
 }
 
-/* SPLIT */
+/* SPLIT SECTION */
 .split{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -102,22 +92,25 @@ h1{
   align-items:center;
   margin:80px 0;
 }
+
 .split h2{
   font-family:'Playfair Display';
   font-size:28px;
 }
+
 .split p{
   color:var(--muted);
   line-height:1.7;
 }
 
-/* CARDS */
+/* LIGHT CARD ROW */
 .cards{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:20px;
   margin:60px 0;
 }
+
 .card{
   background:#fff;
   padding:28px 22px;
@@ -125,9 +118,14 @@ h1{
   box-shadow:0 10px 25px rgba(0,0,0,.04);
   font-weight:600;
 }
-.center{text-align:center;margin-top:80px}
 
-/* CONTACT OVERLAY */
+/* CLOSING */
+.center{
+  text-align:center;
+  margin-top:80px;
+}
+
+/* ===== CONTACT OVERLAY (WORKING) ===== */
 .overlay{
   position:fixed;inset:0;background:rgba(0,0,0,.35);
   display:flex;align-items:center;justify-content:center;
@@ -138,8 +136,7 @@ h1{
   background:#fff;padding:28px 24px;border-radius:22px;
   width:min(90%,420px);text-align:center;
   box-shadow:0 30px 70px rgba(0,0,0,.2);
-  transform:translateY(10px) scale(.97);
-  transition:.25s ease;
+  transform:translateY(10px) scale(.97);transition:.25s ease;
 }
 .overlay.active .modal{transform:none}
 
@@ -152,56 +149,13 @@ h1{
 .email{background:#f1f5f9;color:#111827}
 .close{margin-top:12px;font-size:13px;color:#6e6e73;cursor:pointer}
 
-/* MOBILE MENU OVERLAY (separate from contact overlay) */
-.menu-overlay{
-  position:fixed; inset:0;
-  background:rgba(0,0,0,.35);
-  display:flex; align-items:center; justify-content:center;
-  opacity:0; pointer-events:none;
-  transition:.25s ease;
-  z-index:998;
-}
-.menu-overlay.active{opacity:1;pointer-events:auto}
-.menu-modal{
-  width:min(92%,420px);
-  background:#fff;
-  border-radius:22px;
-  padding:22px;
-  box-shadow:0 30px 70px rgba(0,0,0,.2);
-  text-align:left;
-}
-.menu-modal h3{
-  margin:0 0 10px;
-  font-family:'Playfair Display';
-}
-.menu-link{
-  display:block;
-  padding:14px 14px;
-  border-radius:16px;
-  text-decoration:none;
-  color:var(--ink);
-  font-weight:600;
-  border:1px solid rgba(0,0,0,.06);
-  margin:10px 0;
-  background:#fafafa;
-}
-.menu-link:hover{background:#f4f4f5}
-.menu-close{
-  margin-top:6px;
-  text-align:center;
-  color:var(--muted);
-  font-size:13px;
-  cursor:pointer;
-}
-
-/* RESPONSIVE */
+/* MOBILE (MATCH PERSONAL PAGE: hide menu entirely) */
 @media(max-width:900px){
-  .split{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr;gap:30px}
   h1{font-size:32px}
 }
 @media(max-width:768px){
   .menu{display:none}
-  .mobile-actions{display:flex}
 }
 </style>
 </head>
@@ -212,70 +166,52 @@ h1{
 <div class="topbar">
   <div class="nav">
     <a href="/"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
-
-    <!-- Desktop menu -->
     <div class="menu">
       <a href="/">Home</a>
       <a href="/families.html">Personal</a>
       <a onclick="openContact()">Contact</a>
-    </div>
-
-    <!-- Mobile actions -->
-    <div class="mobile-actions">
-      <button class="mobile-btn" type="button" onclick="openMenu()">Menu</button>
     </div>
   </div>
 </div>
 
 <div class="wrap">
 
-  <div class="hero">
-    <h1>
-      I started on the commercial side of insurance.<br>
-      That experience still drives how I help business owners today.
-    </h1>
-    <p>I help business owners simplify both business and personal coverage under one relationship.</p>
-    <div class="cta" onclick="openContact()">Start a Conversation</div>
-  </div>
-
-  <div class="split">
-    <div>
-      <h2>Where It Started</h2>
-      <p>
-        My foundation was built working with complex commercial risks,
-        including dealerships and specialized liability programs.
-        That background still shapes how I approach every client today.
-      </p>
-    </div>
-    <div></div>
-  </div>
-
-  <div class="cards">
-    <div class="card">Business insurance done right</div>
-    <div class="card">Personal + umbrella integration</div>
-    <div class="card">Long-term planning guidance</div>
-    <div class="card">Real help at claim time</div>
-  </div>
-
-  <div class="center">
-    <h2 style="font-family:'Playfair Display';">Let’s Keep Insurance Simple</h2>
-    <p style="color:var(--muted)">
-      If you want one person who understands both sides, I’m always happy to connect.
-    </p>
-    <div class="cta" onclick="openContact()">Reach Out Anytime</div>
-  </div>
-
+<div class="hero">
+  <h1>
+    I started on the commercial side of insurance.<br>
+    That experience still drives how I help business owners today.
+  </h1>
+  <p>I help business owners simplify both business and personal coverage under one relationship.</p>
+  <div class="cta" onclick="openContact()">Start a Conversation</div>
 </div>
 
-<!-- MOBILE MENU OVERLAY -->
-<div class="menu-overlay" id="menuOverlay" onclick="closeMenuOverlay(event)">
-  <div class="menu-modal">
-    <h3>Menu</h3>
-    <a class="menu-link" href="/">Home</a>
-    <a class="menu-link" href="/families.html">Personal</a>
-    <a class="menu-link" href="javascript:void(0)" onclick="forceCloseMenu();openContact()">Contact</a>
-    <div class="menu-close" onclick="forceCloseMenu()">Close</div>
+<div class="split">
+  <div>
+    <h2>Where It Started</h2>
+    <p>
+      My foundation was built working with complex commercial risks,
+      including dealerships and specialized liability programs.
+      That background still shapes how I approach every client today.
+    </p>
   </div>
+  <div></div>
+</div>
+
+<div class="cards">
+  <div class="card">Business insurance done right</div>
+  <div class="card">Personal + umbrella integration</div>
+  <div class="card">Long-term planning guidance</div>
+  <div class="card">Real help at claim time</div>
+</div>
+
+<div class="center">
+  <h2 style="font-family:'Playfair Display';">Let’s Keep Insurance Simple</h2>
+  <p style="color:var(--muted)">
+    If you want one person who understands both sides, I’m always happy to connect.
+  </p>
+  <div class="cta" onclick="openContact()">Reach Out Anytime</div>
+</div>
+
 </div>
 
 <!-- CONTACT OVERLAY -->
@@ -290,23 +226,10 @@ h1{
 </div>
 
 <script>
-/* Contact overlay */
 function openContact(){document.getElementById('overlay').classList.add('active')}
 function closeOverlay(e){if(e.target.id==='overlay'){forceClose()}}
 function forceClose(){document.getElementById('overlay').classList.remove('active')}
-
-/* Mobile menu overlay */
-function openMenu(){document.getElementById('menuOverlay').classList.add('active')}
-function closeMenuOverlay(e){if(e.target.id==='menuOverlay'){forceCloseMenu()}}
-function forceCloseMenu(){document.getElementById('menuOverlay').classList.remove('active')}
-
-/* Esc closes whichever is open */
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){
-    forceClose();
-    forceCloseMenu();
-  }
-});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')forceClose()})
 </script>
 
 </body>
