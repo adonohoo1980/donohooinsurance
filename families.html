@@ -37,14 +37,17 @@ body{
 h1{
   font-family:'Playfair Display';
   font-size:clamp(36px,6vw,56px);
+  line-height:1.1;
 }
 .sub{
   color:var(--muted);
   font-size:20px;
-  max-width:640px;
-  margin:auto;
+  max-width:680px;
+  margin:10px auto 0;
 }
-.contact-btn{
+
+/* Contact button */
+.hero-cta{
   margin-top:28px;
   display:inline-block;
   padding:14px 28px;
@@ -53,9 +56,14 @@ h1{
   color:#fff;
   font-weight:600;
   cursor:pointer;
+  transition:.2s ease;
+}
+.hero-cta:hover{
+  transform:translateY(-1px);
+  box-shadow:0 8px 20px rgba(0,0,0,.2);
 }
 
-/* GRID */
+/* Primary grid (Home/Auto/Umbrella) */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -70,38 +78,107 @@ h1{
 }
 .card h3{
   font-family:'Playfair Display';
-  margin-top:0;
+  margin:0 0 10px;
 }
+.card p{color:var(--muted);line-height:1.55;margin:0}
 
-/* TRUST SECTION */
+/* TRUST */
 .trust{
-  margin:70px 0;
+  margin:70px 0 40px;
   text-align:center;
 }
 .trust h2{
   font-family:'Playfair Display';
   font-size:32px;
+  margin:0 0 10px;
 }
 .trust p{
-  max-width:640px;
-  margin:10px auto;
+  max-width:720px;
+  margin:10px auto 0;
   color:var(--muted);
+  line-height:1.6;
 }
 
-/* DIFFERENCE SECTION */
-.diff{
+/* REPLACEMENT SECTION (better “pop”, better width) */
+.feature-wrap{
+  max-width:860px;
+  margin:50px auto 0;
+}
+
+.feature-head{
   background:#fff;
-  padding:45px 30px;
-  border-radius:22px;
-  margin:50px 0;
+  border-radius:24px;
+  padding:34px 28px;
   box-shadow:0 12px 30px rgba(0,0,0,.04);
-}
-.diff h3{
-  font-family:'Playfair Display';
-  margin-top:0;
+  border:1px solid rgba(0,0,0,.04);
 }
 
-/* FOOTER */
+.feature-head h3{
+  font-family:'Playfair Display';
+  font-size:28px;
+  margin:0 0 10px;
+  color:var(--navy);
+}
+
+.feature-head p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.pill-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:14px;
+  margin-top:16px;
+}
+
+.pill{
+  background:#fff;
+  border-radius:20px;
+  padding:18px 18px;
+  box-shadow:0 10px 22px rgba(0,0,0,.03);
+  border:1px solid rgba(0,0,0,.04);
+}
+
+.pill strong{
+  display:block;
+  font-weight:600;
+  margin-bottom:6px;
+}
+
+.pill span{
+  display:block;
+  color:var(--muted);
+  line-height:1.45;
+}
+
+/* SECOND CTA (keeps page from ending abruptly) */
+.cta-box{
+  background:#fff;
+  border-radius:26px;
+  text-align:center;
+  padding:40px 18px;
+  margin-top:55px;
+  box-shadow:0 10px 25px rgba(0,0,0,.03);
+}
+.cta-box h2{font-family:'Playfair Display';font-size:32px;margin:0 0 8px}
+.cta-box p{color:var(--muted);margin:0 0 18px}
+
+.btn{
+  display:block;
+  padding:14px;
+  border-radius:100px;
+  font-weight:600;
+  text-decoration:none;
+  margin:10px auto;
+  max-width:280px;
+  transition:.2s ease;
+  cursor:pointer;
+}
+.primary{background:var(--navy);color:#fff}
+.primary:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(0,0,0,.2)}
+
 footer{text-align:center;margin-top:60px;font-size:11px;color:var(--muted);opacity:.6}
 
 /* OVERLAY */
@@ -114,20 +191,33 @@ footer{text-align:center;margin-top:60px;font-size:11px;color:var(--muted);opaci
 .modal{
   background:#fff;padding:28px 24px;border-radius:22px;
   width:min(90%,420px);text-align:center;
+  box-shadow:0 30px 70px rgba(0,0,0,.2);
+  transform:translateY(10px) scale(.97);transition:.25s ease;
 }
+.overlay.active .modal{transform:none}
+
 .contact-option{
   display:block;padding:14px;border-radius:999px;margin:8px 0;
-  font-weight:600;text-decoration:none;
+  font-weight:600;text-decoration:none;cursor:pointer;
 }
 .call{background:#111827;color:#fff}
 .text{border:1px solid #111827;color:#111827}
 .email{background:#f1f5f9;color:#111827}
 .close{margin-top:12px;font-size:13px;color:#6e6e73;cursor:pointer}
+
+@media(max-width:900px){
+  .pill-grid{grid-template-columns:1fr}
+}
+
+@media(max-width:768px){
+  .menu{display:none}
+}
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <div class="topbar">
   <div class="nav">
     <a href="/"><img src="logo.png" class="logo-img"></a>
@@ -144,16 +234,15 @@ footer{text-align:center;margin-top:60px;font-size:11px;color:var(--muted);opaci
 <header class="hero">
   <h1>Personal Insurance Done Right</h1>
   <p class="sub">
-    Home, auto, and umbrella coverage built around real relationships —
-    not call centers or shortcuts.
+    Home, auto, and umbrella coverage built around real relationships — not call centers or shortcuts.
   </p>
-  <div class="contact-btn" onclick="openContact()">Contact Andy</div>
+  <div class="hero-cta" onclick="openContact()">Contact Andy</div>
 </header>
 
 <section class="grid">
   <div class="card">
     <h3>Home Insurance</h3>
-    <p>Replacement cost clarity, water risk protection, and policies built the right way from day one.</p>
+    <p>Replacement cost clarity, water risk protection, and coverage built properly from day one.</p>
   </div>
   <div class="card">
     <h3>Auto Insurance</h3>
@@ -161,26 +250,44 @@ footer{text-align:center;margin-top:60px;font-size:11px;color:var(--muted);opaci
   </div>
   <div class="card">
     <h3>Umbrella Coverage</h3>
-    <p>Extra protection for families building assets who want peace of mind beyond basic policies.</p>
+    <p>Extra liability protection for families and professionals building assets and wanting peace of mind.</p>
   </div>
 </section>
 
 <section class="trust">
   <h2>Why Clients Stay With Me</h2>
-  <p>No call centers. No handoffs. Just long-term relationships and honest advice.</p>
+  <p>No handoffs. No phone trees. Just straightforward advice and coverage you’ll feel good about.</p>
   <p>Many of the people I work with come through introductions from clients and friends, and I’m always grateful for that trust.</p>
 </section>
 
-<section class="diff">
-  <h3>A Different Kind of Insurance Experience</h3>
-  <p>
-    Most people don’t realize how different policies can be until something happens.
-    I built this agency to make insurance simple, personal, and done right from the start.
-  </p>
-  <p>
-    You’ll always know who you’re calling. And I’ll always be available when it matters.
-  </p>
+<!-- REPLACEMENT FOR THE “DIFFERENT KIND OF INSURANCE” BOX -->
+<section class="feature-wrap">
+  <div class="feature-head">
+    <h3>What Working With Me Feels Like</h3>
+    <p>Clear options, clean explanations, and a plan that actually fits your life — without the runaround.</p>
+
+    <div class="pill-grid">
+      <div class="pill">
+        <strong>Simple & Clear</strong>
+        <span>No confusing jargon. You’ll understand what you’re buying and why.</span>
+      </div>
+      <div class="pill">
+        <strong>Built Correctly</strong>
+        <span>Coverage designed with real-world risks in mind, not just the lowest number.</span>
+      </div>
+      <div class="pill">
+        <strong>Here When It Matters</strong>
+        <span>If something happens, you’re not doing it alone — you call me.</span>
+      </div>
+    </div>
+  </div>
 </section>
+
+<div class="cta-box">
+  <h2>Need a quick quote or second opinion?</h2>
+  <p>I respect your time. I make it easy.</p>
+  <div class="btn primary" onclick="openContact()">Start a Conversation</div>
+</div>
 
 <footer>DONOHOO & SONS INSURANCE • MILWAUKEE, WI</footer>
 </div>
@@ -200,8 +307,8 @@ footer{text-align:center;margin-top:60px;font-size:11px;color:var(--muted);opaci
 function openContact(){document.getElementById('overlay').classList.add('active')}
 function closeOverlay(e){if(e.target.id==='overlay'){forceClose()}}
 function forceClose(){document.getElementById('overlay').classList.remove('active')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')forceClose()})
 </script>
 
 </body>
 </html>
-
