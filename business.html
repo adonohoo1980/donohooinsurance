@@ -23,15 +23,14 @@ body{
   color:var(--ink);
 }
 
-/* MATCH HOMEPAGE WIDTH */
 .wrap{
   max-width:1050px;
   margin:auto;
   padding:70px 18px;
 }
 
-/* HEADER (MATCH HOMEPAGE) */
-.topbar{border-bottom:1px solid var(--line);padding:14px 0}
+/* HEADER (MATCHES PERSONAL PAGE) */
+.topbar{border-bottom:1px solid var(--line);padding:14px 0;background:var(--bg)}
 .nav{
   max-width:1050px;
   margin:auto;
@@ -51,10 +50,7 @@ body{
 .menu a:hover{color:var(--ink)}
 
 /* HERO */
-.hero{
-  text-align:center;
-  margin-bottom:60px;
-}
+.hero{text-align:center;margin-bottom:60px}
 
 h1{
   font-family:'Playfair Display';
@@ -70,7 +66,6 @@ h1{
   font-size:18px;
 }
 
-/* BUTTON */
 .cta{
   display:inline-block;
   margin-top:28px;
@@ -80,14 +75,9 @@ h1{
   color:#fff;
   font-weight:600;
   cursor:pointer;
-  transition:.2s;
-}
-.cta:hover{
-  transform:translateY(-1px);
-  box-shadow:0 10px 25px rgba(0,0,0,.2);
 }
 
-/* SPLIT SECTION */
+/* SPLIT */
 .split{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -106,7 +96,7 @@ h1{
   line-height:1.7;
 }
 
-/* LIGHT CARD ROW */
+/* CARDS */
 .cards{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -122,50 +112,31 @@ h1{
   font-weight:600;
 }
 
-/* CLOSING */
-.center{
-  text-align:center;
-  margin-top:80px;
-}
+.center{text-align:center;margin-top:80px}
 
-/* ===== CONTACT OVERLAY (FIXED + MATCH HOMEPAGE) ===== */
+/* CONTACT OVERLAY */
 .overlay{
-  position:fixed; inset:0;
-  background:rgba(0,0,0,.35);
-  display:flex; align-items:center; justify-content:center;
-  opacity:0; pointer-events:none; transition:.25s ease;
-  z-index:999;
+  position:fixed;inset:0;background:rgba(0,0,0,.35);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:.25s ease;z-index:999;
 }
 .overlay.active{opacity:1;pointer-events:auto}
 .modal{
-  background:#fff;
-  padding:28px 24px;
-  border-radius:22px;
-  width:min(90%,420px);
-  text-align:center;
+  background:#fff;padding:28px 24px;border-radius:22px;
+  width:min(90%,420px);text-align:center;
   box-shadow:0 30px 70px rgba(0,0,0,.2);
-  transform:translateY(10px) scale(.97);
-  transition:.25s ease;
 }
-.overlay.active .modal{transform:none}
-
 .contact-btn{
-  display:block;
-  padding:14px;
-  border-radius:999px;
-  margin:8px 0;
-  font-weight:600;
-  text-decoration:none;
-  cursor:pointer;
+  display:block;padding:14px;border-radius:999px;margin:8px 0;
+  font-weight:600;text-decoration:none;cursor:pointer;
 }
 .call{background:#111827;color:#fff}
 .text{border:1px solid #111827;color:#111827}
 .email{background:#f1f5f9;color:#111827}
 .close{margin-top:12px;font-size:13px;color:#6e6e73;cursor:pointer}
 
-/* MOBILE */
 @media(max-width:900px){
-  .split{grid-template-columns:1fr;gap:30px}
+  .split{grid-template-columns:1fr}
   h1{font-size:32px}
 }
 @media(max-width:768px){
@@ -176,13 +147,13 @@ h1{
 
 <body>
 
-<!-- HEADER (NOW MATCHES HOMEPAGE) -->
+<!-- UPDATED HEADER -->
 <div class="topbar">
   <div class="nav">
-    <a href="/"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
+    <a href="/"><img src="logo.png" class="logo-img"></a>
     <div class="menu">
       <a href="/">Home</a>
-      <a href="/business.html">Business</a>
+      <a href="/families.html">Personal</a>
       <a onclick="openContact()">Contact</a>
     </div>
   </div>
@@ -219,7 +190,7 @@ h1{
 </div>
 
 <div class="center">
-  <h2 style="font-family:Playfair Display;">Let’s Keep Insurance Simple</h2>
+  <h2 style="font-family:'Playfair Display';">Let’s Keep Insurance Simple</h2>
   <p style="color:var(--muted)">
     If you want one person who understands both sides, I’m always happy to connect.
   </p>
@@ -228,7 +199,7 @@ h1{
 
 </div>
 
-<!-- CONTACT OVERLAY (THIS WAS MISSING — BUTTONS NOW WORK) -->
+<!-- CONTACT OVERLAY -->
 <div class="overlay" id="overlay" onclick="closeOverlay(event)">
   <div class="modal">
     <h3>Let’s connect — whatever’s easiest.</h3>
@@ -243,7 +214,6 @@ h1{
 function openContact(){document.getElementById('overlay').classList.add('active')}
 function closeOverlay(e){if(e.target.id==='overlay'){forceClose()}}
 function forceClose(){document.getElementById('overlay').classList.remove('active')}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')forceClose()})
 </script>
 
 </body>
