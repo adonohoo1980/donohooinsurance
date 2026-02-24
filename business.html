@@ -39,8 +39,10 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  gap:12px;
 }
 .logo-img{height:34px;display:block}
+
 .menu a{
   margin-left:20px;
   text-decoration:none;
@@ -49,6 +51,20 @@ body{
   cursor:pointer;
 }
 .menu a:hover{color:var(--ink)}
+
+/* Mobile Contact (so header doesn't feel empty) */
+.mobile-contact{display:none}
+.mobile-contact-btn{
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--ink);
+  border-radius:999px;
+  padding:9px 14px;
+  font-weight:600;
+  font-size:14px;
+  cursor:pointer;
+  white-space:nowrap;
+}
 
 /* HERO */
 .hero{text-align:center;margin-bottom:60px}
@@ -125,7 +141,7 @@ h1{
   margin-top:80px;
 }
 
-/* ===== CONTACT OVERLAY (WORKING) ===== */
+/* CONTACT OVERLAY */
 .overlay{
   position:fixed;inset:0;background:rgba(0,0,0,.35);
   display:flex;align-items:center;justify-content:center;
@@ -147,15 +163,16 @@ h1{
 .call{background:#111827;color:#fff}
 .text{border:1px solid #111827;color:#111827}
 .email{background:#f1f5f9;color:#111827}
-.close{margin-top:12px;font-size:13px;color:#6e6e73;cursor:pointer}
+.close{margin-top:12px;font-size:13px;color:var(--muted);cursor:pointer}
 
-/* MOBILE (MATCH PERSONAL PAGE: hide menu entirely) */
+/* MOBILE */
 @media(max-width:900px){
   .split{grid-template-columns:1fr;gap:30px}
   h1{font-size:32px}
 }
 @media(max-width:768px){
   .menu{display:none}
+  .mobile-contact{display:block}
 }
 </style>
 </head>
@@ -166,10 +183,17 @@ h1{
 <div class="topbar">
   <div class="nav">
     <a href="/"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
+
+    <!-- Desktop nav -->
     <div class="menu">
       <a href="/">Home</a>
       <a href="/families.html">Personal</a>
       <a onclick="openContact()">Contact</a>
+    </div>
+
+    <!-- Mobile contact pill -->
+    <div class="mobile-contact">
+      <div class="mobile-contact-btn" onclick="openContact()">Contact</div>
     </div>
   </div>
 </div>
