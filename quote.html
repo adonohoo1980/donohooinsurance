@@ -48,27 +48,10 @@ body.nav-open { overflow: hidden; }
 .nav-menu.active a { opacity: 1; transform: translateY(0); }
 
 /* CONTENT */
-.wrap { max-width: 600px; margin: auto; padding: 60px 20px; text-align: center; }
-
-/* REFINED PILL (NO TEXT) */
-.scan-welcome {
-  display: inline-flex;
-  align-items: center;
-  background: #fff;
-  padding: 6px;
-  border-radius: 100px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-  border: 1px solid var(--line);
-  margin-bottom: 40px;
-  gap: 8px;
-}
-.mini-profile { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); }
-.mini-actions { display: flex; gap: 4px; }
-.mini-btn { font-size: 11px; font-weight: 700; text-transform: uppercase; text-decoration: none; background: var(--navy); color: #fff; padding: 10px 20px; border-radius: 50px; }
-.mini-btn.secondary { background: var(--bg); color: var(--navy); border: 1px solid var(--line); }
+.wrap { max-width: 600px; margin: auto; padding: 80px 20px; text-align: center; }
 
 h1 { font-family: 'Playfair Display'; font-size: clamp(32px, 7vw, 48px); margin-bottom: 15px; font-weight: 600; }
-.intro { color: var(--muted); font-size: 18px; line-height: 1.6; margin-bottom: 40px; }
+.intro { color: var(--muted); font-size: 18px; line-height: 1.6; margin-bottom: 50px; }
 
 /* TRACK SELECTOR */
 .track-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 40px; background: var(--line); padding: 6px; border-radius: 100px; }
@@ -117,14 +100,6 @@ footer { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--line);
 </nav>
 
 <div class="wrap">
-  <div class="scan-welcome">
-    <img src="andy.jpg" class="mini-profile">
-    <div class="mini-actions">
-        <a href="tel:+14146981729" class="mini-btn">Call Andy</a>
-        <a href="sms:+14146981729" class="mini-btn secondary">Text</a>
-    </div>
-  </div>
-
   <h1>How should we start?</h1>
   <p class="intro">Select the path that fits your current needs.</p>
 
@@ -141,7 +116,7 @@ footer { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--line);
     </a>
     <a href="tel:+14146981729" class="option-card">
       <strong>Direct Consultation</strong>
-      <p>The fastest way to get an accurate comparison. We can walk through your coverage in 5 minutes.</p>
+      <p>The fastest way to get an accurate comparison. We can talk through your coverage in 5 minutes.</p>
       <span class="arrow">Call Directly &rarr;</span>
     </a>
     <a href="mailto:adonohoo@unisource-ins.com?subject=Personal Quote Request" class="option-card">
