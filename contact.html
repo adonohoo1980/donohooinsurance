@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connect | Donohoo & Sons</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:400,500,600&family=Playfair+Display:500,600,700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #faf9f6;
+  --navy: #0f1c3a;
+  --ink: #1a1a1a;
+  --muted: #6e6e73;
+  --line: rgba(0,0,0,.08);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card-wrap {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* BRANDING */
+.top-logo { height: 32px; margin: 20px 0 30px; }
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 1px solid var(--line);
+}
+
+h1 { 
+  font-family: 'Playfair Display'; 
+  font-size: 30px; 
+  margin: 18px 0 4px; 
+  font-weight: 600;
+}
+
+.subtitle { 
+  color: var(--muted); 
+  font-size: 14px; 
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 30px; 
+}
+
+/* PRIMARY CTA */
+.vcard-btn {
+  background: var(--navy);
+  color: #fff;
+  text-decoration: none;
+  padding: 18px;
+  border-radius: 100px;
+  display: block;
+  font-weight: 600;
+  margin-bottom: 45px;
+  transition: all 0.2s ease;
+  box-shadow: 0 10px 20px rgba(15, 28, 58, 0.15);
+}
+
+/* PATHWAYS */
+.choice-box { text-align: left; margin-bottom: 45px; }
+
+.section-label { 
+  font-size: 11px; 
+  text-transform: uppercase; 
+  letter-spacing: 2px; 
+  color: var(--muted); 
+  margin-bottom: 15px;
+  padding-left: 5px;
+  display: block;
+}
+
+.link-btn {
+  background: #fff;
+  color: var(--navy);
+  text-decoration: none;
+  padding: 22px;
+  border-radius: 18px;
+  display: block;
+  margin-bottom: 12px;
+  border: 1px solid var(--line);
+  transition: all 0.2s ease;
+}
+
+.link-btn strong { 
+  display: block; 
+  font-family: 'Playfair Display'; 
+  font-size: 19px; 
+  margin-bottom: 3px; 
+}
+
+.link-btn span { 
+  display: block; 
+  font-size: 14px; 
+  color: var(--muted); 
+  line-height: 1.4;
+}
+
+/* REFINED CONTACT ACTIONS (NO ICONS) */
+.actions { 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 12px; 
+  margin-top: 10px;
+}
+
+.action-item {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 16px 0;
+  border-radius: 14px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.action-item:active { background: var(--navy); }
+.action-item:active .action-text { color: #fff; }
+
+.action-text {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-logo { height: 20px; margin-top: 60px; opacity: 0.4; }
+
+</style>
+</head>
+<body>
+
+<div class="card-wrap">
+  <img src="logo.png" class="top-logo" alt="Donohoo & Sons Logo">
+  
+  <img src="andy.jpg" class="profile-img" alt="Andy Donohoo">
+  <h1>Andy Donohoo</h1>
+  <p class="subtitle">Agent & Advisor</p>
+
+  <a href="andy_donohoo.vcf" class="vcard-btn">Save Contact Info</a>
+
+  <div class="choice-box">
+    <span class="section-label">Explore Expertise</span>
+    
+    <a href="/business.html" class="link-btn">
+      <strong>Business</strong>
+      <span>Commercial Risk & Asset Protection</span>
+    </a>
+    
+    <a href="/families.html" class="link-btn">
+      <strong>Personal</strong>
+      <span>Home, Auto & Family Coverage</span>
+    </a>
+
+    <a href="/life.html" class="link-btn">
+      <strong>Life & Health</strong>
+      <span>Income & Legacy Planning</span>
+    </a>
+  </div>
+
+  <span class="section-label">Connect Directly</span>
+  <div class="actions">
+    <a href="tel:+14146981729" class="action-item">
+        <span class="action-text">Call</span>
+    </a>
+    <a href="sms:+14146981729" class="action-item">
+        <span class="action-text">Text</span>
+    </a>
+    <a href="mailto:adonohoo@unisource-ins.com" class="action-item">
+        <span class="action-text">Email</span>
+    </a>
+  </div>
+
+  <img src="logo.png" class="footer-logo">
+</div>
+
+<script>
+// Subtle vibration on button tap for mobile feel
+document.querySelectorAll('.action-item, .vcard-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        if (window.navigator.vibrate) window.navigator.vibrate(10);
+    });
+});
+</script>
+
+</body>
+</html>
