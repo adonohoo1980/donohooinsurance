@@ -30,12 +30,13 @@ body {
   text-align: center;
 }
 
-.top-logo { width: 200px; margin-bottom: 40px; }
+.top-logo { width: 220px; margin-bottom: 50px; }
 
 h1 { 
   font-family: 'Playfair Display'; 
   font-size: clamp(32px, 7vw, 48px); 
   margin-bottom: 15px; 
+  font-weight: 600;
 }
 
 .intro { 
@@ -45,71 +46,97 @@ h1 {
   margin-bottom: 50px; 
 }
 
-/* TRACK SELECTION */
+/* REFINED TRACK SELECTION (NO ICONS) */
 .track-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  margin-bottom: 40px;
+  gap: 12px;
+  margin-bottom: 50px;
+  background: var(--line);
+  padding: 6px;
+  border-radius: 100px;
 }
 
 .track-toggle {
-  padding: 20px;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 16px;
+  padding: 16px;
+  border-radius: 100px;
   cursor: pointer;
   font-weight: 600;
-  transition: 0.2s;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--muted);
 }
 
 .track-toggle.active {
-  border-color: var(--navy);
   background: var(--navy);
   color: #fff;
+  box-shadow: 0 4px 12px rgba(15,28,58,0.15);
 }
 
 /* OPTION CARDS */
 .options-area { text-align: left; display: none; }
-.options-area.active { display: block; animation: fadeIn 0.4s ease; }
+.options-area.active { display: block; animation: fadeInUp 0.5s ease forwards; }
 
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInUp { 
+  from { opacity: 0; transform: translateY(20px); } 
+  to { opacity: 1; transform: translateY(0); } 
+}
 
 .option-card {
   background: #fff;
   border: 1px solid var(--line);
-  padding: 25px;
+  padding: 30px;
   border-radius: 20px;
   text-decoration: none;
   color: inherit;
   display: block;
-  margin-bottom: 12px;
-  transition: 0.2s;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
 }
 
-.option-card:hover { border-color: var(--navy); transform: translateY(-2px); }
+.option-card:hover { 
+  border-color: var(--navy); 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
 
 .option-card strong {
   display: block;
   font-family: 'Playfair Display';
-  font-size: 22px;
+  font-size: 24px;
   color: var(--navy);
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
-.option-card p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.4; }
+.option-card p { 
+  margin: 0; 
+  color: var(--muted); 
+  font-size: 15px; 
+  line-height: 1.5; 
+}
+
+.option-card .arrow {
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
 .footer-note {
-  margin-top: 60px;
-  padding-top: 30px;
+  margin-top: 80px;
+  padding-top: 40px;
   border-top: 1px solid var(--line);
   font-size: 14px;
   color: var(--muted);
 }
-.footer-note strong { color: var(--ink); }
+.footer-note strong { color: var(--navy); }
 
 @media(max-width: 480px) {
-    .track-container { grid-template-columns: 1fr; }
+    .track-container { border-radius: 16px; grid-template-columns: 1fr; }
+    .track-toggle { border-radius: 12px; }
 }
 </style>
 </head>
@@ -119,46 +146,52 @@ h1 {
   <a href="/"><img src="logo.png" class="top-logo" alt="Donohoo & Sons"></a>
 
   <h1>How should we start?</h1>
-  <p class="intro">Pick the path that fits your schedule. I’ll personally handle the rest.</p>
+  <p class="intro">Select the path that fits your current needs.</p>
 
   <div class="track-container">
-    <div class="track-toggle active" onclick="showTrack('personal', this)">🏠 For My Family</div>
-    <div class="track-toggle" onclick="showTrack('business', this)">🏢 For My Business</div>
+    <div class="track-toggle active" onclick="showTrack('personal', this)">Personal Coverage</div>
+    <div class="track-toggle" onclick="showTrack('business', this)">Business Risk</div>
   </div>
 
   <div id="personal" class="options-area active">
     <a href="sms:+14146981729?body=Hi%20Andy,%20I'd%20like%20a%20quote%20for%20my%20[Home/Auto].%20My%20name%20is:" class="option-card">
-      <strong>Text me a quick intro</strong>
-      <p>Low pressure. Just send your name and what you're looking for. I'll text you back to chat details.</p>
+      <strong>Start via Text</strong>
+      <p>Low pressure and efficient. Send your name and what you're looking for, and I'll reach out to coordinate the details.</p>
+      <span class="arrow">Send Message &rarr;</span>
     </a>
     <a href="tel:+14146981729" class="option-card">
-      <strong>Let's talk on the phone</strong>
-      <p>The fastest way to get an accurate number. Give me a call and we'll knock it out in 5 minutes.</p>
+      <strong>Direct Consultation</strong>
+      <p>The fastest way to get an accurate comparison. We can walk through your current coverage in about five minutes.</p>
+      <span class="arrow">Call Directly &rarr;</span>
     </a>
     <a href="mailto:adonohoo@unisource-ins.com?subject=Personal%20Quote%20Request" class="option-card">
-      <strong>Email my current policies</strong>
-      <p>If you have your "Dec Pages" ready, shoot them over and I'll run a line-by-line comparison.</p>
+      <strong>Email Current Policies</strong>
+      <p>If you have your declaration pages ready, shoot them over. I'll run a line-by-line review to find gaps or savings.</p>
+      <span class="arrow">Send Documents &rarr;</span>
     </a>
   </div>
 
   <div id="business" class="options-area">
     <a href="tel:+14146981729" class="option-card">
       <strong>Request a Discovery Call</strong>
-      <p>For complex risks, a quick call is best. We'll discuss your operations and current gaps.</p>
+      <p>For commercial risk, a brief conversation allows me to understand your operations and identify exposures.</p>
+      <span class="arrow">Call Andy &rarr;</span>
     </a>
     <a href="mailto:adonohoo@unisource-ins.com?subject=Business%20Insurance%20Review" class="option-card">
       <strong>Send Over Bid Specs</strong>
-      <p>Send your current schedule of insurance or renewal docs. I’ll review and identify savings or exposures.</p>
+      <p>Send your current schedule of insurance or renewal documents for a professional second opinion.</p>
+      <span class="arrow">Upload Docs via Email &rarr;</span>
     </a>
     <a href="sms:+14146981729?body=Hi%20Andy,%20I%20need%20a%20commercial%20quote%20for%20my%20business." class="option-card">
-      <strong>Direct Message</strong>
-      <p>I'm always mobile. Text me your business name and I'll reach out to coordinate a time.</p>
+      <strong>Text for Coordination</strong>
+      <p>I am frequently in the field. Text me your business name and I will call you back to discuss the account.</p>
+      <span class="arrow">Message Me &rarr;</span>
     </a>
   </div>
 
   <div class="footer-note">
-    <p><strong>The Donohoo Promise:</strong> You aren't entering a database. You are starting a conversation with me, Andy. I value your time and your privacy.</p>
-    <a href="/" style="color:var(--navy); text-decoration:none; font-weight:600;">Return to Home</a>
+    <p><strong>The Donohoo Promise:</strong> You are not entering a database. You are starting a conversation with me, Andy. I value your time and your privacy.</p>
+    <a href="/" style="color:var(--navy); text-decoration:none; font-weight:600; text-transform:uppercase; font-size:12px; letter-spacing:1px;">Return to Home</a>
   </div>
 </div>
 
