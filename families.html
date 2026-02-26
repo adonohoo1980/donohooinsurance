@@ -30,7 +30,6 @@ body{
   position:relative;
 }
 
-/* Header Depth */
 .wrap::before{
   content:"";
   position:absolute;
@@ -40,7 +39,7 @@ body{
   z-index:-1;
 }
 
-/* NAVIGATION */
+/* HEADER */
 .topbar{border-bottom:1px solid var(--line);padding:14px 0;background:var(--bg);position:sticky;top:0;z-index:100}
 .nav{max-width:1050px;margin:auto;padding:0 18px;display:flex;justify-content:space-between;align-items:center}
 .logo-img{height:34px}
@@ -80,7 +79,7 @@ h1{
   text-decoration:none;
 }
 
-/* CARDS - Matched to Business Page */
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
@@ -133,6 +132,9 @@ h1{
   font-size:17px;
 }
 
+/* CLOSING */
+.closing-box{text-align:center; padding:60px 20px; background:#fff; border-radius:30px;}
+
 /* CONTACT OVERLAY */
 .overlay{
   position:fixed;inset:0;background:rgba(0,0,0,.35);
@@ -176,9 +178,9 @@ h1{
 <div class="wrap">
 
 <header class="hero">
-  <h1>Personal protection.<br>Built for the long term.</h1>
+  <h1>Personal protection.<br>Built with precision.</h1>
   <p class="sub">
-    Home, auto, and umbrella coverage designed with the same professional care I provide to my business clients.
+    Home, auto, and umbrella coverage designed with the same high level of care and technical accuracy I’ve provided throughout my career.
   </p>
   <div class="cta" onclick="openContact()">Start a Conversation</div>
 </header>
@@ -203,7 +205,7 @@ h1{
   <div class="profile-content">
     <h2>A Personal Approach</h2>
     <p>
-      I built Donohoo & Sons with my wife Katie because insurance should feel simple and personal. Whether you’re protecting your first home or your family’s legacy, I believe you deserve a direct line to your agent—not a call center.
+      I built Donohoo & Sons with my wife Katie because I believe insurance should feel simple and personal. Whether you’re protecting your first home or your family’s legacy, you deserve a direct line to your agent—not a call center.
     </p>
     <p>
       If someone sent you my way, I appreciate the trust. I’ll make sure we take great care of you.
@@ -211,7 +213,7 @@ h1{
   </div>
 </section>
 
-<div style="text-align:center; padding:60px 20px; background:#fff; border-radius:30px;">
+<div class="closing-box">
   <h2 style="font-family:'Playfair Display'; margin:0;">Need a second opinion?</h2>
   <p style="color:var(--muted); margin-top:10px;">I'm always happy to review your current coverage and keep things simple.</p>
   <div class="cta" onclick="openContact()">Reach Out Directly</div>
