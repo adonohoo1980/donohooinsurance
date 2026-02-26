@@ -23,14 +23,14 @@ body{
   color:var(--ink);
 }
 
-/* MATCH HOMEPAGE WIDTH */
+/* WRAP */
 .wrap{
   max-width:1050px;
   margin:auto;
   padding:70px 18px;
 }
 
-/* HEADER (MATCHES PERSONAL/HOMEPAGE) */
+/* HEADER */
 .topbar{border-bottom:1px solid var(--line);padding:14px 0;background:var(--bg)}
 .nav{
   max-width:1050px;
@@ -50,24 +50,34 @@ body{
 }
 .menu a:hover{color:var(--ink)}
 
-/* HERO */
-.hero{
+/* ===== PREMIUM HERO ===== */
+.hero-premium{
   text-align:center;
-  margin-bottom:60px;
+  margin-bottom:50px;
+  animation:heroFade .6s ease-out both;
 }
 
-h1{
+.hero-premium h1{
   font-family:'Playfair Display';
-  font-size:40px;
+  font-size:clamp(32px,5vw,42px);
   line-height:1.25;
-  max-width:780px;
+  max-width:720px;
   margin:auto;
 }
 
-.hero p{
+.hero-sub{
   color:var(--muted);
-  margin-top:16px;
-  font-size:18px;
+  font-size:clamp(16px,2.5vw,18px);
+  margin-top:14px;
+  max-width:600px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* Subtle luxury fade */
+@keyframes heroFade{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:translateY(0);}
 }
 
 /* BUTTON */
@@ -87,13 +97,13 @@ h1{
   box-shadow:0 10px 25px rgba(0,0,0,.2);
 }
 
-/* SPLIT SECTION */
+/* SPLIT */
 .split{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:60px;
   align-items:center;
-  margin:80px 0;
+  margin:70px 0;
 }
 
 .split h2{
@@ -106,7 +116,7 @@ h1{
   line-height:1.7;
 }
 
-/* LIGHT CARD ROW */
+/* CARDS */
 .cards{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -122,13 +132,13 @@ h1{
   font-weight:600;
 }
 
-/* CLOSING */
+/* CENTER */
 .center{
   text-align:center;
   margin-top:80px;
 }
 
-/* ===== CONTACT OVERLAY (WORKING) ===== */
+/* CONTACT OVERLAY */
 .overlay{
   position:fixed;inset:0;background:rgba(0,0,0,.35);
   display:flex;align-items:center;justify-content:center;
@@ -152,24 +162,28 @@ h1{
 .email{background:#f1f5f9;color:#111827}
 .close{margin-top:12px;font-size:13px;color:var(--muted);cursor:pointer}
 
-/* MOBILE */
+/* MOBILE POLISH */
 @media(max-width:900px){
   .split{grid-template-columns:1fr;gap:30px}
-  h1{font-size:32px}
 }
-/* NOTE: We intentionally DO NOT hide .menu on mobile so it matches your Personal page */
+
+@media(max-width:768px){
+  .hero-premium{margin-bottom:30px}
+  .hero-premium h1{line-height:1.2}
+}
 </style>
 </head>
 
 <body>
 
-<!-- HEADER (MOBILE MATCHES PERSONAL: Home + Personal + Contact) -->
+<!-- HEADER -->
 <div class="topbar">
   <div class="nav">
     <a href="/"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
     <div class="menu">
       <a href="/">Home</a>
       <a href="/families.html">Personal</a>
+      <a href="/business.html">Business</a>
       <a onclick="openContact()">Contact</a>
     </div>
   </div>
@@ -177,12 +191,15 @@ h1{
 
 <div class="wrap">
 
-<div class="hero">
+<!-- HERO -->
+<div class="hero-premium">
   <h1>
-    I started on the commercial side of insurance.<br>
-    That experience still drives how I help business owners today.
+    I started in commercial insurance.<br>
+    That experience still shapes how I protect business owners today.
   </h1>
-  <p>I help business owners simplify both business and personal coverage under one relationship.</p>
+  <p class="hero-sub">
+    Clear, direct guidance for owners who want one advisor across business and personal protection.
+  </p>
   <div class="cta" onclick="openContact()">Start a Conversation</div>
 </div>
 
