@@ -23,14 +23,13 @@ body{
   color:var(--ink);
 }
 
+/* WRAP + Background Depth */
 .wrap{
   max-width:1050px;
   margin:auto;
   padding:70px 18px;
   position:relative;
 }
-
-/* Header Gradient */
 .wrap::before{
   content:"";
   position:absolute;
@@ -40,15 +39,32 @@ body{
   z-index:-1;
 }
 
-/* NAVIGATION */
+/* HEADER */
 .topbar{border-bottom:1px solid var(--line);padding:14px 0;background:var(--bg);position:sticky;top:0;z-index:100}
-.nav{max-width:1050px;margin:auto;padding:0 18px;display:flex;justify-content:space-between;align-items:center}
+.nav{
+  max-width:1050px;
+  margin:auto;
+  padding:0 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 .logo-img{height:34px}
-.menu a{margin-left:20px;text-decoration:none;color:var(--muted);font-weight:500;cursor:pointer}
+.menu a{
+  margin-left:20px;
+  text-decoration:none;
+  color:var(--muted);
+  font-weight:500;
+  cursor:pointer;
+}
 .menu a:hover{color:var(--ink)}
 
 /* HERO */
-.hero-premium{text-align:center;margin-bottom:60px;animation:fadeUp .6s ease-out both}
+.hero-premium{
+  text-align:center;
+  margin-bottom:60px;
+  animation:fadeUp .6s ease-out both;
+}
 .hero-premium h1{
   font-family:'Playfair Display';
   font-size:clamp(32px,5vw,46px);
@@ -63,15 +79,31 @@ body{
   max-width:650px;
   margin-left:auto;
   margin-right:auto;
-  line-height:1.6;
 }
 
 @keyframes fadeUp{
-  from{opacity:0;transform:translateY(10px);}
+  from{opacity:0;transform:translateY(8px);}
   to{opacity:1;transform:translateY(0);}
 }
 
-/* SPLIT SECTION */
+/* CTA */
+.cta{
+  display:inline-block;
+  margin-top:28px;
+  padding:14px 28px;
+  border-radius:999px;
+  background:var(--navy);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition:.2s ease;
+}
+.cta:hover{
+  transform:translateY(-1px);
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+/* SPLIT */
 .split{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -79,67 +111,79 @@ body{
   align-items:center;
   margin:80px 0;
 }
-.split h2{font-family:'Playfair Display';font-size:32px;margin-bottom:15px;}
-.split p{color:var(--muted);line-height:1.8;font-size:17px;}
+.split h2{
+  font-family:'Playfair Display';
+  font-size:32px;
+}
+.split p{
+  color:var(--muted);
+  line-height:1.7;
+  font-size:17px;
+}
 
+/* VISUAL ANCHOR */
 .visual-anchor{
   background:linear-gradient(135deg,#0f1c3a,#1a2b55);
   color:#fff;
-  border-radius:28px;
-  padding:45px;
+  border-radius:24px;
+  padding:40px;
   font-family:'Playfair Display';
   font-size:24px;
   line-height:1.4;
   text-align:center;
-  box-shadow:0 25px 60px rgba(0,0,0,.15);
+  box-shadow:0 25px 60px rgba(0,0,0,.12);
 }
 
-/* BUSINESS CAPABILITIES GRID */
-.section-title {text-align:center; font-family:'Playfair Display'; font-size:28px; margin-bottom:30px;}
+/* CAPABILITIES GRID */
+.section-label { text-align:center; color:var(--muted); font-weight:600; letter-spacing:1px; text-transform:uppercase; font-size:12px; margin-bottom:10px; }
 .cards{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:25px;
-  margin-bottom:80px;
+  margin:40px 0 80px;
 }
 .card{
   background:#fff;
   padding:32px;
   border-radius:20px;
   box-shadow:0 10px 30px rgba(0,0,0,.03);
-  transition: transform 0.2s ease;
 }
-.card h4 { margin:0 0 10px 0; font-family:'Playfair Display'; font-size:20px; color:var(--navy); }
+.card h4 { margin:0 0 10px 0; font-family:'Playfair Display'; font-size:20px; }
 .card p { margin:0; color:var(--muted); font-size:15px; line-height:1.6; }
 
-/* CTA SECTION */
-.center{text-align:center;background:#fff;padding:60px 20px;border-radius:30px;margin-top:40px;}
-.cta{
-  display:inline-block;
-  margin-top:25px;
-  padding:16px 32px;
-  border-radius:999px;
-  background:var(--navy);
-  color:#fff;
-  font-weight:600;
-  text-decoration:none;
-  cursor:pointer;
-  transition:.2s;
+/* CLOSING */
+.center{
+  text-align:center;
+  margin-top:80px;
+  padding:60px 20px;
+  background:#fff;
+  border-radius:30px;
 }
-.cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(15,28,58,.25);}
 
-/* MODAL STYLES */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.25s ease;z-index:999;}
+/* CONTACT OVERLAY */
+.overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.35);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:.25s ease;z-index:999;
+}
 .overlay.active{opacity:1;pointer-events:auto}
-.modal{background:#fff;padding:35px;border-radius:24px;width:min(90%,400px);text-align:center;}
-.contact-btn{display:block;padding:15px;border-radius:999px;margin:10px 0;font-weight:600;text-decoration:none;}
+.modal{
+  background:#fff;padding:28px 24px;border-radius:22px;
+  width:min(90%,420px);text-align:center;
+}
+.contact-btn{
+  display:block;padding:14px;border-radius:999px;margin:8px 0;
+  font-weight:600;text-decoration:none;cursor:pointer;
+}
 .call{background:#111827;color:#fff}
 .text{border:1px solid #111827;color:#111827}
 .email{background:#f1f5f9;color:#111827}
-.close{margin-top:15px;font-size:13px;color:var(--muted);cursor:pointer}
+.close{margin-top:12px;font-size:13px;color:var(--muted);cursor:pointer}
 
+/* MOBILE */
 @media(max-width:900px){
-  .split{grid-template-columns:1fr;gap:40px;text-align:center}
+  .split{grid-template-columns:1fr;gap:40px;text-align:center;}
+  .visual-anchor{font-size:22px;padding:30px}
 }
 </style>
 </head>
@@ -152,7 +196,7 @@ body{
     <div class="menu">
       <a href="/">Home</a>
       <a href="/families.html">Personal</a>
-      <a href="/business.html" style="color:var(--ink)">Business</a>
+      <a href="/business.html">Business</a>
       <a onclick="openContact()">Contact</a>
     </div>
   </div>
@@ -162,54 +206,53 @@ body{
 
 <div class="hero-premium">
   <h1>
-    Commercial expertise.<br>Applied to your business.
+    Technical rigor for<br>independent business owners.
   </h1>
   <p class="hero-sub">
-    I built Donohoo & Sons with my wife Katie because insurance should feel simple and personal—especially for the business owners who keep our community moving.
+    I built Donohoo & Sons with my wife Katie because insurance should feel simple and personal—especially for the owners who keep our community moving.
   </p>
   <div class="cta" onclick="openContact()">Start a Business Review</div>
 </div>
 
 <div class="split">
   <div class="visual-anchor">
-    Foundational experience in complex commercial risk.
+    10 years of commercial experience at Sentry.
   </div>
   <div>
-    <h2>A Different Perspective</h2>
+    <h2>Built on Expertise</h2>
     <p>
-      Most agents learn on small personal policies. I started in the high-stakes world of commercial insurance, handling specialized liability and complex dealership programs.
+      I spent a decade at <strong>Sentry Insurance</strong> managing commercial accounts with high claim volumes and intricate liability needs. 
     </p>
     <p>
-      I bring that same technical "big business" rigor to every client I serve, regardless of their size.
+      Most agents learn on simple personal policies. I learned the industry by protecting businesses with complex risks. I bring that same technical rigor to every client I serve today—no matter the size.
     </p>
   </div>
 </div>
 
-<h3 class="section-title">Core Capabilities</h3>
-
+<div class="section-label">Core Capabilities</div>
 <div class="cards">
   <div class="card">
     <h4>General Liability</h4>
-    <p>Protecting your business from the unexpected costs of everyday operations and accidents.</p>
+    <p>Protecting your operations from the unexpected costs of everyday accidents and risks.</p>
   </div>
   <div class="card">
     <h4>Property & Assets</h4>
-    <p>Ensuring your physical locations, equipment, and inventory are valued and covered correctly.</p>
+    <p>Ensuring your buildings, equipment, and inventory are valued and covered correctly.</p>
   </div>
   <div class="card">
     <h4>Workers Comp</h4>
-    <p>Navigating the complexities of employee safety and state-mandated protection with ease.</p>
+    <p>Navigating employee safety and state-mandated protection with technical accuracy.</p>
   </div>
   <div class="card">
     <h4>Professional Liability</h4>
-    <p>Errors and omissions coverage tailored to the specific risks of your industry or trade.</p>
+    <p>Errors and omissions coverage tailored to the specific demands of your industry.</p>
   </div>
 </div>
 
 <div class="center">
   <h2 style="font-family:'Playfair Display'; margin:0;">Protect Your Hard Work</h2>
   <p style="color:var(--muted); margin-top:10px;">
-    Let's look at your current program and see where we can simplify and strengthen it.
+    If you want an advisor who understands the technical side of your business, I’m happy to connect.
   </p>
   <div class="cta" onclick="openContact()">Reach Out Directly</div>
 </div>
