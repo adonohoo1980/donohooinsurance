@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Personal Insurance | Donohoo & Sons</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:400,500,600&family=Playfair+Display:600,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:400,500,600&family=Playfair+Display:500,600,700&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -23,6 +23,9 @@ body{
   color:var(--ink);
 }
 
+/* Prevent scrolling when menu is open */
+body.nav-open { overflow: hidden; }
+
 .wrap{
   max-width:1050px;
   margin:auto;
@@ -39,12 +42,79 @@ body{
   z-index:-1;
 }
 
-/* HEADER */
-.topbar{border-bottom:1px solid var(--line);padding:14px 0;background:var(--bg);position:sticky;top:0;z-index:100}
+/* APPLE-STYLE HEADER */
+.topbar{
+  border-bottom:1px solid var(--line);
+  padding:12px 0;
+  background:rgba(250, 249, 246, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position:sticky;
+  top:0;
+  z-index:2000;
+}
 .nav{max-width:1050px;margin:auto;padding:0 18px;display:flex;justify-content:space-between;align-items:center}
-.logo-img{height:34px}
-.menu a{margin-left:20px;text-decoration:none;color:var(--muted);font-weight:500;cursor:pointer}
-.menu a:hover{color:var(--ink)}
+.logo-img{height:28px;}
+
+/* HAMBURGER */
+.hamburger {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  z-index: 2100;
+}
+.hamburger span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background-color: var(--ink);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s;
+}
+.hamburger span:nth-child(1) { transform: translateY(-3px); }
+.hamburger span:nth-child(2) { transform: translateY(3px); }
+
+.hamburger.active span:nth-child(1) { transform: translateY(0.5px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { transform: translateY(-0.5px) rotate(-45deg); }
+
+/* NAV OVERLAY */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: var(--bg);
+  z-index: 1500;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+  transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-menu.active { height: 100vh; }
+.nav-links { padding: 0 40px; display: flex; flex-direction: column; }
+.nav-menu a {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  margin-bottom: 24px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  cursor: pointer;
+}
+.nav-menu.active a { opacity: 1; transform: translateY(0); }
+.nav-menu.active a:nth-child(1) { transition-delay: 0.1s; }
+.nav-menu.active a:nth-child(2) { transition-delay: 0.15s; }
+.nav-menu.active a:nth-child(3) { transition-delay: 0.2s; }
+.nav-menu.active a:nth-child(4) { transition-delay: 0.25s; }
+.nav-menu.active a:nth-child(5) { transition-delay: 0.3s; }
 
 /* HERO */
 .hero{text-align:center;margin-bottom:60px;animation:fadeUp .6s ease-out both}
@@ -77,7 +147,9 @@ h1{
   font-weight:600;
   cursor:pointer;
   text-decoration:none;
+  transition: 0.2s;
 }
+.cta:hover{transform:translateY(-1px); box-shadow:0 10px 25px rgba(0,0,0,0.1);}
 
 /* GRID */
 .grid{
@@ -139,14 +211,14 @@ h1{
 .overlay{
   position:fixed;inset:0;background:rgba(0,0,0,.35);
   display:flex;align-items:center;justify-content:center;
-  opacity:0;pointer-events:none;transition:.25s ease;z-index:999;
+  opacity:0;pointer-events:none;transition:.25s ease;z-index:3000;
 }
 .overlay.active{opacity:1;pointer-events:auto}
 .modal{
   background:#fff;padding:32px;border-radius:24px;width:min(90%,400px);text-align:center;
 }
 .contact-btn{
-  display:block;padding:15px;border-radius:999px;margin:10px 0;font-weight:600;text-decoration:none;
+  display:block;padding:15px;border-radius:999px;margin:10px 0;font-weight:600;text-decoration:none;cursor:pointer;
 }
 .call{background:#111827;color:#fff}
 .text{border:1px solid #111827;color:#111827}
@@ -166,14 +238,22 @@ h1{
 <div class="topbar">
   <div class="nav">
     <a href="/"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
-    <div class="menu">
-      <a href="/">Home</a>
-      <a href="/families.html">Personal</a>
-      <a href="/business.html">Business</a>
-      <a onclick="openContact()">Contact</a>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
     </div>
   </div>
 </div>
+
+<nav class="nav-menu" id="navMenu">
+  <div class="nav-links">
+    <a href="/" onclick="toggleMenu()">Home</a>
+    <a href="/families.html" onclick="toggleMenu()">Personal</a>
+    <a href="/business.html" onclick="toggleMenu()">Business</a>
+    <a href="/life.html" onclick="toggleMenu()">Life & Health</a>
+    <a onclick="toggleMenu(); openContact()">Contact</a>
+  </div>
+</nav>
 
 <div class="wrap">
 
@@ -232,9 +312,18 @@ h1{
 </div>
 
 <script>
+function toggleMenu() {
+  const menu = document.getElementById('navMenu');
+  const btn = document.getElementById('hamburger');
+  menu.classList.toggle('active');
+  btn.classList.toggle('active');
+  document.body.classList.toggle('nav-open');
+}
+
 function openContact(){document.getElementById('overlay').classList.add('active')}
 function closeOverlay(e){if(e.target.id==='overlay'){forceClose()}}
 function forceClose(){document.getElementById('overlay').classList.remove('active')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')forceClose()})
 </script>
 
 </body>
