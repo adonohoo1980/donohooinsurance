@@ -128,7 +128,6 @@ body{
   border: 1px solid transparent;
   transition: 0.2s;
 }
-.card:hover { border-color: var(--line); }
 .card h4 { margin:0 0 8px 0; font-family:'Playfair Display'; font-size:19px; color: var(--navy); }
 .card p { margin:0; color:var(--muted); font-size:14px; line-height:1.5; }
 
@@ -161,16 +160,16 @@ body{
 .email{background:#f1f5f9;color:#111827}
 .close{margin-top:12px;font-size:13px;color:var(--muted);cursor:pointer}
 
-/* MOBILE FIX */
+/* MOBILE RESPONSIVENESS */
 @media(max-width:900px){
   .split{grid-template-columns:1fr;gap:40px;text-align:center;}
-  .cards{grid-template-columns: 1fr 1fr; gap:12px;} /* 2-column grid for mobile */
+  .cards{grid-template-columns: 1fr 1fr; gap:12px;} 
   .card{padding:20px; text-align:center;}
   .card h4{font-size:16px;}
   .card p{font-size:13px;}
 }
 @media(max-width:500px){
-  .cards{grid-template-columns: 1fr;} /* Back to 1 col for very small phones */
+  .cards{grid-template-columns: 1fr;} 
 }
 </style>
 </head>
@@ -196,19 +195,19 @@ body{
     Commercial expertise.<br>Built on a decade at Sentry.
   </h1>
   <p class="hero-sub">
-    I spent 10 years managing commercial insurance for companies with complex needs. Today, I provide that same level of professional guidance to independent business owners who want a direct relationship with their agent.
+    I managed insurance for companies with complex, high-volume claim needs. Today, I provide that same professional guidance to independent business owners who want a direct relationship with their agent.
   </p>
   <div class="cta" onclick="openContact()">Start a Business Review</div>
 </div>
 
 <div class="split">
   <div class="visual-anchor">
-    10 years of commercial experience at Sentry.
+    Bringing "Big Carrier" expertise to local business.
   </div>
   <div>
     <h2>A Different Level of Service</h2>
     <p>
-      Most agents start in personal insurance. I learned the industry by managing large-scale commercial accounts with high claim volumes and intricate liability needs. 
+      Most agents start in personal insurance. I learned the industry by managing large-scale commercial accounts with intricate liability needs and sophisticated risk profiles.
     </p>
     <p>
       I bring that experience to every business I serve today—ensuring your coverage is built correctly from day one so there are no surprises at claim time.
@@ -221,7 +220,7 @@ body{
 <div class="cards">
   <div class="card">
     <h4>General Liability</h4>
-    <p>Protecting your business from the unexpected costs of accidents and daily risks.</p>
+    <p>Protecting your operations from the unexpected costs of accidents and daily risks.</p>
   </div>
   <div class="card">
     <h4>Commercial Auto</h4>
@@ -229,11 +228,11 @@ body{
   </div>
   <div class="card">
     <h4>Workers Comp</h4>
-    <p>Managing employee safety and state requirements with total accuracy.</p>
+    <p>Managing employee safety and state requirements with precision.</p>
   </div>
   <div class="card">
     <h4>EPLI</h4>
-    <p>Employment Practices Liability to protect you from claims related to the workplace.</p>
+    <p>Employment Practices Liability to protect your business from workplace-related claims.</p>
   </div>
   <div class="card">
     <h4>Property & Assets</h4>
