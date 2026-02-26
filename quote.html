@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quote Preferences | Donohoo & Sons</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:400,500,600&family=Playfair+Display:500,600,700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #faf9f6;
+  --navy: #0f1c3a;
+  --ink: #1a1a1a;
+  --muted: #6e6e73;
+  --line: rgba(0,0,0,.08);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.wrap {
+  max-width: 500px;
+  margin: auto;
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.top-logo { width: 180px; margin-bottom: 40px; opacity: 0.9; }
+
+h1 { 
+  font-family: 'Playfair Display'; 
+  font-size: clamp(32px, 8vw, 42px); 
+  margin-bottom: 15px; 
+}
+
+.intro { 
+  color: var(--muted); 
+  font-size: 18px; 
+  line-height: 1.6; 
+  margin-bottom: 40px; 
+}
+
+/* PREFERENCE CARDS */
+.pref-grid { display: flex; flex-direction: column; gap: 15px; }
+
+.pref-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 25px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: inherit;
+  text-align: left;
+  transition: transform 0.2s, border-color 0.2s;
+  display: block;
+}
+
+.pref-card:hover {
+  border-color: var(--navy);
+  transform: translateY(-2px);
+}
+
+.pref-card strong {
+  display: block;
+  font-family: 'Playfair Display';
+  font-size: 22px;
+  color: var(--navy);
+  margin-bottom: 5px;
+}
+
+.pref-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: var(--bg);
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.footer-note {
+  margin-top: 50px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.footer-note a { color: var(--navy); font-weight: 600; text-decoration: none; }
+
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <a href="/"><img src="logo.png" class="top-logo" alt="Donohoo & Sons"></a>
+
+  <h1>How should we start?</h1>
+  <p class="intro">
+    I hate black-hole forms as much as you do. Tell me how you’d like to work, and I’ll personally follow up—no machines, no spam.
+  </p>
+
+  <div class="pref-grid">
+    
+    <a href="sms:+14146981729?body=Hi%20Andy,%20I'd%20like%20a%20quick%20quote.%20My%20name%20is:" class="pref-card">
+      <span class="badge" style="color: #059669; background: #ecfdf5;">Fastest</span>
+      <strong>Text me</strong>
+      <p>Send a quick text. I’ll reply to grab a few basic details and get to work.</p>
+    </a>
+
+    <a href="tel:+14146981729" class="pref-card">
+      <span class="badge" style="color: #2563eb; background: #eff6ff;">Personal</span>
+      <strong>Give me a call</strong>
+      <p>We can talk through your needs in 5 minutes. If I'm on the other line, leave a VM and I'll call you right back.</p>
+    </a>
+
+    <a href="mailto:adonohoo@unisource-ins.com?subject=Quote%20Request&body=Hi%20Andy,%20I'm%20interested%20in%20a%20quote%20for%20[Home/Auto/Business].%20Best%20phone%20number%20to%20reach%20me:%20" class="pref-card">
+      <span class="badge" style="color: #4b5563; background: #f3f4f6;">Detailed</span>
+      <strong>Email my current info</strong>
+      <p>Already have your current policy? Shoot it over and I'll run a comparison for you.</p>
+    </a>
+
+  </div>
+
+  <p class="footer-note">
+    Prefer to browse first? <a href="/">Return to Homepage</a>
+  </p>
+</div>
+
+</body>
+</html>
