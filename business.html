@@ -262,6 +262,16 @@ body.nav-open { overflow: hidden; }
     <a href="/families.html" onclick="toggleMenu()">Personal</a>
     <a href="/business.html" onclick="toggleMenu()">Business</a>
     <a href="/life.html" onclick="toggleMenu()">Life & Health</a>
+    <a href="/quote.html" onclick="toggleMenu()" style="color: #0f1c3a; border-top: 1px solid rgba(0,0,0,.05); padding-top: 10px; margin-top: 10px;">Get a Quote</a>
+  </div>
+</nav>
+
+<nav class="nav-menu" id="navMenu">
+  <div class="nav-links">
+    <a href="/" onclick="toggleMenu()">Home</a>
+    <a href="/families.html" onclick="toggleMenu()">Personal</a>
+    <a href="/business.html" onclick="toggleMenu()">Business</a>
+    <a href="/life.html" onclick="toggleMenu()">Life & Health</a>
     <a onclick="toggleMenu(); openContact()">Contact</a>
   </div>
 </nav>
@@ -350,7 +360,7 @@ function toggleMenu() {
   btn.classList.toggle('active');
   document.body.classList.toggle('nav-open');
 }
-
+</script>
 function openContact(){document.getElementById('overlay').classList.add('active')}
 function closeOverlay(e){if(e.target.id==='overlay'){forceClose()}}
 function forceClose(){document.getElementById('overlay').classList.remove('active')}
@@ -359,3 +369,4 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')forceClose()})
 
 </body>
 </html>
+
