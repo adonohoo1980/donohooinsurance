@@ -32,12 +32,18 @@ body {
   text-align: center;
 }
 
-/* BRANDING */
-.top-logo { height: 32px; margin: 20px 0 30px; }
+/* BRANDING - Enlarged */
+.top-logo { 
+  width: 85%; 
+  max-width: 280px; 
+  height: auto; 
+  margin: 30px auto 40px; 
+  display: block;
+}
 
 .profile-img {
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   object-fit: cover;
   margin: 0 auto;
@@ -47,7 +53,7 @@ body {
 
 h1 { 
   font-family: 'Playfair Display'; 
-  font-size: 30px; 
+  font-size: 32px; 
   margin: 18px 0 4px; 
   font-weight: 600;
 }
@@ -57,21 +63,37 @@ h1 {
   font-size: 14px; 
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-bottom: 30px; 
+  margin-bottom: 35px; 
 }
 
-/* PRIMARY CTA */
+/* PRIMARY ACTIONS */
+.cta-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 50px;
+}
+
 .vcard-btn {
   background: var(--navy);
   color: #fff;
   text-decoration: none;
   padding: 18px;
   border-radius: 100px;
-  display: block;
   font-weight: 600;
-  margin-bottom: 45px;
   transition: all 0.2s ease;
   box-shadow: 0 10px 20px rgba(15, 28, 58, 0.15);
+}
+
+.quote-btn {
+  background: transparent;
+  color: var(--navy);
+  text-decoration: none;
+  padding: 16px;
+  border-radius: 100px;
+  font-weight: 600;
+  border: 1.5px solid var(--navy);
+  transition: all 0.2s ease;
 }
 
 /* PATHWAYS */
@@ -96,13 +118,12 @@ h1 {
   display: block;
   margin-bottom: 12px;
   border: 1px solid var(--line);
-  transition: all 0.2s ease;
 }
 
 .link-btn strong { 
   display: block; 
   font-family: 'Playfair Display'; 
-  font-size: 19px; 
+  font-size: 20px; 
   margin-bottom: 3px; 
 }
 
@@ -113,12 +134,11 @@ h1 {
   line-height: 1.4;
 }
 
-/* REFINED CONTACT ACTIONS (NO ICONS) */
+/* CONTACT TILES */
 .actions { 
   display: grid; 
   grid-template-columns: repeat(3, 1fr); 
   gap: 12px; 
-  margin-top: 10px;
 }
 
 .action-item {
@@ -127,22 +147,18 @@ h1 {
   padding: 16px 0;
   border-radius: 14px;
   text-decoration: none;
-  transition: all 0.2s;
 }
-
-.action-item:active { background: var(--navy); }
-.action-item:active .action-text { color: #fff; }
 
 .action-text {
   display: block;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--navy);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-.footer-logo { height: 20px; margin-top: 60px; opacity: 0.4; }
+.footer-logo { height: 22px; margin-top: 60px; opacity: 0.3; }
 
 </style>
 </head>
@@ -155,21 +171,21 @@ h1 {
   <h1>Andy Donohoo</h1>
   <p class="subtitle">Agent & Advisor</p>
 
-  <a href="andy_donohoo.vcf" class="vcard-btn">Save Contact Info</a>
+  <div class="cta-stack">
+    <a href="contact.vcf" class="vcard-btn">Save My Contact Info</a>
+    <a href="mailto:adonohoo@unisource-ins.com?subject=Insurance%20Quote%20Request" class="quote-btn">Request a Quick Quote</a>
+  </div>
 
   <div class="choice-box">
     <span class="section-label">Explore Expertise</span>
-    
     <a href="/business.html" class="link-btn">
       <strong>Business</strong>
       <span>Commercial Risk & Asset Protection</span>
     </a>
-    
     <a href="/families.html" class="link-btn">
       <strong>Personal</strong>
       <span>Home, Auto & Family Coverage</span>
     </a>
-
     <a href="/life.html" class="link-btn">
       <strong>Life & Health</strong>
       <span>Income & Legacy Planning</span>
@@ -191,15 +207,6 @@ h1 {
 
   <img src="logo.png" class="footer-logo">
 </div>
-
-<script>
-// Subtle vibration on button tap for mobile feel
-document.querySelectorAll('.action-item, .vcard-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        if (window.navigator.vibrate) window.navigator.vibrate(10);
-    });
-});
-</script>
 
 </body>
 </html>
