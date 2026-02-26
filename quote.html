@@ -24,17 +24,17 @@ body {
 }
 
 .wrap {
-  max-width: 500px;
+  max-width: 600px;
   margin: auto;
-  padding: 60px 24px;
+  padding: 60px 20px;
   text-align: center;
 }
 
-.top-logo { width: 180px; margin-bottom: 40px; opacity: 0.9; }
+.top-logo { width: 200px; margin-bottom: 40px; }
 
 h1 { 
   font-family: 'Playfair Display'; 
-  font-size: clamp(32px, 8vw, 42px); 
+  font-size: clamp(32px, 7vw, 48px); 
   margin-bottom: 15px; 
 }
 
@@ -42,30 +42,54 @@ h1 {
   color: var(--muted); 
   font-size: 18px; 
   line-height: 1.6; 
-  margin-bottom: 40px; 
+  margin-bottom: 50px; 
 }
 
-/* PREFERENCE CARDS */
-.pref-grid { display: flex; flex-direction: column; gap: 15px; }
+/* TRACK SELECTION */
+.track-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 40px;
+}
 
-.pref-card {
+.track-toggle {
+  padding: 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.track-toggle.active {
+  border-color: var(--navy);
+  background: var(--navy);
+  color: #fff;
+}
+
+/* OPTION CARDS */
+.options-area { text-align: left; display: none; }
+.options-area.active { display: block; animation: fadeIn 0.4s ease; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.option-card {
   background: #fff;
   border: 1px solid var(--line);
   padding: 25px;
   border-radius: 20px;
   text-decoration: none;
   color: inherit;
-  text-align: left;
-  transition: transform 0.2s, border-color 0.2s;
   display: block;
+  margin-bottom: 12px;
+  transition: 0.2s;
 }
 
-.pref-card:hover {
-  border-color: var(--navy);
-  transform: translateY(-2px);
-}
+.option-card:hover { border-color: var(--navy); transform: translateY(-2px); }
 
-.pref-card strong {
+.option-card strong {
   display: block;
   font-family: 'Playfair Display';
   font-size: 22px;
@@ -73,33 +97,20 @@ h1 {
   margin-bottom: 5px;
 }
 
-.pref-card p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.4;
-}
-
-.badge {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  background: var(--bg);
-  padding: 4px 8px;
-  border-radius: 4px;
-  margin-bottom: 10px;
-}
+.option-card p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.4; }
 
 .footer-note {
-  margin-top: 50px;
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
   font-size: 14px;
   color: var(--muted);
 }
+.footer-note strong { color: var(--ink); }
 
-.footer-note a { color: var(--navy); font-weight: 600; text-decoration: none; }
-
+@media(max-width: 480px) {
+    .track-container { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -108,36 +119,61 @@ h1 {
   <a href="/"><img src="logo.png" class="top-logo" alt="Donohoo & Sons"></a>
 
   <h1>How should we start?</h1>
-  <p class="intro">
-    I hate black-hole forms as much as you do. Tell me how you’d like to work, and I’ll personally follow up—no machines, no spam.
-  </p>
+  <p class="intro">Pick the path that fits your schedule. I’ll personally handle the rest.</p>
 
-  <div class="pref-grid">
-    
-    <a href="sms:+14146981729?body=Hi%20Andy,%20I'd%20like%20a%20quick%20quote.%20My%20name%20is:" class="pref-card">
-      <span class="badge" style="color: #059669; background: #ecfdf5;">Fastest</span>
-      <strong>Text me</strong>
-      <p>Send a quick text. I’ll reply to grab a few basic details and get to work.</p>
-    </a>
-
-    <a href="tel:+14146981729" class="pref-card">
-      <span class="badge" style="color: #2563eb; background: #eff6ff;">Personal</span>
-      <strong>Give me a call</strong>
-      <p>We can talk through your needs in 5 minutes. If I'm on the other line, leave a VM and I'll call you right back.</p>
-    </a>
-
-    <a href="mailto:adonohoo@unisource-ins.com?subject=Quote%20Request&body=Hi%20Andy,%20I'm%20interested%20in%20a%20quote%20for%20[Home/Auto/Business].%20Best%20phone%20number%20to%20reach%20me:%20" class="pref-card">
-      <span class="badge" style="color: #4b5563; background: #f3f4f6;">Detailed</span>
-      <strong>Email my current info</strong>
-      <p>Already have your current policy? Shoot it over and I'll run a comparison for you.</p>
-    </a>
-
+  <div class="track-container">
+    <div class="track-toggle active" onclick="showTrack('personal', this)">🏠 For My Family</div>
+    <div class="track-toggle" onclick="showTrack('business', this)">🏢 For My Business</div>
   </div>
 
-  <p class="footer-note">
-    Prefer to browse first? <a href="/">Return to Homepage</a>
-  </p>
+  <div id="personal" class="options-area active">
+    <a href="sms:+14146981729?body=Hi%20Andy,%20I'd%20like%20a%20quote%20for%20my%20[Home/Auto].%20My%20name%20is:" class="option-card">
+      <strong>Text me a quick intro</strong>
+      <p>Low pressure. Just send your name and what you're looking for. I'll text you back to chat details.</p>
+    </a>
+    <a href="tel:+14146981729" class="option-card">
+      <strong>Let's talk on the phone</strong>
+      <p>The fastest way to get an accurate number. Give me a call and we'll knock it out in 5 minutes.</p>
+    </a>
+    <a href="mailto:adonohoo@unisource-ins.com?subject=Personal%20Quote%20Request" class="option-card">
+      <strong>Email my current policies</strong>
+      <p>If you have your "Dec Pages" ready, shoot them over and I'll run a line-by-line comparison.</p>
+    </a>
+  </div>
+
+  <div id="business" class="options-area">
+    <a href="tel:+14146981729" class="option-card">
+      <strong>Request a Discovery Call</strong>
+      <p>For complex risks, a quick call is best. We'll discuss your operations and current gaps.</p>
+    </a>
+    <a href="mailto:adonohoo@unisource-ins.com?subject=Business%20Insurance%20Review" class="option-card">
+      <strong>Send Over Bid Specs</strong>
+      <p>Send your current schedule of insurance or renewal docs. I’ll review and identify savings or exposures.</p>
+    </a>
+    <a href="sms:+14146981729?body=Hi%20Andy,%20I%20need%20a%20commercial%20quote%20for%20my%20business." class="option-card">
+      <strong>Direct Message</strong>
+      <p>I'm always mobile. Text me your business name and I'll reach out to coordinate a time.</p>
+    </a>
+  </div>
+
+  <div class="footer-note">
+    <p><strong>The Donohoo Promise:</strong> You aren't entering a database. You are starting a conversation with me, Andy. I value your time and your privacy.</p>
+    <a href="/" style="color:var(--navy); text-decoration:none; font-weight:600;">Return to Home</a>
+  </div>
 </div>
+
+<script>
+function showTrack(trackId, element) {
+  // Hide all areas
+  document.querySelectorAll('.options-area').forEach(area => area.classList.remove('active'));
+  // Deactivate all toggles
+  document.querySelectorAll('.track-toggle').forEach(t => t.classList.remove('active'));
+  
+  // Show selected
+  document.getElementById(trackId).classList.add('active');
+  element.classList.add('active');
+}
+</script>
 
 </body>
 </html>
