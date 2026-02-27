@@ -19,7 +19,7 @@
 body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); }
 body.nav-open { overflow: hidden; }
 
-/* MASTER TOPBAR */
+/* TOPBAR */
 .topbar {
   border-bottom: 1px solid var(--line);
   padding: 12px 0;
@@ -50,7 +50,7 @@ body.nav-open { overflow: hidden; }
 h1 { font-family: 'Playfair Display'; font-size: clamp(36px, 6vw, 52px); margin-bottom: 15px; }
 .intro { color: var(--muted); font-size: 19px; max-width: 600px; margin: 0 auto 60px auto; line-height: 1.6; }
 
-/* THE THREE CARDS */
+/* THREE CARDS */
 .main-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -90,9 +90,18 @@ h1 { font-family: 'Playfair Display'; font-size: clamp(36px, 6vw, 52px); margin-
   border-bottom: 2px solid var(--navy);
   padding-bottom: 4px;
   transition: opacity 0.2s;
+  cursor: pointer;
 }
 
 .primary-action:hover { opacity: 0.7; }
+
+.audit-sublink {
+    display: block;
+    margin-top: 20px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    text-decoration: underline;
+}
 
 /* NAVY CARD FOR LIFE */
 .path-card.featured {
@@ -108,6 +117,7 @@ footer { margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--line);
 
 @media(max-width: 900px) {
   .main-grid { grid-template-columns: 1fr; }
+  .path-card { padding: 40px 30px; }
 }
 </style>
 </head>
@@ -144,7 +154,7 @@ footer { margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--line);
         <h2>Personal</h2>
         <p>Expert protection for your home, auto, and family assets.</p>
       </div>
-      <a href="https://calendly.com/adonohoo-unisource-ins/life-insurance-review" target="_blank" class="primary-action">
+      <a href="https://calendly.com/adonohoo-unisource-ins/conversation-with-andy" target="_blank" class="primary-action">
         Schedule a Call &rarr;
       </a>
     </div>
@@ -154,7 +164,7 @@ footer { margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--line);
         <h2>Business</h2>
         <p>Risk management and liability tailored to your operations.</p>
       </div>
-      <a href="https://calendly.com/adonohoo-unisource-ins/life-insurance-review" target="_blank" class="primary-action">
+      <a href="https://calendly.com/adonohoo-unisource-ins/conversation-with-andy" target="_blank" class="primary-action">
         Schedule a Call &rarr;
       </a>
     </div>
@@ -162,11 +172,14 @@ footer { margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--line);
     <div class="path-card featured">
       <div>
         <h2>Life & Health</h2>
-        <p>A quick 5-minute call to learn about your situation and family goals.</p>
+        <p>A 5-minute call to learn about your situation and family goals.</p>
       </div>
-      <a href="https://calendly.com/adonohoo-unisource-ins/life-insurance-review" target="_blank" class="primary-action">
-        Start a Conversation &rarr;
-      </a>
+      <div>
+        <a href="https://calendly.com/adonohoo-unisource-ins/conversation-with-andy" target="_blank" class="primary-action">
+          Start a Conversation &rarr;
+        </a>
+        <a href="/life.html#audit" class="audit-sublink">Or take the 60-second audit first</a>
+      </div>
     </div>
 
   </div>
