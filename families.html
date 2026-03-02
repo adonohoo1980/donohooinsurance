@@ -54,11 +54,6 @@ body.nav-open { overflow: hidden; }
 .nav-links { padding: 0 40px; display: flex; flex-direction: column; }
 .nav-menu a { font-family: 'Inter', sans-serif; font-size: 28px; font-weight: 600; color: var(--ink); text-decoration: none; margin-bottom: 24px; opacity: 0; transform: translateY(10px); transition: 0.4s ease; }
 .nav-menu.active a { opacity: 1; transform: translateY(0); }
-.nav-menu.active a:nth-child(1) { transition-delay: 0.1s; }
-.nav-menu.active a:nth-child(2) { transition-delay: 0.15s; }
-.nav-menu.active a:nth-child(3) { transition-delay: 0.2s; }
-.nav-menu.active a:nth-child(4) { transition-delay: 0.25s; }
-.nav-menu.active a:nth-child(5) { transition-delay: 0.3s; }
 
 /* REVEAL ANIMATIONS */
 .reveal { opacity: 0; transform: translateY(20px); transition: all 0.7s ease-out; }
@@ -89,8 +84,17 @@ h1 { font-family: 'Playfair Display'; font-size: clamp(40px, 8vw, 64px); line-he
 h2 { font-family: 'Playfair Display'; font-size: 32px; margin-bottom: 20px; color: var(--navy); }
 .desc { font-size: 17px; color: var(--muted); line-height: 1.7; margin-bottom: 30px; }
 
+/* OPTIONAL IMAGE BOX */
+.families-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 30px;
+  margin-bottom: 60px;
+}
+
 /* REFERRAL SECTION */
-.referral-section { text-align: center; border-top: 1px solid var(--line); padding: 60px 20px; }
+.referral-section { text-align: center; border-top: 1px solid var(--line); padding: 80px 20px; }
 .referral-section h2 { margin-bottom: 15px; }
 .referral-section p { color: var(--muted); max-width: 600px; margin: 0 auto 40px; font-size: 17px; line-height: 1.6; }
 
@@ -113,8 +117,7 @@ h2 { font-family: 'Playfair Display'; font-size: 32px; margin-bottom: 20px; colo
 @media (max-width: 768px) {
   .hero { text-align: center; padding: 60px 20px; }
   .grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
-  .section { margin-bottom: 40px; }
-  .card { text-align: left; } /* Keep list readable but align container */
+  .card { text-align: left; }
   .referral-section { padding: 40px 20px; }
 }
 </style>
@@ -148,20 +151,24 @@ h2 { font-family: 'Playfair Display'; font-size: 32px; margin-bottom: 20px; colo
   <p>Home, auto, and umbrella coverage built around straightforward advice—not call centers or shortcuts.</p>
 </div>
 
+<div class="section reveal">
+  <img src="family-home.jpg" class="families-img" alt="Milwaukee Personal Insurance">
+</div>
+
 <div class="section">
   <div class="grid">
     <div class="reveal">
       <h2>Professional advice</h2>
-      <p class="desc">Most people only talk to their agent when they get a bill or have a claim. I prefer a different way. I handle your coverage personally, making sure your protection stays current as your life changes.</p>
+      <p class="desc">Insurance isn't just a set of documents—it's your safety net. I handle your coverage personally, looking for the gaps that generic online platforms often miss. If your life changes, your coverage should, too.</p>
       <a href="/quote.html" class="cta-btn">Start a Conversation</a>
     </div>
     <div class="card reveal" style="transition-delay: 0.1s;">
-      <h3 style="font-family: 'Playfair Display'; font-size: 24px; color: var(--navy); margin-top:0;">What we look at</h3>
+      <h3 style="font-family: 'Playfair Display'; font-size: 24px; color: var(--navy); margin-top:0;">Policy Priorities</h3>
       <ul style="color: var(--muted); line-height: 2; font-size: 16px; padding-left: 20px;">
-        <li><strong>Full Roof Replacement</strong> — Avoiding the fine print.</li>
-        <li><strong>Water Backup</strong> — Protecting your finished basement.</li>
-        <li><strong>Umbrella Liability</strong> — Defending your future income.</li>
-        <li><strong>Agreed Value Auto</strong> — For cars that aren't "standard."</li>
+        <li><strong>Home & Dwelling</strong> — Reviewing replacement costs.</li>
+        <li><strong>Water & Sewer Backup</strong> — Essential for WI basements.</li>
+        <li><strong>Personal Umbrella</strong> — Shielding your future income.</li>
+        <li><strong>Simplified Auto</strong> — Modern coverage for daily drivers.</li>
       </ul>
     </div>
   </div>
@@ -170,7 +177,7 @@ h2 { font-family: 'Playfair Display'; font-size: 32px; margin-bottom: 20px; colo
 <div class="section reveal">
   <div class="referral-section">
     <h2>Sent by a friend?</h2>
-    <p>Most of my business comes from personal introductions. If someone sent you my way, the best way to start is a quick chat to see if I'm the right fit for your needs.</p>
+    <p>Most of my business comes from personal introductions. If someone sent you my way, let's start with a quick chat to see if my approach is the right fit for your family.</p>
     <a href="/quote.html" class="cta-btn">Connect with Andy</a>
   </div>
 </div>
