@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Apple Inc.//iPhone OS 26.3//EN
+N:Donohoo;Andy;;;
+FN:Andy Donohoo
+ORG:Donohoo& Sons;
+EMAIL;type=INTERNET;type=HOME;type=pref:adonohoo@unisource-ins.com
+TEL;type=CELL;type=VOICE;type=pref:(414) 698-1729
+ADR;type=WORK;type=pref:;;10425 W. North Ave\nSuite 226;Wauwatosa;Wi;53226;United States
+item1.URL;type=pref:http://www.donohooinsurance.com
+item1.X-ABLabel:_$!<HomePage>!$_
+END:VCARD
