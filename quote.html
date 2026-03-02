@@ -33,14 +33,16 @@ body.nav-open { overflow: hidden; }
 .nav { max-width: 1050px; margin: auto; padding: 0 18px; display: flex; justify-content: space-between; align-items: center; }
 .logo-img { height: 28px; }
 
-.hamburger { cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; z-index: 2100; }
+/* HAMBURGER STYLES */
+.hamburger { cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; z-index: 2100; position: relative; }
 .hamburger span { display: block; width: 18px; height: 1.5px; background-color: var(--ink); transition: 0.4s; }
 .hamburger span:nth-child(1) { transform: translateY(-3px); }
 .hamburger span:nth-child(2) { transform: translateY(3px); }
 .hamburger.active span:nth-child(1) { transform: translateY(0.5px) rotate(45deg); }
 .hamburger.active span:nth-child(2) { transform: translateY(-0.5px) rotate(-45deg); }
 
-.nav-menu { position: fixed; top: 0; left: 0; width: 100%; height: 0; background: var(--bg); z-index: 1500; overflow: hidden; display: flex; flex-direction: column; padding-top: 80px; transition: height 0.5s; }
+/* MENU OVERLAY */
+.nav-menu { position: fixed; top: 0; left: 0; width: 100%; height: 0; background: var(--bg); z-index: 1500; overflow: hidden; display: flex; flex-direction: column; padding-top: 80px; transition: height 0.5s ease-in-out; }
 .nav-menu.active { height: 100vh; }
 .nav-links { padding: 0 40px; display: flex; flex-direction: column; }
 .nav-menu a { font-family: 'Inter', sans-serif; font-size: 28px; font-weight: 600; color: var(--ink); text-decoration: none; margin-bottom: 24px; }
@@ -135,6 +137,15 @@ footer { margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--line);
   </div>
 </div>
 
+<nav class="nav-menu" id="navMenu">
+  <div class="nav-links">
+    <a href="/" onclick="toggleMenu()">Home</a>
+    <a href="/families.html" onclick="toggleMenu()">Personal</a>
+    <a href="/business.html" onclick="toggleMenu()">Business</a>
+    <a href="/life.html" onclick="toggleMenu()">Life & Health</a>
+  </div>
+</nav>
+
 <div class="wrap">
   <h1>How should we start?</h1>
   <p class="intro">Select a category to see the best ways to connect. I value your time and keep the process simple.</p>
@@ -209,9 +220,11 @@ footer { margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--line);
 function toggleMenu() {
   const menu = document.getElementById('navMenu');
   const btn = document.getElementById('hamburger');
-  menu.classList.toggle('active');
-  btn.classList.toggle('active');
-  document.body.classList.toggle('nav-open');
+  if (menu && btn) {
+    menu.classList.toggle('active');
+    btn.classList.toggle('active');
+    document.body.classList.toggle('nav-open');
+  }
 }
 </script>
 
