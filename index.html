@@ -18,7 +18,6 @@
   scroll-behavior: smooth;
 }
 
-/* 1. PREMIUM PAGE FADE */
 body { 
   margin: 0; 
   font-family: 'Inter', sans-serif; 
@@ -29,9 +28,9 @@ body {
 }
 body.nav-open { overflow: hidden; }
 
-.wrap{max-width:1150px;margin:auto;padding:70px 18px}
+.wrap{max-width:1150px;margin:auto;padding:40px 18px}
 
-/* HEADER & TOPBAR */
+/* HEADER */
 .topbar{
   border-bottom:1px solid var(--line);
   padding:12px 0;
@@ -45,7 +44,7 @@ body.nav-open { overflow: hidden; }
 .nav{max-width:1050px;margin:auto;padding:0 18px;display:flex;justify-content:space-between;align-items:center}
 .logo-img{height:28px;}
 
-/* 2. STAGGERED HAMBURGER MENU */
+/* NAV MENU */
 .hamburger { cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; z-index: 2100; }
 .hamburger span { display: block; width: 18px; height: 1.5px; background-color: var(--ink); transition: 0.4s; }
 .hamburger span:nth-child(1) { transform: translateY(-3px); }
@@ -57,62 +56,31 @@ body.nav-open { overflow: hidden; }
 .nav-menu.active { height: 100vh; }
 .nav-links { padding: 0 40px; display: flex; flex-direction: column; }
 .nav-menu a { font-family: 'Inter', sans-serif; font-size: 28px; font-weight: 600; color: var(--ink); text-decoration: none; margin-bottom: 24px; opacity: 0; transform: translateY(10px); transition: 0.4s ease; }
-
 .nav-menu.active a { opacity: 1; transform: translateY(0); }
-.nav-menu.active a:nth-child(1) { transition-delay: 0.1s; }
-.nav-menu.active a:nth-child(2) { transition-delay: 0.15s; }
-.nav-menu.active a:nth-child(3) { transition-delay: 0.2s; }
-.nav-menu.active a:nth-child(4) { transition-delay: 0.25s; }
 
-/* 3. SCROLL REVEAL ANIMATIONS */
+/* REVEAL ANIMATIONS */
 .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* HERO GRID */
-.hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; margin-bottom: 80px; text-align: left; }
-.hero-text h1 { font-family:'Playfair Display'; font-size: clamp(40px, 6vw, 72px); line-height: 1.05; margin: 20px 0; }
-.tagline { color: var(--muted); font-size: 20px; line-height: 1.6; margin-bottom: 30px; }
-
-/* SERVICE CARDS */
-.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin: 80px 0; }
-.card {
-  background: #fff;
-  padding: 50px 35px;
-  border-radius: 28px;
-  text-decoration: none;
-  color: inherit;
-  transition: 0.4s cubic-bezier(0.2, 1, 0.3, 1);
-  border: 1px solid var(--line);
+/* HERO GRID - Laptop Optimizations */
+.hero-grid { 
+  display: grid; 
+  grid-template-columns: 1.1fr 0.9fr; 
+  gap: 60px; 
+  align-items: center; 
+  margin-top: 60px;
+  margin-bottom: 100px; 
+  text-align: left; 
 }
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(15,28,58,0.08); /* Navy tinted shadow */
-  border-color: var(--navy);
+.hero-text h1 { 
+  font-family:'Playfair Display'; 
+  font-size: clamp(42px, 6vw, 76px); 
+  line-height: 1.05; 
+  margin: 0 0 25px 0; 
 }
-.card h3 { font-family:'Playfair Display'; font-size: 28px; color: var(--navy); margin-bottom: 15px; }
-.card p { color: var(--muted); font-size: 16px; line-height: 1.6; margin-bottom: 30px; }
-.card-link { font-size: 13px; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 1px; }
+.tagline { color: var(--muted); font-size: 21px; line-height: 1.6; margin-bottom: 40px; }
 
-/* WHY US PILLARS */
-.pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; padding: 80px 0; border-top: 1px solid var(--line); text-align: left; }
-.pillar h4 { font-family: 'Playfair Display'; font-size: 22px; margin-bottom: 10px; color: var(--navy); }
-.pillar p { font-size: 15px; color: var(--muted); line-height: 1.6; }
-
-/* ABOUT SECTION */
-.about-spread { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; margin: 100px 0; text-align: left; }
-.about-content h2 { font-family: 'Playfair Display'; font-size: 42px; margin-bottom: 25px; }
-.pull {
-  font-family: 'Playfair Display';
-  font-style: italic;
-  font-size: 24px;
-  line-height: 1.4;
-  color: var(--navy);
-  margin: 40px 0;
-  padding-left: 30px;
-  border-left: 3px solid var(--navy);
-}
-
-.hero-img, .boys-photo {
+.hero-img {
   width: 100%;
   aspect-ratio: 4/5;
   object-fit: cover;
@@ -120,13 +88,33 @@ body.nav-open { overflow: hidden; }
   box-shadow: 0 20px 45px rgba(0,0,0,.05);
 }
 
+/* SERVICE CARDS */
+.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin: 80px 0; }
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 50px 35px;
+  border-radius: 28px;
+  text-decoration: none;
+  color: inherit;
+  transition: 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(15,28,58,0.08);
+  border-color: var(--navy);
+}
+.card h3 { font-family:'Playfair Display'; font-size: 28px; color: var(--navy); margin-bottom: 15px; }
+.card p { color: var(--muted); font-size: 16px; line-height: 1.6; margin-bottom: 30px; }
+.card-link { font-size: 13px; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 1px; }
+
 /* THE FINAL CTA */
 .cta-box { background: var(--navy); color: #fff; padding: 100px 40px; border-radius: 40px; text-align: center; margin-top: 100px; }
 .cta-box h2 { font-family: 'Playfair Display'; font-size: clamp(32px, 5vw, 48px); margin-bottom: 40px; color: #fff; }
-.btn-white {
+.btn-navy {
   display: inline-block;
-  background: #fff;
-  color: var(--navy);
+  background: var(--navy);
+  color: #fff;
   padding: 22px 50px;
   border-radius: 100px;
   text-decoration: none;
@@ -136,14 +124,32 @@ body.nav-open { overflow: hidden; }
   font-size: 13px;
   transition: 0.3s;
 }
-.btn-white:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+.btn-white {
+  display: inline-block;
+  background: #fff;
+  color: var(--navy);
+  padding: 20px 45px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 13px;
+  transition: 0.3s;
+}
 
-footer { text-align: center; margin-top: 80px; padding-bottom: 40px; font-size: 12px; color: var(--muted); letter-spacing: 1px; }
+footer { text-align: center; padding-bottom: 40px; font-size: 12px; color: var(--muted); letter-spacing: 1px; }
 
+/* MOBILE RESPONSIVE FIXES */
 @media(max-width:900px){ 
-    .hero-grid, .about-spread, .card-grid, .pillars { grid-template-columns: 1fr; text-align: center; }
-    .hero-img { order: -1; margin-bottom: 40px; }
-    .pull { border-left: none; border-top: 3px solid var(--navy); padding: 20px 0; }
+    .hero-grid { 
+      grid-template-columns: 1fr; 
+      text-align: center; 
+      margin-top: 20px;
+    }
+    .hero-text { order: 1; } /* Headline comes first */
+    .hero-img { order: 2; margin-top: 40px; } /* Photo drops below CTA */
+    .card-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -174,10 +180,9 @@ footer { text-align: center; margin-top: 80px; padding-bottom: 40px; font-size: 
   
   <section class="hero-grid reveal">
     <div class="hero-text">
-      <img src="logo.png" style="height:40px; margin-bottom: 10px;">
       <h1>From day one<br>to claim day.</h1>
       <p class="tagline">Helping Wisconsin families and business owners get the right coverage without the runaround.</p>
-      <a href="/quote.html" class="btn-white" style="background: var(--navy); color:#fff;">Get a Quote</a>
+      <a href="/quote.html" class="btn-navy">Start a Conversation</a>
     </div>
     <img src="boys.jpg" class="hero-img">
   </section>
@@ -200,39 +205,9 @@ footer { text-align: center; margin-top: 80px; padding-bottom: 40px; font-size: 
     </a>
   </div>
 
-  <section class="pillars reveal">
-    <div class="pillar">
-      <h4>Direct Access</h4>
-      <p>No call centers. No automated prompts. You have my direct cell phone number for whenever you need a quick answer.</p>
-    </div>
-    <div class="pillar">
-      <h4>Local Expertise</h4>
-      <p>Based in Milwaukee, we understand the specific risks and market nuances of South Eastern Wisconsin.</p>
-    </div>
-    <div class="pillar">
-      <h4>Claims Advocacy</h4>
-      <p>I don't just sell the policy. If you have a claim, I’m in your corner to ensure the process is fair and fast.</p>
-    </div>
-  </section>
-
-  <section class="about-spread reveal">
-    <div class="about-content">
-      <h2>A Personal Approach</h2>
-      <p style="font-size: 18px; color: var(--muted); line-height: 1.8;">I built Donohoo & Sons with my wife Katie because insurance should feel simple and personal.</p>
-      <div class="pull">
-        "I treat your protection like my own family’s. The '& Sons' reminds me why I do this every day."
-      </div>
-      <p style="font-size: 18px; color: var(--muted); line-height: 1.8;">I’m always available to my clients — no waiting, just a conversation.</p>
-    </div>
-    <div style="background: var(--paper); padding: 40px; border-radius: 40px;">
-        <p style="font-family: 'Playfair Display'; font-size: 28px; color: var(--navy); margin: 0;">Milwaukee's Independent Choice</p>
-        <p style="color: var(--muted); margin-top: 15px;">Being independent means I work for you, not the big carriers. I shop the market to find the best fit for your specific situation.</p>
-    </div>
-  </section>
-
   <div class="cta-box reveal">
     <h2>Protect what you've built.</h2>
-    <a href="/quote.html" class="btn-white">Start a Conversation</a>
+    <a href="/quote.html" class="btn-white">Get a Quote</a>
   </div>
 
   <footer>DONOHOO & SONS INSURANCE • MILWAUKEE, WI</footer>
@@ -247,21 +222,14 @@ function toggleMenu() {
   document.body.classList.toggle('nav-open');
 }
 
-/* 4. PREMIUM PAGE TRANSITION */
-window.addEventListener('load', () => {
-  document.body.style.opacity = '1';
-});
+window.addEventListener('load', () => { document.body.style.opacity = '1'; });
 
-/* 5. INTERSECTION OBSERVER FOR REVEALS */
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-/* 6. SMOOTH FADE OUT ON CLICK */
 document.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
