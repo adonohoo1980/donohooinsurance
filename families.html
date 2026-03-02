@@ -58,6 +58,7 @@ body.nav-open { overflow: hidden; }
 .nav-menu.active a:nth-child(2) { transition-delay: 0.15s; }
 .nav-menu.active a:nth-child(3) { transition-delay: 0.2s; }
 .nav-menu.active a:nth-child(4) { transition-delay: 0.25s; }
+.nav-menu.active a:nth-child(5) { transition-delay: 0.3s; }
 
 /* REVEAL ANIMATIONS */
 .reveal { opacity: 0; transform: translateY(20px); transition: all 0.7s ease-out; }
@@ -70,8 +71,8 @@ h1 { font-family: 'Playfair Display'; font-size: clamp(40px, 8vw, 64px); line-he
 .hero p { font-size: 19px; color: var(--muted); max-width: 650px; line-height: 1.6; }
 
 /* CONTENT SECTION */
-.section { max-width: 1050px; margin: 0 auto 100px; padding: 0 20px; }
-.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: flex-start; }
+.section { max-width: 1050px; margin: 0 auto 60px; padding: 0 20px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 
 .card {
   background: #fff;
@@ -88,8 +89,8 @@ h1 { font-family: 'Playfair Display'; font-size: clamp(40px, 8vw, 64px); line-he
 h2 { font-family: 'Playfair Display'; font-size: 32px; margin-bottom: 20px; color: var(--navy); }
 .desc { font-size: 17px; color: var(--muted); line-height: 1.7; margin-bottom: 30px; }
 
-/* REFINED REFERRAL SECTION */
-.referral-section { text-align: center; border-top: 1px solid var(--line); padding-top: 80px; }
+/* REFERRAL SECTION */
+.referral-section { text-align: center; border-top: 1px solid var(--line); padding: 60px 20px; }
 .referral-section h2 { margin-bottom: 15px; }
 .referral-section p { color: var(--muted); max-width: 600px; margin: 0 auto 40px; font-size: 17px; line-height: 1.6; }
 
@@ -110,8 +111,11 @@ h2 { font-family: 'Playfair Display'; font-size: 32px; margin-bottom: 20px; colo
 }
 
 @media (max-width: 768px) {
-  .grid { grid-template-columns: 1fr; gap: 40px; }
-  .hero { padding: 60px 20px; }
+  .hero { text-align: center; padding: 60px 20px; }
+  .grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+  .section { margin-bottom: 40px; }
+  .card { text-align: left; } /* Keep list readable but align container */
+  .referral-section { padding: 40px 20px; }
 }
 </style>
 </head>
@@ -147,17 +151,17 @@ h2 { font-family: 'Playfair Display'; font-size: 32px; margin-bottom: 20px; colo
 <div class="section">
   <div class="grid">
     <div class="reveal">
-      <h2>A real set of eyes</h2>
-      <p class="desc">Most people buy insurance once and never look at it again. I handle your coverage personally, making sure the limits actually make sense for your life today. If your situation changes, we talk about it. It’s that simple.</p>
+      <h2>Professional advice</h2>
+      <p class="desc">Most people only talk to their agent when they get a bill or have a claim. I prefer a different way. I handle your coverage personally, making sure your protection stays current as your life changes.</p>
       <a href="/quote.html" class="cta-btn">Start a Conversation</a>
     </div>
     <div class="card reveal" style="transition-delay: 0.1s;">
       <h3 style="font-family: 'Playfair Display'; font-size: 24px; color: var(--navy); margin-top:0;">What we look at</h3>
       <ul style="color: var(--muted); line-height: 2; font-size: 16px; padding-left: 20px;">
-        <li>Primary & Secondary Homes</li>
-        <li>Automobile & Collector Cars</li>
-        <li>High-Limit Umbrella Liability</li>
-        <li>Jewelry, Art & Valuables</li>
+        <li><strong>Full Roof Replacement</strong> — Avoiding the fine print.</li>
+        <li><strong>Water Backup</strong> — Protecting your finished basement.</li>
+        <li><strong>Umbrella Liability</strong> — Defending your future income.</li>
+        <li><strong>Agreed Value Auto</strong> — For cars that aren't "standard."</li>
       </ul>
     </div>
   </div>
@@ -166,7 +170,7 @@ h2 { font-family: 'Playfair Display'; font-size: 32px; margin-bottom: 20px; colo
 <div class="section reveal">
   <div class="referral-section">
     <h2>Sent by a friend?</h2>
-    <p>Most of my business comes from people I already know. If a friend or family member told you to reach out, the best way to start is a quick chat to see if my way of doing things is a fit for you.</p>
+    <p>Most of my business comes from personal introductions. If someone sent you my way, the best way to start is a quick chat to see if I'm the right fit for your needs.</p>
     <a href="/quote.html" class="cta-btn">Connect with Andy</a>
   </div>
 </div>
@@ -202,4 +206,3 @@ document.querySelectorAll('a').forEach(link => {
 
 </body>
 </html>
-
