@@ -24,7 +24,7 @@ body {
   background: var(--bg); 
   color: var(--ink);
   opacity: 0; 
-  transition: opacity 0.5s ease; 
+  transition: opacity 0.4s ease; 
 }
 body.nav-open { overflow: hidden; }
 
@@ -66,33 +66,41 @@ body.nav-open { overflow: hidden; }
 h1 { font-family: 'Playfair Display'; font-size: clamp(40px, 8vw, 64px); line-height: 1.1; margin-bottom: 20px; font-weight: 600; }
 .hero p { font-size: 20px; color: var(--muted); max-width: 650px; margin: auto; line-height: 1.6; }
 
-/* EXPERTISE SECTION (New) */
-.expertise-banner { background: var(--paper); padding: 40px 20px; text-align: center; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 80px; }
-.expertise-content { max-width: 800px; margin: auto; }
-.expertise-content p { font-size: 17px; color: var(--navy); line-height: 1.7; margin: 0; font-weight: 500; }
+/* TWO-COLUMN EXPERTISE SECTION (Fixes laptop flow) */
+.expertise-grid { max-width: 1100px; margin: 0 auto 80px; padding: 0 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.expertise-block { background: var(--paper); padding: 40px; border-radius: 24px; position: relative; overflow: hidden; text-align: left; }
+.expertise-block::before { content: ""; position: absolute; top: 0; left: 40px; width: 40px; height: 4px; background: var(--navy); }
+.expertise-block h3 { font-family: 'Playfair Display'; font-size: 24px; color: var(--navy); margin: 0 0 15px 0; }
+.expertise-block p { font-size: 16px; color: var(--muted); line-height: 1.7; margin: 0; }
 
-/* COVERAGE GRID (Fixes the laptop layout) */
+/* COVERAGE GRID */
 .section { max-width: 1100px; margin: 0 auto 100px; padding: 0 20px; }
-.section-header { text-align: center; margin-bottom: 60px; }
+.section-header { text-align: center; margin-bottom: 50px; }
 .section-header h2 { font-family: 'Playfair Display'; font-size: 36px; color: var(--navy); margin-bottom: 15px; }
-.section-header p { color: var(--muted); font-size: 18px; }
 
 .coverage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.coverage-card { background: #fff; border: 1px solid var(--line); padding: 40px 30px; border-radius: 20px; transition: 0.3s; text-align: left; }
+.coverage-card { background: #fff; border: 1px solid var(--line); padding: 40px 30px; border-radius: 24px; transition: 0.3s; text-align: left; }
 .coverage-card:hover { transform: translateY(-5px); border-color: var(--navy); box-shadow: 0 15px 35px rgba(15,28,58,0.05); }
 .coverage-card h3 { font-family: 'Playfair Display'; font-size: 22px; color: var(--navy); margin: 0 0 10px 0; }
 .coverage-card p { font-size: 15px; color: var(--muted); line-height: 1.6; margin: 0; }
 
 /* CTA SECTION */
-.cta-box { text-align: center; background: var(--navy); color: #fff; padding: 80px 40px; border-radius: 40px; margin: 0 20px 80px; }
-.cta-box h2 { color: #fff; margin-bottom: 20px; }
-.cta-box p { color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 40px; font-size: 17px; line-height: 1.6; }
+.cta-box { text-align: center; background: var(--navy); color: #fff; padding: 90px 40px; border-radius: 40px; margin: 0 20px 80px; }
+.cta-box h2 { font-family: 'Playfair Display'; font-size: clamp(32px, 5vw, 42px); color: #fff; margin-bottom: 25px; }
+.cta-box p { color: rgba(255,255,255,0.8); max-width: 650px; margin: 0 auto 40px; font-size: 17px; line-height: 1.6; }
 
 .cta-btn { display: inline-block; background: #fff; color: var(--navy); padding: 20px 45px; border-radius: 100px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 13px; transition: all 0.3s ease; }
 .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
+footer { text-align: center; padding-bottom: 40px; font-size: 12px; color: var(--muted); letter-spacing: 1px; }
+
 @media (max-width: 900px) {
   .coverage-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .expertise-grid { grid-template-columns: 1fr; }
+  .expertise-block::before { left: 50%; transform: translateX(-50%); }
+  .expertise-block { text-align: center; }
 }
 @media (max-width: 600px) {
   .coverage-grid { grid-template-columns: 1fr; }
@@ -128,16 +136,20 @@ h1 { font-family: 'Playfair Display'; font-size: clamp(40px, 8vw, 64px); line-he
   <p>We provide sophisticated risk management for owners who need a partner, not just a policy.</p>
 </div>
 
-<div class="expertise-banner reveal">
-  <div class="expertise-content">
-    <p>Before founding Donohoo & Sons, I spent 10 years at Sentry Insurance managing high-claim environments for auto dealerships. Today, I bring that same Fortune-level risk management to local contractors, manufacturers, and auto repair shops.</p>
+<div class="expertise-grid reveal">
+  <div class="expertise-block">
+    <h3>Corporate Experience</h3>
+    <p>Before founding Donohoo & Sons, I spent a decade at Sentry Insurance managing complex, high-claim environments for auto dealerships. Today, I bring that same rigorous risk management to businesses of all kinds—from contractors and manufacturers to retail shops and condo associations.</p>
+  </div>
+  <div class="expertise-block" style="transition-delay: 0.1s;">
+    <h3>One Point of Contact</h3>
+    <p>Your business and personal lives are intertwined. By handling both your commercial policies and your personal insurance (home, auto, and umbrella), I can coordinate your protection to ensure there are absolutely no gaps. One advisor for everything you've built.</p>
   </div>
 </div>
 
 <div class="section">
   <div class="section-header reveal">
     <h2>Comprehensive Coverage</h2>
-    <p>Protecting every facet of your daily operations.</p>
   </div>
   
   <div class="coverage-grid">
@@ -170,9 +182,11 @@ h1 { font-family: 'Playfair Display'; font-size: clamp(40px, 8vw, 64px); line-he
 
 <div class="cta-box reveal">
   <h2>Ready for a professional review?</h2>
-  <p>Let's find the gaps your current agent might have missed. Click below to choose how you'd like to connect.</p>
+  <p>Let's find the gaps your current agent might have missed. Click below to choose how you'd like to connect and we can start auditing your current policies.</p>
   <a href="/quote.html" class="cta-btn">Start a Conversation</a>
 </div>
+
+<footer>DONOHOO & SONS INSURANCE • MILWAUKEE, WI</footer>
 
 <script>
 function toggleMenu() {
