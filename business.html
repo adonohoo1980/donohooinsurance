@@ -3,120 +3,143 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Business Insurance | Donohoo & Sons</title>
+<title>Business Risk | Donohoo & Sons</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:400,500,600&family=Playfair+Display:500,600,700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg: #faf9f6;
+  --bg: #f2f0eb; /* Warm Bone - feels more "established" than pure white */
+  --slab: #ffffff;
   --navy: #0f1c3a;
   --ink: #1a1a1a;
-  --muted: #6e6e73;
-  --line: rgba(0,0,0,.08);
-  scroll-behavior: smooth;
+  --muted: #5c5c5c;
+  --accent: #d4af37; /* Muted Gold for tiny details */
+  --shadow: rgba(15, 28, 58, 0.08);
 }
 
-/* Page Fade-In */
 body { 
   margin: 0; 
   font-family: 'Inter', sans-serif; 
   background: var(--bg); 
   color: var(--ink);
   opacity: 0; 
-  transition: opacity 0.4s ease; 
+  transition: opacity 0.8s ease; 
 }
-body.nav-open { overflow: hidden; }
 
-/* MASTER TOPBAR */
+/* 1. LAYERED TOPBAR */
 .topbar {
-  border-bottom: 1px solid var(--line);
-  padding: 12px 0;
-  background: rgba(250, 249, 246, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  position: sticky;
-  top: 0;
+  padding: 24px 0;
+  background: transparent;
+  position: absolute;
+  width: 100%;
   z-index: 2000;
 }
-.nav { max-width: 1050px; margin: auto; padding: 0 18px; display: flex; justify-content: space-between; align-items: center; }
-.logo-img { height: 28px; }
+.nav { max-width: 1200px; margin: auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; }
+.logo-img { height: 30px; }
 
-/* HAMBURGER */
-.hamburger { cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; z-index: 2100; position: relative; }
-.hamburger span { display: block; width: 18px; height: 1.5px; background-color: var(--ink); transition: 0.4s; }
-.hamburger span:nth-child(1) { transform: translateY(-3px); }
-.hamburger span:nth-child(2) { transform: translateY(3px); }
-.hamburger.active span:nth-child(1) { transform: translateY(0.5px) rotate(45deg); }
-.hamburger.active span:nth-child(2) { transform: translateY(-0.5px) rotate(-45deg); }
-
-/* MENU OVERLAY */
-.nav-menu { position: fixed; top: 0; left: 0; width: 100%; height: 0; background: var(--bg); z-index: 1500; overflow: hidden; display: flex; flex-direction: column; padding-top: 80px; transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
-.nav-menu.active { height: 100vh; }
-.nav-links { padding: 0 40px; display: flex; flex-direction: column; }
-.nav-menu a { 
-  font-family: 'Inter', sans-serif; 
-  font-size: 28px; 
-  font-weight: 600; 
-  color: var(--ink); 
-  text-decoration: none; 
-  margin-bottom: 24px;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: 0.4s ease;
+/* 2. ARCHITECTURAL HERO */
+.hero { 
+  padding: 160px 40px 100px; 
+  max-width: 1200px; 
+  margin: auto; 
+  text-align: left; 
 }
-.nav-menu.active a { opacity: 1; transform: translateY(0); }
-.nav-menu.active a:nth-child(1) { transition-delay: 0.1s; }
-.nav-menu.active a:nth-child(2) { transition-delay: 0.15s; }
-.nav-menu.active a:nth-child(3) { transition-delay: 0.2s; }
-.nav-menu.active a:nth-child(4) { transition-delay: 0.25s; }
-
-/* HERO SECTION */
-.hero { max-width: 1050px; margin: auto; padding: 100px 20px; text-align: center; }
-.reveal { opacity: 0; transform: translateY(20px); transition: all 0.7s ease-out; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-h1 { font-family: 'Playfair Display'; font-size: clamp(40px, 8vw, 64px); line-height: 1.1; margin-bottom: 25px; font-weight: 600; }
-.hero p { font-size: 20px; color: var(--muted); max-width: 600px; margin: auto; line-height: 1.6; }
-
-/* CONTENT BOXES */
-.section { max-width: 1050px; margin: 0 auto 100px; padding: 0 20px; }
-.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-
-.business-card {
-  background: #fff;
-  border: 1px solid var(--line);
-  padding: 40px;
-  border-radius: 30px;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+h1 { 
+  font-family: 'Playfair Display'; 
+  font-size: clamp(48px, 8vw, 82px); 
+  line-height: 0.95; 
+  margin: 0 0 30px 0; 
+  letter-spacing: -2px;
 }
-.business-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(15,28,58,0.06);
+.hero p { 
+  font-size: 22px; 
+  color: var(--muted); 
+  max-width: 550px; 
+  line-height: 1.5; 
+  margin-left: 5px;
 }
 
-h2 { font-family: 'Playfair Display'; font-size: 32px; margin-bottom: 20px; color: var(--navy); }
-.desc { font-size: 17px; color: var(--muted); line-height: 1.7; margin-bottom: 30px; }
+/* 3. THE "SLAB" LAYOUT */
+.container { max-width: 1200px; margin: auto; padding: 0 40px 100px; }
 
-/* CTA BUTTON */
-.cta-btn {
-  display: inline-block;
+.slab-grid { 
+  display: grid; 
+  grid-template-columns: 1.4fr 1fr; 
+  gap: 30px; 
+}
+
+.slab {
+  background: var(--slab);
+  padding: 60px;
+  border-radius: 4px; /* Sharper corners feel more "architectural" than bubbly ones */
+  box-shadow: 0 40px 100px var(--shadow);
+  position: relative;
+}
+
+/* Tiny detail: Gold accent bar */
+.slab::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 60px;
+  width: 60px;
+  height: 3px;
+  background: var(--navy);
+}
+
+h2 { font-family: 'Playfair Display'; font-size: 42px; margin: 0 0 25px 0; color: var(--navy); }
+.desc { font-size: 19px; color: var(--muted); line-height: 1.8; margin-bottom: 40px; }
+
+/* LIST STYLE */
+.risk-list { list-style: none; padding: 0; margin: 0; }
+.risk-list li { 
+  padding: 18px 0; 
+  border-bottom: 1px solid rgba(0,0,0,0.05); 
+  display: flex; 
+  justify-content: space-between;
+  font-weight: 500;
+}
+.risk-list li span { color: var(--muted); font-weight: 400; font-size: 14px; }
+
+/* 4. EXECUTIVE CTA */
+.executive-cta {
   background: var(--navy);
   color: #fff;
-  padding: 18px 35px;
-  border-radius: 100px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  padding: 100px 60px;
+  border-radius: 4px;
+  margin-top: 80px;
+  text-align: center;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.2);
 }
-.cta-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(15,28,58,0.2);
+.executive-cta h2 { color: #fff; font-size: 52px; margin-bottom: 30px; }
+.btn-gold {
+  display: inline-block;
+  background: #fff;
+  color: var(--navy);
+  padding: 22px 50px;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 13px;
+  transition: all 0.4s ease;
+}
+.btn-gold:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
 }
 
-@media (max-width: 768px) {
-  .grid { grid-template-columns: 1fr; gap: 40px; }
-  .hero { padding: 60px 20px; }
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  .slab-grid { grid-template-columns: 1fr; }
+  .hero { text-align: center; padding-top: 120px; }
+  .hero p { margin: auto; }
+  .slab { padding: 40px 30px; }
+  .slab::before { left: 50%; transform: translateX(-50%); }
 }
 </style>
 </head>
@@ -126,89 +149,50 @@ h2 { font-family: 'Playfair Display'; font-size: 32px; margin-bottom: 20px; colo
 <div class="topbar">
   <div class="nav">
     <a href="/"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
-    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
     </div>
-  </div>
 </div>
-
-<nav class="nav-menu" id="navMenu">
-  <div class="nav-links">
-    <a href="/" onclick="toggleMenu()">Home</a>
-    <a href="/families.html" onclick="toggleMenu()">Personal</a>
-    <a href="/business.html" onclick="toggleMenu()">Business</a>
-    <a href="/life.html" onclick="toggleMenu()">Life & Health</a>
-    <a href="/quote.html" onclick="toggleMenu()" style="color: var(--navy); border-top: 1px solid var(--line); padding-top: 20px; margin-top: 10px;">Get a Quote</a>
-  </div>
-</nav>
 
 <div class="hero reveal">
-  <h1>Your business is your legacy. Protect it.</h1>
-  <p>We provide sophisticated risk management for owners who have built something worth defending.</p>
+  <h1>Business risk.<br>Decidedly personal.</h1>
+  <p>Sophisticated insurance solutions for owners who want one advisor, not a call center.</p>
 </div>
 
-<div class="section">
-  <div class="grid">
-    <div class="reveal">
-      <h2>General Liability & Property</h2>
-      <p class="desc">From your physical location to your daily operations, we ensure your core assets are shielded from the unexpected.</p>
-      <a href="/quote.html" class="cta-btn">Start Risk Review</a>
+<div class="container">
+  <div class="slab-grid">
+    
+    <div class="slab reveal">
+      <h2>Operational Defense</h2>
+      <p class="desc">Insurance is a contract of trust. I audit your operations to find the quiet risks that big-box agencies miss—from data liability to professional errors.</p>
+      <a href="/quote.html" class="btn-gold" style="background: var(--navy); color: #fff;">Start Audit</a>
     </div>
-    <div class="business-card reveal" style="transition-delay: 0.1s;">
-      <h3 style="font-family: 'Playfair Display'; font-size: 24px; color: var(--navy);">Specialized Coverage</h3>
-      <ul style="color: var(--muted); line-height: 2; font-size: 16px; padding-left: 20px;">
-        <li>Workers Compensation</li>
-        <li>Professional Liability (E&O)</li>
-        <li>Cyber & Data Breach</li>
-        <li>Commercial Auto & Fleet</li>
+
+    <div class="slab reveal" style="transition-delay: 0.2s;">
+      <h2>Core Coverages</h2>
+      <ul class="risk-list">
+        <li>General Liability <span>Operational</span></li>
+        <li>Cyber & Privacy <span>Data Risk</span></li>
+        <li>Workers Comp <span>Human Capital</span></li>
+        <li>Auto & Fleet <span>Logistics</span></li>
+        <li>Professional E&O <span>Errors</span></li>
       </ul>
     </div>
-  </div>
-</div>
 
-<div class="section reveal" style="text-align: center; background: var(--navy); color: #fff; padding: 80px 40px; border-radius: 40px;">
-  <h2 style="color: #fff;">Need a second opinion?</h2>
-  <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 40px;">Email me your current schedule of insurance. I'll run a line-by-line audit to find gaps your current agent might have missed.</p>
-  <a href="mailto:adonohoo@unisource-ins.com" class="cta-btn" style="background: #fff; color: var(--navy);">Email My Policies</a>
+  </div>
+
+  <div class="executive-cta reveal">
+    <h2>Secure your operations.</h2>
+    <p style="font-size: 20px; opacity: 0.7; margin-bottom: 40px;">Professional risk management starts with a conversation.</p>
+    <a href="/quote.html" class="btn-gold">Connect with Andy</a>
+  </div>
 </div>
 
 <script>
-function toggleMenu() {
-  const menu = document.getElementById('navMenu');
-  const btn = document.getElementById('hamburger');
-  menu.classList.toggle('active');
-  btn.classList.toggle('active');
-  document.body.classList.toggle('nav-open');
-}
-
-// Fade in body
-window.addEventListener('load', () => {
-  document.body.style.opacity = '1';
-});
-
-// Scroll Reveal
+window.addEventListener('load', () => { document.body.style.opacity = '1'; });
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
 }, { threshold: 0.1 });
-
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Page Transitions
-document.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', function(e) {
-    const href = this.getAttribute('href');
-    if (href && !href.startsWith('#') && !href.startsWith('tel') && !href.startsWith('mailto') && !this.target) {
-      e.preventDefault();
-      document.body.style.opacity = '0';
-      setTimeout(() => { window.location.href = href; }, 400);
-    }
-  });
-});
 </script>
 
 </body>
 </html>
-
