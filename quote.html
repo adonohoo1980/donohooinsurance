@@ -78,7 +78,7 @@ body.nav-open { overflow: hidden; }
 .info-data:hover { opacity: 0.7; }
 
 /* RIGHT COLUMN: FORM */
-.contact-form { background: #fff; padding: 50px 40px; border-radius: 28px; border: 1px solid var(--line); box-shadow: 0 20px 40px rgba(15,28,58,0.04); }
+.contact-form { background: #fff; padding: 50px 40px; border-radius: 28px; border: 1px solid var(--line); box-shadow: 0 20px 40px rgba(15,28,58,0.04); position: relative; min-height: 400px; }
 .form-group { margin-bottom: 25px; }
 .form-label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--navy); }
 .form-input { 
@@ -109,6 +109,13 @@ textarea.form-input { min-height: 140px; resize: vertical; }
   transition: all 0.3s ease; 
 }
 .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(15,28,58,0.2); }
+
+/* SUCCESS MESSAGE */
+#successMessage { display: none; text-align: center; padding: 60px 20px; animation: fadeIn 0.6s ease forwards; }
+#successMessage h3 { font-family: 'Playfair Display'; font-size: 32px; color: var(--navy); margin: 0 0 15px 0; }
+#successMessage p { color: var(--muted); font-size: 17px; line-height: 1.6; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 footer { text-align: center; padding-bottom: 40px; margin-top: 80px; font-size: 12px; color: var(--muted); letter-spacing: 1px; }
 
@@ -172,8 +179,13 @@ footer { text-align: center; padding-bottom: 40px; margin-top: 80px; font-size: 
 
     <div class="contact-form reveal" style="transition-delay: 0.2s;">
       
-      <form action="https://formspree.io/f/mbdanodq" method="POST">
+      <form id="contactForm" action="https://formsubmit.co/ajax/adonohoo@unisource-ins.com" method="POST">
         
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="New Lead from Donohoo & Sons Website">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_replyto" value="%email%">
+
         <div class="form-group">
           <label class="form-label">Full Name</label>
           <input type="text" name="name" class="form-input" placeholder="John Doe" required>
@@ -200,8 +212,13 @@ footer { text-align: center; padding-bottom: 40px; margin-top: 80px; font-size: 
           <textarea name="message" class="form-input" placeholder="Briefly describe what you're looking for..." required></textarea>
         </div>
         
-        <button type="submit" class="submit-btn">Send Message</button>
+        <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
       </form>
+
+      <div id="successMessage">
+        <h3>Message Received</h3>
+        <p>Thank you for reaching out. I have received your information and will be in touch with you shortly.</p>
+      </div>
       
     </div>
 
@@ -211,6 +228,7 @@ footer { text-align: center; padding-bottom: 40px; margin-top: 80px; font-size: 
 <footer>DONOHOO & SONS INSURANCE • MILWAUKEE, WI</footer>
 
 <script>
+// Mobile Menu Toggle
 function toggleMenu() {
   const menu = document.getElementById('navMenu');
   const btn = document.getElementById('hamburger');
@@ -219,22 +237,67 @@ function toggleMenu() {
   document.body.classList.toggle('nav-open');
 }
 
+// Fade in page on load
 window.addEventListener('load', () => { document.body.style.opacity = '1'; });
 
+// Scroll Animations
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+// Smooth Page Transitions
 document.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
-    if (href && !href.startsWith('#') && !href.startsWith('tel') && !href.startsWith('sms') && !href.startsWith('mailto') && !this.target && href !== 'https://formspree.io/f/mbdanodq') {
+    // Ensure we don't intercept actual form links or special hrefs
+    if (href && !href.startsWith('#') && !href.startsWith('tel') && !href.startsWith('sms') && !href.startsWith('mailto') && !this.target && !href.includes('formsubmit')) {
       e.preventDefault();
       document.body.style.opacity = '0';
       setTimeout(() => { window.location.href = href; }, 400);
     }
   });
+});
+
+// BACKGROUND FORM SUBMISSION (No Redirect)
+const form = document.getElementById('contactForm');
+const successMessage = document.getElementById('successMessage');
+const submitBtn = document.getElementById('submitBtn');
+
+form.addEventListener('submit', async function(e) {
+  e.preventDefault(); // Stop the default browser redirect
+  
+  // Change button text to show progress
+  const originalBtnText = submitBtn.innerText;
+  submitBtn.innerText = 'Sending...';
+  submitBtn.style.opacity = '0.7';
+  submitBtn.style.pointerEvents = 'none';
+
+  const data = new FormData(form);
+
+  try {
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      // Hide form and show success message
+      form.style.display = 'none';
+      successMessage.style.display = 'block';
+    } else {
+      // Handle error gracefully
+      submitBtn.innerText = 'Oops! Try again.';
+      submitBtn.style.opacity = '1';
+      submitBtn.style.pointerEvents = 'auto';
+      setTimeout(() => { submitBtn.innerText = originalBtnText; }, 3000);
+    }
+  } catch (error) {
+    submitBtn.innerText = 'Error. Please call directly.';
+    submitBtn.style.opacity = '1';
+    setTimeout(() => { submitBtn.innerText = originalBtnText; }, 4000);
+  }
 });
 </script>
 
