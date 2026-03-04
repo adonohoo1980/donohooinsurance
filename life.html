@@ -166,4 +166,124 @@ footer{text-align:center;margin-top:80px;padding-bottom:40px;font-size:12px;colo
   <p class="sub">Straightforward life and health coverage designed to keep your family and business moving forward.</p>
 </header>
 
-<div class
+<div class="card-grid">
+  <div class="card reveal" style="transition-delay: 0.1s;">
+    <h3>Life Insurance</h3>
+    <p>Simple term or permanent options to protect your family’s lifestyle or fund a business buy-sell agreement.</p>
+  </div>
+  <div class="card reveal" style="transition-delay: 0.2s;">
+    <h3>Disability Income</h3>
+    <p>Your ability to earn an income is your most valuable asset. We help you protect it if you can't work.</p>
+  </div>
+  <div class="card reveal" style="transition-delay: 0.3s;">
+    <h3>Long-Term Care</h3>
+    <p>Planning that ensures a future health crisis doesn’t wipe out the legacy you’ve worked hard to build.</p>
+  </div>
+</div>
+
+<section class="about-spread reveal">
+  <div>
+    <h2>Simple, Honest Advice</h2>
+    <p>I believe life insurance should be easy to understand. I focus on finding the right fit for your situation—whether that’s protecting your home or ensuring your business survives a key-person loss.</p>
+    <p>No high-pressure sales or complex schemes. Just a direct conversation about what you actually need.</p>
+  </div>
+  <img src="Fishing.jpg" class="fishing-photo" alt="Planning for the future">
+</section>
+
+<div class="audit-box reveal" id="audit">
+  <h2>The 60-Second Audit</h2>
+  <p style="opacity:0.8;margin-top:15px; font-size: 18px;">Select your focus to view the questions you should be asking.</p>
+  
+  <div class="audit-toggle-wrapper">
+    <div class="audit-toggle">
+      <button class="toggle-btn active" onclick="switchAudit('personal')" id="btn-personal">For Your Family</button>
+      <button class="toggle-btn" onclick="switchAudit('business')" id="btn-business">For Your Business</button>
+    </div>
+  </div>
+
+  <div id="audit-personal" class="audit-content active">
+    <div class="audit-grid">
+      <div class="audit-item">
+        <h4>1. Income Replacement</h4>
+        <p>If your paycheck stopped tomorrow due to an injury or illness, how many months could your family maintain their current lifestyle?</p>
+      </div>
+      <div class="audit-item">
+        <h4>2. Debt & Liquidity</h4>
+        <p>If the worst happened, is there enough life insurance coverage to wipe the slate clean so your family can stay in their home?</p>
+      </div>
+      <div class="audit-item">
+        <h4>3. Legacy Guard</h4>
+        <p>Is your retirement nest egg and family inheritance protected from the high out-of-pocket costs of long-term care?</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="audit-business" class="audit-content">
+    <div class="audit-grid">
+      <div class="audit-item">
+        <h4>1. Business Continuity</h4>
+        <p>If a partner passed away, is your buy-sell agreement actually funded by life insurance, or would it immediately drain company capital?</p>
+      </div>
+      <div class="audit-item">
+        <h4>2. Key Person Loss</h4>
+        <p>Could the business survive financially if your top revenue generator or operational leader suddenly couldn't work?</p>
+      </div>
+      <div class="audit-item">
+        <h4>3. Business Overhead</h4>
+        <p>If you were disabled, how would the business continue to cover ongoing fixed costs like rent, payroll, and utilities?</p>
+      </div>
+    </div>
+  </div>
+
+  <a href="/quote.html" class="btn-white">Request a Full Review</a>
+</div>
+
+</div>
+
+<footer>DONOHOO & SONS INSURANCE • MILWAUKEE, WI</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('navMenu');
+  const btn = document.getElementById('hamburger');
+  menu.classList.toggle('active');
+  btn.classList.toggle('active');
+  document.body.classList.toggle('nav-open');
+}
+
+// Interactive Audit Toggle Logic
+function switchAudit(type) {
+  // Reset buttons
+  document.getElementById('btn-personal').classList.remove('active');
+  document.getElementById('btn-business').classList.remove('active');
+  // Reset content
+  document.getElementById('audit-personal').classList.remove('active');
+  document.getElementById('audit-business').classList.remove('active');
+  
+  // Activate selected
+  document.getElementById('btn-' + type).classList.add('active');
+  document.getElementById('audit-' + type).classList.add('active');
+}
+
+// Reveal logic
+window.addEventListener('load', () => { document.body.style.opacity = '1'; });
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Page Transitions
+document.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href && !href.startsWith('#') && !href.startsWith('tel') && !href.startsWith('sms') && !href.startsWith('mailto') && !this.target) {
+      e.preventDefault();
+      document.body.style.opacity = '0';
+      setTimeout(() => { window.location.href = href; }, 400);
+    }
+  });
+});
+</script>
+
+</body>
+</html>
