@@ -171,20 +171,22 @@ footer { text-align: center; padding-bottom: 40px; margin-top: 80px; font-size: 
     </div>
 
     <div class="contact-form reveal" style="transition-delay: 0.2s;">
-      <form action="#" method="POST">
+      
+      <form action="https://formspree.io/f/mbdanodq" method="POST">
+        
         <div class="form-group">
           <label class="form-label">Full Name</label>
-          <input type="text" class="form-input" placeholder="John Doe" required>
+          <input type="text" name="name" class="form-input" placeholder="John Doe" required>
         </div>
         
         <div class="form-group">
           <label class="form-label">Email Address</label>
-          <input type="email" class="form-input" placeholder="john@example.com" required>
+          <input type="email" name="email" class="form-input" placeholder="john@example.com" required>
         </div>
         
         <div class="form-group">
           <label class="form-label">What are we discussing?</label>
-          <select class="form-input" required>
+          <select name="topic" class="form-input" required>
             <option value="" disabled selected>Select an area of focus...</option>
             <option value="business">Business Insurance</option>
             <option value="personal">Personal / Home & Auto</option>
@@ -195,11 +197,12 @@ footer { text-align: center; padding-bottom: 40px; margin-top: 80px; font-size: 
         
         <div class="form-group">
           <label class="form-label">How can I help?</label>
-          <textarea class="form-input" placeholder="Briefly describe what you're looking for..." required></textarea>
+          <textarea name="message" class="form-input" placeholder="Briefly describe what you're looking for..." required></textarea>
         </div>
         
         <button type="submit" class="submit-btn">Send Message</button>
       </form>
+      
     </div>
 
   </div>
@@ -226,7 +229,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 document.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
-    if (href && !href.startsWith('#') && !href.startsWith('tel') && !href.startsWith('sms') && !href.startsWith('mailto') && !this.target) {
+    if (href && !href.startsWith('#') && !href.startsWith('tel') && !href.startsWith('sms') && !href.startsWith('mailto') && !this.target && href !== 'https://formspree.io/f/mbdanodq') {
       e.preventDefault();
       document.body.style.opacity = '0';
       setTimeout(() => { window.location.href = href; }, 400);
