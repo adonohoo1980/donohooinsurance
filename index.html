@@ -1,53 +1,225 @@
-<style>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Donohoo & Sons Insurance | Milwaukee & Wauwatosa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
     :root {
-      --bg: #fdfdfb; /* Slightly off-white for a premium "paper" feel */
+      --bg: #fdfdfb; /* Professional off-white/paper feel */
       --ink: #1a202c;
       --navy: #002244; 
-      --accent: #b8860b; /* Gold/Brass accent instead of generic blue */
+      --accent: #b8860b; /* Heritage Gold/Brass */
       --line: #e2e8f0;
       --paper: #f1f5f9;
+      scroll-behavior: smooth;
     }
+    * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.7;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    body.loaded { opacity: 1; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-    /* UNIQUE HEADER TWEAK */
+    /* HEADER & NAVIGATION */
     header {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 2px solid var(--accent); /* Thin gold line for personality */
+      background: rgba(255, 255, 255, 0.98);
+      border-bottom: 3px solid var(--accent); /* Signature Gold Line */
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 14px 0;
     }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; }
+    .logo-img { height: 45px; }
+    .desktop-nav { display: none; }
+    .desktop-nav a {
+      margin-left: 28px;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .btn-quote {
+      background: var(--navy);
+      color: white !important;
+      padding: 12px 24px;
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+    .btn-quote:hover { background: var(--accent); }
 
-    /* THE HERO "BOUTIQUE" LOOK */
-    .hero {
-      background: linear-gradient(rgba(0,34,68,0.8), rgba(0,34,68,0.9)), url('boys.jpg');
-      padding: 180px 0 140px;
+    /* MOBILE MENU */
+    .hamburger { cursor: pointer; display: flex; flex-direction: column; gap: 5px; }
+    .hamburger span { width: 25px; height: 2px; background: var(--navy); transition: 0.3s; }
+    .nav-menu {
+      position: fixed; top: 0; left: 0; width: 100%; height: 0;
+      background: var(--navy); z-index: 999; overflow: hidden;
+      transition: 0.5s ease; display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
     }
-    
+    .nav-menu.active { height: 100vh; }
+    .nav-menu a { font-size: 24px; color: white; text-decoration: none; margin: 15px 0; font-family: 'Playfair Display'; }
+
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(rgba(0,34,68,0.85), rgba(0,34,68,0.95)), url('boys.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 140px 0 100px;
+      text-align: center;
+    }
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      letter-spacing: -1px;
+      font-size: clamp(40px, 7vw, 72px);
+      margin-bottom: 20px;
+      line-height: 1.1;
     }
+    .hero p {
+      font-size: clamp(18px, 3vw, 22px);
+      max-width: 800px;
+      margin: 0 auto 40px;
+      color: #cbd5e0;
+    }
+    .btn-hero {
+      background: var(--accent);
+      color: white;
+      padding: 20px 40px;
+      border-radius: 4px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 18px;
+      transition: 0.3s ease;
+    }
+    .btn-hero:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
-    /* PILLARS WITH CHARACTER */
+    /* TRUST BAR */
+    .trust-bar { background: #fff; padding: 50px 0; text-align: center; border-bottom: 1px solid var(--line); }
+    .trust-bar h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 30px; }
+    .trust-logos { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; align-items: center; }
+    .trust-logos img { height: 35px; filter: grayscale(100%); opacity: 0.6; }
+
+    /* PILLARS / THE DIFFERENCE */
+    .section { padding: 80px 0; }
+    .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
     .pillar {
       background: white;
+      padding: 50px 30px;
       border: 1px solid var(--line);
-      border-bottom: 4px solid var(--accent); /* Bottom accent bar */
-      transition: transform 0.3s ease;
+      border-bottom: 4px solid var(--accent); /* Custom Bottom Border */
+      text-align: center;
+      transition: 0.3s;
     }
-    
-    .pillar:hover {
-      transform: translateY(-10px);
-    }
+    .pillar:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+    .pillar i { font-size: 40px; color: var(--navy); margin-bottom: 25px; }
+    .pillar h4 { font-family: 'Playfair Display'; font-size: 24px; margin-bottom: 15px; }
 
-    .pillar i {
-      color: var(--navy); /* Navy icons feel more grounded than blue ones */
-    }
+    /* FOOTER */
+    footer { background: var(--navy); color: #cbd5e0; padding: 60px 0 30px; text-align: center; font-size: 14px; }
+    footer strong { color: white; font-family: 'Playfair Display'; font-size: 20px; }
+    footer a { color: var(--accent); text-decoration: none; }
 
-    /* ADDING A "PERSONAL GUARANTEE" SECTION */
-    .guarantee-box {
-        border: 2px dashed var(--accent);
-        padding: 40px;
-        margin-top: 60px;
-        background: #fffcf5;
-        border-radius: 8px;
+    @media (min-width: 900px) {
+      .desktop-nav { display: block; }
+      .hamburger { display: none; }
     }
-</style>
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wrap nav-container">
+      <a href="/"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
+      <nav class="desktop-nav">
+        <a href="/">Home</a>
+        <a href="/families.html">Personal</a>
+        <a href="/business.html">Business</a>
+        <a href="/quote.html" class="btn-quote">Get a Quote</a>
+      </nav>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav-menu" id="navMenu">
+    <a href="/" onclick="toggleMenu()">Home</a>
+    <a href="/families.html" onclick="toggleMenu()">Personal</a>
+    <a href="/business.html" onclick="toggleMenu()">Business</a>
+    <a href="/quote.html" onclick="toggleMenu()">Get a Quote</a>
+  </nav>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>The Strength of a Family Legacy.</h1>
+      <p>Independent insurance expertise with zero corporate red tape. Based in Wauwatosa, serving all of Wisconsin with direct agent access.</p>
+      <a href="/quote.html" class="btn-hero">Request Your Quote</a>
+    </div>
+  </section>
+
+  <section class="trust-bar">
+    <div class="wrap">
+      <h3>Representing Wisconsin's Top Carriers</h3>
+      <div class="trust-logos">
+        <img src="https://via.placeholder.com/140x50?text=Carrier+1" alt="Carrier 1">
+        <img src="https://via.placeholder.com/140x50?text=Carrier+2" alt="Carrier 2">
+        <img src="https://via.placeholder.com/140x50?text=Carrier+3" alt="Carrier 3">
+        <img src="https://via.placeholder.com/140x50?text=Carrier+4" alt="Carrier 4">
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="pillars">
+      <div class="pillar">
+        <i class="fas fa-user-tie"></i>
+        <h4>Direct Access</h4>
+        <p>No call centers. You get my direct cell phone number for claims, questions, or just a quick check-in.</p>
+      </div>
+      <div class="pillar">
+        <i class="fas fa-map-marked-alt"></i>
+        <h4>Wisconsin Grown</h4>
+        <p>We live and work in Wauwatosa. We understand the specific risks and needs of Southeastern Wisconsin families.</p>
+      </div>
+      <div class="pillar">
+        <i class="fas fa-handshake"></i>
+        <h4>Independent Choice</h4>
+        <p>We don't work for one big carrier. We work for you, shopping dozens of companies to find your best rate.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p><strong>Donohoo & Sons Insurance</strong><br>
+      10425 W North Ave, Suite 226 • Wauwatosa, WI 53226<br>
+      Phone: (414) [Your Number] • By Appointment Only</p>
+      <div style="margin-top: 30px; border-top: 1px solid #2d3748; padding-top: 20px;">
+        <a href="/privacy">Privacy Policy</a> • © 2026 Donohoo & Sons Insurance
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navMenu').classList.toggle('active');
+    }
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+  </script>
+</body>
+</html>
