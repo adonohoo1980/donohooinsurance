@@ -7,9 +7,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  
   <style>
     :root {
       --bg: #fdfdfb;
@@ -22,13 +21,14 @@
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
+    /* EDITORIAL FONT UPGRADE */
     body {
       margin: 0;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'Lora', serif; /* Swapped to a classic, elegant serif */
       background: var(--bg);
       color: var(--ink);
-      font-size: 17px;
-      line-height: 1.6;
+      font-size: 18px; /* Slightly larger for easier reading */
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       opacity: 0;
       transition: opacity 0.8s ease-in-out;
@@ -39,21 +39,24 @@
 
     .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; text-align: center; }
 
+    /* UI ELEMENTS KEEP CLEAN SANS-SERIF */
+    header, .btn-quote, .btn-white, .nav-menu a { font-family: 'Inter', sans-serif; }
+
     /* HEADER */
-    header { background: #fff; border-bottom: 3px solid var(--accent); position: sticky; top: 0; z-index: 1000; padding: 10px 0; }
+    header { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 1000; padding: 12px 0; }
     .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     .logo-img { height: 60px; width: auto; position: relative; z-index: 2100; }
 
     /* DESKTOP NAV */
     .desktop-nav { display: none; }
-    .desktop-nav a { margin-left: 24px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s; }
+    .desktop-nav a { margin-left: 28px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
     .desktop-nav a:hover { color: var(--accent); }
-    .desktop-nav .active-link { color: var(--navy); border-bottom: 2px solid var(--accent); padding-bottom: 4px; }
-    .btn-quote { background: var(--navy); color: white !important; padding: 10px 20px; border-radius: 4px; transition: background 0.3s; }
+    .desktop-nav .active-link { color: var(--navy); border-bottom: 1px solid var(--accent); padding-bottom: 4px; }
+    .btn-quote { background: var(--navy); color: white !important; padding: 12px 24px; border-radius: 4px; transition: background 0.3s; font-size: 13px; letter-spacing: 1px; }
     .btn-quote:hover { background: var(--accent); }
     .btn-quote:active { transform: scale(0.96); } 
 
-    /* APPLE-STYLE MOBILE HAMBURGER */
+    /* MOBILE HAMBURGER */
     .hamburger { cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; z-index: 2100; position: relative; }
     .hamburger span { display: block; width: 24px; height: 2px; background-color: var(--navy); transition: 0.4s; position: absolute; }
     .hamburger span:nth-child(1) { transform: translateY(-5px); }
@@ -62,7 +65,7 @@
     .hamburger.active span:nth-child(1) { transform: translateY(0) rotate(45deg); }
     .hamburger.active span:nth-child(2) { transform: translateY(0) rotate(-45deg); }
 
-    /* APPLE-STYLE MOBILE MENU */
+    /* MOBILE MENU */
     .nav-menu { 
       position: fixed; top: 0; left: 0; width: 100%; height: 0; 
       background: var(--navy); z-index: 2000; overflow: hidden; 
@@ -72,7 +75,7 @@
     .nav-menu.active { height: 100vh; }
     .nav-menu a { 
       color: white; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 32px; 
-      margin: 15px 0; opacity: 0; transform: translateY(20px); transition: all 0.4s ease;
+      margin: 15px 0; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; text-transform: none; letter-spacing: 0;
     }
     .nav-menu.active a:nth-child(1) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
     .nav-menu.active a:nth-child(2) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
@@ -84,53 +87,66 @@
     .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* INNER PAGE HERO (Clean layout, no heavy image needed for service pages) */
-    .hero { padding: 100px 20px 80px; text-align: center; }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(38px, 8vw, 64px); color: var(--navy); margin: 0 0 20px; line-height: 1.1; }
-    .hero p { font-size: 20px; margin: 0 auto; color: var(--muted); max-width: 700px; line-height: 1.6; }
+    /* INNER PAGE HERO (Refined & Elegant) */
+    .hero { padding: 120px 20px 100px; text-align: center; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(42px, 8vw, 68px); color: var(--navy); margin: 0 0 20px; line-height: 1.1; letter-spacing: -0.5px; }
+    .hero p { font-size: 22px; margin: 0 auto; color: var(--muted); max-width: 700px; line-height: 1.6; font-style: italic; }
 
     /* SECTIONS & GRIDS */
-    .section { padding-top: 80px; padding-bottom: 80px; }
+    .section { padding-top: 100px; padding-bottom: 100px; }
     .bg-paper { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .grid-3 { display: grid; grid-template-columns: 1fr; gap: 20px; text-align: left; }
-    .section-title { text-align: center; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 50px; font-size: 36px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr; gap: 40px; text-align: left; }
+    .section-title { text-align: center; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 60px; font-size: 40px; }
 
-    /* EXPERTISE BLOCKS (Styled like Value Pillars) */
-    .expertise-block { background: white; padding: 40px 30px; border-radius: 12px; border: 1px solid var(--line); border-top: 4px solid var(--navy); box-shadow: 0 10px 30px rgba(0,34,68,0.04); }
-    .expertise-block h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); margin: 0 0 15px 0; }
-    .expertise-block p { font-size: 16px; color: var(--muted); line-height: 1.7; margin: 0; }
-    .expertise-block i { font-size: 32px; color: var(--accent); margin-bottom: 20px; }
+    /* ELEGANT TYPOGRAPHY ACCENTS (Replaces Icons) */
+    .num-accent { 
+      font-family: 'Playfair Display', serif; 
+      font-size: 32px; 
+      color: var(--accent); 
+      font-style: italic; 
+      display: block; 
+      margin-bottom: 15px; 
+      line-height: 1;
+    }
 
-    /* COVERAGE CARDS (TACTILE MOBILE UPGRADES) */
+    /* EXPERTISE BLOCKS (Delicate Styling) */
+    .expertise-block { padding: 20px; border-top: 1px solid var(--accent); }
+    .expertise-block h3 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--navy); margin: 0 0 15px 0; }
+    .expertise-block p { color: var(--muted); margin: 0; }
+
+    /* COVERAGE CARDS (Delicate & Tactile) */
     .coverage-card {
       background: white; 
-      padding: 35px 25px; 
+      padding: 45px 35px; 
       border: 1px solid var(--line); 
-      border-left: 4px solid var(--accent);
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
+      border-radius: 8px; /* Softer, highly refined corner */
+      box-shadow: 0 10px 30px rgba(0,34,68,0.02); 
       text-align: left; 
-      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
     }
     .coverage-card:hover { 
-      transform: translateY(-5px); 
-      box-shadow: 0 20px 40px rgba(0,34,68,0.08); 
-      border-left: 4px solid var(--navy); 
+      transform: translateY(-6px); 
+      box-shadow: 0 20px 40px rgba(0,34,68,0.06); 
     }
-    .coverage-card h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--navy); margin: 0 0 10px 0; display: flex; align-items: center; gap: 12px; }
-    .coverage-card h3 i { color: var(--navy); font-size: 20px; opacity: 0.8; }
-    .coverage-card p { margin: 0; color: #4a5568; font-size: 15px; line-height: 1.6; }
+    .coverage-card:active {
+      transform: scale(0.98);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      transition: all 0.1s; 
+    }
+    .coverage-card h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); margin: 0 0 15px 0; }
+    .coverage-card p { margin: 0; color: var(--muted); }
 
     /* CTA BOX */
-    .cta-box { background: var(--navy); color: #fff; padding: 80px 20px; border-radius: 20px; text-align: center; box-shadow: 0 20px 40px rgba(0,34,68,0.15); margin-bottom: 60px; }
-    .cta-box p { color: #cbd5e0; max-width: 600px; margin: 0 auto 30px; font-size: 18px; line-height: 1.6; }
-    .btn-white { display: inline-block; background: #fff; color: var(--navy); padding: 18px 40px; border-radius: 4px; text-decoration: none; font-weight: 700; transition: 0.2s; }
+    .cta-box { background: var(--navy); color: #fff; padding: 100px 20px; border-radius: 12px; text-align: center; box-shadow: 0 20px 40px rgba(0,34,68,0.1); margin-bottom: 80px; }
+    .cta-box h2 { font-family: 'Playfair Display', serif; font-size: 42px; margin: 0 0 20px; }
+    .cta-box p { color: #cbd5e0; max-width: 600px; margin: 0 auto 40px; font-size: 20px; font-style: italic; }
+    .btn-white { display: inline-block; background: #fff; color: var(--navy); padding: 16px 40px; border-radius: 4px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; transition: 0.2s; }
     .btn-white:hover { background: var(--accent); color: white; transform: translateY(-3px); }
     .btn-white:active { transform: scale(0.96); }
 
     /* FOOTER */
-    footer { background: var(--navy); color: white; padding: 50px 20px; text-align: center; font-size: 15px; }
-    footer strong { font-family: 'Playfair Display', serif; font-size: 22px; letter-spacing: 0.5px; }
+    footer { background: var(--navy); color: white; padding: 60px 20px; text-align: center; font-size: 14px; font-family: 'Inter', sans-serif; }
+    footer strong { font-family: 'Playfair Display', serif; font-size: 24px; letter-spacing: 0.5px; font-weight: 600; }
     .clean-amp { font-family: 'Inter', sans-serif; font-weight: 400; font-size: 0.9em; }
 
     @media (min-width: 768px) {
@@ -139,8 +155,8 @@
     @media (min-width: 900px) {
       .desktop-nav { display: block; }
       .hamburger { display: none; }
-      .grid-3 { grid-template-columns: repeat(3, 1fr); }
-      .hero { padding: 140px 20px 100px; }
+      .grid-3 { grid-template-columns: repeat(3, 1fr); gap: 50px; }
+      .hero { padding: 160px 20px 120px; }
     }
   </style>
 </head>
@@ -181,17 +197,17 @@
     <div class="wrap">
       <div class="grid-3">
         <div class="expertise-block reveal" style="transition-delay: 0.1s;">
-          <i class="fas fa-chart-line"></i>
+          <span class="num-accent">I.</span>
           <h3>Corporate Experience</h3>
           <p>Before founding Donohoo <span class="clean-amp">&amp;</span> Sons, I spent a decade managing complex, high-claim environments for auto dealerships. Today, I bring that exact same rigorous risk management to businesses of all sizes and sectors.</p>
         </div>
         <div class="expertise-block reveal" style="transition-delay: 0.2s;">
-          <i class="fas fa-handshake"></i>
+          <span class="num-accent">II.</span>
           <h3>Independent Access</h3>
           <p>I don't work for a single insurance carrier—I work for you. I have direct access to multiple top-rated commercial markets, allowing me to build a custom insurance package that fits your specific risk profile without compromise.</p>
         </div>
         <div class="expertise-block reveal" style="transition-delay: 0.3s;">
-          <i class="fas fa-user-tie"></i>
+          <span class="num-accent">III.</span>
           <h3>One Point of Contact</h3>
           <p>Your business and personal lives are intertwined. By handling both your commercial policies and your personal protection (home, auto, umbrella), I coordinate your coverage to ensure there are absolutely no gaps.</p>
         </div>
@@ -205,27 +221,33 @@
       
       <div class="grid-3">
         <div class="coverage-card reveal" style="transition-delay: 0.1s;">
-          <h3><i class="fas fa-shield-alt"></i> General Liability</h3>
+          <span class="num-accent">01.</span>
+          <h3>General Liability</h3>
           <p>The foundation of your protection. Shielding your business from third-party claims of bodily injury or property damage.</p>
         </div>
         <div class="coverage-card reveal" style="transition-delay: 0.2s;">
-          <h3><i class="fas fa-building"></i> Commercial Property</h3>
+          <span class="num-accent">02.</span>
+          <h3>Commercial Property</h3>
           <p>Protecting your physical assets—from your storefront and building to your tools, inventory, and heavy equipment.</p>
         </div>
         <div class="coverage-card reveal" style="transition-delay: 0.3s;">
-          <h3><i class="fas fa-truck"></i> Commercial Auto</h3>
+          <span class="num-accent">03.</span>
+          <h3>Commercial Auto</h3>
           <p>Comprehensive liability and physical damage protection for the fleet of vehicles that keep your business moving.</p>
         </div>
         <div class="coverage-card reveal" style="transition-delay: 0.4s;">
-          <h3><i class="fas fa-hard-hat"></i> Workers Comp</h3>
+          <span class="num-accent">04.</span>
+          <h3>Workers Comp</h3>
           <p>Protecting your team and your bottom line by covering medical costs and lost wages for work-related injuries.</p>
         </div>
         <div class="coverage-card reveal" style="transition-delay: 0.5s;">
-          <h3><i class="fas fa-users"></i> EPLI</h3>
+          <span class="num-accent">05.</span>
+          <h3>EPLI</h3>
           <p>Employment Practices Liability Insurance. Defense against claims of discrimination, wrongful termination, or harassment.</p>
         </div>
         <div class="coverage-card reveal" style="transition-delay: 0.6s;">
-          <h3><i class="fas fa-lock"></i> Cyber & Data Breach</h3>
+          <span class="num-accent">06.</span>
+          <h3>Cyber & Data Breach</h3>
           <p>Crucial coverage for modern operations. Protecting your financial assets and customer data from digital threats and ransomware.</p>
         </div>
       </div>
@@ -234,7 +256,7 @@
 
   <section class="wrap">
     <div class="cta-box reveal">
-      <h2 style="font-family: 'Playfair Display', serif; font-size: 36px; margin: 0 0 20px;">Ready for a fresh perspective?</h2>
+      <h2>Ready for a fresh perspective?</h2>
       <p>Get an expert set of eyes on your current business protection. Let's start a conversation and see if my approach to risk management is the right fit for your company.</p>
       <a href="quote.html" class="btn-white">Connect with Andy</a>
     </div>
@@ -248,7 +270,7 @@
         Wauwatosa, WI 53226<br>
         <a href="tel:4146981729" style="color: white; text-decoration: none;">414.698.1729</a>
       </p>
-      <p style="margin-top: 30px; font-size: 13px; color: #a0aec0;">
+      <p style="margin-top: 30px; font-size: 13px; color: #a0aec0; letter-spacing: 1px; text-transform: uppercase;">
         Independent Insurance Advisor
       </p>
     </div>
