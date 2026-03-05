@@ -45,7 +45,7 @@
     .nav-container { display: flex; justify-content: space-between; align-items: center; }
     .logo-img { height: 40px; width: auto; }
 
-    /* RESTORED DESKTOP NAV */
+    /* DESKTOP NAV */
     .desktop-nav { display: none; }
     .desktop-nav a {
       margin-left: 24px;
@@ -55,6 +55,7 @@
       font-size: 14px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      transition: color 0.3s;
     }
     .desktop-nav a:hover { color: var(--accent); }
     .btn-quote {
@@ -62,7 +63,7 @@
       color: white !important;
       padding: 10px 20px;
       border-radius: 4px;
-      transition: 0.3s;
+      transition: background 0.3s;
     }
     .btn-quote:hover { background: var(--accent); }
 
@@ -70,7 +71,7 @@
     .hamburger { font-size: 24px; cursor: pointer; color: var(--navy); display: block; }
     .nav-menu { 
       display: none; background: var(--navy); width: 100%; text-align: center; 
-      padding: 20px 0; position: absolute; top: 100%; left: 0;
+      padding: 20px 0; position: absolute; top: 100%; left: 0; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
     .nav-menu.active { display: block; }
     .nav-menu a { 
@@ -108,28 +109,50 @@
     }
     .btn-hero:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
-    /* PILLARS */
-    .section { padding: 60px 0; }
+    /* SERVICE CARDS (CLICKABLE PILLARS) */
+    .section { padding: 80px 0; }
     .pillars { display: flex; flex-direction: column; gap: 20px; }
 
-    .pillar {
+    .service-card {
       background: white;
-      padding: 30px;
+      padding: 40px 30px;
       border: 1px solid var(--line);
       border-left: 4px solid var(--accent);
       text-align: left;
+      text-decoration: none !important;
+      color: var(--ink) !important;
+      display: block;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
     }
-    .pillar i { font-size: 30px; color: var(--navy); margin-bottom: 15px; }
-    .pillar h4 { margin: 10px 0; font-family: 'Playfair Display'; font-size: 22px; }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,34,68,0.08);
+      border-left: 4px solid var(--navy);
+    }
+    .service-card i { font-size: 36px; color: var(--navy); margin-bottom: 20px; }
+    .service-card h4 { margin: 0 0 15px 0; font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); }
+    .service-card p { margin: 0; color: #4a5568; }
+    
+    .link-text {
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 20px;
+      display: inline-block;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
 
     footer { background: var(--navy); color: white; padding: 40px 20px; text-align: center; font-size: 14px; }
+    footer strong { font-family: 'Playfair Display', serif; font-size: 20px; }
 
     /* DESKTOP BREAKPOINT */
     @media (min-width: 900px) {
       .desktop-nav { display: block; }
       .hamburger { display: none; }
       .pillars { flex-direction: row; }
-      .pillar { text-align: center; border-left: 1px solid var(--line); border-bottom: 4px solid var(--accent); }
+      .service-card { flex: 1; border-left: 1px solid var(--line); border-bottom: 4px solid var(--accent); }
+      .service-card:hover { border-left: 1px solid var(--line); border-bottom: 4px solid var(--navy); }
       .hero { padding: 160px 0 120px; }
     }
   </style>
@@ -171,28 +194,38 @@
   </section>
 
   <section class="section wrap">
+    <h2 style="text-align: center; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 40px; font-size: 36px;">What We Protect</h2>
+    
     <div class="pillars">
-      <div class="pillar">
-        <i class="fas fa-mobile-alt"></i>
-        <h4>Direct Access</h4>
-        <p>Text or call your agent directly. No holding for call centers.</p>
-      </div>
-      <div class="pillar">
-        <i class="fas fa-map-marker-alt"></i>
-        <h4>Local Expert</h4>
-        <p>Based in Wauwatosa. We know the Milwaukee market.</p>
-      </div>
-      <div class="pillar">
-        <i class="fas fa-shield-alt"></i>
-        <h4>Independent</h4>
-        <p>We shop dozens of companies to find your best rate.</p>
-      </div>
+      <a href="/families.html" class="service-card">
+        <i class="fas fa-home"></i>
+        <h4>Personal Insurance</h4>
+        <p>Home, auto, and umbrella coverage built around straightforward, tailored advice.</p>
+        <span class="link-text">Explore Personal &rarr;</span>
+      </a>
+
+      <a href="/business.html" class="service-card">
+        <i class="fas fa-briefcase"></i>
+        <h4>Business Insurance</h4>
+        <p>Commercial liability, property, and workers' comp to protect what you've built.</p>
+        <span class="link-text">Explore Business &rarr;</span>
+      </a>
+
+      <a href="/life.html" class="service-card">
+        <i class="fas fa-heartbeat"></i>
+        <h4>Life & Health</h4>
+        <p>Term, whole life, and health options to secure your family's financial future.</p>
+        <span class="link-text">Explore Life &rarr;</span>
+      </a>
     </div>
   </section>
 
   <footer>
-    <p><strong>Donohoo & Sons Insurance</strong><br>
-    Wauwatosa, WI • (414) [Your Number]</p>
+    <div class="wrap">
+      <p><strong>Donohoo & Sons Insurance</strong><br>
+      Wauwatosa, WI • (414.698.1729)<br>
+      Independent Insurance Agency</p>
+    </div>
   </footer>
 
 </body>
