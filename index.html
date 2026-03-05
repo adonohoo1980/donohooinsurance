@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Donohoo & Sons Insurance | Milwaukee</title>
+<title>Donohoo & Sons Insurance | Milwaukee & Wauwatosa</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:400,500,600&family=Playfair+Display:500,600,700&display=swap" rel="stylesheet">
 
@@ -109,7 +109,7 @@ body.nav-open { overflow: hidden; }
 
 footer { text-align: center; padding-bottom: 40px; font-size: 12px; color: var(--muted); letter-spacing: 1px; line-height: 1.8;}
 
-/* MOBILE RESPONSIVE FIXES (CENTERED & RE-ORDERED) */
+/* MOBILE RESPONSIVE FIXES */
 @media(max-width:900px){ 
     .hero-grid, .about-spread, .pillars, .card-grid { 
       grid-template-columns: 1fr; 
@@ -120,7 +120,7 @@ footer { text-align: center; padding-bottom: 40px; font-size: 12px; color: var(-
     .hero-img { 
       order: 2; 
       margin: 40px auto 0; 
-      max-width: 85%; /* Slightly smaller for better flow */
+      max-width: 85%; 
     }
     
     .pillar::before { left: 50%; transform: translateX(-50%); }
@@ -219,7 +219,7 @@ footer { text-align: center; padding-bottom: 40px; font-size: 12px; color: var(-
 
   <footer>
     DONOHOO & SONS INSURANCE<br>
-    123 MAIN ST, STE 400, MILWAUKEE, WI 53202 • BY APPOINTMENT
+    10425 W NORTH AVE, STE 226, WAUWATOSA, WI 53226 • BY APPOINTMENT
   </footer>
 </div>
 
@@ -246,7 +246,7 @@ document.querySelectorAll('a').forEach(link => {
     if (href && !href.startsWith('#') && !href.startsWith('tel') && !href.startsWith('sms') && !href.startsWith('mailto') && !this.target) {
       e.preventDefault();
       document.body.style.opacity = '0';
-      setTimeout(() => { window.location.href = href; }, 450); /* Adjusted timing slightly for the new iOS curve */
+      setTimeout(() => { window.location.href = href; }, 450);
     }
   });
 });
