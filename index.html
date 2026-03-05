@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Welcome | Donohoo & Sons</title>
+  <title>Donohoo & Sons Insurance | Milwaukee & Wauwatosa</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +20,7 @@
       --paper: #f4f7fa;
     }
 
+    /* Keeps padding inside the boxes so nothing stretches off-screen on mobile */
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
     body {
@@ -82,27 +83,19 @@
     /* SCROLL REVEAL ANIMATIONS */
     .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+    .hero-text { animation: fadeUp 1s ease-out forwards; opacity: 0; transform: translateY(20px); }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-    /* WELCOME CARD (QR Drop-in specific) */
-    .scan-welcome {
-      display: inline-flex; align-items: center; background: #fff;
-      padding: 8px 8px 8px 16px; border-radius: 100px;
-      box-shadow: 0 8px 25px rgba(0,34,68,0.06); border: 1px solid var(--line);
-      margin: 60px auto 40px; gap: 15px; flex-wrap: wrap; justify-content: center;
+    /* FULL IMAGE HERO */
+    .hero {
+      background: var(--navy);
+      background-image: linear-gradient(rgba(0,34,68,0.75), rgba(0,34,68,0.85)), url('boys.jpg');
+      background-size: cover; 
+      background-position: center 15%; 
+      color: white; padding: 180px 0 160px; text-align: center;
     }
-    .mini-profile { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--paper); }
-    .scan-welcome span { font-size: 15px; font-weight: 600; color: var(--navy); }
-    .mini-actions { display: flex; gap: 8px; }
-    .mini-btn { font-size: 13px; font-weight: 700; text-transform: uppercase; text-decoration: none; background: var(--navy); color: #fff; padding: 10px 20px; border-radius: 50px; transition: 0.2s; }
-    .mini-btn:hover { background: var(--accent); }
-    .mini-btn:active { transform: scale(0.95); } 
-    .mini-btn.secondary { background: var(--paper); color: var(--navy); border: 1px solid var(--line); }
-    .mini-btn.secondary:hover { background: var(--line); }
-
-    /* WELCOME HERO */
-    .hero { padding: 0 0 80px; }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(40px, 8vw, 72px); color: var(--navy); line-height: 1.1; margin: 0 0 20px; }
-    .tagline { color: var(--muted); font-size: 20px; max-width: 650px; margin: 0 auto; line-height: 1.6; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(38px, 8vw, 68px); margin: 0 0 20px; line-height: 1.1; color: white; }
+    .hero p { font-size: 20px; margin: 0; color: #cbd5e0; max-width: 700px; margin: 0 auto; line-height: 1.6; }
 
     /* SECTIONS */
     .section { padding-top: 80px; padding-bottom: 80px; }
@@ -157,7 +150,7 @@
     .boys-photo { width: 100%; max-width: 500px; aspect-ratio: 4/5; object-fit: cover; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,34,68,0.1); }
 
     /* CTA BOX */
-    .cta-box { background: var(--navy); color: #fff; padding: 80px 20px; border-radius: 20px; text-align: center; margin-bottom: 60px; box-shadow: 0 20px 40px rgba(0,34,68,0.15); }
+    .cta-box { background: var(--navy); color: #fff; padding: 80px 20px; border-radius: 20px; text-align: center; box-shadow: 0 20px 40px rgba(0,34,68,0.15); }
     .btn-white { display: inline-block; background: #fff; color: var(--navy); padding: 18px 40px; border-radius: 4px; text-decoration: none; font-weight: 700; transition: 0.2s; }
     .btn-white:hover { background: var(--accent); color: white; transform: translateY(-3px); }
     .btn-white:active { transform: scale(0.96); }
@@ -176,6 +169,7 @@
       .value-pillar { flex: 1; }
       .about-spread { flex-direction: row; gap: 60px; }
       .boys-photo { max-width: 45%; }
+      .hero { padding: 220px 0 180px; }
     }
   </style>
 </head>
@@ -205,21 +199,12 @@
     </nav>
   </header>
 
-  <div class="wrap">
-    <div class="hero reveal">
-      <div class="scan-welcome">
-        <img src="andy.jpg" class="mini-profile" alt="Andy Donohoo">
-        <span>Hi, I'm Andy. Let's connect:</span>
-        <div class="mini-actions">
-            <a href="contact.vcf" class="mini-btn" download>Save Info</a>
-            <a href="quote.html" class="mini-btn secondary">Quote</a>
-        </div>
-      </div>
-
-      <h1>From day one<br>to claim day.</h1>
-      <p class="tagline">Helping Wisconsin families and business owners get the right coverage without the runaround.</p>
+  <section class="hero">
+    <div class="wrap hero-text">
+      <h1>From day one to claim day.</h1>
+      <p>Helping Wisconsin families and business owners get the right coverage without the runaround.</p>
     </div>
-  </div>
+  </section>
 
   <section class="section">
     <div class="wrap">
