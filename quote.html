@@ -77,6 +77,23 @@ body.nav-open { overflow: hidden; }
 .info-data { font-size: 22px; font-weight: 500; color: var(--navy); text-decoration: none; transition: 0.2s; }
 .info-data:hover { opacity: 0.7; }
 
+/* CALL & TEXT BUTTONS */
+.contact-actions { display: flex; gap: 12px; margin-top: 8px; flex-wrap: wrap; }
+.action-btn { 
+  padding: 12px 24px; 
+  border-radius: 100px; 
+  font-size: 15px; 
+  font-weight: 600; 
+  text-decoration: none; 
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+.call-btn { background: var(--navy); color: #fff; }
+.call-btn:hover { box-shadow: 0 8px 20px rgba(15,28,58,0.15); transform: translateY(-2px); }
+.text-btn { background: rgba(15,28,58,0.06); color: var(--navy); }
+.text-btn:hover { background: rgba(15,28,58,0.12); transform: translateY(-2px); }
+
 /* RIGHT COLUMN: FORM */
 .contact-form { background: #fff; padding: 50px 40px; border-radius: 28px; border: 1px solid var(--line); box-shadow: 0 20px 40px rgba(15,28,58,0.04); position: relative; min-height: 400px; }
 .form-group { margin-bottom: 25px; }
@@ -162,8 +179,11 @@ footer { text-align: center; padding-bottom: 40px; margin-top: 80px; font-size: 
       <p>I don't use call centers or generic email inboxes. When you reach out, you speak directly with me. Feel free to call, text, or use the secure form to request a review.</p>
       
       <div class="info-block">
-        <span class="info-label">Call or Text</span>
-        <a href="tel:+14146981729" class="info-data">(414) 698-1729</a>
+        <span class="info-label">Reach Out Directly</span>
+        <div class="contact-actions">
+          <a href="tel:+14146981729" class="action-btn call-btn">Call (414) 698-1729</a>
+          <a href="sms:+14146981729?body=Hi%20Andy%2C%20I%20am%20reaching%20out%20from%20your%20website%20to%20discuss%20my%20insurance." class="action-btn text-btn">Send a Text</a>
+        </div>
       </div>
       
       <div class="info-block">
@@ -173,7 +193,11 @@ footer { text-align: center; padding-bottom: 40px; margin-top: 80px; font-size: 
       
       <div class="info-block">
         <span class="info-label">Headquarters</span>
-        <span class="info-data" style="color: var(--ink); pointer-events: none;">Milwaukee, WI</span>
+        <span class="info-data" style="color: var(--ink); pointer-events: none; display: block; line-height: 1.4; font-size: 18px;">
+          123 Main Street, Suite 400<br>
+          Milwaukee, WI 53202<br>
+          <span style="font-size: 14px; color: var(--muted); font-style: italic;">Meetings by appointment only</span>
+        </span>
       </div>
     </div>
 
@@ -213,6 +237,8 @@ footer { text-align: center; padding-bottom: 40px; margin-top: 80px; font-size: 
         </div>
         
         <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
+        
+        <p style="font-size: 11px; color: var(--muted); margin-top: 15px; text-align: center;">For your security, please do not include sensitive personal information (such as Social Security numbers or specific medical history) in this initial message.</p>
       </form>
 
       <div id="successMessage">
@@ -225,7 +251,9 @@ footer { text-align: center; padding-bottom: 40px; margin-top: 80px; font-size: 
   </div>
 </div>
 
-<footer>DONOHOO & SONS INSURANCE • MILWAUKEE, WI</footer>
+<footer>
+  DONOHOO & SONS INSURANCE • 123 MAIN ST, STE 400, MILWAUKEE, WI 53202 • BY APPOINTMENT
+</footer>
 
 <script>
 // Mobile Menu Toggle
@@ -250,7 +278,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 document.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
-    // Ensure we don't intercept actual form links or special hrefs
+    // Ensure we don't intercept actual form links or special hrefs (tel, sms, mailto)
     if (href && !href.startsWith('#') && !href.startsWith('tel') && !href.startsWith('sms') && !href.startsWith('mailto') && !this.target && !href.includes('formsubmit')) {
       e.preventDefault();
       document.body.style.opacity = '0';
