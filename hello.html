@@ -20,7 +20,6 @@
       --paper: #f4f7fa;
     }
 
-    /* FIX: This keeps padding from pushing boxes off the screen */
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
     body {
@@ -33,6 +32,7 @@
       -webkit-font-smoothing: antialiased;
       opacity: 0;
       transition: opacity 0.8s ease-in-out;
+      overflow-x: hidden; /* Safety net to prevent side-scrolling on mobile */
     }
     body.loaded { opacity: 1; }
     body.nav-open { overflow: hidden; } 
@@ -102,8 +102,8 @@
     .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(40px, 8vw, 72px); color: var(--navy); line-height: 1.1; margin: 0 0 20px; }
     .tagline { color: var(--muted); font-size: 20px; max-width: 650px; margin: 0 auto; line-height: 1.6; }
 
-    /* VALUE PILLARS */
-    .section { padding: 60px 0; }
+    /* SECTIONS (Fixed Padding Overrides) */
+    .section { padding-top: 60px; padding-bottom: 60px; }
     .bg-paper { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .grid-3 { display: flex; flex-direction: column; gap: 20px; }
     
@@ -124,7 +124,7 @@
     .service-card:hover .link-text { color: var(--navy); }
 
     /* HOW I WORK SPREAD */
-    .about-spread { display: flex; flex-direction: column; gap: 40px; align-items: center; margin: 80px auto; text-align: left; }
+    .about-spread { display: flex; flex-direction: column; gap: 40px; align-items: center; margin: 0 auto 80px auto; text-align: left; }
     .about-content { flex: 1; }
     .about-content h2 { font-family: 'Playfair Display', serif; font-size: 36px; color: var(--navy); margin-top: 0; }
     .about-content p { color: #4a5568; line-height: 1.8; font-size: 18px; }
@@ -217,40 +217,44 @@
     </div>
   </section>
 
-  <section class="section wrap">
-    <div class="grid-3">
-      <a href="/families.html" class="service-card reveal" style="transition-delay: 0.1s;">
-        <h3>Personal</h3>
-        <p>Home, auto, and umbrella protection built around real life.</p>
-        <span class="link-text">View Protection &rarr;</span>
-      </a>
-      <a href="/business.html" class="service-card reveal" style="transition-delay: 0.2s;">
-        <h3>Business</h3>
-        <p>Coverage built for owners who want one dedicated advisor.</p>
-        <span class="link-text">View Commercial &rarr;</span>
-      </a>
-      <a href="/life.html" class="service-card reveal" style="transition-delay: 0.3s;">
-        <h3>Life <span class="clean-amp">&amp;</span> Health</h3>
-        <p>Life, Disability, & Long-Term Care planning.</p>
-        <span class="link-text">View Planning &rarr;</span>
-      </a>
+  <section class="section">
+    <div class="wrap">
+      <div class="grid-3">
+        <a href="/families.html" class="service-card reveal" style="transition-delay: 0.1s;">
+          <h3>Personal</h3>
+          <p>Home, auto, and umbrella protection built around real life.</p>
+          <span class="link-text">View Protection &rarr;</span>
+        </a>
+        <a href="/business.html" class="service-card reveal" style="transition-delay: 0.2s;">
+          <h3>Business</h3>
+          <p>Coverage built for owners who want one dedicated advisor.</p>
+          <span class="link-text">View Commercial &rarr;</span>
+        </a>
+        <a href="/life.html" class="service-card reveal" style="transition-delay: 0.3s;">
+          <h3>Life <span class="clean-amp">&amp;</span> Health</h3>
+          <p>Life, Disability, & Long-Term Care planning.</p>
+          <span class="link-text">View Planning &rarr;</span>
+        </a>
+      </div>
     </div>
   </section>
 
-  <section class="wrap">
-    <div class="about-spread reveal">
-      <div class="about-content">
-        <h2>How I Work</h2>
-        <p>I built Donohoo <span class="clean-amp">&amp;</span> Sons with my wife Katie because insurance should feel simple and personal.</p>
-        <div class="pull">"I treat your protection like my own family's. The '<span class="clean-amp">&amp;</span> Sons' reminds me why I do this every day."</div>
-        <p>I'm always available to my clients — no waiting, just a conversation.</p>
+  <section class="section">
+    <div class="wrap">
+      <div class="about-spread reveal">
+        <div class="about-content">
+          <h2>How I Work</h2>
+          <p>I built Donohoo <span class="clean-amp">&amp;</span> Sons with my wife Katie because insurance should feel simple and personal.</p>
+          <div class="pull">"I treat your protection like my own family's. The '<span class="clean-amp">&amp;</span> Sons' reminds me why I do this every day."</div>
+          <p>I'm always available to my clients — no waiting, just a conversation.</p>
+        </div>
+        <img src="boys.jpg" class="boys-photo" alt="The Donohoo Family">
       </div>
-      <img src="boys.jpg" class="boys-photo" alt="The Donohoo Family">
-    </div>
 
-    <div class="cta-box reveal">
-      <h2 style="color: #fff; margin-bottom: 30px; font-family: 'Playfair Display', serif; font-size: 36px;">Protect what you've built.</h2>
-      <a href="quote.html" class="btn-white">Request a Review</a>
+      <div class="cta-box reveal">
+        <h2 style="color: #fff; margin-bottom: 30px; font-family: 'Playfair Display', serif; font-size: 36px;">Protect what you've built.</h2>
+        <a href="quote.html" class="btn-white">Request a Review</a>
+      </div>
     </div>
   </section>
 
