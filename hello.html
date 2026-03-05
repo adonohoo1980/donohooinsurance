@@ -20,6 +20,9 @@
       --paper: #f4f7fa;
     }
 
+    /* FIX: This keeps padding from pushing boxes off the screen */
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
     body {
       margin: 0;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -94,7 +97,7 @@
     .mini-btn.secondary { background: var(--paper); color: var(--navy); border: 1px solid var(--line); }
     .mini-btn.secondary:hover { background: var(--line); }
 
-    /* WELCOME HERO (Fixed the scroll glitch here) */
+    /* WELCOME HERO */
     .hero { padding: 0 0 80px; }
     .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(40px, 8vw, 72px); color: var(--navy); line-height: 1.1; margin: 0 0 20px; }
     .tagline { color: var(--muted); font-size: 20px; max-width: 650px; margin: 0 auto; line-height: 1.6; }
@@ -159,7 +162,7 @@
         <a href="/">Home</a>
         <a href="/families.html">Personal</a>
         <a href="/business.html">Business</a>
-        <a href="/life.html">Life & Health</a>
+        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
         <a href="/quote.html" class="btn-quote">Get a Quote</a>
       </nav>
       <div class="hamburger" id="hamburgerBtn" onclick="toggleMenu()">
@@ -171,7 +174,7 @@
         <a href="/">Home</a>
         <a href="/families.html">Personal</a>
         <a href="/business.html">Business</a>
-        <a href="/life.html">Life & Health</a>
+        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
         <a href="/quote.html">Get a Quote</a>
     </nav>
   </header>
@@ -227,7 +230,7 @@
         <span class="link-text">View Commercial &rarr;</span>
       </a>
       <a href="/life.html" class="service-card reveal" style="transition-delay: 0.3s;">
-        <h3>Life & Health</h3>
+        <h3>Life <span class="clean-amp">&amp;</span> Health</h3>
         <p>Life, Disability, & Long-Term Care planning.</p>
         <span class="link-text">View Planning &rarr;</span>
       </a>
