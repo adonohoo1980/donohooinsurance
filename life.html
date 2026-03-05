@@ -1,290 +1,342 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Life & Health | Donohoo & Sons</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Life & Health | Donohoo & Sons</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:400,500,600&family=Playfair+Display:500,600,700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-<style>
-:root{
-  --bg:#faf9f6;
-  --ink:#1a1a1a;
-  --muted:#6e6e73;
-  --navy:#0f1c3a;
-  --line:rgba(0,0,0,.08);
-  --paper:#f4f3f0;
-}
+  <style>
+    :root {
+      --bg: #fdfdfb;
+      --ink: #1a202c;
+      --navy: #002244; 
+      --accent: #b8860b;
+      --line: #e2e8f0;
+      --paper: #f4f7fa;
+    }
 
-body{
-  margin:0;
-  font-family:'Inter',sans-serif;
-  background:var(--bg);
-  color:var(--ink);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-body.nav-open { overflow: hidden; }
+    body {
+      margin: 0;
+      font-family: 'Lora', serif; 
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 18px; 
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      overflow-x: hidden; 
+    }
+    body.loaded { opacity: 1; }
+    body.nav-open { overflow: hidden; } 
 
-.wrap{max-width:1150px;margin:auto;padding:70px 18px}
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; text-align: center; }
 
-/* HEADER */
-.topbar{
-  border-bottom:1px solid var(--line);
-  padding:12px 0;
-  background:rgba(250, 249, 246, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  position:sticky;
-  top:0;
-  z-index:2000;
-}
-.nav{max-width:1050px;margin:auto;padding:0 18px;display:flex;justify-content:space-between;align-items:center}
-.logo-img{height:28px}
+    header, .btn-quote, .btn-white, .toggle-btn, .nav-menu a { font-family: 'Inter', sans-serif; }
 
-.hamburger { cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; z-index: 2100; }
-.hamburger span { display: block; width: 18px; height: 1.5px; background-color: var(--ink); transition: 0.4s; }
-.hamburger span:nth-child(1) { transform: translateY(-3px); }
-.hamburger span:nth-child(2) { transform: translateY(3px); }
-.hamburger.active span:nth-child(1) { transform: translateY(0.5px) rotate(45deg); }
-.hamburger.active span:nth-child(2) { transform: translateY(-0.5px) rotate(-45deg); }
+    /* HEADER */
+    header { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 1000; padding: 12px 0; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .logo-img { height: 60px; width: auto; position: relative; z-index: 2100; }
 
-.nav-menu { position: fixed; top: 0; left: 0; width: 100%; height: 0; background: var(--bg); z-index: 1500; overflow: hidden; display: flex; flex-direction: column; padding-top: 80px; transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
-.nav-menu.active { height: 100vh; }
-.nav-links { padding: 0 40px; display: flex; flex-direction: column; }
-.nav-menu a { font-family: 'Inter', sans-serif; font-size: 28px; font-weight: 600; color: var(--ink); text-decoration: none; margin-bottom: 24px; opacity: 0; transform: translateY(10px); transition: 0.4s ease; }
-.nav-menu.active a { opacity: 1; transform: translateY(0); }
+    /* DESKTOP NAV */
+    .desktop-nav { display: none; }
+    .desktop-nav a { margin-left: 28px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+    .desktop-nav a:hover { color: var(--accent); }
+    .desktop-nav .active-link { color: var(--navy); border-bottom: 1px solid var(--accent); padding-bottom: 4px; }
+    .btn-quote { background: var(--navy); color: white !important; padding: 12px 24px; border-radius: 4px; transition: background 0.3s; font-size: 13px; letter-spacing: 1px; }
+    .btn-quote:hover { background: var(--accent); }
+    .btn-quote:active { transform: scale(0.96); } 
 
-/* REVEAL ANIMATIONS */
-.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+    /* MOBILE HAMBURGER */
+    .hamburger { cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; z-index: 2100; position: relative; }
+    .hamburger span { display: block; width: 24px; height: 2px; background-color: var(--navy); transition: 0.4s; position: absolute; }
+    .hamburger span:nth-child(1) { transform: translateY(-5px); }
+    .hamburger span:nth-child(2) { transform: translateY(5px); }
+    .hamburger.active span { background-color: white; } 
+    .hamburger.active span:nth-child(1) { transform: translateY(0) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { transform: translateY(0) rotate(-45deg); }
 
-/* HERO */
-.hero{text-align:center;margin-bottom:80px}
-h1{font-family:'Playfair Display';font-size:clamp(40px,7vw,64px);line-height:1.05;margin-bottom:20px}
-.sub{color:var(--muted);font-size:20px;max-width:700px;margin:auto;line-height:1.6}
+    /* MOBILE MENU */
+    .nav-menu { 
+      position: fixed; top: 0; left: 0; width: 100%; height: 0; 
+      background: var(--navy); z-index: 2000; overflow: hidden; 
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-menu.active { height: 100vh; }
+    .nav-menu a { 
+      color: white; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 32px; 
+      margin: 15px 0; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; text-transform: none; letter-spacing: 0;
+    }
+    .nav-menu.active a:nth-child(1) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(2) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(3) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(4) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(5) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); color: var(--accent); }
 
-/* CARDS */
-.card-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:25px;margin:80px 0}
-.card{
-  background:#fff;
-  padding:50px 35px;
-  border-radius:28px;
-  border: 1px solid var(--line);
-  transition: 0.4s cubic-bezier(0.2, 1, 0.3, 1);
-}
-.card:hover { transform: translateY(-8px); border-color: var(--navy); box-shadow: 0 20px 40px rgba(15,28,58,0.06); }
-.card h3{font-family:'Playfair Display';font-size:26px;margin-bottom:15px;color:var(--navy)}
-.card p{color:var(--muted);line-height:1.7;font-size:16px;margin:0}
+    /* SCROLL REVEAL ANIMATIONS */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ABOUT SECTION */
-.about-spread{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin:100px 0; text-align: left;}
-.about-spread h2{font-family:'Playfair Display';font-size:42px;margin-bottom:25px}
-.about-spread p{color:var(--muted);line-height:1.8;font-size:18px}
-.fishing-photo{width:100%; aspect-ratio: 4/5; object-fit: cover; border-radius:30px;box-shadow:0 20px 45px rgba(0,0,0,.05)}
+    /* HERO SECTION */
+    .hero { padding: 120px 20px 80px; text-align: center; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(42px, 8vw, 68px); color: var(--navy); margin: 0 0 20px; line-height: 1.1; letter-spacing: -0.5px; }
+    .hero p { font-size: 22px; margin: 0 auto; color: var(--muted); max-width: 750px; line-height: 1.6; font-style: italic; }
 
-/* INTERACTIVE AUDIT BOX */
-.audit-box { background: var(--navy); color: #fff; padding: 100px 40px; border-radius: 40px; text-align: center; margin-top: 100px; }
-.audit-box h2 { font-family:'Playfair Display'; font-size: clamp(32px, 5vw, 48px); margin:0; }
+    /* SECTIONS */
+    .section { padding-top: 80px; padding-bottom: 80px; }
+    .bg-paper { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
-/* The Toggle Switch */
-.audit-toggle-wrapper { display: flex; justify-content: center; margin: 40px 0 50px; }
-.audit-toggle { background: rgba(255,255,255,0.08); padding: 6px; border-radius: 100px; display: inline-flex; border: 1px solid rgba(255,255,255,0.15); }
-.toggle-btn { background: transparent; border: none; color: #fff; padding: 14px 35px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px; border-radius: 100px; cursor: pointer; transition: 0.3s; opacity: 0.7; }
-.toggle-btn.active { background: #fff; color: var(--navy); opacity: 1; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    /* COVERAGE CARDS (Delicate & Tactile) */
+    .card-grid { display: grid; grid-template-columns: 1fr; gap: 30px; text-align: left; }
+    .coverage-card {
+      background: white; 
+      padding: 45px 35px; 
+      border: 1px solid var(--line); 
+      border-radius: 8px; 
+      border-top: 4px solid var(--accent);
+      box-shadow: 0 10px 30px rgba(0,34,68,0.02); 
+      text-align: left; 
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+    }
+    .coverage-card:hover { 
+      transform: translateY(-6px); 
+      box-shadow: 0 20px 40px rgba(0,34,68,0.06); 
+    }
+    .coverage-card:active {
+      transform: scale(0.98);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      transition: all 0.1s; 
+    }
+    .coverage-card h3 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--navy); margin: 0 0 15px 0; display: flex; align-items: center; gap: 14px; }
+    .coverage-card h3 i { color: var(--accent); font-size: 36px; font-weight: normal; }
+    .coverage-card p { margin: 0; color: var(--muted); }
 
-/* The Content Areas */
-.audit-content { display: none; animation: fadeIn 0.4s ease forwards; }
-.audit-content.active { display: block; }
+    /* ABOUT SECTION */
+    .about-spread { display: flex; flex-direction: column; gap: 40px; align-items: center; margin: 0 auto 80px auto; text-align: left; }
+    .about-content { flex: 1; }
+    .about-content h2 { font-family: 'Playfair Display', serif; font-size: 36px; color: var(--navy); margin-top: 0; margin-bottom: 25px; line-height: 1.2; }
+    .about-content p { color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
+    .fishing-photo { width: 100%; max-width: 500px; aspect-ratio: 4/5; object-fit: cover; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,34,68,0.1); }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+    /* INTERACTIVE AUDIT BOX */
+    .audit-box { background: var(--navy); color: #fff; padding: 100px 20px; border-radius: 12px; text-align: center; box-shadow: 0 20px 40px rgba(0,34,68,0.15); margin: 0 auto 80px auto; }
+    .audit-box h2 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 48px); margin: 0 0 15px; color: white; }
+    .audit-box > p { color: #cbd5e0; font-size: 20px; font-style: italic; margin: 0 auto 40px; }
 
-.audit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: left; }
-.audit-item h4 { color: #fff; margin: 0 0 15px 0; font-size: 21px; font-family: 'Playfair Display'; }
-.audit-item p { font-size: 15px; opacity: 0.8; line-height: 1.7; margin: 0; }
+    /* The Toggle Switch */
+    .audit-toggle-wrapper { display: flex; justify-content: center; margin-bottom: 50px; }
+    .audit-toggle { background: rgba(255,255,255,0.06); padding: 6px; border-radius: 100px; display: inline-flex; border: 1px solid rgba(255,255,255,0.1); }
+    .toggle-btn { background: transparent; border: none; color: #fff; padding: 14px 35px; font-weight: 600; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; border-radius: 100px; cursor: pointer; transition: 0.3s; opacity: 0.6; }
+    .toggle-btn.active { background: #fff; color: var(--navy); opacity: 1; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
 
-/* BUTTON */
-.btn-white{
-  display:inline-block;
-  padding:22px 50px;
-  background:#fff;
-  color:var(--navy);
-  border-radius:100px;
-  font-weight:600;
-  text-decoration:none;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 13px;
-  margin-top:60px;
-  transition:.3s ease;
-}
-.btn-white:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+    /* The Content Areas */
+    .audit-content { display: none; animation: fadeIn 0.4s ease forwards; }
+    .audit-content.active { display: block; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-footer{text-align:center;margin-top:80px;padding-bottom:40px;font-size:12px;color:var(--muted);letter-spacing:1px}
+    .audit-grid { display: grid; grid-template-columns: 1fr; gap: 40px; text-align: left; }
+    .audit-item { position: relative; }
+    .num-accent { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--accent); font-style: italic; display: block; margin-bottom: 10px; line-height: 1; }
+    .audit-item h4 { font-family: 'Playfair Display', serif; color: #fff; margin: 0 0 12px 0; font-size: 24px; }
+    .audit-item p { font-size: 16px; color: #cbd5e0; line-height: 1.7; margin: 0; }
 
-@media(max-width:900px){ 
-  .about-spread, .card-grid, .audit-grid { grid-template-columns: 1fr; text-align:center} 
-  .audit-item { text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 30px; }
-  .audit-item:last-child { border-bottom: none; padding-bottom: 0; }
-  .hero { margin-bottom: 40px; }
-  .toggle-btn { padding: 12px 20px; font-size: 14px; }
-}
-</style>
+    /* BUTTONS */
+    .btn-white { display: inline-block; background: #fff; color: var(--navy); padding: 18px 45px; border-radius: 4px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; transition: 0.2s; margin-top: 50px; }
+    .btn-white:hover { background: var(--accent); color: white; transform: translateY(-3px); }
+    .btn-white:active { transform: scale(0.96); }
+
+    /* FOOTER */
+    footer { background: var(--navy); color: white; padding: 60px 20px; text-align: center; font-size: 14px; font-family: 'Inter', sans-serif; }
+    footer strong { font-family: 'Playfair Display', serif; font-size: 24px; letter-spacing: 0.5px; font-weight: 600; }
+    .clean-amp { font-family: 'Inter', sans-serif; font-weight: 400; font-size: 0.9em; }
+
+    @media (max-width: 900px) {
+      .audit-item { text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 30px; }
+      .audit-item:last-child { border-bottom: none; padding-bottom: 0; }
+      .toggle-btn { padding: 12px 20px; font-size: 13px; }
+    }
+
+    @media (min-width: 900px) {
+      .desktop-nav { display: block; }
+      .hamburger { display: none; }
+      .card-grid { grid-template-columns: repeat(3, 1fr); }
+      .audit-grid { grid-template-columns: repeat(3, 1fr); }
+      .about-spread { flex-direction: row; gap: 80px; }
+      .fishing-photo { max-width: 45%; }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="topbar">
-  <div class="nav">
-    <a href="/"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
-    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-</div>
-
-<nav class="nav-menu" id="navMenu">
-  <div class="nav-links">
-    <a href="/" onclick="toggleMenu()">Home</a>
-    <a href="/families.html" onclick="toggleMenu()">Personal</a>
-    <a href="/business.html" onclick="toggleMenu()">Business</a>
-    <a href="/life.html" onclick="toggleMenu()">Life & Health</a>
-    <a href="/quote.html" onclick="toggleMenu()" style="color: var(--navy); border-top: 1px solid var(--line); padding-top: 20px; margin-top: 10px;">Get a Quote</a>
-  </div>
-</nav>
-
-<div class="wrap">
-
-<header class="hero reveal">
-  <h1>Protecting the people<br>behind the plans.</h1>
-  <p class="sub">Straightforward life and health coverage designed to keep your family and business moving forward.</p>
-</header>
-
-<div class="card-grid">
-  <div class="card reveal" style="transition-delay: 0.1s;">
-    <h3>Life Insurance</h3>
-    <p>Simple term or permanent options to protect your family’s lifestyle or fund a business buy-sell agreement.</p>
-  </div>
-  <div class="card reveal" style="transition-delay: 0.2s;">
-    <h3>Disability & Overhead</h3>
-    <p>The critical protection most owners don't know exists. Protect your personal income, or keep the business running if you, a partner, or a key employee can't work.</p>
-  </div>
-  <div class="card reveal" style="transition-delay: 0.3s;">
-    <h3>Long-Term Care</h3>
-    <p>Planning that ensures a future health crisis doesn’t wipe out the legacy you’ve worked hard to build.</p>
-  </div>
-</div>
-
-<section class="about-spread reveal">
-  <div>
-    <h2>Simple, Honest Advice</h2>
-    <p>I believe life insurance should be easy to understand. I focus on finding the right fit for your situation—whether that’s protecting your home or ensuring your business survives a key-person loss.</p>
-    <p>No high-pressure sales or complex schemes. Just a direct conversation about what you actually need.</p>
-  </div>
-  <img src="Fishing.jpg" class="fishing-photo" alt="Planning for the future">
-</section>
-
-<div class="audit-box reveal" id="audit">
-  <h2>The 60-Second Audit</h2>
-  <p style="opacity:0.8;margin-top:15px; font-size: 18px;">Select your focus to view the questions you should be asking.</p>
-  
-  <div class="audit-toggle-wrapper">
-    <div class="audit-toggle">
-      <button class="toggle-btn active" onclick="switchAudit('personal')" id="btn-personal">For Your Family</button>
-      <button class="toggle-btn" onclick="switchAudit('business')" id="btn-business">For Your Business</button>
-    </div>
-  </div>
-
-  <div id="audit-personal" class="audit-content active">
-    <div class="audit-grid">
-      <div class="audit-item">
-        <h4>1. Income Replacement</h4>
-        <p>If your paycheck stopped tomorrow due to an injury or illness, how many months could your family maintain their current lifestyle?</p>
-      </div>
-      <div class="audit-item">
-        <h4>2. Debt & Liquidity</h4>
-        <p>If the worst happened, is there enough life insurance coverage to wipe the slate clean so your family can stay in their home?</p>
-      </div>
-      <div class="audit-item">
-        <h4>3. Legacy Guard</h4>
-        <p>Is your retirement nest egg and family inheritance protected from the high out-of-pocket costs of long-term care?</p>
+  <header>
+    <div class="nav-container">
+      <a href="/" style="position: relative; z-index: 2100;"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
+      <nav class="desktop-nav">
+        <a href="/">Home</a>
+        <a href="/families.html">Personal</a>
+        <a href="/business.html">Business</a>
+        <a href="/life.html" class="active-link">Life <span class="clean-amp">&amp;</span> Health</a>
+        <a href="/quote.html" class="btn-quote">Get a Quote</a>
+      </nav>
+      <div class="hamburger" id="hamburgerBtn" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
       </div>
     </div>
-  </div>
+    <nav class="nav-menu" id="mobileNav">
+        <a href="/">Home</a>
+        <a href="/families.html">Personal</a>
+        <a href="/business.html">Business</a>
+        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
+        <a href="/quote.html">Get a Quote</a>
+    </nav>
+  </header>
 
-  <div id="audit-business" class="audit-content">
-    <div class="audit-grid">
-      <div class="audit-item">
-        <h4>1. Business Continuity</h4>
-        <p>If a partner passed away, is your buy-sell agreement actually funded by life insurance, or would it immediately drain company capital?</p>
+  <div class="wrap">
+    <div class="hero reveal">
+      <h1>Protecting the people<br>behind the plans.</h1>
+      <p>Straightforward life and health coverage designed to keep your family and business moving forward.</p>
+    </div>
+
+    <div class="card-grid section">
+      <div class="coverage-card reveal" style="transition-delay: 0.1s;">
+        <h3><i class="ph-light ph-heart"></i> Life Insurance</h3>
+        <p>Simple term or permanent options to protect your family's lifestyle or fund a business buy-sell agreement.</p>
       </div>
-      <div class="audit-item">
-        <h4>2. Key Person Loss</h4>
-        <p>Could the business survive financially if your top revenue generator or operational leader suddenly couldn't work?</p>
+      <div class="coverage-card reveal" style="transition-delay: 0.2s;">
+        <h3><i class="ph-light ph-briefcase"></i> Disability & Overhead</h3>
+        <p>The critical protection most owners don't know exists. Protect your personal income, or keep the business running if you can't work.</p>
       </div>
-     <div class="audit-item">
-        <h4>3. Business Disability</h4>
-        <p>If a severe injury or illness takes you or a partner out of work for an extended time, how will the business keep paying rent and payroll until you return?</p>
+      <div class="coverage-card reveal" style="transition-delay: 0.3s;">
+        <h3><i class="ph-light ph-hourglass-medium"></i> Long-Term Care</h3>
+        <p>Strategic planning that ensures a future health crisis doesn't wipe out the financial legacy you've worked hard to build.</p>
       </div>
+    </div>
+
+    <div class="about-spread reveal">
+      <div class="about-content">
+        <h2>Simple, Honest Advice</h2>
+        <p>I believe life insurance should be easy to understand. I focus on finding the right fit for your situation—whether that's protecting your home, replacing lost income, or ensuring your business survives a key-person loss.</p>
+        <p>No high-pressure sales or overly complex schemes. Just a direct, plain-English conversation about what you actually need to protect the people depending on you.</p>
+      </div>
+      <img src="Fishing.jpg" class="fishing-photo" alt="Planning for the future">
+    </div>
+
+    <div class="audit-box reveal" id="audit">
+      <h2>The 60-Second Audit</h2>
+      <p>Select your focus to view the questions you should be asking.</p>
+      
+      <div class="audit-toggle-wrapper">
+        <div class="audit-toggle">
+          <button class="toggle-btn active" onclick="switchAudit('personal')" id="btn-personal">For Your Family</button>
+          <button class="toggle-btn" onclick="switchAudit('business')" id="btn-business">For Your Business</button>
+        </div>
+      </div>
+
+      <div id="audit-personal" class="audit-content active">
+        <div class="audit-grid">
+          <div class="audit-item">
+            <span class="num-accent">01.</span>
+            <h4>Income Replacement</h4>
+            <p>If your paycheck stopped tomorrow due to an injury or illness, how many months could your family maintain their current lifestyle?</p>
+          </div>
+          <div class="audit-item">
+            <span class="num-accent">02.</span>
+            <h4>Debt & Liquidity</h4>
+            <p>If the worst happened, is there enough life insurance coverage to wipe the slate clean so your family can stay in their home?</p>
+          </div>
+          <div class="audit-item">
+            <span class="num-accent">03.</span>
+            <h4>Legacy Guard</h4>
+            <p>Is your retirement nest egg and family inheritance protected from the high out-of-pocket costs of long-term care?</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="audit-business" class="audit-content">
+        <div class="audit-grid">
+          <div class="audit-item">
+            <span class="num-accent">01.</span>
+            <h4>Business Continuity</h4>
+            <p>If a partner passed away, is your buy-sell agreement actually funded by life insurance, or would it immediately drain company capital?</p>
+          </div>
+          <div class="audit-item">
+            <span class="num-accent">02.</span>
+            <h4>Key Person Loss</h4>
+            <p>Could the business survive financially if your top revenue generator or operational leader suddenly couldn't work?</p>
+          </div>
+          <div class="audit-item">
+            <span class="num-accent">03.</span>
+            <h4>Business Disability</h4>
+            <p>If a severe injury or illness takes you or a partner out of work for an extended time, how will the business keep paying rent and payroll?</p>
+          </div>
+        </div>
+      </div>
+
+      <a href="quote.html" class="btn-white">Request a Full Review</a>
     </div>
   </div>
 
-  <a href="/quote.html" class="btn-white">Request a Full Review</a>
-</div>
+  <footer>
+    <div class="wrap">
+      <p>
+        <strong>Donohoo <span class="clean-amp">&amp;</span> Sons Insurance</strong><br><br>
+        10425 W North Ave. Suite 226<br>
+        Wauwatosa, WI 53226<br>
+        <a href="tel:4146981729" style="color: white; text-decoration: none;">414.698.1729</a>
+      </p>
+      <p style="margin-top: 30px; font-size: 13px; color: #a0aec0; letter-spacing: 1px; text-transform: uppercase;">
+        Independent Insurance Advisor
+      </p>
+    </div>
+  </footer>
 
-</div>
-
-<footer>DONOHOO & SONS INSURANCE • MILWAUKEE, WI</footer>
-
-<script>
-function toggleMenu() {
-  const menu = document.getElementById('navMenu');
-  const btn = document.getElementById('hamburger');
-  menu.classList.toggle('active');
-  btn.classList.toggle('active');
-  document.body.classList.toggle('nav-open');
-}
-
-// Interactive Audit Toggle Logic
-function switchAudit(type) {
-  // Reset buttons
-  document.getElementById('btn-personal').classList.remove('active');
-  document.getElementById('btn-business').classList.remove('active');
-  // Reset content
-  document.getElementById('audit-personal').classList.remove('active');
-  document.getElementById('audit-business').classList.remove('active');
-  
-  // Activate selected
-  document.getElementById('btn-' + type).classList.add('active');
-  document.getElementById('audit-' + type).classList.add('active');
-}
-
-// Reveal logic
-window.addEventListener('load', () => { document.body.style.opacity = '1'; });
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Page Transitions
-document.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', function(e) {
-    const href = this.getAttribute('href');
-    if (href && !href.startsWith('#') && !href.startsWith('tel') && !href.startsWith('sms') && !href.startsWith('mailto') && !this.target) {
-      e.preventDefault();
-      document.body.style.opacity = '0';
-      setTimeout(() => { window.location.href = href; }, 400);
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileNav').classList.toggle('active');
+      document.getElementById('hamburgerBtn').classList.toggle('active');
+      document.body.classList.toggle('nav-open');
     }
-  });
-});
-</script>
+
+    // Interactive Audit Toggle Logic
+    function switchAudit(type) {
+      document.getElementById('btn-personal').classList.remove('active');
+      document.getElementById('btn-business').classList.remove('active');
+      document.getElementById('audit-personal').classList.remove('active');
+      document.getElementById('audit-business').classList.remove('active');
+      
+      document.getElementById('btn-' + type).classList.add('active');
+      document.getElementById('audit-' + type).classList.add('active');
+    }
+
+    // Smooth Page Load
+    window.addEventListener('load', () => { document.body.classList.add('loaded'); });
+
+    // Scroll Reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { 
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible'); 
+            observer.unobserve(entry.target); 
+        }
+      });
+    }, { threshold: 0.1 }); 
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
-
