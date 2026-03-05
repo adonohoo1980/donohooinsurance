@@ -7,223 +7,261 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
   <style>
     :root {
-      --bg: #fdfdfb; /* Boutique paper feel */
-      --navy: #002244; /* Heritage Navy */
-      --accent: #b8860b; /* Wisconsin Gold */
+      --bg: #fdfdfb;
       --ink: #1a202c;
-      --muted: #4a5568;
+      --navy: #002244; 
+      --accent: #b8860b;
       --line: #e2e8f0;
-      scroll-behavior: smooth;
+      --paper: #f4f7fa;
     }
 
-    /* SPEED BOOST: System font fallbacks */
-    body { 
-      margin: 0; 
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg); 
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      margin: 0;
+      font-family: 'Lora', serif; 
+      background: var(--bg);
       color: var(--ink);
-      font-size: 17px;
-      line-height: 1.6;
+      font-size: 18px; 
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
-      opacity: 0; 
-      transition: opacity 0.4s ease; 
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      overflow-x: hidden; 
     }
     body.loaded { opacity: 1; }
+    body.nav-open { overflow: hidden; } 
 
     .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-    /* STANDARDIZED HEADER (Matches Home Page) */
-    header {
-      background: #fff;
-      border-bottom: 3px solid var(--accent);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      padding: 10px 0;
-    }
-    .nav-container { display: flex; justify-content: space-between; align-items: center; }
-    .logo-img { height: 40px; width: auto; }
-    
+    header, .btn-quote, .btn-white, .btn-primary, .nav-menu a { font-family: 'Inter', sans-serif; }
+
+    /* HEADER */
+    header { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 1000; padding: 12px 0; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .logo-img { height: 60px; width: auto; position: relative; z-index: 2100; }
+
+    /* DESKTOP NAV */
     .desktop-nav { display: none; }
-    .desktop-nav a {
-      margin-left: 28px; color: var(--ink); text-decoration: none;
-      font-weight: 600; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;
-    }
-    .desktop-nav .active-link { color: var(--navy); border-bottom: 2px solid var(--accent); padding-bottom: 4px; }
-    .btn-quote { background: var(--navy); color: white !important; padding: 12px 24px; border-radius: 4px; transition: 0.3s; }
+    .desktop-nav a { margin-left: 28px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+    .desktop-nav a:hover { color: var(--accent); }
+    .desktop-nav .active-link { color: var(--navy); border-bottom: 1px solid var(--accent); padding-bottom: 4px; }
+    .btn-quote { background: var(--navy); color: white !important; padding: 12px 24px; border-radius: 4px; transition: background 0.3s; font-size: 13px; letter-spacing: 1px; }
     .btn-quote:hover { background: var(--accent); }
+    .btn-quote:active { transform: scale(0.96); } 
+
+    /* MOBILE HAMBURGER */
+    .hamburger { cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; z-index: 2100; position: relative; }
+    .hamburger span { display: block; width: 24px; height: 2px; background-color: var(--navy); transition: 0.4s; position: absolute; }
+    .hamburger span:nth-child(1) { transform: translateY(-5px); }
+    .hamburger span:nth-child(2) { transform: translateY(5px); }
+    .hamburger.active span { background-color: white; } 
+    .hamburger.active span:nth-child(1) { transform: translateY(0) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { transform: translateY(0) rotate(-45deg); }
 
     /* MOBILE MENU */
-    .hamburger { cursor: pointer; display: flex; flex-direction: column; gap: 5px; }
-    .hamburger span { width: 25px; height: 2px; background: var(--navy); transition: 0.3s; }
-    .nav-menu {
-      display: none; background: var(--navy); width: 100%; text-align: center; padding: 20px 0; position: absolute; top: 100%; left: 0;
+    .nav-menu { 
+      position: fixed; top: 0; left: 0; width: 100%; height: 0; 
+      background: var(--navy); z-index: 2000; overflow: hidden; 
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .nav-menu.active { display: block; }
-    .nav-menu a { color: white; display: block; padding: 15px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 22px; }
+    .nav-menu.active { height: 100vh; }
+    .nav-menu a { 
+      color: white; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 32px; 
+      margin: 15px 0; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; text-transform: none; letter-spacing: 0;
+    }
+    .nav-menu.active a:nth-child(1) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(2) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(3) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(4) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(5) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); color: var(--accent); }
 
-    /* REVEAL ANIMATIONS */
-    .reveal { opacity: 0; transform: translateY(20px); transition: all 0.7s ease-out; }
+    /* SCROLL REVEAL ANIMATIONS */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* HERO SECTION */
-    .hero { padding: 80px 0 40px; text-align: left; }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(40px, 8vw, 64px); line-height: 1.1; margin-bottom: 10px; color: var(--navy); }
-    .hero-accent { color: var(--accent); font-size: clamp(24px, 4vw, 32px); font-family: 'Playfair Display', serif; margin-bottom: 20px; display: block; font-style: italic; }
-    .hero p { font-size: 20px; color: var(--muted); max-width: 700px; line-height: 1.6; margin-bottom: 40px; }
+    .hero { padding: 100px 20px 60px; text-align: left; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(42px, 8vw, 72px); color: var(--navy); margin: 0 0 10px; line-height: 1.1; letter-spacing: -0.5px; }
+    .hero-accent { color: var(--accent); font-size: clamp(28px, 5vw, 40px); font-family: 'Playfair Display', serif; margin-bottom: 25px; display: block; font-style: italic; }
+    .hero p { font-size: 22px; color: var(--muted); max-width: 700px; line-height: 1.6; margin-bottom: 0; }
 
     /* IMAGE BANNER */
-    .families-img { width: 100%; aspect-ratio: 16/7; object-fit: cover; border-radius: 12px; margin-bottom: 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+    .banner-container { padding: 0 20px; }
+    .families-img { width: 100%; max-width: 1100px; display: block; margin: 0 auto; aspect-ratio: 16/7; object-fit: cover; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,34,68,0.08); }
 
     /* CONTENT GRID */
-    .section { margin-bottom: 80px; }
+    .section { padding: 100px 0; }
     .grid { display: grid; grid-template-columns: 1fr; gap: 60px; align-items: flex-start; }
 
-    h2 { font-family: 'Playfair Display', serif; font-size: 36px; margin-bottom: 20px; color: var(--navy); }
-    .desc { font-size: 18px; color: var(--muted); line-height: 1.8; margin-bottom: 30px; }
+    .content-left h2 { font-family: 'Playfair Display', serif; font-size: 40px; margin: 0 0 25px; color: var(--navy); line-height: 1.2; }
+    .content-left p { color: var(--muted); line-height: 1.8; margin-bottom: 25px; }
 
-    /* AUDIT CARD STYLING */
+    /* AUDIT CARD (Elegant Upgrade) */
     .audit-card {
       background: white;
       border: 1px solid var(--line);
-      border-top: 5px solid var(--navy);
-      padding: 40px 35px;
+      border-top: 4px solid var(--accent);
+      padding: 45px 40px;
       border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      box-shadow: 0 10px 30px rgba(0,34,68,0.03);
     }
-    .audit-card h3 { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--navy); margin: 0 0 30px 0; }
-    .audit-item { margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--line); }
+    .audit-card h3 { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--navy); margin: 0 0 35px 0; line-height: 1.2; }
+    
+    .audit-item { margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid var(--line); }
     .audit-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-    .audit-question { font-weight: 700; color: var(--navy); font-size: 18px; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
-    .audit-question i { color: var(--accent); }
-    .audit-desc { font-size: 16px; color: var(--muted); line-height: 1.6; }
-
-    /* REFERRAL SECTION */
-    .referral-section { text-align: center; background: white; border: 1px solid var(--line); border-radius: 8px; padding: 60px 20px; }
-    .referral-section h2 { margin-bottom: 15px; }
-    .referral-section p { color: var(--muted); max-width: 600px; margin: 0 auto 30px; font-size: 18px; }
+    
+    .audit-question { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--navy); font-size: 22px; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
+    .audit-question i { color: var(--accent); font-size: 32px; font-weight: normal; }
+    .audit-desc { font-size: 16px; color: var(--muted); line-height: 1.7; margin: 0; padding-left: 44px; }
 
     /* BUTTONS */
-    .cta-btn {
-      display: inline-block; background: var(--navy); color: white; padding: 16px 32px;
-      border-radius: 4px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;
-    }
-    .cta-btn:hover { background: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    .btn-primary { display: inline-block; background: var(--navy); color: white; padding: 16px 40px; border-radius: 4px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; transition: 0.2s; margin-top: 15px; }
+    .btn-primary:hover { background: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,34,68,0.1); }
+    .btn-primary:active { transform: scale(0.96); }
 
-    /* STANDARDIZED FOOTER */
-    footer { background: var(--navy); color: white; padding: 40px 20px; text-align: center; font-size: 14px; margin-top: 60px; }
+    /* CTA BOX (Matches Business Page) */
+    .cta-box { background: var(--navy); color: #fff; padding: 100px 20px; border-radius: 12px; text-align: center; box-shadow: 0 20px 40px rgba(0,34,68,0.1); margin: 0 auto; }
+    .cta-box h2 { font-family: 'Playfair Display', serif; font-size: 42px; margin: 0 0 20px; color: white; }
+    .cta-box p { color: #cbd5e0; max-width: 600px; margin: 0 auto 40px; font-size: 20px; font-style: italic; }
+    .btn-white { display: inline-block; background: #fff; color: var(--navy); padding: 16px 40px; border-radius: 4px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; transition: 0.2s; }
+    .btn-white:hover { background: var(--accent); color: white; transform: translateY(-3px); }
+    .btn-white:active { transform: scale(0.96); }
+
+    /* FOOTER */
+    footer { background: var(--navy); color: white; padding: 60px 20px; text-align: center; font-size: 14px; font-family: 'Inter', sans-serif; }
+    footer strong { font-family: 'Playfair Display', serif; font-size: 24px; letter-spacing: 0.5px; font-weight: 600; }
+    .clean-amp { font-family: 'Inter', sans-serif; font-weight: 400; font-size: 0.9em; }
+
+    @media (max-width: 768px) {
+      .audit-card { padding: 35px 25px; }
+      .audit-desc { padding-left: 0; margin-top: 15px; }
+    }
 
     @media (min-width: 900px) {
       .desktop-nav { display: block; }
       .hamburger { display: none; }
-      .grid { grid-template-columns: 1fr 1fr; }
+      .grid { grid-template-columns: 1fr 1.1fr; gap: 80px; }
+      .hero { padding: 140px 20px 80px; }
     }
   </style>
 </head>
-
 <body>
 
   <header>
-    <div class="wrap nav-container">
-      <a href="/"><img src="logo.png" class="logo-img" alt="Donohoo & Sons" width="200" height="40"></a>
+    <div class="nav-container">
+      <a href="/" style="position: relative; z-index: 2100;"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
       <nav class="desktop-nav">
         <a href="/">Home</a>
         <a href="/families.html" class="active-link">Personal</a>
         <a href="/business.html">Business</a>
+        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
         <a href="/quote.html" class="btn-quote">Get a Quote</a>
       </nav>
-      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
+      <div class="hamburger" id="hamburgerBtn" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
       </div>
     </div>
     <nav class="nav-menu" id="mobileNav">
-      <a href="/">Home</a>
-      <a href="/families.html">Personal</a>
-      <a href="/business.html">Business</a>
-      <a href="/quote.html">Get a Quote</a>
+        <a href="/">Home</a>
+        <a href="/families.html">Personal</a>
+        <a href="/business.html">Business</a>
+        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
+        <a href="/quote.html">Get a Quote</a>
     </nav>
   </header>
 
-  <main class="wrap">
+  <div class="wrap">
     <div class="hero reveal">
       <h1>Personal insurance.</h1>
       <span class="hero-accent">Done correctly.</span>
       <p>Home, auto, and umbrella coverage built around straightforward advice—not call centers, 1-800 numbers, or shortcuts.</p>
-      <a href="/quote.html" class="cta-btn">Request a Review</a>
     </div>
+  </div>
 
-    <div class="section reveal">
-      <img src="family-home.jpg" class="families-img" alt="Milwaukee Personal Insurance" loading="lazy">
-    </div>
+  <div class="banner-container reveal">
+    <img src="family-home.jpg" class="families-img" alt="Milwaukee Personal Insurance" loading="lazy">
+  </div>
 
-    <div class="section">
-      <div class="grid">
-        <div class="reveal">
-          <h2>Professional advice.</h2>
-          <p class="desc">I don't work for an insurance company—I work for you. As an independent advisor, I partner with top-rated carriers to build a protection plan tailored to your family.</p>
-          <p class="desc">When your life changes or market rates shift, I do the heavy lifting to shop your coverage, ensuring you always have the right fit without having to start over with a new agent.</p>
-          <a href="/quote.html" class="cta-btn">Start a Conversation</a>
+  <section class="section bg-paper">
+    <div class="wrap grid">
+      
+      <div class="content-left reveal">
+        <h2>Professional advice.</h2>
+        <p>I don't work for an insurance company—I work for you. As an independent advisor, I partner with top-rated carriers to build a protection plan tailored to your family.</p>
+        <p>When your life changes or insurance rates shift, I do the heavy lifting to shop your coverage, ensuring you always have the right fit without having to start over with a new agent.</p>
+        <a href="quote.html" class="btn-primary">Start a Conversation</a>
+      </div>
+      
+      <div class="audit-card reveal" style="transition-delay: 0.1s;">
+        <h3>A Different Kind of Conversation</h3>
+        
+        <div class="audit-item">
+          <div class="audit-question"><i class="ph-light ph-chat-centered-text"></i> Clear Explanations</div>
+          <p class="audit-desc">I don't just hand you a stack of documents. I walk through your coverages in plain English, translating the fine print so you know exactly what is protecting your home and vehicles.</p>
         </div>
         
-        <div class="audit-card reveal" style="transition-delay: 0.1s;">
-          <h3>A Different Kind of Conversation</h3>
-          
-          <div class="audit-item">
-            <div class="audit-question"><i class="fas fa-check-circle"></i> Clear Explanations</div>
-            <div class="audit-desc">I don't just hand you a stack of documents. I walk through your coverages in plain English, translating the fine print so you know exactly what is protecting your home and vehicles.</div>
-          </div>
-          
-          <div class="audit-item">
-            <div class="audit-question"><i class="fas fa-bullseye"></i> Tailored Protection</div>
-            <div class="audit-desc">You are never just a policy number. We look at your specific assets to build a custom plan, rather than dropping you into a generic, one-size-fits-all package.</div>
-          </div>
-          
-          <div class="audit-item">
-            <div class="audit-question"><i class="fas fa-balance-scale"></i> Confident Choices</div>
-            <div class="audit-desc">My job is to do the heavy lifting: comparing carriers and offering advice. Your job is simply to choose the options that make the most sense for your family.</div>
-          </div>
+        <div class="audit-item">
+          <div class="audit-question"><i class="ph-light ph-shield-check"></i> Tailored Protection</div>
+          <p class="audit-desc">You are never just a policy number. We look at your specific situation to build a custom plan, rather than dropping you into a generic, one-size-fits-all package.</p>
+        </div>
+        
+        <div class="audit-item">
+          <div class="audit-question"><i class="ph-light ph-scales"></i> Confident Choices</div>
+          <p class="audit-desc">My job is to do the heavy lifting: comparing carriers and offering advice. Your job is simply to choose the options that make the most sense for your family.</p>
         </div>
       </div>
-    </div>
 
-    <div class="section reveal">
-      <div class="referral-section">
-        <h2>Sent by a friend?</h2>
-        <p>Most of my business comes from personal introductions. If someone in the Milwaukee area sent you my way, let's start with a quick chat to see if my approach is the right fit for your family.</p>
-        <a href="/quote.html" class="cta-btn">Connect with Andy</a>
-      </div>
     </div>
-  </main>
+  </section>
+
+  <section class="section wrap">
+    <div class="cta-box reveal">
+      <h2>Sent by a friend?</h2>
+      <p>Most of my business comes from personal introductions. If someone in the Milwaukee area sent you my way, let's start with a quick chat to see if my approach is the right fit for your family.</p>
+      <a href="quote.html" class="btn-white">Connect with Andy</a>
+    </div>
+  </section>
 
   <footer>
-    <p><strong>Donohoo & Sons Insurance</strong><br>
-    Wauwatosa, WI • (414) [Your Number]</p>
+    <div class="wrap">
+      <p>
+        <strong>Donohoo <span class="clean-amp">&amp;</span> Sons Insurance</strong><br><br>
+        10425 W North Ave. Suite 226<br>
+        Wauwatosa, WI 53226<br>
+        <a href="tel:4146981729" style="color: white; text-decoration: none;">414.698.1729</a>
+      </p>
+      <p style="margin-top: 30px; font-size: 13px; color: #a0aec0; letter-spacing: 1px; text-transform: uppercase;">
+        Independent Insurance Advisor
+      </p>
+    </div>
   </footer>
 
   <script>
     function toggleMenu() {
       document.getElementById('mobileNav').classList.toggle('active');
+      document.getElementById('hamburgerBtn').classList.toggle('active');
+      document.body.classList.toggle('nav-open');
     }
 
-    // Fade in page on load
     window.addEventListener('load', () => { document.body.classList.add('loaded'); });
 
-    // Scroll reveal animation
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { 
         if (entry.isIntersecting) {
             entry.target.classList.add('visible'); 
-            // Optional: stop observing once revealed
-            observer.unobserve(entry.target);
+            observer.unobserve(entry.target); 
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.1 }); 
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
