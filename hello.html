@@ -32,7 +32,7 @@
       -webkit-font-smoothing: antialiased;
       opacity: 0;
       transition: opacity 0.8s ease-in-out;
-      overflow-x: hidden; /* Safety net to prevent side-scrolling on mobile */
+      overflow-x: hidden; 
     }
     body.loaded { opacity: 1; }
     body.nav-open { overflow: hidden; } 
@@ -50,6 +50,7 @@
     .desktop-nav a:hover { color: var(--accent); }
     .btn-quote { background: var(--navy); color: white !important; padding: 10px 20px; border-radius: 4px; transition: background 0.3s; }
     .btn-quote:hover { background: var(--accent); }
+    .btn-quote:active { transform: scale(0.96); } /* Mobile tap feedback */
 
     /* APPLE-STYLE MOBILE HAMBURGER */
     .hamburger { cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; z-index: 2100; position: relative; }
@@ -86,14 +87,16 @@
     .scan-welcome {
       display: inline-flex; align-items: center; background: #fff;
       padding: 8px 8px 8px 16px; border-radius: 100px;
-      box-shadow: 0 10px 30px rgba(0,34,68,0.08); border: 1px solid var(--line);
+      box-shadow: 0 8px 25px rgba(0,34,68,0.06); border: 1px solid var(--line);
       margin: 60px auto 40px; gap: 15px; flex-wrap: wrap; justify-content: center;
     }
     .mini-profile { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--paper); }
     .scan-welcome span { font-size: 15px; font-weight: 600; color: var(--navy); }
     .mini-actions { display: flex; gap: 8px; }
-    .mini-btn { font-size: 13px; font-weight: 700; text-transform: uppercase; text-decoration: none; background: var(--navy); color: #fff; padding: 10px 20px; border-radius: 50px; transition: 0.3s; }
+    .mini-btn { font-size: 13px; font-weight: 700; text-transform: uppercase; text-decoration: none; background: var(--navy); color: #fff; padding: 10px 20px; border-radius: 50px; transition: 0.2s; }
     .mini-btn:hover { background: var(--accent); }
+    .mini-btn:active { transform: scale(0.95); } /* Mobile tap feedback */
+    
     .mini-btn.secondary { background: var(--paper); color: var(--navy); border: 1px solid var(--line); }
     .mini-btn.secondary:hover { background: var(--line); }
 
@@ -102,7 +105,7 @@
     .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(40px, 8vw, 72px); color: var(--navy); line-height: 1.1; margin: 0 0 20px; }
     .tagline { color: var(--muted); font-size: 20px; max-width: 650px; margin: 0 auto; line-height: 1.6; }
 
-    /* SECTIONS (Fixed Padding Overrides) */
+    /* SECTIONS */
     .section { padding-top: 60px; padding-bottom: 60px; }
     .bg-paper { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .grid-3 { display: flex; flex-direction: column; gap: 20px; }
@@ -112,16 +115,46 @@
     .value-pillar h4 { margin: 10px 0; font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); }
     .value-pillar p { color: #4a5568; margin: 0; }
 
-    /* SERVICE CARDS */
+    /* SERVICE CARDS (UPGRADED FOR MOBILE TACTILE FEEDBACK) */
     .service-card {
-      background: white; padding: 40px 30px; border: 1px solid var(--line); border-left: 4px solid var(--accent);
-      text-align: left; text-decoration: none !important; color: var(--ink) !important; display: block; transition: transform 0.4s ease, box-shadow 0.4s ease;
+      background: white; 
+      padding: 40px 30px; 
+      border: 1px solid var(--line); 
+      border-left: 4px solid var(--accent);
+      border-radius: 12px; /* Softens the corners so they look clickable */
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03); /* Permanent soft shadow */
+      text-align: left; 
+      text-decoration: none !important; 
+      color: var(--ink) !important; 
+      display: block; 
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease;
     }
-    .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,34,68,0.08); border-left: 4px solid var(--navy); }
+    
+    /* Desktop Hover State */
+    .service-card:hover { 
+      transform: translateY(-8px); 
+      box-shadow: 0 20px 40px rgba(0,34,68,0.08); 
+      border-left: 4px solid var(--navy); 
+    }
+    
+    /* Mobile Tap State (The "Push" button effect) */
+    .service-card:active {
+      transform: scale(0.98);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border-left: 4px solid var(--navy);
+      transition: all 0.1s; /* Snaps quickly when pressed */
+    }
+
     .service-card h3 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--navy); margin: 0 0 15px 0; }
     .service-card p { margin: 0 0 20px 0; color: #4a5568; }
-    .link-text { color: var(--accent); font-weight: 600; display: inline-block; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+    
+    /* Animated Arrow text */
+    .link-text { color: var(--accent); font-weight: 600; display: flex; align-items: center; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+    .arrow { display: inline-block; margin-left: 6px; font-size: 18px; transition: transform 0.3s ease; }
+    
+    /* Arrow slides right on tap/hover */
     .service-card:hover .link-text { color: var(--navy); }
+    .service-card:hover .arrow, .service-card:active .arrow { transform: translateX(6px); }
 
     /* HOW I WORK SPREAD */
     .about-spread { display: flex; flex-direction: column; gap: 40px; align-items: center; margin: 0 auto 80px auto; text-align: left; }
@@ -133,8 +166,9 @@
 
     /* CTA BOX */
     .cta-box { background: var(--navy); color: #fff; padding: 80px 20px; border-radius: 20px; text-align: center; margin-bottom: 60px; box-shadow: 0 20px 40px rgba(0,34,68,0.15); }
-    .btn-white { display: inline-block; background: #fff; color: var(--navy); padding: 18px 40px; border-radius: 4px; text-decoration: none; font-weight: 700; transition: 0.3s; }
+    .btn-white { display: inline-block; background: #fff; color: var(--navy); padding: 18px 40px; border-radius: 4px; text-decoration: none; font-weight: 700; transition: 0.2s; }
     .btn-white:hover { background: var(--accent); color: white; transform: translateY(-3px); }
+    .btn-white:active { transform: scale(0.96); } /* Mobile tap feedback */
 
     /* FOOTER */
     footer { background: var(--navy); color: white; padding: 50px 20px; text-align: center; font-size: 15px; }
@@ -223,17 +257,17 @@
         <a href="/families.html" class="service-card reveal" style="transition-delay: 0.1s;">
           <h3>Personal</h3>
           <p>Home, auto, and umbrella protection built around real life.</p>
-          <span class="link-text">View Protection &rarr;</span>
+          <span class="link-text">View Protection <span class="arrow">&rarr;</span></span>
         </a>
         <a href="/business.html" class="service-card reveal" style="transition-delay: 0.2s;">
           <h3>Business</h3>
           <p>Coverage built for owners who want one dedicated advisor.</p>
-          <span class="link-text">View Commercial &rarr;</span>
+          <span class="link-text">View Commercial <span class="arrow">&rarr;</span></span>
         </a>
         <a href="/life.html" class="service-card reveal" style="transition-delay: 0.3s;">
           <h3>Life <span class="clean-amp">&amp;</span> Health</h3>
           <p>Life, Disability, & Long-Term Care planning.</p>
-          <span class="link-text">View Planning &rarr;</span>
+          <span class="link-text">View Planning <span class="arrow">&rarr;</span></span>
         </a>
       </div>
     </div>
