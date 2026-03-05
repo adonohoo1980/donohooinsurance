@@ -20,7 +20,6 @@
       --paper: #f4f7fa;
     }
 
-    /* Keeps padding inside the boxes so nothing stretches off-screen on mobile */
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
     body {
@@ -103,7 +102,13 @@
     .grid-3 { display: flex; flex-direction: column; gap: 20px; }
     .section-title { text-align: center; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 50px; font-size: 36px; }
 
-    /* SERVICE CARDS (TACTILE MOBILE UPGRADES) */
+    /* VALUE PILLARS */
+    .value-pillar { text-align: center; padding: 20px; }
+    .value-pillar i { font-size: 40px; color: var(--navy); margin-bottom: 15px; }
+    .value-pillar h4 { margin: 10px 0; font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); }
+    .value-pillar p { color: #4a5568; margin: 0; }
+
+    /* SERVICE CARDS */
     .service-card {
       background: white; 
       padding: 40px 30px; 
@@ -134,12 +139,6 @@
     .arrow { display: inline-block; margin-left: 6px; font-size: 18px; transition: transform 0.3s ease; }
     .service-card:hover .link-text { color: var(--navy); }
     .service-card:hover .arrow, .service-card:active .arrow { transform: translateX(6px); }
-
-    /* VALUE PILLARS */
-    .value-pillar { text-align: center; padding: 20px; }
-    .value-pillar i { font-size: 40px; color: var(--navy); margin-bottom: 15px; }
-    .value-pillar h4 { margin: 10px 0; font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); }
-    .value-pillar p { color: #4a5568; margin: 0; }
 
     /* HOW I WORK SPREAD */
     .about-spread { display: flex; flex-direction: column; gap: 40px; align-items: center; margin: 0 auto 80px auto; text-align: left; }
@@ -231,7 +230,7 @@
 
   <section class="section bg-paper">
     <div class="wrap">
-      <h2 class="section-title reveal">The Donohoo Difference</h2>
+      <h2 class="section-title reveal">The Independent Advantage</h2>
       <div class="grid-3">
         <div class="value-pillar reveal" style="transition-delay: 0.1s;">
           <i class="fas fa-mobile-alt"></i>
