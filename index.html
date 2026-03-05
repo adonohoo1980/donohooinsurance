@@ -32,15 +32,15 @@
       transition: opacity 0.8s ease-in-out;
     }
     body.loaded { opacity: 1; }
+    /* Prevents scrolling when mobile menu is open */
+    body.nav-open { overflow: hidden; } 
 
     .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
     /* HEADER */
     header { background: #fff; border-bottom: 3px solid var(--accent); position: sticky; top: 0; z-index: 1000; padding: 10px 0; }
     .nav-container { display: flex; justify-content: space-between; align-items: center; }
-    
-    /* Make the logo image a bit larger based on your screenshot */
-    .logo-img { height: 60px; width: auto; }
+    .logo-img { height: 60px; width: auto; position: relative; z-index: 2100; }
 
     /* DESKTOP NAV */
     .desktop-nav { display: none; }
@@ -49,11 +49,33 @@
     .btn-quote { background: var(--navy); color: white !important; padding: 10px 20px; border-radius: 4px; transition: background 0.3s; }
     .btn-quote:hover { background: var(--accent); }
 
-    /* MOBILE NAV */
-    .hamburger { font-size: 24px; cursor: pointer; color: var(--navy); display: block; }
-    .nav-menu { display: none; background: var(--navy); width: 100%; text-align: center; padding: 20px 0; position: absolute; top: 100%; left: 0; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-    .nav-menu.active { display: block; }
-    .nav-menu a { color: white; display: block; padding: 15px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 22px; }
+    /* NEW PREMIUM MOBILE HAMBURGER */
+    .hamburger { cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; z-index: 2100; position: relative; }
+    .hamburger span { display: block; width: 24px; height: 2px; background-color: var(--navy); transition: 0.4s; position: absolute; }
+    .hamburger span:nth-child(1) { transform: translateY(-5px); }
+    .hamburger span:nth-child(2) { transform: translateY(5px); }
+    .hamburger.active span { background-color: white; } /* Turns white when menu opens */
+    .hamburger.active span:nth-child(1) { transform: translateY(0) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { transform: translateY(0) rotate(-45deg); }
+
+    /* NEW PREMIUM MOBILE MENU OVERLAY */
+    .nav-menu { 
+      position: fixed; top: 0; left: 0; width: 100%; height: 0; 
+      background: var(--navy); z-index: 2000; overflow: hidden; 
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-menu.active { height: 100vh; }
+    .nav-menu a { 
+      color: white; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 32px; 
+      margin: 15px 0; opacity: 0; transform: translateY(20px); transition: all 0.4s ease;
+    }
+    /* Staggered text reveal */
+    .nav-menu.active a:nth-child(1) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(2) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(3) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(4) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(5) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); color: var(--accent); }
 
     /* SCROLL REVEAL ANIMATIONS */
     .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
@@ -66,7 +88,6 @@
       background: var(--navy);
       background-image: linear-gradient(rgba(0,34,68,0.75), rgba(0,34,68,0.85)), url('boys.jpg');
       background-size: cover; 
-      /* FIXED CROP: 15% from the top keeps heads in frame on laptops */
       background-position: center 15%; 
       color: white; padding: 160px 0 140px; text-align: center;
     }
@@ -100,8 +121,6 @@
     /* FOOTER */
     footer { background: var(--navy); color: white; padding: 50px 20px; text-align: center; font-size: 15px; }
     footer strong { font-family: 'Playfair Display', serif; font-size: 22px; letter-spacing: 0.5px; }
-    
-    /* CUSTOM AMPERSAND TO MATCH LOGO */
     .clean-amp { font-family: 'Inter', sans-serif; font-weight: 400; font-size: 0.9em; }
 
     @media (min-width: 900px) {
@@ -119,7 +138,8 @@
 
   <header>
     <div class="wrap nav-container">
-      <a href="/"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
+      <a href="/" style="position: relative; z-index: 2100;"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
+      
       <nav class="desktop-nav">
         <a href="/">Home</a>
         <a href="/families.html">Personal</a>
@@ -127,10 +147,13 @@
         <a href="/life.html">Life & Health</a>
         <a href="/quote.html" class="btn-quote">Get a Quote</a>
       </nav>
-      <div class="hamburger" onclick="document.getElementById('mobileNav').classList.toggle('active')">
-        <i class="fas fa-bars"></i>
+
+      <div class="hamburger" id="hamburgerBtn" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
       </div>
     </div>
+    
     <nav class="nav-menu" id="mobileNav">
         <a href="/">Home</a>
         <a href="/families.html">Personal</a>
@@ -209,6 +232,13 @@
   </footer>
 
   <script>
+    // New function handles the premium mobile menu toggle and locks scrolling
+    function toggleMenu() {
+      document.getElementById('mobileNav').classList.toggle('active');
+      document.getElementById('hamburgerBtn').classList.toggle('active');
+      document.body.classList.toggle('nav-open');
+    }
+
     window.addEventListener('load', () => { document.body.classList.add('loaded'); });
 
     const observer = new IntersectionObserver((entries) => {
