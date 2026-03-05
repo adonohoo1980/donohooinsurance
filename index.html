@@ -20,6 +20,7 @@
       --paper: #f4f7fa;
     }
 
+    /* SMOOTH LOAD: Initial state for the whole page */
     body {
       margin: 0;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -28,7 +29,10 @@
       font-size: 17px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
     }
+    body.loaded { opacity: 1; }
 
     .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
@@ -50,16 +54,23 @@
     .nav-menu.active { display: block; }
     .nav-menu a { color: white; display: block; padding: 15px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 22px; }
 
+    /* SCROLL REVEAL ANIMATIONS */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .hero-text { animation: fadeUp 1s ease-out forwards; opacity: 0; transform: translateY(20px); }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
     /* HERO */
     .hero {
       background: var(--navy);
-      background-image: linear-gradient(rgba(0,34,68,0.8), rgba(0,34,68,0.9)), url('boys.jpg');
+      background-image: linear-gradient(rgba(0,34,68,0.85), rgba(0,34,68,0.9)), url('boys.jpg');
       background-size: cover; 
-      /* THE FIX IS RIGHT HERE: Pins the image to the top instead of the center */
-      background-position: top center; 
-      color: white; padding: 100px 0 80px; text-align: center;
+      /* THE PICTURE FIX: Focuses 25% down from the top to keep faces in frame */
+      background-position: center 25%; 
+      color: white; padding: 120px 0 100px; text-align: center;
     }
     .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(34px, 8vw, 64px); margin: 0 0 20px; line-height: 1.2; }
+    .hero p { font-size: 20px; margin-bottom: 30px; color: #cbd5e0; }
     .btn-hero { background: var(--accent); color: white; padding: 16px 32px; border-radius: 4px; font-weight: 700; text-decoration: none; display: inline-block; transition: 0.3s; }
     .btn-hero:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
@@ -67,20 +78,21 @@
     .section { padding: 80px 0; }
     .bg-paper { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .grid-3 { display: flex; flex-direction: column; gap: 20px; }
-    .section-title { text-align: center; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 40px; font-size: 36px; }
+    .section-title { text-align: center; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 50px; font-size: 36px; }
 
-    /* SERVICE CARDS (Links) */
+    /* SERVICE CARDS */
     .service-card {
       background: white; padding: 40px 30px; border: 1px solid var(--line); border-left: 4px solid var(--accent);
-      text-align: left; text-decoration: none !important; color: var(--ink) !important; display: block; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      text-align: left; text-decoration: none !important; color: var(--ink) !important; display: block; transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
     }
-    .service-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,34,68,0.08); border-left: 4px solid var(--navy); }
+    .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,34,68,0.08); border-left: 4px solid var(--navy); }
     .service-card i { font-size: 36px; color: var(--navy); margin-bottom: 20px; }
     .service-card h4 { margin: 0 0 15px 0; font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); }
     .service-card p { margin: 0; color: #4a5568; }
-    .link-text { color: var(--accent); font-weight: 600; margin-top: 20px; display: inline-block; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+    .link-text { color: var(--accent); font-weight: 600; margin-top: 20px; display: inline-block; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+    .service-card:hover .link-text { color: var(--navy); }
 
-    /* VALUE PILLARS (No links) */
+    /* VALUE PILLARS */
     .value-pillar { text-align: center; padding: 20px; }
     .value-pillar i { font-size: 40px; color: var(--navy); margin-bottom: 15px; }
     .value-pillar h4 { margin: 10px 0; font-family: 'Playfair Display', serif; font-size: 22px; color: var(--navy); }
@@ -97,7 +109,7 @@
       .service-card { flex: 1; border-left: 1px solid var(--line); border-bottom: 4px solid var(--accent); }
       .service-card:hover { border-left: 1px solid var(--line); border-bottom: 4px solid var(--navy); }
       .value-pillar { flex: 1; }
-      .hero { padding: 160px 0 120px; }
+      .hero { padding: 180px 0 140px; }
     }
   </style>
 </head>
@@ -127,7 +139,7 @@
   </header>
 
   <section class="hero">
-    <div class="wrap">
+    <div class="wrap hero-text">
       <h1>Strength & Legacy.</h1>
       <p>Direct insurance access without the corporate red tape.</p>
       <a href="/quote.html" class="btn-hero">Get a Free Quote</a>
@@ -135,21 +147,21 @@
   </section>
 
   <section class="section wrap">
-    <h2 class="section-title">What We Protect</h2>
+    <h2 class="section-title reveal">What We Protect</h2>
     <div class="grid-3">
-      <a href="/families.html" class="service-card">
+      <a href="/families.html" class="service-card reveal" style="transition-delay: 0.1s;">
         <i class="fas fa-home"></i>
         <h4>Personal</h4>
         <p>Home, auto, and umbrella coverage built around straightforward advice.</p>
         <span class="link-text">Explore Personal &rarr;</span>
       </a>
-      <a href="/business.html" class="service-card">
+      <a href="/business.html" class="service-card reveal" style="transition-delay: 0.2s;">
         <i class="fas fa-briefcase"></i>
         <h4>Business</h4>
         <p>Commercial liability, property, and workers' comp to protect what you've built.</p>
         <span class="link-text">Explore Business &rarr;</span>
       </a>
-      <a href="/life.html" class="service-card">
+      <a href="/life.html" class="service-card reveal" style="transition-delay: 0.3s;">
         <i class="fas fa-heartbeat"></i>
         <h4>Life & Health</h4>
         <p>Term, whole life, and health options to secure your family's financial future.</p>
@@ -160,19 +172,19 @@
 
   <section class="section bg-paper">
     <div class="wrap">
-      <h2 class="section-title">The Donohoo Difference</h2>
+      <h2 class="section-title reveal">The Donohoo Difference</h2>
       <div class="grid-3">
-        <div class="value-pillar">
+        <div class="value-pillar reveal" style="transition-delay: 0.1s;">
           <i class="fas fa-mobile-alt"></i>
           <h4>Direct Access</h4>
           <p>Text or call your agent directly. No holding for call centers.</p>
         </div>
-        <div class="value-pillar">
+        <div class="value-pillar reveal" style="transition-delay: 0.2s;">
           <i class="fas fa-map-marker-alt"></i>
           <h4>Local Expert</h4>
           <p>Based in Wauwatosa. We know the Milwaukee market.</p>
         </div>
-        <div class="value-pillar">
+        <div class="value-pillar reveal" style="transition-delay: 0.3s;">
           <i class="fas fa-shield-alt"></i>
           <h4>Independent</h4>
           <p>We shop dozens of companies to find your best rate.</p>
@@ -188,6 +200,23 @@
       Independent Insurance Agency</p>
     </div>
   </footer>
+
+  <script>
+    // Smooth fade-in on load
+    window.addEventListener('load', () => { document.body.classList.add('loaded'); });
+
+    // Scroll Reveal functionality for smooth animations on laptop
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { 
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible'); 
+            observer.unobserve(entry.target); // Stops it from repeating if you scroll up and down
+        }
+      });
+    }, { threshold: 0.1 }); // Triggers when 10% of the element is visible
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
