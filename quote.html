@@ -38,7 +38,7 @@
     body.loaded { opacity: 1; }
     body.nav-open { overflow: hidden; } 
 
-    header, .nav-menu a, .form-label, .form-input, .submit-btn, .action-btn, .info-label { font-family: 'Inter', sans-serif; }
+    header, .nav-menu a, .form-label, .form-input, .submit-btn, .action-btn, .info-label, .clean-amp { font-family: 'Inter', sans-serif; }
 
     /* HEADER */
     header { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 1000; padding: 12px 0; }
@@ -62,7 +62,7 @@
     .hamburger.active span:nth-child(1) { transform: translateY(0) rotate(45deg); }
     .hamburger.active span:nth-child(2) { transform: translateY(0) rotate(-45deg); }
 
-    /* MOBILE MENU */
+    /* ELEGANT MOBILE MENU */
     .nav-menu { 
       position: fixed; top: 0; left: 0; width: 100%; height: 0; 
       background: var(--navy); z-index: 2000; overflow: hidden; 
@@ -71,14 +71,19 @@
     }
     .nav-menu.active { height: 100vh; }
     .nav-menu a { 
-      color: white; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 32px; 
-      margin: 15px 0; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; text-transform: none; letter-spacing: 0;
+      color: white; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 36px; 
+      margin: 12px 0; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; text-transform: none; letter-spacing: 0;
     }
-    .nav-menu.active a:nth-child(1) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(2) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(3) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(4) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(5) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); color: var(--accent); }
+    .nav-menu a:hover { color: var(--accent); }
+    .nav-menu.active a:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(5) { 
+      transition-delay: 0.5s; opacity: 1; transform: translateY(0); 
+      color: var(--accent); font-family: 'Inter', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; 
+      margin-top: 30px; border: 1px solid var(--accent); padding: 14px 35px; border-radius: 4px;
+    }
 
     /* REVEAL ANIMATIONS */
     .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
@@ -105,17 +110,8 @@
     /* CALL & TEXT BUTTONS */
     .contact-actions { display: flex; gap: 12px; margin-top: 15px; flex-wrap: wrap; }
     .action-btn { 
-      padding: 14px 28px; 
-      border-radius: 4px; 
-      font-size: 14px; 
-      font-weight: 600; 
-      text-decoration: none; 
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      padding: 14px 28px; border-radius: 4px; font-size: 14px; font-weight: 600; text-decoration: none; 
+      transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 1px;
     }
     .action-btn i { font-size: 18px; }
     .call-btn { background: var(--navy); color: #fff; }
@@ -128,43 +124,22 @@
 
     /* RIGHT COLUMN: FORM */
     .contact-form { 
-      background: #fff; 
-      padding: 50px 40px; 
-      border-radius: 12px; 
-      border: 1px solid var(--line); 
-      border-top: 4px solid var(--accent); 
-      box-shadow: 0 20px 40px rgba(0,34,68,0.06); 
-      position: relative; 
-      min-height: 400px; 
+      background: #fff; padding: 50px 40px; border-radius: 12px; border: 1px solid var(--line); 
+      border-top: 4px solid var(--accent); box-shadow: 0 20px 40px rgba(0,34,68,0.06); 
+      position: relative; min-height: 400px; 
     }
     .form-group { margin-bottom: 25px; }
     .form-label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 10px; color: var(--navy); }
     .form-input { 
-      width: 100%; 
-      padding: 16px; 
-      border: 1px solid var(--line); 
-      border-radius: 8px; 
-      font-size: 16px; 
-      background: var(--bg); 
-      transition: all 0.3s ease; 
-      box-sizing: border-box;
+      width: 100%; padding: 16px; border: 1px solid var(--line); border-radius: 8px; 
+      font-size: 16px; background: var(--bg); transition: all 0.3s ease; box-sizing: border-box;
     }
     .form-input:focus { outline: none; border-color: var(--accent); background: #fff; box-shadow: 0 0 0 4px rgba(184,134,11,0.1); }
     textarea.form-input { min-height: 140px; resize: vertical; }
 
     .submit-btn { 
-      width: 100%; 
-      background: var(--navy); 
-      color: #fff; 
-      padding: 18px; 
-      border-radius: 4px; 
-      border: none; 
-      font-weight: 600; 
-      font-size: 15px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      cursor: pointer; 
-      transition: all 0.2s ease; 
+      width: 100%; background: var(--navy); color: #fff; padding: 18px; border-radius: 4px; border: none; 
+      font-weight: 600; font-size: 15px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.2s ease; 
     }
     .submit-btn:hover { background: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,34,68,0.1); }
     .submit-btn:active { transform: scale(0.98); }
@@ -176,10 +151,14 @@
 
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* FOOTER */
-    footer { background: var(--navy); color: white; padding: 60px 20px; text-align: center; font-size: 14px; font-family: 'Inter', sans-serif; margin-top: 80px; }
-    footer strong { font-family: 'Playfair Display', serif; font-size: 24px; letter-spacing: 0.5px; font-weight: 600; }
-    .clean-amp { font-family: 'Inter', sans-serif; font-weight: 400; font-size: 0.9em; }
+    /* SPLIT FOOTER */
+    footer { background: var(--navy); color: white; padding: 60px 20px 40px; font-size: 15px; font-family: 'Inter', sans-serif; margin-top: 80px; }
+    .footer-wrap { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 30px; }
+    .footer-logo { height: 60px; width: auto; filter: brightness(0) invert(1); } /* 60px mobile */
+    .footer-address p { margin: 0; line-height: 1.8; color: rgba(255,255,255,0.8); }
+    .footer-address a { color: white; text-decoration: none; font-weight: 600; transition: color 0.2s; }
+    .footer-address a:hover { color: var(--accent); }
+    .footer-bottom { width: 100%; max-width: 1100px; margin: 40px auto 0; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; text-align: center; }
 
     @media (max-width: 900px) {
       .contact-form { padding: 40px 25px; }
@@ -189,6 +168,11 @@
       .hamburger { display: none; }
       .contact-grid { grid-template-columns: 1fr 1.2fr; gap: 80px; }
       .contact-wrap { margin: 120px auto; }
+      /* Desktop Split Footer */
+      .footer-wrap { flex-direction: row; justify-content: space-between; text-align: left; align-items: flex-end; }
+      .footer-logo { height: 100px; } /* Larger on laptop */
+      .footer-address { text-align: right; }
+      .footer-bottom { text-align: left; }
     }
   </style>
 </head>
@@ -304,16 +288,20 @@
   </div>
 
   <footer>
-    <div class="wrap">
-      <p>
-        <strong>Donohoo <span class="clean-amp">&amp;</span> Sons Insurance</strong><br><br>
-        10425 W North Ave. Suite 226<br>
-        Wauwatosa, WI 53226<br>
-        <a href="tel:4146981729" style="color: white; text-decoration: none;">414.698.1729</a>
-      </p>
-      <p style="margin-top: 30px; font-size: 13px; color: #a0aec0; letter-spacing: 1px; text-transform: uppercase;">
-        Independent Insurance Advisor
-      </p>
+    <div class="footer-wrap">
+      <div class="footer-left">
+        <img src="logo.png" alt="Donohoo & Sons" class="footer-logo">
+      </div>
+      <div class="footer-address">
+        <p>
+          10425 W North Ave. Suite 226<br>
+          Wauwatosa, WI 53226<br>
+          <a href="tel:4146981729">414.698.1729</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Independent Insurance Advisor
     </div>
   </footer>
 
