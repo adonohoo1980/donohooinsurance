@@ -38,7 +38,9 @@
     /* HEADER */
     header { background: #fff; border-bottom: 3px solid var(--accent); position: sticky; top: 0; z-index: 1000; padding: 10px 0; }
     .nav-container { display: flex; justify-content: space-between; align-items: center; }
-    .logo-img { height: 40px; width: auto; }
+    
+    /* Make the logo image a bit larger based on your screenshot */
+    .logo-img { height: 60px; width: auto; }
 
     /* DESKTOP NAV */
     .desktop-nav { display: none; }
@@ -62,13 +64,14 @@
     /* HERO */
     .hero {
       background: var(--navy);
-      background-image: linear-gradient(rgba(0,34,68,0.85), rgba(0,34,68,0.9)), url('boys.jpg');
+      background-image: linear-gradient(rgba(0,34,68,0.75), rgba(0,34,68,0.85)), url('boys.jpg');
       background-size: cover; 
-      background-position: center 25%; 
-      color: white; padding: 140px 0 120px; text-align: center;
+      /* FIXED CROP: 15% from the top keeps heads in frame on laptops */
+      background-position: center 15%; 
+      color: white; padding: 160px 0 140px; text-align: center;
     }
     .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(34px, 8vw, 64px); margin: 0 0 20px; line-height: 1.2; }
-    .hero p { font-size: 20px; margin: 0; color: #cbd5e0; }
+    .hero p { font-size: 20px; margin: 0; color: #cbd5e0; max-width: 700px; margin: 0 auto; }
 
     /* GRIDS */
     .section { padding: 80px 0; }
@@ -95,8 +98,11 @@
     .value-pillar p { color: #4a5568; }
 
     /* FOOTER */
-    footer { background: var(--navy); color: white; padding: 40px 20px; text-align: center; font-size: 14px; }
-    footer strong { font-family: 'Playfair Display', serif; font-size: 20px; }
+    footer { background: var(--navy); color: white; padding: 50px 20px; text-align: center; font-size: 15px; }
+    footer strong { font-family: 'Playfair Display', serif; font-size: 22px; letter-spacing: 0.5px; }
+    
+    /* CUSTOM AMPERSAND TO MATCH LOGO */
+    .clean-amp { font-family: 'Inter', sans-serif; font-weight: 400; font-size: 0.9em; }
 
     @media (min-width: 900px) {
       .desktop-nav { display: block; }
@@ -105,7 +111,7 @@
       .service-card { flex: 1; border-left: 1px solid var(--line); border-bottom: 4px solid var(--accent); }
       .service-card:hover { border-left: 1px solid var(--line); border-bottom: 4px solid var(--navy); }
       .value-pillar { flex: 1; }
-      .hero { padding: 180px 0 140px; }
+      .hero { padding: 200px 0 160px; }
     }
   </style>
 </head>
@@ -113,7 +119,7 @@
 
   <header>
     <div class="wrap nav-container">
-      <a href="/"><img src="logo.png" class="logo-img" alt="Donohoo & Sons" width="200" height="40"></a>
+      <a href="/"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
       <nav class="desktop-nav">
         <a href="/">Home</a>
         <a href="/families.html">Personal</a>
@@ -137,7 +143,7 @@
   <section class="hero">
     <div class="wrap hero-text">
       <h1>From Day One to Claim Day.</h1>
-      <p>Direct insurance access without the corporate red tape.</p>
+      <p>Expert advice and direct access to your independent insurance advisor when you need it most.</p>
     </div>
   </section>
 
@@ -190,9 +196,15 @@
 
   <footer>
     <div class="wrap">
-      <p><strong>Donohoo & Sons Insurance</strong><br>
-      Wauwatosa, WI • (414) [Your Number]<br>
-      Independent Insurance Agency</p>
+      <p>
+        <strong>Donohoo <span class="clean-amp">&amp;</span> Sons Insurance</strong><br><br>
+        10425 W North Ave. Suite 226<br>
+        Wauwatosa, WI 53226<br>
+        <a href="tel:4146981729" style="color: white; text-decoration: none;">414.698.1729</a>
+      </p>
+      <p style="margin-top: 30px; font-size: 13px; color: #a0aec0;">
+        Independent Insurance Advisor
+      </p>
     </div>
   </footer>
 
