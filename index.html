@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Donohoo & Sons Insurance | Milwaukee & Wauwatosa</title>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
@@ -20,6 +20,8 @@
       --paper: #f4f7fa;
     }
 
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
     body {
       margin: 0;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -30,16 +32,16 @@
       -webkit-font-smoothing: antialiased;
       opacity: 0;
       transition: opacity 0.8s ease-in-out;
+      overflow-x: hidden; 
     }
     body.loaded { opacity: 1; }
-    /* Prevents scrolling when mobile menu is open */
     body.nav-open { overflow: hidden; } 
 
-    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; text-align: center; }
 
     /* HEADER */
     header { background: #fff; border-bottom: 3px solid var(--accent); position: sticky; top: 0; z-index: 1000; padding: 10px 0; }
-    .nav-container { display: flex; justify-content: space-between; align-items: center; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     .logo-img { height: 60px; width: auto; position: relative; z-index: 2100; }
 
     /* DESKTOP NAV */
@@ -48,17 +50,18 @@
     .desktop-nav a:hover { color: var(--accent); }
     .btn-quote { background: var(--navy); color: white !important; padding: 10px 20px; border-radius: 4px; transition: background 0.3s; }
     .btn-quote:hover { background: var(--accent); }
+    .btn-quote:active { transform: scale(0.96); } 
 
-    /* NEW PREMIUM MOBILE HAMBURGER */
+    /* APPLE-STYLE MOBILE HAMBURGER */
     .hamburger { cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; z-index: 2100; position: relative; }
     .hamburger span { display: block; width: 24px; height: 2px; background-color: var(--navy); transition: 0.4s; position: absolute; }
     .hamburger span:nth-child(1) { transform: translateY(-5px); }
     .hamburger span:nth-child(2) { transform: translateY(5px); }
-    .hamburger.active span { background-color: white; } /* Turns white when menu opens */
+    .hamburger.active span { background-color: white; } 
     .hamburger.active span:nth-child(1) { transform: translateY(0) rotate(45deg); }
     .hamburger.active span:nth-child(2) { transform: translateY(0) rotate(-45deg); }
 
-    /* NEW PREMIUM MOBILE MENU OVERLAY */
+    /* APPLE-STYLE MOBILE MENU */
     .nav-menu { 
       position: fixed; top: 0; left: 0; width: 100%; height: 0; 
       background: var(--navy); z-index: 2000; overflow: hidden; 
@@ -70,7 +73,6 @@
       color: white; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 32px; 
       margin: 15px 0; opacity: 0; transform: translateY(20px); transition: all 0.4s ease;
     }
-    /* Staggered text reveal */
     .nav-menu.active a:nth-child(1) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
     .nav-menu.active a:nth-child(2) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
     .nav-menu.active a:nth-child(3) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
@@ -83,7 +85,7 @@
     .hero-text { animation: fadeUp 1s ease-out forwards; opacity: 0; transform: translateY(20px); }
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-    /* HERO */
+    /* FULL IMAGE HERO */
     .hero {
       background: var(--navy);
       background-image: linear-gradient(rgba(0,34,68,0.75), rgba(0,34,68,0.85)), url('boys.jpg');
@@ -91,32 +93,66 @@
       background-position: center 15%; 
       color: white; padding: 160px 0 140px; text-align: center;
     }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(34px, 8vw, 64px); margin: 0 0 20px; line-height: 1.2; }
-    .hero p { font-size: 20px; margin: 0; color: #cbd5e0; max-width: 700px; margin: 0 auto; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(34px, 8vw, 64px); margin: 0 0 20px; line-height: 1.2; color: white; }
+    .hero p { font-size: 20px; margin: 0; color: #cbd5e0; max-width: 700px; margin: 0 auto; line-height: 1.6; }
 
-    /* GRIDS */
-    .section { padding: 80px 0; }
+    /* SECTIONS */
+    .section { padding-top: 80px; padding-bottom: 80px; }
     .bg-paper { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .grid-3 { display: flex; flex-direction: column; gap: 20px; }
     .section-title { text-align: center; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 50px; font-size: 36px; }
 
-    /* SERVICE CARDS */
+    /* SERVICE CARDS (TACTILE MOBILE UPGRADES) */
     .service-card {
-      background: white; padding: 40px 30px; border: 1px solid var(--line); border-left: 4px solid var(--accent);
-      text-align: left; text-decoration: none !important; color: var(--ink) !important; display: block; transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+      background: white; 
+      padding: 40px 30px; 
+      border: 1px solid var(--line); 
+      border-left: 4px solid var(--accent);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
+      text-align: left; 
+      text-decoration: none !important; 
+      color: var(--ink) !important; 
+      display: block; 
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease;
     }
-    .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,34,68,0.08); border-left: 4px solid var(--navy); }
-    .service-card i { font-size: 36px; color: var(--navy); margin-bottom: 20px; }
-    .service-card h4 { margin: 0 0 15px 0; font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); }
-    .service-card p { margin: 0; color: #4a5568; }
-    .link-text { color: var(--accent); font-weight: 600; margin-top: 20px; display: inline-block; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+    .service-card:hover { 
+      transform: translateY(-8px); 
+      box-shadow: 0 20px 40px rgba(0,34,68,0.08); 
+      border-left: 4px solid var(--navy); 
+    }
+    .service-card:active {
+      transform: scale(0.98);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border-left: 4px solid var(--navy);
+      transition: all 0.1s; 
+    }
+    .service-card h3 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--navy); margin: 0 0 15px 0; }
+    .service-card p { margin: 0 0 20px 0; color: #4a5568; }
+    .link-text { color: var(--accent); font-weight: 600; display: flex; align-items: center; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+    .arrow { display: inline-block; margin-left: 6px; font-size: 18px; transition: transform 0.3s ease; }
     .service-card:hover .link-text { color: var(--navy); }
+    .service-card:hover .arrow, .service-card:active .arrow { transform: translateX(6px); }
 
     /* VALUE PILLARS */
     .value-pillar { text-align: center; padding: 20px; }
     .value-pillar i { font-size: 40px; color: var(--navy); margin-bottom: 15px; }
-    .value-pillar h4 { margin: 10px 0; font-family: 'Playfair Display', serif; font-size: 22px; color: var(--navy); }
-    .value-pillar p { color: #4a5568; }
+    .value-pillar h4 { margin: 10px 0; font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); }
+    .value-pillar p { color: #4a5568; margin: 0; }
+
+    /* HOW I WORK SPREAD */
+    .about-spread { display: flex; flex-direction: column; gap: 40px; align-items: center; margin: 0 auto 80px auto; text-align: left; }
+    .about-content { flex: 1; }
+    .about-content h2 { font-family: 'Playfair Display', serif; font-size: 36px; color: var(--navy); margin-top: 0; }
+    .about-content p { color: #4a5568; line-height: 1.8; font-size: 18px; }
+    .pull { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px; line-height: 1.4; color: var(--navy); margin: 30px 0; padding-left: 25px; border-left: 4px solid var(--accent); }
+    .boys-photo { width: 100%; max-width: 500px; aspect-ratio: 4/5; object-fit: cover; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,34,68,0.1); }
+
+    /* CTA BOX */
+    .cta-box { background: var(--navy); color: #fff; padding: 80px 20px; border-radius: 20px; text-align: center; margin-bottom: 60px; box-shadow: 0 20px 40px rgba(0,34,68,0.15); }
+    .btn-white { display: inline-block; background: #fff; color: var(--navy); padding: 18px 40px; border-radius: 4px; text-decoration: none; font-weight: 700; transition: 0.2s; }
+    .btn-white:hover { background: var(--accent); color: white; transform: translateY(-3px); }
+    .btn-white:active { transform: scale(0.96); }
 
     /* FOOTER */
     footer { background: var(--navy); color: white; padding: 50px 20px; text-align: center; font-size: 15px; }
@@ -130,6 +166,8 @@
       .service-card { flex: 1; border-left: 1px solid var(--line); border-bottom: 4px solid var(--accent); }
       .service-card:hover { border-left: 1px solid var(--line); border-bottom: 4px solid var(--navy); }
       .value-pillar { flex: 1; }
+      .about-spread { flex-direction: row; gap: 60px; }
+      .boys-photo { max-width: 45%; }
       .hero { padding: 200px 0 160px; }
     }
   </style>
@@ -137,60 +175,56 @@
 <body>
 
   <header>
-    <div class="wrap nav-container">
+    <div class="nav-container">
       <a href="/" style="position: relative; z-index: 2100;"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
-      
       <nav class="desktop-nav">
         <a href="/">Home</a>
         <a href="/families.html">Personal</a>
         <a href="/business.html">Business</a>
-        <a href="/life.html">Life & Health</a>
+        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
         <a href="/quote.html" class="btn-quote">Get a Quote</a>
       </nav>
-
       <div class="hamburger" id="hamburgerBtn" onclick="toggleMenu()">
         <span></span>
         <span></span>
       </div>
     </div>
-    
     <nav class="nav-menu" id="mobileNav">
         <a href="/">Home</a>
         <a href="/families.html">Personal</a>
         <a href="/business.html">Business</a>
-        <a href="/life.html">Life & Health</a>
+        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
         <a href="/quote.html">Get a Quote</a>
     </nav>
   </header>
 
   <section class="hero">
     <div class="wrap hero-text">
-      <h1>From Day One to Claim Day.</h1>
-      <p>Expert advice and direct access to your independent insurance advisor when you need it most.</p>
+      <h1>From day one to claim day.</h1>
+      <p>Helping Wisconsin families and business owners get the right coverage without the runaround.</p>
     </div>
   </section>
 
-  <section class="section wrap">
-    <h2 class="section-title reveal">What We Protect</h2>
-    <div class="grid-3">
-      <a href="/families.html" class="service-card reveal" style="transition-delay: 0.1s;">
-        <i class="fas fa-home"></i>
-        <h4>Personal</h4>
-        <p>Home, auto, and umbrella coverage built around straightforward advice.</p>
-        <span class="link-text">Explore Personal &rarr;</span>
-      </a>
-      <a href="/business.html" class="service-card reveal" style="transition-delay: 0.2s;">
-        <i class="fas fa-briefcase"></i>
-        <h4>Business</h4>
-        <p>Commercial liability, property, and workers' comp to protect what you've built.</p>
-        <span class="link-text">Explore Business &rarr;</span>
-      </a>
-      <a href="/life.html" class="service-card reveal" style="transition-delay: 0.3s;">
-        <i class="fas fa-heartbeat"></i>
-        <h4>Life & Health</h4>
-        <p>Term, whole life, and health options to secure your family's financial future.</p>
-        <span class="link-text">Explore Life &rarr;</span>
-      </a>
+  <section class="section">
+    <div class="wrap">
+      <h2 class="section-title reveal">What We Protect</h2>
+      <div class="grid-3">
+        <a href="/families.html" class="service-card reveal" style="transition-delay: 0.1s;">
+          <h3>Personal</h3>
+          <p>Home, auto, and umbrella protection built around real life.</p>
+          <span class="link-text">View Protection <span class="arrow">&rarr;</span></span>
+        </a>
+        <a href="/business.html" class="service-card reveal" style="transition-delay: 0.2s;">
+          <h3>Business</h3>
+          <p>Coverage built for owners who want one dedicated advisor.</p>
+          <span class="link-text">View Commercial <span class="arrow">&rarr;</span></span>
+        </a>
+        <a href="/life.html" class="service-card reveal" style="transition-delay: 0.3s;">
+          <h3>Life <span class="clean-amp">&amp;</span> Health</h3>
+          <p>Life, Disability, & Long-Term Care planning.</p>
+          <span class="link-text">View Planning <span class="arrow">&rarr;</span></span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -201,18 +235,37 @@
         <div class="value-pillar reveal" style="transition-delay: 0.1s;">
           <i class="fas fa-mobile-alt"></i>
           <h4>Direct Access</h4>
-          <p>Text or call your agent directly. No holding for call centers.</p>
+          <p>No automated prompts. You have my direct cell phone number for whenever you need a quick answer.</p>
         </div>
         <div class="value-pillar reveal" style="transition-delay: 0.2s;">
           <i class="fas fa-map-marker-alt"></i>
-          <h4>Local Expert</h4>
-          <p>Based in Wauwatosa. We know the Milwaukee market.</p>
+          <h4>Local Expertise</h4>
+          <p>Based in Milwaukee, we understand the specific risks and market nuances of Southeastern Wisconsin.</p>
         </div>
         <div class="value-pillar reveal" style="transition-delay: 0.3s;">
           <i class="fas fa-shield-alt"></i>
-          <h4>Independent</h4>
-          <p>We shop dozens of companies to find your best rate.</p>
+          <h4>Claims Advocacy</h4>
+          <p>I don't just sell the policy. If you have a claim, I'm in your corner to ensure the process is fair and fast.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="about-spread reveal">
+        <div class="about-content">
+          <h2>How I Work</h2>
+          <p>I built Donohoo <span class="clean-amp">&amp;</span> Sons with my wife Katie because insurance should feel simple and personal.</p>
+          <div class="pull">"I treat your protection like my own family's. The '<span class="clean-amp">&amp;</span> Sons' reminds me why I do this every day."</div>
+          <p>I'm always available to my clients — no waiting, just a conversation.</p>
+        </div>
+        <img src="boys.jpg" class="boys-photo" alt="The Donohoo Family">
+      </div>
+
+      <div class="cta-box reveal">
+        <h2 style="color: #fff; margin-bottom: 30px; font-family: 'Playfair Display', serif; font-size: 36px;">Protect what you've built.</h2>
+        <a href="quote.html" class="btn-white">Request a Review</a>
       </div>
     </div>
   </section>
@@ -232,7 +285,6 @@
   </footer>
 
   <script>
-    // New function handles the premium mobile menu toggle and locks scrolling
     function toggleMenu() {
       document.getElementById('mobileNav').classList.toggle('active');
       document.getElementById('hamburgerBtn').classList.toggle('active');
