@@ -117,6 +117,13 @@
     .strategy-highlight p { color: var(--ink); line-height: 1.7; margin-bottom: 20px; }
     .strategy-highlight .badge { display: inline-block; background: var(--paper); color: var(--accent); font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; border: 1px solid var(--line); }
 
+    /* INTEGRATED PHOTO CSS (Matches brand aesthetics) */
+    .medicare-photo { 
+      width: 100%; max-width: 500px; aspect-ratio: 4/5; object-fit: cover; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,34,68,0.1); 
+      /* Added filter to match the site's tone */
+      filter: sepia(35%) saturate(115%) contrast(1.05); 
+    }
+
     /* CARDS */
     .card-grid { display: grid; grid-template-columns: 1fr; gap: 30px; text-align: left; }
     .coverage-card {
@@ -147,7 +154,9 @@
       .desktop-nav { display: block; }
       .hamburger { display: none; }
       .card-grid { grid-template-columns: repeat(3, 1fr); }
+      /* strategy-spread is Row on desktop */
       .strategy-spread { flex-direction: row; gap: 60px; align-items: center; }
+      .medicare-photo { max-width: 45%; } /* Image size on desktop */
       .footer-wrap { flex-direction: row; justify-content: space-between; text-align: left; align-items: flex-end; }
       .footer-logo { height: 100px; } 
       .footer-address { text-align: right; }
@@ -208,18 +217,21 @@
   <section class="section bg-paper">
     <div class="wrap">
       <div class="strategy-spread reveal">
+        
+        <img src="medicare-strategy.jpg" class="medicare-photo" alt="Custom Wisconsin SeniorCare Strategy Consultation">
+        
         <div class="strategy-content">
           <h2>Not Your Average Medicare Agent</h2>
           <p>Too many people are placed into standard Medicare plans by agents who are just taking orders. Medicare isn't a one-size-fits-all product.</p>
-          <p>I take a different approach. I dig into the details to find combinations and state-specific programs that other agents miss, ensuring you get the absolute most out of your coverage without overpaying.</p>
+          
+          <div class="strategy-highlight">
+            <div class="badge">The Wisconsin Strategy</div>
+            <h3>Thinking Outside the Box</h3>
+            <p>As a local Wisconsin advisor, I know how to leverage regional programs to your advantage. For example, many folks don't realize they can enroll in <strong>Wisconsin SeniorCare</strong> for their prescription coverage, and pair it with a <strong>$0-premium, no-drug Medicare Part C plan</strong>.</p>
+            <p>This creative structure can dramatically lower your monthly costs while providing comprehensive health benefits. It's strategies like this that separate true advisors from the rest.</p>
+          </div>
         </div>
         
-        <div class="strategy-highlight">
-          <div class="badge">The Wisconsin Strategy</div>
-          <h3>Thinking Outside the Box</h3>
-          <p>As a local Wisconsin advisor, I know how to leverage regional programs to your advantage. For example, many folks don't realize they can enroll in <strong>Wisconsin SeniorCare</strong> for their prescription coverage, and pair it with a <strong>$0-premium, no-drug Medicare Part C plan</strong>.</p>
-          <p>This creative structure can dramatically lower your monthly costs while providing comprehensive health benefits. It's strategies like this that separate true advisors from the rest.</p>
-        </div>
       </div>
     </div>
   </section>
