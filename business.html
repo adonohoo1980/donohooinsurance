@@ -92,21 +92,52 @@
     .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* HERO SECTION */
-    .hero { padding: 120px 20px 60px; text-align: center; }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(42px, 8vw, 68px); color: var(--navy); margin: 0 0 20px; line-height: 1.1; letter-spacing: -0.5px; }
-    .hero p { font-size: 22px; margin: 0 auto; color: var(--muted); max-width: 700px; line-height: 1.6; font-style: italic; }
-
-  /* IMAGE BANNER */
-    .banner-container { padding: 0 20px; }
-    .business-img { 
-      width: 100%; max-width: 1100px; display: block; margin: 0 auto; 
-      aspect-ratio: 16/7; 
-      object-fit: cover; 
-      object-position: 50% 10%; /* Updated fix: Shifts focus even higher UP to guarantee the bottom-right logo is cut out. */
-      border-radius: 12px; 
-      box-shadow: 0 20px 40px rgba(0,34,68,0.08); 
+    /* HERO SECTION (VIDEO) */
+    .hero {
+      position: relative; 
+      overflow: hidden;   
+      background: var(--navy); 
+      color: white; 
+      padding: 160px 20px; 
+      text-align: center;
     }
+
+    /* THE VIDEO ELEMENT */
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; 
+      z-index: 0;
+    }
+
+    /* THE NAVY OVERLAY */
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0,34,68,0.75), rgba(0,34,68,0.85)); 
+      z-index: 1;
+    }
+
+    /* LIFTS THE TEXT ABOVE THE VIDEO */
+    .hero-text { 
+      position: relative; 
+      z-index: 2; 
+      animation: fadeUp 1s ease-out forwards; 
+      opacity: 0; 
+      transform: translateY(20px);
+    }
+    
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(38px, 8vw, 68px); margin: 0 0 20px; line-height: 1.1; color: white; letter-spacing: -0.5px; }
+    .hero p { font-size: 22px; margin: 0; color: #cbd5e0; max-width: 700px; margin: 0 auto; line-height: 1.6; font-style: italic; }
+
     /* SECTIONS & GRIDS */
     .section { padding-top: 100px; padding-bottom: 100px; }
     .bg-paper { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -154,7 +185,7 @@
       .desktop-nav { display: block; }
       .hamburger { display: none; }
       .grid-3 { grid-template-columns: repeat(3, 1fr); gap: 40px; }
-      .hero { padding: 140px 20px 80px; }
+      .hero { padding: 220px 0 180px; }
       
       /* Desktop Split Footer */
       .footer-wrap { flex-direction: row; justify-content: space-between; text-align: left; align-items: flex-end; }
@@ -190,16 +221,18 @@
     </nav>
   </header>
 
-  <div class="wrap">
-    <div class="hero reveal">
-      <h1>Your business is your legacy. Protect it.</h1>
+  <section class="hero">
+    <video autoplay loop muted playsinline webkit-playsinline poster="andy.jpg" class="hero-video">
+      <source src="andy-video.mp4" type="video/mp4">
+    </video>
+    
+    <div class="hero-overlay"></div>
+
+    <div class="wrap hero-text">
+      <h1>Protecting the business you built.</h1>
       <p>Sophisticated risk management for owners who need a partner, not just a policy.</p>
     </div>
-  </div>
-
-  <div class="banner-container reveal">
-    <img src="business-banner.jpg" class="business-img" alt="Milwaukee Commercial Insurance" loading="lazy">
-  </div>
+  </section>
 
   <section class="section bg-paper">
     <div class="wrap">
