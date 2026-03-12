@@ -92,10 +92,51 @@
     .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* HERO SECTION */
-    .hero { padding: 120px 20px 80px; text-align: center; }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(42px, 8vw, 68px); color: var(--navy); margin: 0 0 20px; line-height: 1.1; letter-spacing: -0.5px; }
-    .hero p { font-size: 22px; margin: 0 auto; color: var(--muted); max-width: 750px; line-height: 1.6; font-style: italic; }
+    /* HERO SECTION (VIDEO) */
+    .hero {
+      position: relative; 
+      overflow: hidden;   
+      background: var(--navy); 
+      color: white; 
+      padding: 160px 20px; 
+      text-align: center;
+    }
+
+    /* THE VIDEO ELEMENT */
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; 
+      z-index: 0;
+    }
+
+    /* THE NAVY OVERLAY */
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0,34,68,0.75), rgba(0,34,68,0.85)); 
+      z-index: 1;
+    }
+
+    /* LIFTS THE TEXT ABOVE THE VIDEO */
+    .hero-text { 
+      position: relative; 
+      z-index: 2; 
+      animation: fadeUp 1s ease-out forwards; 
+      opacity: 0; 
+      transform: translateY(20px);
+    }
+    
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(38px, 8vw, 68px); margin: 0 0 20px; line-height: 1.1; color: white; letter-spacing: -0.5px; }
+    .hero p { font-size: 22px; margin: 0; color: #cbd5e0; max-width: 700px; margin: 0 auto; line-height: 1.6; font-style: italic; }
 
     /* SECTIONS */
     .section { padding-top: 80px; padding-bottom: 80px; }
@@ -149,10 +190,12 @@
     /* SPLIT FOOTER */
     footer { background: var(--navy); color: white; padding: 60px 20px 40px; font-size: 15px; font-family: 'Inter', sans-serif; }
     .footer-wrap { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 30px; }
-    .footer-logo { height: 60px; width: auto; filter: brightness(0) invert(1); } /* 60px mobile */
+    .footer-logo { height: 60px; width: auto; filter: brightness(0) invert(1); } 
     .footer-address p { margin: 0; line-height: 1.8; color: rgba(255,255,255,0.8); }
     .footer-address a { color: white; text-decoration: none; font-weight: 600; transition: color 0.2s; }
     .footer-address a:hover { color: var(--accent); }
+    .email-link { display: inline-block; margin-top: 5px; color: var(--accent) !important; }
+    .email-link:hover { color: white !important; }
     .footer-bottom { width: 100%; max-width: 1100px; margin: 40px auto 0; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; text-align: center; }
 
     @media (max-width: 900px) {
@@ -167,9 +210,12 @@
       .card-grid, .audit-grid { grid-template-columns: repeat(3, 1fr); }
       .about-spread { flex-direction: row; gap: 80px; }
       .fishing-photo { max-width: 45%; }
+      .hero { padding: 220px 0 180px; }
+      .hero-video { object-position: center 15%; }
+      
       /* Desktop Split Footer */
       .footer-wrap { flex-direction: row; justify-content: space-between; text-align: left; align-items: flex-end; }
-      .footer-logo { height: 100px; } /* Larger on laptop */
+      .footer-logo { height: 100px; } 
       .footer-address { text-align: right; }
       .footer-bottom { text-align: left; }
     }
@@ -201,12 +247,20 @@
     </nav>
   </header>
 
-  <div class="wrap">
-    <div class="hero reveal">
+  <section class="hero">
+    <video autoplay loop muted playsinline webkit-playsinline poster="Fishing.jpg" class="hero-video">
+      <source src="life-video-loop.mp4" type="video/mp4">
+    </video>
+    
+    <div class="hero-overlay"></div>
+
+    <div class="wrap hero-text">
       <h1>Protecting the people<br>behind the plans.</h1>
       <p>Straightforward life and health coverage designed to keep your family and business moving forward.</p>
     </div>
+  </section>
 
+  <div class="wrap">
     <div class="card-grid section">
       <div class="coverage-card reveal" style="transition-delay: 0.1s;">
         <h3><i class="ph-light ph-heart"></i> Life Insurance</h3>
@@ -218,7 +272,7 @@
       </div>
       <div class="coverage-card reveal" style="transition-delay: 0.3s;">
         <h3><i class="ph-light ph-hourglass-medium"></i> Long-Term Care</h3>
-        <p>Strategic planning that ensures a future health crisis doesn't wipe out the financial legacy you've worked hard to build.</p>
+        <p>Strategic planning that ensures a future health crisis doesn't wipe out the financial assets you've worked hard to build.</p>
       </div>
     </div>
 
@@ -256,7 +310,7 @@
           </div>
           <div class="audit-item">
             <span class="num-accent">03.</span>
-            <h4>Legacy Guard</h4>
+            <h4>Asset Protection</h4>
             <p>Is your retirement nest egg and family inheritance protected from the high out-of-pocket costs of long-term care?</p>
           </div>
         </div>
@@ -295,7 +349,8 @@
         <p>
           10425 W North Ave. Suite 226<br>
           Wauwatosa, WI 53226<br>
-          <a href="tel:4146981729">414.698.1729</a>
+          <a href="tel:4146981729">414.698.1729</a><br>
+          <a href="mailto:adonohoo@unisource-ins.com" class="email-link">adonohoo@unisource-ins.com</a>
         </p>
       </div>
     </div>
