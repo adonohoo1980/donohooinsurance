@@ -82,7 +82,6 @@
     .nav-menu.active a:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
     .nav-menu.active a:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
     
-    /* "Get a Quote" Button inside menu */
     .nav-menu.active a:nth-child(5) { 
       transition-delay: 0.5s; opacity: 1; transform: translateY(0); 
       color: var(--accent); font-family: 'Inter', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; 
@@ -95,13 +94,13 @@
     .hero-text { animation: fadeUp 1s ease-out forwards; opacity: 0; transform: translateY(20px); }
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-    /* UPDATED HERO CONTAINER FOR VIDEO */
+    /* HERO CONTAINER FOR VIDEO */
     .hero {
       position: relative; 
       overflow: hidden;   
       background: var(--navy); 
       color: white; 
-      padding: 220px 0 180px; /* Adjusted for desktop */
+      padding: 220px 0 180px; 
       text-align: center;
     }
 
@@ -148,7 +147,7 @@
     .value-pillar h4 { margin: 10px 0; font-family: 'Playfair Display', serif; font-size: 26px; color: var(--navy); }
     .value-pillar p { color: var(--muted); margin: 0; }
 
-    /* SERVICE CARDS (Delicate Upgrade) */
+    /* SERVICE CARDS */
     .service-card {
       background: white; 
       padding: 45px 35px; 
@@ -180,14 +179,13 @@
     .service-card:hover .link-text { color: var(--navy); }
     .service-card:hover .arrow, .service-card:active .arrow { transform: translateX(6px); }
 
-    /* HOW I WORK SPREAD */
+    /* ABOUT SPREAD */
     .about-spread { display: flex; flex-direction: column; gap: 40px; align-items: center; margin: 0 auto 80px auto; text-align: left; }
     .about-content { flex: 1; }
     .about-content h2 { font-family: 'Playfair Display', serif; font-size: 40px; color: var(--navy); margin-top: 0; line-height: 1.2; }
     .about-content p { color: var(--muted); line-height: 1.8; }
     .pull { font-family: 'Playfair Display', serif; font-style: italic; font-size: 26px; line-height: 1.4; color: var(--navy); margin: 35px 0; padding-left: 25px; border-left: 4px solid var(--accent); }
     
-    /* FILTER FOR BOYS PHOTO - SOFTER GOLDEN HOUR */
     .boys-photo { width: 100%; max-width: 500px; aspect-ratio: 4/5; object-fit: cover; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,34,68,0.1); filter: sepia(35%) saturate(115%) contrast(1.05); }
 
     /* CTA BOX */
@@ -204,6 +202,8 @@
     .footer-address p { margin: 0; line-height: 1.8; color: rgba(255,255,255,0.8); }
     .footer-address a { color: white; text-decoration: none; font-weight: 600; transition: color 0.2s; }
     .footer-address a:hover { color: var(--accent); }
+    .email-link { display: inline-block; margin-top: 5px; color: var(--accent) !important; }
+    .email-link:hover { color: white !important; }
     
     .footer-bottom { 
       width: 100%; max-width: 1100px; margin: 40px auto 0; padding-top: 30px; 
@@ -222,7 +222,11 @@
       .boys-photo { max-width: 45%; }
       .hero { padding: 220px 0 180px; }
       
-      /* Split Footer override */
+      /* THIS IS THE FIX FOR THE LAPTOP VIDEO FRAMING */
+      .hero-video {
+        object-position: center 15%; 
+      }
+      
       .footer-wrap { flex-direction: row; justify-content: space-between; text-align: left; align-items: flex-end; }
       .footer-logo { height: 80px; } 
       .footer-address { text-align: right; }
@@ -258,7 +262,7 @@
 
   <section class="hero">
     <video autoplay loop muted playsinline webkit-playsinline poster="boys.jpg" class="hero-video">
-      <source src="hero-video.mp4" type="video/mp4">
+      <source src="hero-video-loop.mp4" type="video/mp4">
     </video>
     
     <div class="hero-overlay"></div>
@@ -275,7 +279,7 @@
       <div class="grid-3">
         <div class="value-pillar reveal" style="transition-delay: 0.1s;">
           <i class="ph-light ph-phone"></i>
-          <h4>Direct Access</h4>
+          <h4>Direct Contact</h4>
           <p>No automated prompts. You have my direct cell phone number for whenever you need a quick answer.</p>
         </div>
         <div class="value-pillar reveal" style="transition-delay: 0.2s;">
@@ -285,7 +289,7 @@
         </div>
         <div class="value-pillar reveal" style="transition-delay: 0.3s;">
           <i class="ph-light ph-shield-check"></i>
-          <h4>Claims Advocacy</h4>
+          <h4>Claims Support</h4>
           <p>I don't just sell the policy. If you have a claim, I'm in your corner to ensure the process is fair and fast.</p>
         </div>
       </div>
@@ -319,10 +323,10 @@
     <div class="wrap">
       <div class="about-spread reveal">
         <div class="about-content">
-          <h2>How I Work</h2>
+          <h2>Our Commitment</h2>
           <p>I built Donohoo <span class="clean-amp">&amp;</span> Sons with my wife Katie because insurance should feel simple and personal.</p>
           <div class="pull">"I treat your protection like my own family's. The '<span class="clean-amp">&amp;</span> Sons' reminds me why I do this every day."</div>
-          <p>I'm always available to my clients — no waiting, just a conversation.</p>
+          <p>I am in from day one to claim day. I'm always available to my clients — no waiting, just a conversation.</p>
         </div>
         <img src="boys.jpg" class="boys-photo" alt="The Donohoo Family">
       </div>
@@ -343,7 +347,8 @@
         <p>
           10425 W North Ave. Suite 226<br>
           Wauwatosa, WI 53226<br>
-          <a href="tel:4146981729">414.698.1729</a>
+          <a href="tel:4146981729">414.698.1729</a><br>
+          <a href="mailto:adonohoo@unisource-ins.com" class="email-link">adonohoo@unisource-ins.com</a>
         </p>
       </div>
     </div>
