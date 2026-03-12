@@ -154,14 +154,10 @@
     .coverage-card h3 i { color: var(--accent); font-size: 36px; font-weight: normal; vertical-align: middle; margin-right: 12px; margin-bottom: 4px; display: inline-block; }
     .coverage-card p { margin: 0; color: var(--muted); }
 
-    /* ABOUT SPREAD */
-    .about-spread { display: flex; flex-direction: column; gap: 40px; align-items: center; margin: 0 auto 80px auto; text-align: left; }
-    .about-content { flex: 1; }
+    /* ABOUT SPREAD - CENTERED WITHOUT PHOTO */
+    .about-spread { max-width: 800px; margin: 0 auto 80px auto; text-align: center; }
     .about-content h2 { font-family: 'Playfair Display', serif; font-size: 36px; color: var(--navy); margin-top: 0; margin-bottom: 25px; line-height: 1.2; }
     .about-content p { color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
-    
-    /* ADDED FILTER TO FISHING PHOTO */
-    .fishing-photo { width: 100%; max-width: 500px; aspect-ratio: 4/5; object-fit: cover; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,34,68,0.1); filter: sepia(30%) contrast(1.1) saturate(85%); }
 
     /* AUDIT BOX */
     .audit-box { background: var(--navy); color: #fff; padding: 100px 20px; border-radius: 12px; text-align: center; box-shadow: 0 20px 40px rgba(0,34,68,0.15); margin: 0 auto 80px auto; }
@@ -208,10 +204,10 @@
       .desktop-nav { display: block; }
       .hamburger { display: none; }
       .card-grid, .audit-grid { grid-template-columns: repeat(3, 1fr); }
-      .about-spread { flex-direction: row; gap: 80px; }
-      .fishing-photo { max-width: 45%; }
       .hero { padding: 220px 0 180px; }
-      .hero-video { object-position: center 15%; }
+      
+      /* THIS SHIFTS THE VIDEO DOWN ON LAPTOPS */
+      .hero-video { object-position: center 5%; }
       
       /* Desktop Split Footer */
       .footer-wrap { flex-direction: row; justify-content: space-between; text-align: left; align-items: flex-end; }
@@ -282,7 +278,6 @@
         <p>I believe life insurance should be easy to understand. I focus on finding the right fit for your situation—whether that's protecting your home, replacing lost income, or ensuring your business survives a key-person loss.</p>
         <p>No high-pressure sales or overly complex schemes. Just a direct, plain-English conversation about what you actually need to protect the people depending on you.</p>
       </div>
-      <img src="Fishing.jpg" class="fishing-photo" alt="Planning for the future">
     </div>
 
     <div class="audit-box reveal" id="audit">
