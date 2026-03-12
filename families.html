@@ -38,9 +38,9 @@
     body.loaded { opacity: 1; }
     body.nav-open { overflow: hidden; } 
 
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; text-align: center; }
 
-    header, .btn-quote, .btn-white, .btn-primary, .nav-menu a { font-family: 'Inter', sans-serif; }
+    header, .btn-quote, .btn-white, .btn-primary, .nav-menu a, .clean-amp { font-family: 'Inter', sans-serif; }
 
     /* HEADER */
     header { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 1000; padding: 12px 0; }
@@ -82,8 +82,6 @@
     .nav-menu.active a:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
     .nav-menu.active a:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
     .nav-menu.active a:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
-    
-    /* "Get a Quote" Button inside menu */
     .nav-menu.active a:nth-child(5) { 
       transition-delay: 0.5s; opacity: 1; transform: translateY(0); 
       color: var(--accent); font-family: 'Inter', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; 
@@ -94,19 +92,57 @@
     .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* HERO SECTION */
-    .hero { padding: 100px 20px 60px; text-align: left; }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(42px, 8vw, 72px); color: var(--navy); margin: 0 0 10px; line-height: 1.1; letter-spacing: -0.5px; }
-    .hero-accent { color: var(--accent); font-size: clamp(28px, 5vw, 40px); font-family: 'Playfair Display', serif; margin-bottom: 25px; display: block; font-style: italic; }
-    .hero p { font-size: 22px; color: var(--muted); max-width: 700px; line-height: 1.6; margin-bottom: 0; }
+    /* HERO SECTION (VIDEO) */
+    .hero {
+      position: relative; 
+      overflow: hidden;   
+      background: var(--navy); 
+      color: white; 
+      padding: 160px 20px; 
+      text-align: center;
+    }
 
-    /* IMAGE BANNER */
-    .banner-container { padding: 0 20px; }
-    .families-img { width: 100%; max-width: 1100px; display: block; margin: 0 auto; aspect-ratio: 16/7; object-fit: cover; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,34,68,0.08); }
+    /* THE VIDEO ELEMENT */
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; 
+      z-index: 0;
+    }
+
+    /* THE NAVY OVERLAY */
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0,34,68,0.75), rgba(0,34,68,0.85)); 
+      z-index: 1;
+    }
+
+    /* LIFTS THE TEXT ABOVE THE VIDEO */
+    .hero-text { 
+      position: relative; 
+      z-index: 2; 
+      animation: fadeUp 1s ease-out forwards; 
+      opacity: 0; 
+      transform: translateY(20px);
+    }
+    
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(38px, 8vw, 68px); margin: 0 0 10px; line-height: 1.1; color: white; letter-spacing: -0.5px; }
+    .hero-accent { color: var(--accent); font-size: clamp(28px, 5vw, 40px); font-family: 'Playfair Display', serif; margin-bottom: 25px; display: block; font-style: italic; }
+    .hero p { font-size: 22px; margin: 0; color: #cbd5e0; max-width: 700px; margin: 0 auto; line-height: 1.6; font-style: italic; }
 
     /* CONTENT GRID */
     .section { padding: 100px 0; }
-    .grid { display: grid; grid-template-columns: 1fr; gap: 60px; align-items: flex-start; }
+    .bg-paper { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 60px; align-items: flex-start; text-align: left; }
 
     .content-left h2 { font-family: 'Playfair Display', serif; font-size: 40px; margin: 0 0 25px; color: var(--navy); line-height: 1.2; }
     .content-left p { color: var(--muted); line-height: 1.8; margin-bottom: 25px; }
@@ -145,18 +181,18 @@
     /* SPLIT FOOTER DESIGN */
     footer { background: var(--navy); color: white; padding: 60px 20px 40px; font-size: 15px; font-family: 'Inter', sans-serif; margin-top: 60px; }
     .footer-wrap { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 30px; }
-    .footer-logo { height: 50px; width: auto; filter: brightness(0) invert(1); }
+    .footer-logo { height: 60px; width: auto; filter: brightness(0) invert(1); } /* 60px mobile */
     .footer-address p { margin: 0; line-height: 1.8; color: rgba(255,255,255,0.8); }
     .footer-address a { color: white; text-decoration: none; font-weight: 600; transition: color 0.2s; }
     .footer-address a:hover { color: var(--accent); }
+    .email-link { display: inline-block; margin-top: 5px; color: var(--accent) !important; }
+    .email-link:hover { color: white !important; }
     
     .footer-bottom { 
       width: 100%; max-width: 1100px; margin: 40px auto 0; padding-top: 30px; 
       border-top: 1px solid rgba(255,255,255,0.1); 
       font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; text-align: center;
     }
-
-    .clean-amp { font-family: 'Inter', sans-serif; font-weight: 400; font-size: 0.9em; }
 
     @media (max-width: 768px) {
       .audit-card { padding: 35px 25px; }
@@ -167,11 +203,14 @@
       .desktop-nav { display: block; }
       .hamburger { display: none; }
       .grid { grid-template-columns: 1fr 1.1fr; gap: 80px; }
-      .hero { padding: 140px 20px 80px; }
+      .hero { padding: 220px 0 180px; }
+      
+      /* Shift Laptop Video Focus Down slightly */
+      .hero-video { object-position: center 25%; }
 
-      /* Desktop Footer Overrides */
+      /* Desktop Split Footer */
       .footer-wrap { flex-direction: row; justify-content: space-between; text-align: left; align-items: flex-end; }
-      .footer-logo { height: 80px; } /* Makes logo much larger on laptop */
+      .footer-logo { height: 100px; } /* Larger on laptop */
       .footer-address { text-align: right; }
       .footer-bottom { text-align: left; }
     }
@@ -203,17 +242,19 @@
     </nav>
   </header>
 
-  <div class="wrap">
-    <div class="hero reveal">
+  <section class="hero">
+    <video autoplay loop muted playsinline webkit-playsinline poster="image_03201c.png" class="hero-video">
+      <source src="personal-video-loop.mp4" type="video/mp4">
+    </video>
+    
+    <div class="hero-overlay"></div>
+
+    <div class="wrap hero-text">
       <h1>Personal insurance.</h1>
       <span class="hero-accent">Done correctly.</span>
       <p>Home, auto, and umbrella coverage built around straightforward advice—not call centers, 1-800 numbers, or shortcuts.</p>
     </div>
-  </div>
-
-  <div class="banner-container reveal">
-    <img src="family-home.jpg" class="families-img" alt="Milwaukee Personal Insurance" loading="lazy">
-  </div>
+  </section>
 
   <section class="section bg-paper">
     <div class="wrap grid">
