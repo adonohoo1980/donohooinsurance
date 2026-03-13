@@ -5,6 +5,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Donohoo & Sons Insurance | Milwaukee & Wauwatosa</title>
 
+  <!-- SEO Meta -->
+  <meta name="description" content="Independent insurance agency serving Milwaukee & Wauwatosa. Home, auto, business, life, and disability coverage with direct agent access. Call 414.698.1729.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.donohooinsurance.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Donohoo & Sons Insurance | Milwaukee & Wauwatosa">
+  <meta property="og:description" content="Independent insurance agency serving Milwaukee & Wauwatosa. Home, auto, business, and life coverage with direct agent access.">
+  <meta property="og:url" content="https://www.donohooinsurance.com/">
+  <meta property="og:image" content="https://www.donohooinsurance.com/boys.jpg">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Donohoo & Sons Insurance | Milwaukee & Wauwatosa">
+  <meta name="twitter:description" content="Independent insurance agency serving Milwaukee & Wauwatosa. Direct agent access. No automated prompts.">
+  <meta name="twitter:image" content="https://www.donohooinsurance.com/boys.jpg">
+
+  <!-- Local Business Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "InsuranceAgency",
+    "name": "Donohoo & Sons Insurance",
+    "url": "https://www.donohooinsurance.com",
+    "logo": "https://www.donohooinsurance.com/logo.png",
+    "image": "https://www.donohooinsurance.com/boys.jpg",
+    "description": "Independent insurance agency serving Milwaukee and Wauwatosa, WI. Personal, business, life, and health coverage.",
+    "telephone": "+14146981729",
+    "email": "adonohoo@unisource-ins.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "10425 W North Ave, Suite 226",
+      "addressLocality": "Wauwatosa",
+      "addressRegion": "WI",
+      "postalCode": "53226",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 43.0522,
+      "longitude": -88.0357
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Milwaukee" },
+      { "@type": "City", "name": "Wauwatosa" }
+    ],
+    "serviceType": ["Personal Insurance", "Business Insurance", "Life Insurance", "Health Insurance", "Disability Insurance"],
+    "priceRange": "$$",
+    "sameAs": []
+  }
+  </script>
+
+  <!-- Preload critical assets -->
+  <link rel="preload" as="video" href="hero-video.mp4" type="video/mp4">
+  <link rel="preload" as="image" href="boys.jpg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
@@ -61,6 +119,14 @@
     .link-text,
     .clean-amp {
       font-family: 'Inter', sans-serif;
+    }
+
+    /* Focus visible ring for keyboard nav */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 3px;
     }
 
     /* HEADER */
@@ -138,6 +204,9 @@
       height: 40px;
       z-index: 2100;
       position: relative;
+      background: none;
+      border: none;
+      padding: 0;
     }
 
     .hamburger span {
@@ -207,29 +276,10 @@
       color: var(--accent);
     }
 
-    .nav-menu.active a:nth-child(1) {
-      transition-delay: 0.1s;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .nav-menu.active a:nth-child(2) {
-      transition-delay: 0.2s;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .nav-menu.active a:nth-child(3) {
-      transition-delay: 0.3s;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .nav-menu.active a:nth-child(4) {
-      transition-delay: 0.4s;
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .nav-menu.active a:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
 
     .nav-menu.active a:nth-child(5) {
       transition-delay: 0.5s;
@@ -257,6 +307,11 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* Staggered reveal delays */
+    .reveal:nth-child(1) { transition-delay: 0.1s; }
+    .reveal:nth-child(2) { transition-delay: 0.2s; }
+    .reveal:nth-child(3) { transition-delay: 0.3s; }
 
     .hero-text {
       animation: fadeUp 1s ease-out forwards;
@@ -321,7 +376,7 @@
       color: white;
       letter-spacing: -0.5px;
     }
-    
+
     .hero-accent {
       color: var(--accent);
       font-style: italic;
@@ -612,60 +667,33 @@
       text-align: center;
     }
 
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      body { transition: none; opacity: 1; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .hero-text { animation: none; opacity: 1; transform: none; }
+      .hero-video { display: none; }
+    }
+
     /* DESKTOP */
     @media (min-width: 900px) {
-      .desktop-nav {
-        display: block;
-      }
-
-      .hamburger {
-        display: none;
-      }
-
-      .grid-3 {
-        flex-direction: row;
-      }
-
-      .service-card,
-      .value-pillar {
-        flex: 1;
-      }
-
-      .about-spread {
-        flex-direction: row;
-        gap: 80px;
-      }
-
-      .boys-photo {
-        max-width: 45%;
-      }
-
-      .hero {
-        padding: 220px 0 180px;
-      }
-
-      .hero-video {
-        object-position: center 25%;
-      }
-
+      .desktop-nav { display: block; }
+      .hamburger { display: none; }
+      .grid-3 { flex-direction: row; }
+      .service-card, .value-pillar { flex: 1; }
+      .about-spread { flex-direction: row; gap: 80px; }
+      .boys-photo { max-width: 45%; }
+      .hero { padding: 220px 0 180px; }
+      .hero-video { object-position: center 25%; }
       .footer-wrap {
         flex-direction: row;
         justify-content: space-between;
         text-align: left;
         align-items: flex-end;
       }
-
-      .footer-logo {
-        height: 80px;
-      }
-
-      .footer-address {
-        text-align: right;
-      }
-
-      .footer-bottom {
-        text-align: left;
-      }
+      .footer-logo { height: 80px; }
+      .footer-address { text-align: right; }
+      .footer-bottom { text-align: left; }
     }
   </style>
 </head>
@@ -674,10 +702,10 @@
   <header>
     <div class="nav-container">
       <a href="/" style="position: relative; z-index: 2100;">
-        <img src="logo.png" class="logo-img" alt="Donohoo & Sons">
+        <img src="logo.png" class="logo-img" alt="Donohoo & Sons Insurance">
       </a>
 
-      <nav class="desktop-nav">
+      <nav class="desktop-nav" aria-label="Main navigation">
         <a href="/">Home</a>
         <a href="/families.html">Personal</a>
         <a href="/business.html">Business</a>
@@ -685,13 +713,20 @@
         <a href="/quote.html" class="btn-quote">Get a Quote</a>
       </nav>
 
-      <div class="hamburger" id="hamburgerBtn" onclick="toggleMenu()">
+      <button
+        class="hamburger"
+        id="hamburgerBtn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobileNav"
+        onclick="toggleMenu()"
+      >
         <span></span>
         <span></span>
-      </div>
+      </button>
     </div>
 
-    <nav class="nav-menu" id="mobileNav">
+    <nav class="nav-menu" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
       <a href="/">Home</a>
       <a href="/families.html">Personal</a>
       <a href="/business.html">Business</a>
@@ -701,12 +736,32 @@
   </header>
 
   <section class="hero">
-    <div class="hero-video-wrap">
-      <video class="hero-video video-a active" autoplay muted playsinline webkit-playsinline preload="auto" poster="boys.jpg">
+    <div class="hero-video-wrap" aria-hidden="true">
+      <video
+        class="hero-video video-a active"
+        autoplay
+        muted
+        playsinline
+        webkit-playsinline
+        preload="auto"
+        poster="boys.jpg"
+        aria-hidden="true"
+        tabindex="-1"
+      >
         <source src="hero-video.mp4" type="video/mp4">
       </video>
 
-      <video class="hero-video video-b" muted playsinline webkit-playsinline preload="auto" poster="boys.jpg">
+      <!-- preload="none" — loaded on demand just before crossfade -->
+      <video
+        class="hero-video video-b"
+        muted
+        playsinline
+        webkit-playsinline
+        preload="none"
+        poster="boys.jpg"
+        aria-hidden="true"
+        tabindex="-1"
+      >
         <source src="hero-video.mp4" type="video/mp4">
       </video>
     </div>
@@ -723,20 +778,20 @@
     <div class="wrap">
       <h2 class="section-title reveal">The Independent Advantage</h2>
       <div class="grid-3">
-        <div class="value-pillar reveal" style="transition-delay: 0.1s;">
-          <i class="ph-light ph-phone"></i>
+        <div class="value-pillar reveal">
+          <i class="ph-light ph-phone" aria-hidden="true"></i>
           <h4>Direct Contact</h4>
           <p>No automated prompts. You have my direct cell phone number for whenever you need a quick answer.</p>
         </div>
 
-        <div class="value-pillar reveal" style="transition-delay: 0.2s;">
-          <i class="ph-light ph-map-pin"></i>
+        <div class="value-pillar reveal">
+          <i class="ph-light ph-map-pin" aria-hidden="true"></i>
           <h4>Local Expertise</h4>
           <p>Based in Milwaukee, we understand the specific risks and market nuances of Southeastern Wisconsin.</p>
         </div>
 
-        <div class="value-pillar reveal" style="transition-delay: 0.3s;">
-          <i class="ph-light ph-shield-check"></i>
+        <div class="value-pillar reveal">
+          <i class="ph-light ph-shield-check" aria-hidden="true"></i>
           <h4>Claims Support</h4>
           <p>I don't just sell the policy. If you have a claim, I'm in your corner to ensure the process is fair and fast.</p>
         </div>
@@ -748,22 +803,22 @@
     <div class="wrap">
       <h2 class="section-title reveal">What We Protect</h2>
       <div class="grid-3">
-        <a href="/families.html" class="service-card reveal" style="transition-delay: 0.1s;">
+        <a href="/families.html" class="service-card reveal">
           <h3>Personal</h3>
           <p>Home, auto, and umbrella protection built around real life.</p>
-          <span class="link-text">View Protection <span class="arrow">&rarr;</span></span>
+          <span class="link-text">View Protection <span class="arrow" aria-hidden="true">&rarr;</span></span>
         </a>
 
-        <a href="/business.html" class="service-card reveal" style="transition-delay: 0.2s;">
+        <a href="/business.html" class="service-card reveal">
           <h3>Business</h3>
           <p>Coverage built for owners who want one dedicated advisor.</p>
-          <span class="link-text">View Commercial <span class="arrow">&rarr;</span></span>
+          <span class="link-text">View Commercial <span class="arrow" aria-hidden="true">&rarr;</span></span>
         </a>
 
-        <a href="/life.html" class="service-card reveal" style="transition-delay: 0.3s;">
+        <a href="/life.html" class="service-card reveal">
           <h3>Life <span class="clean-amp">&amp;</span> Health</h3>
           <p>Life, Disability, &amp; Long-Term Care planning.</p>
-          <span class="link-text">View Planning <span class="arrow">&rarr;</span></span>
+          <span class="link-text">View Planning <span class="arrow" aria-hidden="true">&rarr;</span></span>
         </a>
       </div>
     </div>
@@ -775,10 +830,10 @@
         <div class="about-content">
           <h2>Our Commitment</h2>
           <p>I built Donohoo <span class="clean-amp">&amp;</span> Sons with my wife Katie because insurance should feel simple and personal.</p>
-          <div class="pull">"I treat your protection like my own family's. The '<span class="clean-amp">&amp;</span> Sons' reminds me why I do this every day."</div>
+          <blockquote class="pull">"I treat your protection like my own family's. The '<span class="clean-amp">&amp;</span> Sons' reminds me why I do this every day."</blockquote>
           <p>I am in from day one to claim day. I'm always available to my clients — no waiting, just a conversation.</p>
         </div>
-        <img src="boys.jpg" class="boys-photo" alt="The Donohoo Family">
+        <img src="boys.jpg" class="boys-photo" alt="The Donohoo family — the inspiration behind Donohoo & Sons Insurance" width="500" height="625" loading="lazy">
       </div>
 
       <div class="cta-box reveal">
@@ -791,14 +846,14 @@
   <footer>
     <div class="footer-wrap">
       <div class="footer-left">
-        <img src="logo.png" alt="Donohoo & Sons" class="footer-logo">
+        <img src="logo.png" alt="Donohoo & Sons Insurance" class="footer-logo" width="160" height="80" loading="lazy">
       </div>
 
       <div class="footer-address">
         <p>
           10425 W North Ave. Suite 226<br>
           Wauwatosa, WI 53226<br>
-          <a href="tel:4146981729">414.698.1729</a><br>
+          <a href="tel:+14146981729">414.698.1729</a><br>
           <a href="mailto:adonohoo@unisource-ins.com" class="email-link">adonohoo@unisource-ins.com</a>
         </p>
       </div>
@@ -810,18 +865,43 @@
   </footer>
 
   <script>
+    /* ─── Mobile nav toggle ─── */
     function toggleMenu() {
-      document.getElementById('mobileNav').classList.toggle('active');
-      document.getElementById('hamburgerBtn').classList.toggle('active');
-      document.body.classList.toggle('nav-open');
+      const nav = document.getElementById('mobileNav');
+      const btn = document.getElementById('hamburgerBtn');
+      const isOpen = nav.classList.toggle('active');
+      btn.classList.toggle('active', isOpen);
+      btn.setAttribute('aria-expanded', isOpen);
+      btn.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+      nav.setAttribute('aria-hidden', !isOpen);
+      document.body.classList.toggle('nav-open', isOpen);
     }
 
-    window.addEventListener('load', () => {
+    /* Close mobile nav on outside tap */
+    document.addEventListener('click', function(e) {
+      const nav = document.getElementById('mobileNav');
+      const btn = document.getElementById('hamburgerBtn');
+      if (nav.classList.contains('active') && !nav.contains(e.target) && !btn.contains(e.target)) {
+        toggleMenu();
+      }
+    });
+
+    /* Close mobile nav when a link is clicked */
+    document.querySelectorAll('#mobileNav a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        const nav = document.getElementById('mobileNav');
+        if (nav.classList.contains('active')) toggleMenu();
+      });
+    });
+
+    /* ─── Page load fade-in ─── */
+    window.addEventListener('load', function() {
       document.body.classList.add('loaded');
     });
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+    /* ─── Scroll reveal ─── */
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
           observer.unobserve(entry.target);
@@ -829,73 +909,88 @@
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      observer.observe(el);
+    });
 
-    /* Smooth crossfade video loop */
-    const videoA = document.querySelector('.video-a');
-    const videoB = document.querySelector('.video-b');
+    /* ─── Video crossfade loop ─── */
+    /* Respect reduced-motion preference — skip video entirely */
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    let activeVideo = videoA;
-    let standbyVideo = videoB;
-    let isTransitioning = false;
+    if (!prefersReducedMotion) {
+      var videoA = document.querySelector('.video-a');
+      var videoB = document.querySelector('.video-b');
+      var activeVideo = videoA;
+      var standbyVideo = videoB;
+      var isTransitioning = false;
+      var standbyLoaded = false;
+      var fadeDuration = 0.8;
 
-    const fadeDuration = 0.8; // seconds before end to begin fade
-
-    function safePlay(video) {
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {});
+      function safePlay(video) {
+        var p = video.play();
+        if (p !== undefined) p.catch(function() {});
       }
-    }
 
-    function prepareStandbyVideo() {
-      standbyVideo.currentTime = 0;
-      safePlay(standbyVideo);
-    }
+      /* Load and prepare standby video on demand */
+      function ensureStandbyLoaded(cb) {
+        if (standbyLoaded) { cb(); return; }
+        standbyVideo.addEventListener('canplay', function onCanPlay() {
+          standbyVideo.removeEventListener('canplay', onCanPlay);
+          standbyLoaded = true;
+          cb();
+        });
+        standbyVideo.load();
+      }
 
-    function crossfadeVideos() {
-      if (isTransitioning) return;
-      isTransitioning = true;
+      function crossfadeVideos() {
+        if (isTransitioning) return;
+        isTransitioning = true;
 
-      prepareStandbyVideo();
+        ensureStandbyLoaded(function() {
+          standbyVideo.currentTime = 0;
+          safePlay(standbyVideo);
 
-      standbyVideo.classList.add('active');
-      activeVideo.classList.remove('active');
+          standbyVideo.classList.add('active');
+          activeVideo.classList.remove('active');
 
-      const oldActive = activeVideo;
-      activeVideo = standbyVideo;
-      standbyVideo = oldActive;
+          var oldActive = activeVideo;
+          activeVideo = standbyVideo;
+          standbyVideo = oldActive;
+          standbyLoaded = false; /* reset so next cycle re-loads */
 
-      setTimeout(() => {
-        standbyVideo.pause();
-        isTransitioning = false;
-      }, 900);
-    }
+          setTimeout(function() {
+            standbyVideo.pause();
+            isTransitioning = false;
+          }, 900);
+        });
+      }
 
-    function attachLoopMonitor(video) {
-      video.addEventListener('timeupdate', () => {
-        if (
-          video === activeVideo &&
-          !isTransitioning &&
-          video.duration &&
-          video.currentTime >= video.duration - fadeDuration
-        ) {
-          crossfadeVideos();
-        }
+      function attachLoopMonitor(video) {
+        video.addEventListener('timeupdate', function() {
+          if (
+            video === activeVideo &&
+            !isTransitioning &&
+            video.duration &&
+            video.currentTime >= video.duration - fadeDuration
+          ) {
+            crossfadeVideos();
+          }
+        });
+      }
+
+      videoA.addEventListener('loadedmetadata', function() {
+        videoA.currentTime = 0;
+        safePlay(videoA);
+      });
+
+      attachLoopMonitor(videoA);
+      attachLoopMonitor(videoB);
+    } else {
+      /* Hide videos for reduced-motion users; poster image shows through */
+      document.querySelectorAll('.hero-video').forEach(function(v) {
+        v.style.display = 'none';
       });
     }
-
-    videoA.addEventListener('loadedmetadata', () => {
-      videoA.currentTime = 0;
-      safePlay(videoA);
-    });
-
-    videoB.addEventListener('loadedmetadata', () => {
-      videoB.currentTime = 0;
-    });
-
-    attachLoopMonitor(videoA);
-    attachLoopMonitor(videoB);
   </script>
 
 </body>
