@@ -19,6 +19,7 @@
       --accent: #b8860b;
       --line: #e2e8f0;
       --paper: #f4f7fa;
+      --muted: #5f6b7a;
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -135,7 +136,8 @@
     
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(38px, 8vw, 68px); margin: 0 0 20px; line-height: 1.1; color: white; letter-spacing: -0.5px; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(38px, 8vw, 68px); margin: 0 0 10px; line-height: 1.1; color: white; letter-spacing: -0.5px; }
+    .hero-accent { color: var(--accent); font-style: italic; display: inline-block; }
     .hero p { font-size: 22px; margin: 0; color: #cbd5e0; max-width: 700px; margin: 0 auto; line-height: 1.6; font-style: italic; }
 
     /* SECTIONS & GRIDS */
@@ -148,7 +150,7 @@
     .expertise-block { padding: 20px; border-top: 1px solid var(--accent); }
     .expertise-block i { font-size: 44px; color: var(--accent); margin-bottom: 20px; display: block; font-weight: normal; }
     .expertise-block h3 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--navy); margin: 0 0 15px 0; }
-    .expertise-block p { color: var(--muted); margin: 0; }
+    .expertise-block p { color: var(--muted); margin: 0; line-height: 1.7; }
 
     /* COVERAGE CARDS */
     .coverage-card {
@@ -159,11 +161,11 @@
     .coverage-card:active { transform: scale(0.98); box-shadow: 0 2px 10px rgba(0,0,0,0.04); transition: all 0.1s; }
     .coverage-card h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); margin: 0 0 15px 0; display: flex; align-items: center; gap: 14px; }
     .coverage-card h3 i { color: var(--accent); font-size: 34px; font-weight: normal; }
-    .coverage-card p { margin: 0; color: var(--muted); }
+    .coverage-card p { margin: 0; color: var(--muted); line-height: 1.7; }
 
     /* CTA BOX */
     .cta-box { background: var(--navy); color: #fff; padding: 100px 20px; border-radius: 12px; text-align: center; box-shadow: 0 20px 40px rgba(0,34,68,0.1); margin-bottom: 80px; }
-    .cta-box h2 { font-family: 'Playfair Display', serif; font-size: 42px; margin: 0 0 20px; }
+    .cta-box h2 { font-family: 'Playfair Display', serif; font-size: 42px; margin: 0 0 20px; color: white;}
     .cta-box p { color: #cbd5e0; max-width: 600px; margin: 0 auto 40px; font-size: 20px; font-style: italic; }
     .btn-white { display: inline-block; background: #fff; color: var(--navy); padding: 16px 40px; border-radius: 4px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; transition: 0.2s; }
     .btn-white:hover { background: var(--accent); color: white; transform: translateY(-3px); }
@@ -172,10 +174,12 @@
     /* SPLIT FOOTER */
     footer { background: var(--navy); color: white; padding: 60px 20px 40px; font-size: 15px; font-family: 'Inter', sans-serif; }
     .footer-wrap { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 30px; }
-    .footer-logo { height: 60px; width: auto; filter: brightness(0) invert(1); } /* 60px mobile */
+    .footer-logo { height: 60px; width: auto; filter: brightness(0) invert(1); }
     .footer-address p { margin: 0; line-height: 1.8; color: rgba(255,255,255,0.8); }
     .footer-address a { color: white; text-decoration: none; font-weight: 600; transition: color 0.2s; }
     .footer-address a:hover { color: var(--accent); }
+    .email-link { display: inline-block; margin-top: 5px; color: var(--accent) !important; }
+    .email-link:hover { color: white !important; }
     .footer-bottom { width: 100%; max-width: 1100px; margin: 40px auto 0; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; text-align: center; }
 
     @media (min-width: 768px) {
@@ -186,10 +190,11 @@
       .hamburger { display: none; }
       .grid-3 { grid-template-columns: repeat(3, 1fr); gap: 40px; }
       .hero { padding: 220px 0 180px; }
+      .hero-video { object-position: center 25%; }
       
       /* Desktop Split Footer */
       .footer-wrap { flex-direction: row; justify-content: space-between; text-align: left; align-items: flex-end; }
-      .footer-logo { height: 100px; } /* Larger on laptop */
+      .footer-logo { height: 100px; } 
       .footer-address { text-align: right; }
       .footer-bottom { text-align: left; }
     }
@@ -229,7 +234,7 @@
     <div class="hero-overlay"></div>
 
     <div class="wrap hero-text">
-      <h1>Protecting the business you built.</h1>
+      <h1>Protecting the business<br><span class="hero-accent">you've built.</span></h1>
       <p>Sophisticated risk management for owners who need a partner, not just a policy.</p>
     </div>
   </section>
@@ -306,7 +311,8 @@
         <p>
           10425 W North Ave. Suite 226<br>
           Wauwatosa, WI 53226<br>
-          <a href="tel:4146981729">414.698.1729</a>
+          <a href="tel:4146981729">414.698.1729</a><br>
+          <a href="mailto:adonohoo@unisource-ins.com" class="email-link">adonohoo@unisource-ins.com</a>
         </p>
       </div>
     </div>
