@@ -24,18 +24,20 @@
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
+      width: 100%;
       font-family: 'Lora', serif; 
       background: var(--bg);
       color: var(--ink);
       font-size: 18px; 
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
-      opacity: 0;
-      transition: opacity 0.8s ease-in-out;
-      overflow-x: hidden; 
+      overflow-x: hidden; /* Locks the wobble */
+      position: relative;
     }
+    
     body.loaded { opacity: 1; }
     body.nav-open { overflow: hidden; } 
 
@@ -199,7 +201,10 @@
     @media (max-width: 900px) {
       .audit-item { text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 30px; }
       .audit-item:last-child { border-bottom: none; padding-bottom: 0; }
-      .toggle-btn { padding: 12px 20px; font-size: 13px; }
+      
+      /* Fixes the button width on tiny screens */
+      .audit-toggle { max-width: 100%; display: flex; }
+      .toggle-btn { padding: 12px 14px; font-size: 12px; letter-spacing: 0.5px; flex: 1; text-align: center; }
     }
 
     @media (min-width: 900px) {
