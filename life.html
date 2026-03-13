@@ -34,7 +34,7 @@
       font-size: 18px; 
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden; /* Locks the wobble */
+      overflow-x: hidden; 
       position: relative;
     }
     
@@ -198,11 +198,22 @@
     .email-link:hover { color: white !important; }
     .footer-bottom { width: 100%; max-width: 1100px; margin: 40px auto 0; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; text-align: center; }
 
-    @media (max-width: 900px) {
+    /* MOBILE-SPECIFIC ADJUSTMENTS (SHRINKS BOXES/PADDING) */
+    @media (max-width: 768px) {
+      .hero { padding: 100px 20px; }
+      .section { padding-top: 50px; padding-bottom: 50px; }
+      
+      /* Make coverage cards sleeker on phones */
+      .coverage-card { padding: 30px 20px; }
+      .coverage-card h3 { font-size: 22px; }
+      
+      /* Shrink the massive Audit Box */
+      .audit-box { padding: 60px 20px; margin-bottom: 50px; }
+      
       .audit-item { text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 30px; }
       .audit-item:last-child { border-bottom: none; padding-bottom: 0; }
       
-      /* Fixes the button width on tiny screens */
+      /* Fix the button width */
       .audit-toggle { max-width: 100%; display: flex; }
       .toggle-btn { padding: 12px 14px; font-size: 12px; letter-spacing: 0.5px; flex: 1; text-align: center; }
     }
