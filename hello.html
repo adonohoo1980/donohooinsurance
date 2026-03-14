@@ -1,49 +1,161 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Welcome | Donohoo & Sons</title>
-<meta name="description" content="Quick contact page for business card QR visitors.">
-<link rel="canonical" href="https://www.donohooinsurance.com/hello.html">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-<style>
-  :root{--navy:#0f2744;--gold:#b8860b;--ink:#1f2937;--line:#e5e7eb;--bg:#f8f9fb}
-  body{margin:0;font-family:Inter,sans-serif;background:var(--bg);color:var(--ink)}
-  .wrap{max-width:520px;margin:0 auto;padding:24px}
-  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:0 12px 35px rgba(15,39,68,.08)}
-  .logo{width:210px;display:block;margin:0 auto 14px}
-  .headshot{width:108px;height:108px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 10px;border:1px solid var(--line)}
-  h1{margin:10px 0 6px;text-align:center;font-family:'Playfair Display',serif}
-  p{text-align:center;color:#6b7280;margin:0 0 18px}
-  .stack{display:grid;gap:10px}
-  .btn{display:block;text-align:center;text-decoration:none;padding:14px;border-radius:12px;font-weight:700}
-  .btn.primary{background:var(--navy);color:#fff}
-  .btn.secondary{background:#fff;color:var(--navy);border:1px solid var(--navy)}
-  .grid{display:grid;gap:10px;margin-top:16px}
-  .small{font-size:14px;color:#6b7280;text-align:center;margin-top:14px}
-</style>
-</head><body>
-<main class="wrap">
-  <section class="card">
-    <img src="logo.png" alt="Donohoo & Sons" class="logo">
-    <img src="andy-headshot.JPG" alt="Andy Donohoo" class="headshot">
-    <h1>Hi, I’m Andy.</h1>
-    <p>Thanks for scanning my card. Use any link below and I’ll personally follow up.</p>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Welcome | Donohoo & Sons</title>
+  <meta name="description" content="Quick contact page for business card QR visitors.">
+  <link rel="canonical" href="https://www.donohooinsurance.com/hello.html">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --navy: #0f2744;
+      --gold: #b8860b;
+      --ink: #1f2937;
+      --line: #e5e7eb;
+      --bg: #f8f9fb;
+    }
 
-    <div class="stack">
-      <a class="btn primary" href="tel:4146981729">Call 414.698.1729</a>
-      <a class="btn secondary" href="mailto:adonohoo@unisource-ins.com">Email Andy</a>
-      <a class="btn secondary" href="/quote.html">Request a Quote</a>
-    </div>
+    /* THE FIX: Forces padding to stay inside the max-width, fixing mobile scrolling */
+    * { 
+      box-sizing: border-box; 
+      -webkit-tap-highlight-color: transparent; 
+    }
 
-    <div class="grid">
-      <a class="btn secondary" href="/families.html">Personal Insurance</a>
-      <a class="btn secondary" href="/business.html">Business Insurance</a>
-      <a class="btn secondary" href="/life.html">Life & Health</a>
-      <a class="btn secondary" href="/Medicare.html">Medicare Planning</a>
-    </div>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
 
-    <p class="small">Donohoo & Sons Insurance · Wauwatosa, WI</p>
-  </section>
-</main>
-</body></html>
+    .wrap {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 12px 35px rgba(15,39,68,.08);
+    }
+
+    /* THE FIX: Ensures the logo shrinks gracefully on very narrow screens */
+    .logo {
+      width: 100%;
+      max-width: 210px;
+      height: auto;
+      display: block;
+      margin: 0 auto 14px;
+    }
+
+    .headshot {
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 10px;
+      border: 1px solid var(--line);
+    }
+
+    h1 {
+      margin: 10px 0 6px;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+    }
+
+    p {
+      text-align: center;
+      color: #6b7280;
+      margin: 0 0 18px;
+      line-height: 1.5;
+    }
+
+    .stack {
+      display: grid;
+      gap: 10px;
+    }
+
+    .btn {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: transform 0.1s ease;
+    }
+
+    /* Bonus: Adds a tactile 'press' effect when tapped on mobile */
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn.primary {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .btn.secondary {
+      background: #fff;
+      color: var(--navy);
+      border: 1px solid var(--navy);
+    }
+
+    .grid {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .small {
+      font-size: 14px;
+      color: #6b7280;
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    /* Bonus: Snaps the bottom links into 2 columns if the phone is wide enough */
+    @media (min-width: 400px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <img src="logo.png" alt="Donohoo & Sons" class="logo">
+      <img src="andy-headshot.JPG" alt="Andy Donohoo" class="headshot">
+      
+      <h1>Hi, I’m Andy.</h1>
+      <p>Thanks for scanning my card. Use any link below and I’ll personally follow up.</p>
+
+      <div class="stack">
+        <a class="btn primary" href="tel:4146981729">Call 414.698.1729</a>
+        <a class="btn secondary" href="mailto:adonohoo@unisource-ins.com">Email Andy</a>
+        <a class="btn secondary" href="/quote.html">Request a Quote</a>
+      </div>
+
+      <div class="grid">
+        <a class="btn secondary" href="/families.html">Personal Insurance</a>
+        <a class="btn secondary" href="/business.html">Business Insurance</a>
+        <a class="btn secondary" href="/life.html">Life & Health</a>
+        <a class="btn secondary" href="/Medicare.html">Medicare Planning</a>
+      </div>
+
+      <p class="small">Donohoo & Sons Insurance · Wauwatosa, WI</p>
+    </section>
+  </main>
+</body>
+</html>
