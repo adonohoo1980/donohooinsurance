@@ -1,351 +1,49 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Welcome | Donohoo & Sons</title>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Welcome | Donohoo & Sons</title>
+<meta name="description" content="Quick contact page for business card QR visitors.">
+<link rel="canonical" href="https://www.donohooinsurance.com/hello.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0f2744;--gold:#b8860b;--ink:#1f2937;--line:#e5e7eb;--bg:#f8f9fb}
+  body{margin:0;font-family:Inter,sans-serif;background:var(--bg);color:var(--ink)}
+  .wrap{max-width:520px;margin:0 auto;padding:24px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:0 12px 35px rgba(15,39,68,.08)}
+  .logo{width:210px;display:block;margin:0 auto 14px}
+  .headshot{width:108px;height:108px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 10px;border:1px solid var(--line)}
+  h1{margin:10px 0 6px;text-align:center;font-family:'Playfair Display',serif}
+  p{text-align:center;color:#6b7280;margin:0 0 18px}
+  .stack{display:grid;gap:10px}
+  .btn{display:block;text-align:center;text-decoration:none;padding:14px;border-radius:12px;font-weight:700}
+  .btn.primary{background:var(--navy);color:#fff}
+  .btn.secondary{background:#fff;color:var(--navy);border:1px solid var(--navy)}
+  .grid{display:grid;gap:10px;margin-top:16px}
+  .small{font-size:14px;color:#6b7280;text-align:center;margin-top:14px}
+</style>
+</head><body>
+<main class="wrap">
+  <section class="card">
+    <img src="logo.png" alt="Donohoo & Sons" class="logo">
+    <img src="andy-headshot.JPG" alt="Andy Donohoo" class="headshot">
+    <h1>Hi, I’m Andy.</h1>
+    <p>Thanks for scanning my card. Use any link below and I’ll personally follow up.</p>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
-  
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-  <style>
-    :root {
-      --bg: #fdfdfb;
-      --ink: #1a202c;
-      --navy: #002244; 
-      --accent: #b8860b;
-      --line: #e2e8f0;
-      --paper: #f4f7fa;
-    }
-
-    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
-    body {
-      margin: 0;
-      font-family: 'Lora', serif; 
-      background: var(--bg);
-      color: var(--ink);
-      font-size: 18px; 
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-      opacity: 0;
-      transition: opacity 0.8s ease-in-out;
-      overflow-x: hidden; 
-    }
-    body.loaded { opacity: 1; }
-    body.nav-open { overflow: hidden; } 
-
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; text-align: center; }
-
-    header, .btn-quote, .btn-white, .nav-menu a, .link-text, .clean-amp { font-family: 'Inter', sans-serif; }
-
-    /* HEADER */
-    header { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 1000; padding: 12px 0; }
-    .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    .logo-img { height: 60px; width: auto; position: relative; z-index: 2100; }
-
-    /* DESKTOP NAV */
-    .desktop-nav { display: none; }
-    .desktop-nav a { margin-left: 28px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
-    .desktop-nav a:hover { color: var(--accent); }
-    .btn-quote { background: var(--navy); color: white !important; padding: 12px 24px; border-radius: 4px; transition: background 0.3s; font-size: 13px; letter-spacing: 1px; }
-    .btn-quote:hover { background: var(--accent); }
-    .btn-quote:active { transform: scale(0.96); } 
-
-    /* MOBILE HAMBURGER */
-    .hamburger { cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; z-index: 2100; position: relative; }
-    .hamburger span { display: block; width: 24px; height: 2px; background-color: var(--navy); transition: 0.4s; position: absolute; }
-    .hamburger span:nth-child(1) { transform: translateY(-5px); }
-    .hamburger span:nth-child(2) { transform: translateY(5px); }
-    .hamburger.active span { background-color: white; } 
-    .hamburger.active span:nth-child(1) { transform: translateY(0) rotate(45deg); }
-    .hamburger.active span:nth-child(2) { transform: translateY(0) rotate(-45deg); }
-
-    /* ELEGANT MOBILE MENU */
-    .nav-menu { 
-      position: fixed; top: 0; left: 0; width: 100%; height: 0; 
-      background: var(--navy); z-index: 2000; overflow: hidden; 
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .nav-menu.active { height: 100vh; }
-    .nav-menu a { 
-      color: white; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 36px; 
-      margin: 12px 0; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; text-transform: none; letter-spacing: 0;
-    }
-    .nav-menu a:hover { color: var(--accent); }
-    .nav-menu.active a:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
-    
-    .nav-menu.active a:nth-child(5) { 
-      transition-delay: 0.5s; opacity: 1; transform: translateY(0); 
-      color: var(--accent); font-family: 'Inter', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; 
-      margin-top: 30px; border: 1px solid var(--accent); padding: 14px 35px; border-radius: 4px;
-    }
-
-    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* WELCOME CARD (QR Drop-in specific) */
-    .scan-welcome {
-      display: inline-flex; align-items: center; background: #fff;
-      padding: 8px 8px 8px 16px; border-radius: 100px;
-      box-shadow: 0 8px 25px rgba(0,34,68,0.06); border: 1px solid var(--line);
-      margin: 60px auto 40px; gap: 15px; flex-wrap: wrap; justify-content: center;
-    }
-    .mini-profile { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--paper); }
-    .scan-welcome span { font-size: 15px; font-weight: 600; color: var(--navy); font-family: 'Inter', sans-serif;}
-    .mini-actions { display: flex; gap: 8px; }
-    .mini-btn { font-size: 13px; font-weight: 700; text-transform: uppercase; font-family: 'Inter', sans-serif; text-decoration: none; background: var(--navy); color: #fff; padding: 10px 20px; border-radius: 50px; transition: 0.2s; }
-    .mini-btn:hover { background: var(--accent); }
-    .mini-btn:active { transform: scale(0.95); } 
-    .mini-btn.secondary { background: var(--paper); color: var(--navy); border: 1px solid var(--line); }
-    .mini-btn.secondary:hover { background: var(--line); }
-
-    /* HELLO PAGE HERO */
-    .hero { padding: 0 0 80px; }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(42px, 8vw, 72px); color: var(--navy); line-height: 1.1; margin: 0 0 20px; letter-spacing: -0.5px;}
-    .tagline { color: var(--muted); font-size: 22px; max-width: 700px; margin: 0 auto; line-height: 1.6; font-style: italic;}
-
-    /* SECTIONS */
-    .section { padding-top: 80px; padding-bottom: 80px; }
-    .bg-paper { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .grid-3 { display: flex; flex-direction: column; gap: 30px; }
-    .section-title { text-align: center; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 60px; font-size: 40px; }
-
-    /* VALUE PILLARS (Updated to Thin Icons) */
-    .value-pillar { text-align: center; padding: 20px; }
-    .value-pillar i { font-size: 44px; color: var(--accent); margin-bottom: 20px; font-weight: normal;}
-    .value-pillar h4 { margin: 10px 0; font-family: 'Playfair Display', serif; font-size: 26px; color: var(--navy); }
-    .value-pillar p { color: var(--muted); margin: 0; }
-
-    /* SERVICE CARDS (Delicate Upgrade) */
-    .service-card {
-      background: white; 
-      padding: 45px 35px; 
-      border: 1px solid var(--line); 
-      border-radius: 8px;
-      border-top: 4px solid var(--accent);
-      box-shadow: 0 10px 30px rgba(0,34,68,0.02); 
-      text-align: left; 
-      text-decoration: none !important; 
-      color: var(--ink) !important; 
-      display: block; 
-      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease;
-    }
-    .service-card:hover { 
-      transform: translateY(-6px); 
-      box-shadow: 0 20px 40px rgba(0,34,68,0.06); 
-      border-top: 4px solid var(--navy); 
-    }
-    .service-card:active {
-      transform: scale(0.98);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-      border-top: 4px solid var(--navy);
-      transition: all 0.1s; 
-    }
-    .service-card h3 { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--navy); margin: 0 0 15px 0; }
-    .service-card p { margin: 0 0 25px 0; color: var(--muted); }
-    .link-text { color: var(--accent); font-weight: 600; display: flex; align-items: center; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
-    .arrow { display: inline-block; margin-left: 6px; font-size: 18px; transition: transform 0.3s ease; }
-    .service-card:hover .link-text { color: var(--navy); }
-    .service-card:hover .arrow, .service-card:active .arrow { transform: translateX(6px); }
-
-    /* HOW I WORK SPREAD */
-    .about-spread { display: flex; flex-direction: column; gap: 40px; align-items: center; margin: 0 auto 80px auto; text-align: left; }
-    .about-content { flex: 1; }
-    .about-content h2 { font-family: 'Playfair Display', serif; font-size: 40px; color: var(--navy); margin-top: 0; line-height: 1.2;}
-    .about-content p { color: var(--muted); line-height: 1.8; }
-    .pull { font-family: 'Playfair Display', serif; font-style: italic; font-size: 26px; line-height: 1.4; color: var(--navy); margin: 35px 0; padding-left: 25px; border-left: 4px solid var(--accent); }
-    .boys-photo { width: 100%; max-width: 500px; aspect-ratio: 4/5; object-fit: cover; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,34,68,0.1); }
-
-    /* CTA BOX */
-    .cta-box { background: var(--navy); color: #fff; padding: 100px 20px; border-radius: 12px; text-align: center; box-shadow: 0 20px 40px rgba(0,34,68,0.15); margin: 0 auto;}
-    .cta-box h2 { font-family: 'Playfair Display', serif; font-size: 42px; margin: 0 0 30px; color: white;}
-    .btn-white { display: inline-block; background: #fff; color: var(--navy); padding: 16px 40px; border-radius: 4px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; transition: 0.2s; }
-    .btn-white:hover { background: var(--accent); color: white; transform: translateY(-3px); }
-    .btn-white:active { transform: scale(0.96); }
-
-    /* SPLIT FOOTER DESIGN */
-    footer { background: var(--navy); color: white; padding: 60px 20px 40px; font-size: 15px; font-family: 'Inter', sans-serif; margin-top: 80px;}
-    .footer-wrap { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 30px; }
-    .footer-logo { height: 60px; width: auto; filter: brightness(0) invert(1); }
-    .footer-address p { margin: 0; line-height: 1.8; color: rgba(255,255,255,0.8); }
-    .footer-address a { color: white; text-decoration: none; font-weight: 600; transition: color 0.2s; }
-    .footer-address a:hover { color: var(--accent); }
-    
-    .footer-bottom { 
-      width: 100%; max-width: 1100px; margin: 40px auto 0; padding-top: 30px; 
-      border-top: 1px solid rgba(255,255,255,0.1); 
-      font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; text-align: center;
-    }
-
-    @media (min-width: 900px) {
-      .desktop-nav { display: block; }
-      .hamburger { display: none; }
-      .grid-3 { flex-direction: row; }
-      .service-card { flex: 1; }
-      .value-pillar { flex: 1; }
-      .about-spread { flex-direction: row; gap: 80px; }
-      .boys-photo { max-width: 45%; }
-      /* Desktop Split Footer */
-      .footer-wrap { flex-direction: row; justify-content: space-between; text-align: left; align-items: flex-end; }
-      .footer-logo { height: 100px; } /* Larger on laptop */
-      .footer-address { text-align: right; }
-      .footer-bottom { text-align: left; }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="nav-container">
-      <a href="/" style="position: relative; z-index: 2100;"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
-      <nav class="desktop-nav">
-        <a href="/">Home</a>
-        <a href="/families.html">Personal</a>
-        <a href="/business.html">Business</a>
-        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
-        <a href="/quote.html" class="btn-quote">Get a Quote</a>
-      </nav>
-      <div class="hamburger" id="hamburgerBtn" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-      </div>
+    <div class="stack">
+      <a class="btn primary" href="tel:4146981729">Call 414.698.1729</a>
+      <a class="btn secondary" href="mailto:adonohoo@unisource-ins.com">Email Andy</a>
+      <a class="btn secondary" href="/quote.html">Request a Quote</a>
     </div>
-    <nav class="nav-menu" id="mobileNav">
-        <a href="/">Home</a>
-        <a href="/families.html">Personal</a>
-        <a href="/business.html">Business</a>
-        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
-        <a href="/quote.html">Get a Quote</a>
-    </nav>
-  </header>
 
-  <div class="wrap">
-    <div class="hero reveal">
-      <div class="scan-welcome">
-        <img src="andy.jpg" class="mini-profile" alt="Andy Donohoo">
-        <span>Hi, I'm Andy. Let's connect:</span>
-        <div class="mini-actions">
-            <a href="contact.vcf" class="mini-btn" download>Save Info</a>
-            <a href="quote.html" class="mini-btn secondary">Quote</a>
-        </div>
-      </div>
-
-      <h1>From day one<br>to claim day.</h1>
-      <p class="tagline">Helping Wisconsin families and business owners get the right coverage without the runaround.</p>
+    <div class="grid">
+      <a class="btn secondary" href="/families.html">Personal Insurance</a>
+      <a class="btn secondary" href="/business.html">Business Insurance</a>
+      <a class="btn secondary" href="/life.html">Life & Health</a>
+      <a class="btn secondary" href="/Medicare.html">Medicare Planning</a>
     </div>
-  </div>
 
-  <section class="section bg-paper">
-    <div class="wrap">
-      <h2 class="section-title reveal">The Independent Advantage</h2>
-      <div class="grid-3">
-        <div class="value-pillar reveal" style="transition-delay: 0.1s;">
-          <i class="ph-light ph-phone"></i>
-          <h4>Direct Access</h4>
-          <p>No call centers. No automated prompts. You have my direct cell phone number for whenever you need a quick answer.</p>
-        </div>
-        <div class="value-pillar reveal" style="transition-delay: 0.2s;">
-          <i class="ph-light ph-map-pin"></i>
-          <h4>Local Expertise</h4>
-          <p>Based in Milwaukee, we understand the specific risks and market nuances of Southeastern Wisconsin.</p>
-        </div>
-        <div class="value-pillar reveal" style="transition-delay: 0.3s;">
-          <i class="ph-light ph-shield-check"></i>
-          <h4>Claims Advocacy</h4>
-          <p>I don't just sell the policy. If you have a claim, I'm in your corner to ensure the process is fair and fast.</p>
-        </div>
-      </div>
-    </div>
+    <p class="small">Donohoo & Sons Insurance · Wauwatosa, WI</p>
   </section>
-
-  <section class="section">
-    <div class="wrap">
-      <h2 class="section-title reveal">What We Protect</h2>
-      <div class="grid-3">
-        <a href="/families.html" class="service-card reveal" style="transition-delay: 0.1s;">
-          <h3>Personal</h3>
-          <p>Home, auto, and umbrella protection built around real life.</p>
-          <span class="link-text">View Protection <span class="arrow">&rarr;</span></span>
-        </a>
-        <a href="/business.html" class="service-card reveal" style="transition-delay: 0.2s;">
-          <h3>Business</h3>
-          <p>Coverage built for owners who want one dedicated advisor.</p>
-          <span class="link-text">View Commercial <span class="arrow">&rarr;</span></span>
-        </a>
-        <a href="/life.html" class="service-card reveal" style="transition-delay: 0.3s;">
-          <h3>Life <span class="clean-amp">&amp;</span> Health</h3>
-          <p>Life, Disability, & Long-Term Care planning.</p>
-          <span class="link-text">View Planning <span class="arrow">&rarr;</span></span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="about-spread reveal">
-        <div class="about-content">
-          <h2>How I Work</h2>
-          <p>I built Donohoo <span class="clean-amp">&amp;</span> Sons with my wife Katie because insurance should feel simple and personal.</p>
-          <div class="pull">"I treat your protection like my own family's. The '<span class="clean-amp">&amp;</span> Sons' reminds me why I do this every day."</div>
-          <p>I'm always available to my clients — no waiting, just a conversation.</p>
-        </div>
-        <img src="boys.jpg" class="boys-photo" alt="The Donohoo Family">
-      </div>
-
-      <div class="cta-box reveal">
-        <h2>Protect what you've built.</h2>
-        <a href="quote.html" class="btn-white">Request a Review</a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-wrap">
-      <div class="footer-left">
-        <img src="logo.png" alt="Donohoo & Sons" class="footer-logo">
-      </div>
-      <div class="footer-address">
-        <p>
-          10425 W North Ave. Suite 226<br>
-          Wauwatosa, WI 53226<br>
-          <a href="tel:4146981729">414.698.1729</a>
-        </p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      Independent Insurance Advisor
-    </div>
-  </footer>
-
-  <script>
-    function toggleMenu() {
-      document.getElementById('mobileNav').classList.toggle('active');
-      document.getElementById('hamburgerBtn').classList.toggle('active');
-      document.body.classList.toggle('nav-open');
-    }
-
-    window.addEventListener('load', () => { document.body.classList.add('loaded'); });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { 
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible'); 
-            observer.unobserve(entry.target); 
-        }
-      });
-    }, { threshold: 0.1 }); 
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
-
-</body>
-</html>
+</main>
+</body></html>
