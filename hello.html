@@ -14,7 +14,7 @@
   <style>
     :root {
       --navy: #002244;
-      --accent: #b8860b; /* Swapped to match your main site's gold */
+      --accent: #b8860b; 
       --ink: #1f2937;
       --line: #e5e7eb;
       --bg: #f8f9fb;
@@ -45,7 +45,7 @@
       border-radius: 18px;
       padding: 26px;
       box-shadow: 0 12px 35px rgba(0,34,68,.08);
-      border-top: 4px solid var(--accent); /* Added the top border to match your coverage cards */
+      border-top: 4px solid var(--accent); 
     }
 
     .logo {
@@ -73,7 +73,6 @@
       color: var(--navy);
     }
 
-    /* Added your signature gold italic class */
     .hero-accent {
       color: var(--accent);
       font-style: italic;
@@ -133,6 +132,10 @@
       .grid {
         grid-template-columns: 1fr 1fr;
       }
+      /* Makes the 3rd button span both columns to look perfectly balanced */
+      .grid a:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+      }
     }
   </style>
 </head>
@@ -146,6 +149,7 @@
       <p>Thanks for scanning my card. Use any link below and I’ll personally follow up.</p>
 
       <div class="stack">
+        <a class="btn primary" href="andy-donohoo.vcf" download>Save to Contacts</a>
         <a class="btn primary" href="tel:4146981729">Call 414.698.1729</a>
         <a class="btn secondary" href="mailto:adonohoo@unisource-ins.com">Email Andy</a>
         <a class="btn secondary" href="/quote.html">Request a Quote</a>
@@ -155,7 +159,6 @@
         <a class="btn secondary" href="/families.html">Personal Insurance</a>
         <a class="btn secondary" href="/business.html">Business Insurance</a>
         <a class="btn secondary" href="/life.html">Life & Health</a>
-        <a class="btn secondary" href="/medicare.html">Medicare Planning</a>
       </div>
 
       <p class="small">Donohoo & Sons Insurance · Wauwatosa, WI</p>
