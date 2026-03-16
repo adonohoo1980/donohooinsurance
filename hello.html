@@ -9,18 +9,17 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --navy: #0f2744;
-      --gold: #b8860b;
+      --navy: #002244;
+      --accent: #b8860b; /* Swapped to match your main site's gold */
       --ink: #1f2937;
       --line: #e5e7eb;
       --bg: #f8f9fb;
     }
 
-    /* THE FIX: Forces padding to stay inside the max-width, fixing mobile scrolling */
     * { 
       box-sizing: border-box; 
       -webkit-tap-highlight-color: transparent; 
@@ -45,10 +44,10 @@
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 26px;
-      box-shadow: 0 12px 35px rgba(15,39,68,.08);
+      box-shadow: 0 12px 35px rgba(0,34,68,.08);
+      border-top: 4px solid var(--accent); /* Added the top border to match your coverage cards */
     }
 
-    /* THE FIX: Ensures the logo shrinks gracefully on very narrow screens */
     .logo {
       width: 100%;
       max-width: 210px;
@@ -71,6 +70,13 @@
       margin: 10px 0 6px;
       text-align: center;
       font-family: 'Playfair Display', serif;
+      color: var(--navy);
+    }
+
+    /* Added your signature gold italic class */
+    .hero-accent {
+      color: var(--accent);
+      font-style: italic;
     }
 
     p {
@@ -95,7 +101,6 @@
       transition: transform 0.1s ease;
     }
 
-    /* Bonus: Adds a tactile 'press' effect when tapped on mobile */
     .btn:active {
       transform: scale(0.98);
     }
@@ -124,7 +129,6 @@
       margin-top: 24px;
     }
 
-    /* Bonus: Snaps the bottom links into 2 columns if the phone is wide enough */
     @media (min-width: 400px) {
       .grid {
         grid-template-columns: 1fr 1fr;
@@ -138,7 +142,7 @@
       <img src="logo.png" alt="Donohoo & Sons" class="logo">
       <img src="andy-headshot.JPG" alt="Andy Donohoo" class="headshot">
       
-      <h1>Hi, I’m Andy.</h1>
+      <h1>Hi, I’m <span class="hero-accent">Andy.</span></h1>
       <p>Thanks for scanning my card. Use any link below and I’ll personally follow up.</p>
 
       <div class="stack">
@@ -151,7 +155,7 @@
         <a class="btn secondary" href="/families.html">Personal Insurance</a>
         <a class="btn secondary" href="/business.html">Business Insurance</a>
         <a class="btn secondary" href="/life.html">Life & Health</a>
-        <a class="btn secondary" href="/Medicare.html">Medicare Planning</a>
+        <a class="btn secondary" href="/medicare.html">Medicare Planning</a>
       </div>
 
       <p class="small">Donohoo & Sons Insurance · Wauwatosa, WI</p>
