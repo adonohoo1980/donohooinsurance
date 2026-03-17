@@ -132,7 +132,6 @@
       .grid {
         grid-template-columns: 1fr 1fr;
       }
-      /* Makes the 3rd button span both columns to look perfectly balanced */
       .grid a:last-child:nth-child(odd) {
         grid-column: 1 / -1;
       }
@@ -149,7 +148,8 @@
       <p>Thanks for scanning my card. Use any link below and I’ll personally follow up.</p>
 
       <div class="stack">
-        <a class="btn primary" href="andy-donohoo.vcf" download>Save to Contacts</a>
+        <a class="btn primary" href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AN%3ADonohoo%3BAndy%3B%3B%3B%0AFN%3AAndy%20Donohoo%0AORG%3ADonohoo%20%26%20Sons%20Insurance%0ATITLE%3APresident%0ATEL%3BTYPE%3DWORK%2CVOICE%3A414-698-1729%0AEMAIL%3BTYPE%3DPREF%2CINTERNET%3Aadonohoo%40unisource-ins.com%0AURL%3Ahttps%3A%2F%2Fwww.donohooinsurance.com%0AEND%3AVCARD" download="Andy-Donohoo.vcf">Save to Contacts</a>
+        
         <a class="btn primary" href="tel:4146981729">Call 414.698.1729</a>
         <a class="btn secondary" href="mailto:adonohoo@unisource-ins.com">Email Andy</a>
         <a class="btn secondary" href="/quote.html">Request a Quote</a>
