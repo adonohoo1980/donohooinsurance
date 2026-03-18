@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Why Minors Shouldn't Be Direct Beneficiaries | Donohoo & Sons</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    :root {
+      --bg: #fdfdfb;
+      --ink: #1a202c;
+      --navy: #002244; 
+      --accent: #b8860b;
+      --line: #e2e8f0;
+      --paper: #f4f7fa;
+      --muted: #5f6b7a;
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      font-family: 'Lora', serif; 
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 18px; 
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden; 
+      position: relative;
+    }
+    
+    body.loaded { opacity: 1; }
+    body.nav-open { overflow: hidden; } 
+
+    header, .btn-quote, .btn-white, .nav-menu a, .clean-amp, .article-category { font-family: 'Inter', sans-serif; }
+
+    /* HEADER */
+    header { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 1000; padding: 12px 0; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .logo-img { height: 60px; width: auto; position: relative; z-index: 2100; }
+
+    /* DESKTOP NAV */
+    .desktop-nav { display: none; }
+    .desktop-nav a { margin-left: 28px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+    .desktop-nav a:hover { color: var(--accent); }
+    .desktop-nav .active-link { color: var(--navy); border-bottom: 1px solid var(--accent); padding-bottom: 4px; }
+    .btn-quote { background: var(--navy); color: white !important; padding: 12px 24px; border-radius: 4px; transition: background 0.3s; font-size: 13px; letter-spacing: 1px; }
+    .btn-quote:hover { background: var(--accent); }
+    .btn-quote:active { transform: scale(0.96); } 
+
+    /* MOBILE HAMBURGER */
+    .hamburger { cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; z-index: 2100; position: relative; }
+    .hamburger span { display: block; width: 24px; height: 2px; background-color: var(--navy); transition: 0.4s; position: absolute; }
+    .hamburger span:nth-child(1) { transform: translateY(-5px); }
+    .hamburger span:nth-child(2) { transform: translateY(5px); }
+    .hamburger.active span { background-color: white; } 
+    .hamburger.active span:nth-child(1) { transform: translateY(0) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { transform: translateY(0) rotate(-45deg); }
+
+    /* ELEGANT MOBILE MENU */
+    .nav-menu { 
+      position: fixed; top: 0; left: 0; width: 100%; height: 0; 
+      background: var(--navy); z-index: 2000; overflow: hidden; 
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-menu.active { height: 100vh; }
+    .nav-menu a { 
+      color: white; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 36px; 
+      margin: 12px 0; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; text-transform: none; letter-spacing: 0;
+    }
+    .nav-menu a:hover { color: var(--accent); }
+    .nav-menu.active a:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(6) { 
+      transition-delay: 0.6s; opacity: 1; transform: translateY(0); 
+      color: var(--accent); font-family: 'Inter', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; 
+      margin-top: 30px; border: 1px solid var(--accent); padding: 14px 35px; border-radius: 4px;
+    }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ARTICLE HERO */
+    .article-hero {
+      background: var(--navy); 
+      color: white; 
+      padding: 100px 20px 80px; 
+      text-align: center;
+    }
+    
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+
+    .article-category { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 20px; display: inline-block; animation: fadeUp 1s ease-out forwards; opacity: 0; transform: translateY(20px); }
+    
+    .article-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(34px, 6vw, 54px); margin: 0; line-height: 1.2; color: white; letter-spacing: -0.5px; animation: fadeUp 1s ease-out 0.2s forwards; opacity: 0; transform: translateY(20px); }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    /* ARTICLE CONTENT */
+    .article-content { padding: 60px 0 80px; font-size: 20px; color: var(--ink); }
+    
+    .article-content p { margin-bottom: 30px; }
+    
+    .article-content h2 { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--navy); margin: 50px 0 20px; line-height: 1.3; }
+    
+    .article-content h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); margin: 40px 0 15px; }
+
+    .pull-quote { font-family: 'Playfair Display', serif; font-size: 28px; line-height: 1.4; color: var(--navy); font-style: italic; margin: 50px 0; padding-left: 30px; border-left: 4px solid var(--accent); }
+
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; margin-bottom: 30px; transition: color 0.2s; }
+    .back-link i { font-size: 18px; transition: transform 0.3s ease; }
+    .back-link:hover { color: var(--navy); }
+    .back-link:hover i { transform: translateX(-4px); }
+
+    /* CTA BOX */
+    .cta-box { background: var(--paper); border: 1px solid var(--line); border-top: 4px solid var(--accent); padding: 60px 30px; border-radius: 12px; text-align: center; margin: 40px 0 80px; }
+    .cta-box h2 { font-family: 'Playfair Display', serif; font-size: 36px; margin: 0 0 15px; color: var(--navy); }
+    .cta-box p { color: var(--muted); max-width: 600px; margin: 0 auto 30px; font-size: 18px; }
+    .btn-solid { display: inline-block; background: var(--navy); color: #fff; padding: 16px 40px; border-radius: 4px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; font-family: 'Inter', sans-serif; transition: 0.2s; }
+    .btn-solid:hover { background: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,34,68,0.1); }
+    .btn-solid:active { transform: scale(0.96); }
+
+    /* SPLIT FOOTER */
+    footer { background: var(--navy); color: white; padding: 60px 20px 40px; font-size: 15px; font-family: 'Inter', sans-serif; }
+    .footer-wrap { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 30px; }
+    .footer-logo { height: 60px; width: auto; filter: brightness(0) invert(1); }
+    .footer-address p { margin: 0; line-height: 1.8; color: rgba(255,255,255,0.8); }
+    .footer-address a { color: white; text-decoration: none; font-weight: 600; transition: color 0.2s; }
+    .footer-address a:hover { color: var(--accent); }
+    .email-link { display: inline-block; margin-top: 5px; color: var(--accent) !important; }
+    .email-link:hover { color: white !important; }
+    .footer-bottom { width: 100%; max-width: 1100px; margin: 40px auto 0; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; text-align: center; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .article-hero { padding: 80px 20px 60px; }
+      .article-content { font-size: 18px; padding: 40px 0 60px; }
+      .pull-quote { font-size: 24px; padding-left: 20px; }
+      .cta-box { padding: 40px 20px; }
+    }
+    @media (min-width: 900px) {
+      .desktop-nav { display: block; }
+      .hamburger { display: none; }
+      .article-hero { padding: 140px 20px 100px; }
+      
+      /* Desktop Split Footer */
+      .footer-wrap { flex-direction: row; justify-content: space-between; text-align: left; align-items: flex-end; }
+      .footer-logo { height: 100px; } 
+      .footer-address { text-align: right; }
+      .footer-bottom { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="/" style="display: inline-flex; position: relative; z-index: 2100;"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
+      <nav class="desktop-nav">
+        <a href="/">Home</a>
+        <a href="/families.html">Personal</a>
+        <a href="/business.html">Business</a>
+        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
+        <a href="/insights.html" class="active-link">Insights</a>
+        <a href="/quote.html" class="btn-quote">Get a Quote</a>
+      </nav>
+      <div class="hamburger" id="hamburgerBtn" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <nav class="nav-menu" id="mobileNav">
+        <a href="/">Home</a>
+        <a href="/families.html">Personal</a>
+        <a href="/business.html">Business</a>
+        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
+        <a href="/insights.html">Insights</a>
+        <a href="/quote.html">Get a Quote</a>
+    </nav>
+  </header>
+
+  <section class="article-hero">
+    <div class="article-wrap">
+      <span class="article-category">Life & Health</span>
+      <h1>The $500k Blank Check: Why Minors Shouldn't Be Direct Beneficiaries</h1>
+    </div>
+  </section>
+
+  <section class="article-content">
+    <div class="article-wrap">
+      
+      <a href="/insights.html" class="back-link"><i class="ph-bold ph-arrow-left"></i> Back to Insights</a>
+
+      <p>You did the exact right thing: You purchased a life insurance policy to ensure that if the worst happens, your kids are financially protected. You filled out the paperwork, wrote their names on the beneficiary line, and crossed it off your to-do list.</p>
+
+      <p>But by putting their names directly on that line, you may have accidentally created a massive financial and legal headache for the people left behind.</p>
+
+      <h2>The Hidden Danger of Minor Beneficiaries</h2>
+
+      <p>Here is the reality of the insurance industry: <strong>Life insurance companies cannot legally pay death benefit proceeds directly to a minor.</strong></p>
+
+      <p>If you pass away and your 10-year-old child is listed as the direct beneficiary, the insurance company will hold the check. Because minors cannot legally own large amounts of property or manage finances, the state courts are forced to step in.</p>
+
+      <div class="pull-quote">
+        "Life insurance isn't just about picking a number; it's about making sure the money actually protects your family the way you intend."
+      </div>
+
+      <p>The probate court will appoint a legal guardian of the estate (even if your spouse is still alive and is the guardian of the <em>person</em>). The court will manage those funds, require annual accounting reports, and charge legal and administrative fees every step of the way until the child reaches the age of majority.</p>
+
+      <h2>The 18-Year-Old Blank Check</h2>
+
+      <p>The court supervision is frustrating, but it isn't the biggest risk. The real danger happens the day your child turns 18 (or 21, depending on your state's laws).</p>
+
+      <p>On that birthday, the court's job is done. By law, they must hand the entire remaining balance of your life insurance policy directly over to your child.</p>
+
+      <p>Imagine a $500,000, $750,000, or $1,000,000 lump sum deposited directly into a high school senior's checking account. No restrictions, no rules, no oversight. Even the most responsible 18-year-old is rarely equipped to manage half a million dollars meant to last a lifetime.</p>
+
+      <h2>How to Fix It</h2>
+
+      <p>The good news is that this is entirely preventable with the right planning. You need a combination of the right insurance policy and the right legal structure.</p>
+
+      <p>Instead of naming your minor children directly, most experts recommend naming a <strong>Trust</strong> as the beneficiary. By doing this, you maintain complete control from beyond the grave. You get to dictate exactly <em>how</em> and <em>when</em> the money is distributed.</p>
+
+      <p>For example, you can stipulate that the funds be used for health, education, and living expenses while they are young. Then, you can release the remaining principal in stages—perhaps 25% at age 25, 25% at age 30, and the remainder at age 35.</p>
+
+      <h2>Don't Just Set It and Forget It</h2>
+
+      <p>As an independent insurance advisor, I see this mistake constantly when reviewing old policies. If you haven't reviewed your beneficiary designations since your children were born, now is the time.</p>
+
+      <p>I work closely with my clients to ensure the coverage we put in place actually executes their vision for their family. We make sure the policy matches the plan.</p>
+
+      <div class="cta-box reveal">
+        <h2>Are your beneficiaries structured correctly?</h2>
+        <p>Don't leave your family's financial future up to the state courts. Let's do a quick review of your current policies to ensure your protection works the way you intend it to.</p>
+        <a href="/quote.html" class="btn-solid">Request a Review</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-wrap">
+      <div class="footer-left">
+        <img src="logo.png" alt="Donohoo & Sons" class="footer-logo">
+      </div>
+      <div class="footer-address">
+        <p>
+          10425 W North Ave. Suite 226<br>
+          Wauwatosa, WI 53226<br>
+          <a href="tel:4146981729">414.698.1729</a><br>
+          <a href="mailto:adonohoo@unisource-ins.com" class="email-link">adonohoo@unisource-ins.com</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Independent Insurance Advisor
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileNav').classList.toggle('active');
+      document.getElementById('hamburgerBtn').classList.toggle('active');
+      document.body.classList.toggle('nav-open');
+    }
+
+    window.addEventListener('load', () => { document.body.classList.add('loaded'); });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { 
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible'); 
+            observer.unobserve(entry.target); 
+        }
+      });
+    }, { threshold: 0.1 }); 
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
