@@ -41,7 +41,7 @@
     body.loaded { opacity: 1; }
     body.nav-open { overflow: hidden; } 
 
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 15px; text-align: center; } /* Reduced side padding for mobile breathing room */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 15px; text-align: center; }
 
     header, .btn-quote, .btn-white, .nav-menu a, .clean-amp, .accordion-header { font-family: 'Inter', sans-serif; }
 
@@ -143,7 +143,6 @@
     .section { padding-top: 80px; padding-bottom: 80px; }
     .bg-paper { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     
-    /* MOBILE FIX: Minmax ensures grid never blows out screen width, reduced gap */
     .grid-3 { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; text-align: left; }
     .section-title { text-align: center; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 50px; font-size: 34px; }
 
@@ -157,7 +156,7 @@
     .coverage-card {
       background: white; padding: 30px 20px; border: 1px solid var(--line); border-radius: 8px; border-top: 4px solid var(--accent);
       box-shadow: 0 10px 30px rgba(0,34,68,0.02); text-align: left; transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
-      width: 100%; box-sizing: border-box; /* Forces box to respect boundaries */
+      width: 100%; box-sizing: border-box;
     }
     .coverage-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,34,68,0.06); }
     .coverage-card:active { transform: scale(0.98); box-shadow: 0 2px 10px rgba(0,0,0,0.04); transition: all 0.1s; }
@@ -211,7 +210,7 @@
       .hamburger { display: none; }
       .grid-3 { grid-template-columns: repeat(3, 1fr); gap: 40px; }
       .hero { padding: 220px 0 180px; }
-      .hero-video { object-position: center 43%; }
+      .hero-video { object-position: center 25%; }
       .section-title { font-size: 40px; margin-bottom: 60px; }
       
       /* Desktop Split Footer */
@@ -319,7 +318,7 @@
   <div class="wrap audit-wrap">
     <div class="audit-box reveal">
       <h2>The 5-Minute Shop Audit</h2>
-      <p>If you can't confidently answer "Yes" to these three questions, your current policy likely has gaps.</p>
+      <p>Take a quick look at these three essential questions to ensure your shop has the comprehensive protection it deserves.</p>
       
       <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
