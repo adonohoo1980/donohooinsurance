@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Expert Insights | Donohoo & Sons</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    :root {
+      --bg: #fdfdfb;
+      --ink: #1a202c;
+      --navy: #002244; 
+      --accent: #b8860b;
+      --line: #e2e8f0;
+      --paper: #f4f7fa;
+      --muted: #5f6b7a;
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      font-family: 'Lora', serif; 
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 18px; 
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden; 
+      position: relative;
+    }
+    
+    body.loaded { opacity: 1; }
+    body.nav-open { overflow: hidden; } 
+
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 15px; text-align: center; }
+
+    header, .btn-quote, .btn-white, .nav-menu a, .clean-amp { font-family: 'Inter', sans-serif; }
+
+    /* HEADER */
+    header { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 1000; padding: 12px 0; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .logo-img { height: 60px; width: auto; position: relative; z-index: 2100; }
+
+    /* DESKTOP NAV */
+    .desktop-nav { display: none; }
+    .desktop-nav a { margin-left: 28px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+    .desktop-nav a:hover { color: var(--accent); }
+    .desktop-nav .active-link { color: var(--navy); border-bottom: 1px solid var(--accent); padding-bottom: 4px; }
+    .btn-quote { background: var(--navy); color: white !important; padding: 12px 24px; border-radius: 4px; transition: background 0.3s; font-size: 13px; letter-spacing: 1px; }
+    .btn-quote:hover { background: var(--accent); }
+    .btn-quote:active { transform: scale(0.96); } 
+
+    /* MOBILE HAMBURGER */
+    .hamburger { cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; z-index: 2100; position: relative; }
+    .hamburger span { display: block; width: 24px; height: 2px; background-color: var(--navy); transition: 0.4s; position: absolute; }
+    .hamburger span:nth-child(1) { transform: translateY(-5px); }
+    .hamburger span:nth-child(2) { transform: translateY(5px); }
+    .hamburger.active span { background-color: white; } 
+    .hamburger.active span:nth-child(1) { transform: translateY(0) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { transform: translateY(0) rotate(-45deg); }
+
+    /* ELEGANT MOBILE MENU */
+    .nav-menu { 
+      position: fixed; top: 0; left: 0; width: 100%; height: 0; 
+      background: var(--navy); z-index: 2000; overflow: hidden; 
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-menu.active { height: 100vh; }
+    .nav-menu a { 
+      color: white; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 36px; 
+      margin: 12px 0; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; text-transform: none; letter-spacing: 0;
+    }
+    .nav-menu a:hover { color: var(--accent); }
+    
+    /* Reveal delays for mobile nav links */
+    .nav-menu.active a:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(4) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(5) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(6) { 
+      transition-delay: 0.4s; opacity: 1; transform: translateY(0); 
+      color: var(--accent); font-family: 'Inter', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; 
+      margin-top: 30px; border: 1px solid var(--accent); padding: 14px 35px; border-radius: 4px;
+    }
+
+    /* SCROLL REVEAL ANIMATIONS */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* SHORT HERO FOR INSIGHTS PAGE */
+    .hero-short {
+      background: var(--navy); 
+      color: white; 
+      padding: 120px 20px 100px; 
+      text-align: center;
+    }
+
+    .hero-short h1 { font-family: 'Playfair Display', serif; font-size: clamp(38px, 8vw, 68px); margin: 0 0 10px; line-height: 1.1; color: white; letter-spacing: -0.5px; animation: fadeUp 1s ease-out forwards; opacity: 0; transform: translateY(20px); }
+    .hero-short p { font-size: 22px; margin: 0 auto; color: #cbd5e0; max-width: 700px; line-height: 1.6; font-style: italic; animation: fadeUp 1s ease-out 0.2s forwards; opacity: 0; transform: translateY(20px); }
+    .hero-accent { color: var(--accent); font-style: italic; display: inline-block; }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    /* ARTICLE GRID & CARDS */
+    .section { padding-top: 80px; padding-bottom: 80px; background: var(--bg); }
+    
+    .article-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; text-align: left; }
+    
+    .article-card {
+      display: flex; flex-direction: column;
+      background: white; padding: 40px 30px; border: 1px solid var(--line); border-radius: 8px; border-top: 4px solid var(--navy);
+      box-shadow: 0 10px 30px rgba(0,34,68,0.02); text-decoration: none !important; color: var(--ink) !important;
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+      width: 100%; box-sizing: border-box;
+    }
+    .article-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,34,68,0.06); border-top: 4px solid var(--accent); }
+    .article-card:active { transform: scale(0.98); box-shadow: 0 2px 10px rgba(0,0,0,0.04); transition: all 0.1s; }
+    
+    .article-category { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 15px; }
+    
+    .article-card h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); margin: 0 0 15px 0; line-height: 1.3; }
+    .article-card p { margin: 0 0 25px 0; color: var(--muted); line-height: 1.6; font-size: 16px; flex-grow: 1; }
+    
+    .read-more { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: var(--navy); display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .read-more i { font-size: 18px; transition: transform 0.3s ease; }
+    .article-card:hover .read-more { color: var(--accent); }
+    .article-card:hover .read-more i { transform: translateX(6px); }
+
+    /* CTA BOX */
+    .cta-wrap { max-width: 1100px; margin: 0 auto 80px; padding: 0 15px; }
+    .cta-box { background: var(--navy); color: #fff; padding: 80px 20px; border-radius: 12px; text-align: center; box-shadow: 0 20px 40px rgba(0,34,68,0.1); }
+    .cta-box h2 { font-family: 'Playfair Display', serif; font-size: 42px; margin: 0 0 20px; color: white;}
+    .cta-box p { color: #cbd5e0; max-width: 600px; margin: 0 auto 40px; font-size: 20px; font-style: italic; }
+    .btn-white { display: inline-block; background: #fff; color: var(--navy); padding: 16px 40px; border-radius: 4px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; transition: 0.2s; }
+    .btn-white:hover { background: var(--accent); color: white; transform: translateY(-3px); }
+    .btn-white:active { transform: scale(0.96); }
+
+    /* SPLIT FOOTER */
+    footer { background: var(--navy); color: white; padding: 60px 20px 40px; font-size: 15px; font-family: 'Inter', sans-serif; }
+    .footer-wrap { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 30px; }
+    .footer-logo { height: 60px; width: auto; filter: brightness(0) invert(1); }
+    .footer-address p { margin: 0; line-height: 1.8; color: rgba(255,255,255,0.8); }
+    .footer-address a { color: white; text-decoration: none; font-weight: 600; transition: color 0.2s; }
+    .footer-address a:hover { color: var(--accent); }
+    .email-link { display: inline-block; margin-top: 5px; color: var(--accent) !important; }
+    .email-link:hover { color: white !important; }
+    .footer-bottom { width: 100%; max-width: 1100px; margin: 40px auto 0; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; text-align: center; }
+
+    /* MOBILE ADJUSTMENTS */
+    @media (max-width: 768px) {
+      .hero-short { padding: 100px 20px 80px; }
+      .section { padding-top: 50px; padding-bottom: 50px; }
+      .article-card { padding: 30px 20px; }
+      .article-card h3 { font-size: 22px; }
+      .cta-box { padding: 60px 20px; }
+    }
+
+    @media (min-width: 768px) {
+      .article-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 900px) {
+      .desktop-nav { display: block; }
+      .hamburger { display: none; }
+      .article-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; }
+      .hero-short { padding: 160px 20px 120px; }
+      
+      /* Desktop Split Footer */
+      .footer-wrap { flex-direction: row; justify-content: space-between; text-align: left; align-items: flex-end; }
+      .footer-logo { height: 100px; } 
+      .footer-address { text-align: right; }
+      .footer-bottom { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="/" style="display: inline-flex; position: relative; z-index: 2100;"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
+      <nav class="desktop-nav">
+        <a href="/">Home</a>
+        <a href="/families.html">Personal</a>
+        <a href="/business.html">Business</a>
+        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
+        <a href="/insights.html" class="active-link">Insights</a>
+        <a href="/quote.html" class="btn-quote">Get a Quote</a>
+      </nav>
+      <div class="hamburger" id="hamburgerBtn" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <nav class="nav-menu" id="mobileNav">
+        <a href="/">Home</a>
+        <a href="/families.html">Personal</a>
+        <a href="/business.html">Business</a>
+        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
+        <a href="/insights.html">Insights</a>
+        <a href="/quote.html">Get a Quote</a>
+    </nav>
+  </header>
+
+  <section class="hero-short">
+    <div class="wrap hero-text">
+      <h1>Expert <span class="hero-accent">Insights.</span></h1>
+      <p>Clear, straightforward guides to protecting your family and business.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      
+      <div class="article-grid">
+        
+        <a href="/article-life-minors.html" class="article-card reveal" style="transition-delay: 0.1s;">
+          <div class="article-category">Life & Health</div>
+          <h3>The $500k Blank Check: Why Minors Shouldn't Be Direct Beneficiaries</h3>
+          <p>You bought life insurance to protect your kids. But if you don't structure it correctly, the state courts will hand an 18-year-old a blank check.</p>
+          <span class="read-more">Read Guide <i class="ph-bold ph-arrow-right"></i></span>
+        </a>
+
+        <a href="#" class="article-card reveal" style="transition-delay: 0.2s;">
+          <div class="article-category">Business</div>
+          <h3>Garagekeepers vs. Garage Liability: Do You Have a Gap?</h3>
+          <p>A customer's car gets stolen off your lot overnight. Who pays for it? The answer depends entirely on two words buried in your policy.</p>
+          <span class="read-more">Read Guide <i class="ph-bold ph-arrow-right"></i></span>
+        </a>
+
+        <a href="#" class="article-card reveal" style="transition-delay: 0.3s;">
+          <div class="article-category">Personal</div>
+          <h3>Why Your Auto Limits Dictate Your Umbrella Policy</h3>
+          <p>An umbrella policy is the cheapest peace of mind you can buy, but it won't trigger if your underlying auto insurance limits are too low.</p>
+          <span class="read-more">Read Guide <i class="ph-bold ph-arrow-right"></i></span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-wrap">
+    <div class="cta-box reveal">
+      <h2>Have questions about your coverage?</h2>
+      <p>Let's take a look at your current policies and make sure your family and business are structured correctly.</p>
+      <a href="quote.html" class="btn-white">Request a Review</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-wrap">
+      <div class="footer-left">
+        <img src="logo.png" alt="Donohoo & Sons" class="footer-logo">
+      </div>
+      <div class="footer-address">
+        <p>
+          10425 W North Ave. Suite 226<br>
+          Wauwatosa, WI 53226<br>
+          <a href="tel:4146981729">414.698.1729</a><br>
+          <a href="mailto:adonohoo@unisource-ins.com" class="email-link">adonohoo@unisource-ins.com</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Independent Insurance Advisor
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileNav').classList.toggle('active');
+      document.getElementById('hamburgerBtn').classList.toggle('active');
+      document.body.classList.toggle('nav-open');
+    }
+
+    window.addEventListener('load', () => { document.body.classList.add('loaded'); });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { 
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible'); 
+            observer.unobserve(entry.target); 
+        }
+      });
+    }, { threshold: 0.1 }); 
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
