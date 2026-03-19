@@ -54,40 +54,6 @@
     .desktop-nav a:hover { color: var(--accent); }
     .desktop-nav .active-link { color: var(--navy); border-bottom: 1px solid var(--accent); padding-bottom: 4px; }
     .btn-quote { background: var(--navy); color: white !important; padding: 12px 24px; border-radius: 4px; transition: background 0.3s; font-size: 13px; letter-spacing: 1px; }
-    .btn-quote:hover { background: var(--accent); }
-
-    /* MOBILE HAMBURGER */
-    .hamburger { cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; z-index: 2100; position: relative; }
-    .hamburger span { display: block; width: 24px; height: 2px; background-color: var(--navy); transition: 0.4s; position: absolute; }
-    .hamburger span:nth-child(1) { transform: translateY(-5px); }
-    .hamburger span:nth-child(2) { transform: translateY(5px); }
-    .hamburger.active span { background-color: white; } 
-    .hamburger.active span:nth-child(1) { transform: translateY(0) rotate(45deg); }
-    .hamburger.active span:nth-child(2) { transform: translateY(0) rotate(-45deg); }
-
-    /* MOBILE MENU */
-    .nav-menu { 
-      position: fixed; top: 0; left: 0; width: 100%; height: 0; 
-      background: var(--navy); z-index: 2000; overflow: hidden; 
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .nav-menu.active { height: 100vh; }
-    .nav-menu a { color: white; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 36px; margin: 12px 0; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; }
-    .nav-menu.active a:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(6) { 
-      transition-delay: 0.6s; opacity: 1; transform: translateY(0); 
-      color: var(--accent); font-family: 'Inter', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; 
-      margin-top: 30px; border: 1px solid var(--accent); padding: 14px 35px; border-radius: 4px;
-    }
-
-    /* SCROLL REVEAL */
-    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* HERO */
     .hero { position: relative; overflow: hidden; background: var(--navy); color: white; padding: 160px 20px; text-align: center; }
@@ -111,50 +77,43 @@
     .expertise-block h3 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--navy); margin: 0 0 15px 0; }
     .expertise-block p { color: var(--muted); margin: 0; }
 
-    /* SPECIALIZED SECTION (NEW) */
-    .specialty-wrap { padding: 60px 0 100px; background: #fff; }
-    .specialty-card { 
-      max-width: 800px; margin: 0 auto; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; 
-      padding: 50px 40px; display: flex; flex-direction: column; align-items: center; text-align: center;
-      transition: transform 0.4s ease, box-shadow 0.4s ease; text-decoration: none; color: inherit;
-    }
-    .specialty-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,34,68,0.08); }
-    .specialty-card i { font-size: 54px; color: var(--accent); margin-bottom: 25px; }
-    .specialty-card h4 { text-transform: uppercase; letter-spacing: 2px; font-size: 14px; font-weight: 600; color: var(--accent); margin-bottom: 10px; }
-    .specialty-card h3 { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--navy); margin: 0 0 15px 0; }
-    .specialty-card p { color: var(--muted); max-width: 600px; margin-bottom: 30px; font-size: 19px; }
-
     /* COVERAGE CARDS */
     .coverage-card {
-      background: white; padding: 45px 35px; border: 1px solid var(--line); border-radius: 8px; border-top: 4px solid var(--accent);
+      background: white; padding: 45px 35px; border: 1px solid var(--line); border-radius: 8px; border-top: 4px solid var(--navy);
       box-shadow: 0 10px 30px rgba(0,34,68,0.02); text-align: left; transition: transform 0.4s ease;
     }
-    .coverage-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,34,68,0.06); }
+    .coverage-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,34,68,0.06); border-top: 4px solid var(--accent); }
     .coverage-card h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); margin: 0 0 15px 0; display: flex; align-items: center; gap: 14px; }
     .coverage-card h3 i { color: var(--accent); font-size: 34px; }
     .coverage-card p { margin: 0; color: var(--muted); }
 
+    /* SPECIALIZED SECTION (MOVED DOWN) */
+    .specialty-wrap { padding: 100px 0; background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .specialty-card { 
+      max-width: 850px; margin: 0 auto; background: #fff; border: 1px solid var(--line); border-radius: 12px; 
+      padding: 60px 40px; display: flex; flex-direction: column; align-items: center; text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease; text-decoration: none; color: inherit;
+      box-shadow: 0 10px 30px rgba(0,34,68,0.03);
+    }
+    .specialty-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,34,68,0.1); }
+    .specialty-card i { font-size: 54px; color: var(--accent); margin-bottom: 25px; }
+    .specialty-card h4 { text-transform: uppercase; letter-spacing: 2px; font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 12px; }
+    .specialty-card h3 { font-family: 'Playfair Display', serif; font-size: 34px; color: var(--navy); margin: 0 0 20px 0; }
+    .specialty-card p { color: var(--muted); max-width: 650px; margin-bottom: 35px; font-size: 20px; line-height: 1.8; }
+
     /* CTA BOX */
-    .cta-box { background: var(--navy); color: #fff; padding: 100px 20px; border-radius: 12px; text-align: center; margin-bottom: 80px; }
+    .cta-box { background: var(--navy); color: #fff; padding: 100px 20px; border-radius: 12px; text-align: center; box-shadow: 0 20px 40px rgba(0,34,68,0.1); margin: 100px 0 80px; }
     .cta-box h2 { font-family: 'Playfair Display', serif; font-size: 42px; margin: 0 0 20px; color: white;}
-    .cta-box p { color: #cbd5e0; max-width: 600px; margin: 0 auto 40px; font-size: 20px; font-style: italic; }
     .btn-white { display: inline-block; background: #fff; color: var(--navy); padding: 16px 40px; border-radius: 4px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; transition: 0.2s; }
-    .btn-white:hover { background: var(--accent); color: white; transform: translateY(-3px); }
 
     /* FOOTER */
     footer { background: var(--navy); color: white; padding: 60px 20px 40px; font-size: 15px; font-family: 'Inter', sans-serif; }
     .footer-wrap { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 30px; }
-    .footer-logo { height: 60px; width: auto; filter: brightness(0) invert(1); }
-    .footer-address p { margin: 0; line-height: 1.8; color: rgba(255,255,255,0.8); }
-    .footer-address a { color: white; text-decoration: none; font-weight: 600; }
-    .footer-bottom { width: 100%; max-width: 1100px; margin: 40px auto 0; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; text-align: center; }
 
     @media (min-width: 768px) { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 900px) {
       .desktop-nav { display: block; }
-      .hamburger { display: none; }
       .grid-3 { grid-template-columns: repeat(3, 1fr); gap: 40px; }
-      .hero { padding: 220px 0 180px; }
       .footer-wrap { flex-direction: row; justify-content: space-between; text-align: left; align-items: flex-end; }
     }
   </style>
@@ -163,32 +122,20 @@
 
   <header>
     <div class="nav-container">
-      <a href="/" style="position: relative; z-index: 2100;"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
+      <a href="/"><img src="logo.png" style="height:60px;" alt="Donohoo & Sons"></a>
       <nav class="desktop-nav">
         <a href="/">Home</a>
         <a href="/families.html">Personal</a>
         <a href="/business.html" class="active-link">Business</a>
-        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
+        <a href="/life.html">Life & Health</a>
         <a href="/insights.html">Insights</a>
         <a href="/quote.html" class="btn-quote">Get a Quote</a>
       </nav>
-      <div class="hamburger" id="hamburgerBtn" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-      </div>
     </div>
-    <nav class="nav-menu" id="mobileNav">
-        <a href="/">Home</a>
-        <a href="/families.html">Personal</a>
-        <a href="/business.html">Business</a>
-        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
-        <a href="/insights.html">Insights</a>
-        <a href="/quote.html">Get a Quote</a>
-    </nav>
   </header>
 
   <section class="hero">
-    <video autoplay loop muted playsinline webkit-playsinline poster="andy.jpg" class="hero-video">
+    <video autoplay loop muted playsinline poster="andy.jpg" class="hero-video">
       <source src="andy-video.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
@@ -198,24 +145,38 @@
     </div>
   </section>
 
-  <section class="section bg-paper">
+  <section class="section">
     <div class="wrap">
       <div class="grid-3">
         <div class="expertise-block reveal">
           <i class="ph-light ph-buildings"></i>
-          <h3>Corporate Experience</h3>
-          <p>Before founding Donohoo & Sons, I spent a decade at Sentry Insurance protecting large auto dealership groups. I bring that high-level expertise and demanding standard of customer service to your business with passion and pride.</p>
+          <h3>20 Years of Experience</h3>
+          <p>Before founding Donohoo & Sons, I spent two decades at Sentry Insurance protecting large auto dealership groups and complex commercial operations. I bring that high-level expertise and demanding standard of customer service to your business with passion and pride.</p>
         </div>
         <div class="expertise-block reveal">
           <i class="ph-light ph-handshake"></i>
           <h3>Independent Access</h3>
-          <p>I don't work for a single insurance carrier—I work for you. I have direct access to multiple top-rated commercial markets to build a custom package that fits your specific risk profile.</p>
+          <p>I don't work for a single insurance carrier—I work for you. I have direct access to multiple top-rated commercial markets to build a custom package that fits your specific risk profile without compromise.</p>
         </div>
         <div class="expertise-block reveal">
           <i class="ph-light ph-user-focus"></i>
           <h3>One Point of Contact</h3>
-          <p>Your business and personal lives are intertwined. By handling both, I coordinate your coverage to ensure there are absolutely no gaps in your protection.</p>
+          <p>Your business and personal lives are intertwined. By handling both your commercial policies and your personal protection, I coordinate your coverage to ensure there are absolutely no gaps.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-paper">
+    <div class="wrap">
+      <h2 class="section-title reveal">Comprehensive Coverage</h2>
+      <div class="grid-3">
+        <div class="coverage-card reveal"><i class="ph-light ph-shield-check"></i><h3>General Liability</h3><p>The foundation of your protection. Shielding your business from third-party claims of injury or damage.</p></div>
+        <div class="coverage-card reveal"><i class="ph-light ph-storefront"></i><h3>Commercial Property</h3><p>Protecting your physical assets—from your building to your inventory and heavy equipment.</p></div>
+        <div class="coverage-card reveal"><i class="ph-light ph-truck"></i><h3>Commercial Auto</h3><p>Comprehensive liability and physical damage protection for the vehicles that keep your business moving.</p></div>
+        <div class="coverage-card reveal"><i class="ph-light ph-first-aid"></i><h3>Workers Comp</h3><p>Protecting your team and your bottom line by covering medical costs and lost wages for injuries.</p></div>
+        <div class="coverage-card reveal"><i class="ph-light ph-scales"></i><h3>EPLI</h3><p>Defense against claims of discrimination, wrongful termination, or workplace harassment.</p></div>
+        <div class="coverage-card reveal"><i class="ph-light ph-laptop"></i><h3>Cyber Liability</h3><p>Crucial coverage for modern operations. Protecting your financial assets from digital threats.</p></div>
       </div>
     </div>
   </section>
@@ -224,52 +185,32 @@
     <div class="wrap">
       <a href="/mechanic.html" class="specialty-card reveal">
         <i class="ph-light ph-wrench"></i>
-        <h4>Specialized Expertise</h4>
+        <h4>Niche Specialization</h4>
         <h3>Auto Repair & Body Shops</h3>
-        <p>With ten years of experience specifically protecting automotive operations, I understand the unique liabilities of your shop—from garagekeepers to diagnostic equipment limits. View our specialized automotive program.</p>
-        <span class="btn-solid" style="background: var(--navy); color: white; padding: 12px 24px; border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">View Shop Protection</span>
+        <p>With 20 years of experience specifically protecting automotive operations, I understand the unique liabilities of your shop—from garagekeepers to diagnostic equipment limits. View our specialized automotive program and shop audit guide.</p>
+        <span style="background: var(--navy); color: white; padding: 14px 30px; border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">View Specialized Protection</span>
       </a>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <h2 class="section-title reveal">Comprehensive Coverage</h2>
-      <div class="grid-3">
-        <div class="coverage-card reveal"><i class="ph-light ph-shield-check"></i><h3>General Liability</h3><p>Shielding your business from third-party claims of bodily injury or property damage.</p></div>
-        <div class="coverage-card reveal"><i class="ph-light ph-storefront"></i><h3>Commercial Property</h3><p>Protecting your physical assets—from your building to your inventory and equipment.</p></div>
-        <div class="coverage-card reveal"><i class="ph-light ph-truck"></i><h3>Commercial Auto</h3><p>Comprehensive liability and physical damage protection for your business fleet.</p></div>
-        <div class="coverage-card reveal"><i class="ph-light ph-first-aid"></i><h3>Workers Comp</h3><p>Covering medical costs and lost wages for work-related injuries to protect your team.</p></div>
-        <div class="coverage-card reveal"><i class="ph-light ph-scales"></i><h3>EPLI</h3><p>Defense against claims of discrimination, wrongful termination, or harassment.</p></div>
-        <div class="coverage-card reveal"><i class="ph-light ph-laptop"></i><h3>Cyber Liability</h3><p>Protecting your financial assets and customer data from digital threats.</p></div>
-      </div>
     </div>
   </section>
 
   <section class="wrap">
     <div class="cta-box reveal">
       <h2>Ready for a fresh perspective?</h2>
-      <p>Get an expert set of eyes on your current business protection. Let's see if my approach is the right fit for your company.</p>
+      <p>Get an expert set of eyes on your current business protection. Let's start a conversation.</p>
       <a href="quote.html" class="btn-white">Connect with Andy</a>
     </div>
   </section>
 
   <footer>
     <div class="footer-wrap">
-      <div class="footer-left"><img src="logo.png" alt="Donohoo & Sons" class="footer-logo"></div>
+      <div class="footer-left"><img src="logo.png" alt="Donohoo & Sons" style="height:60px; filter: brightness(0) invert(1);"></div>
       <div class="footer-address">
-        <p>10425 W North Ave. Suite 226<br>Wauwatosa, WI 53226<br><a href="tel:4146981729">414.698.1729</a></p>
+        <p>10425 W North Ave. Suite 226<br>Wauwatosa, WI 53226<br>414.698.1729</p>
       </div>
     </div>
-    <div class="footer-bottom">Independent Insurance Advisor</div>
   </footer>
 
   <script>
-    function toggleMenu() {
-      document.getElementById('mobileNav').classList.toggle('active');
-      document.getElementById('hamburgerBtn').classList.toggle('active');
-      document.body.classList.toggle('nav-open');
-    }
     window.addEventListener('load', () => { document.body.classList.add('loaded'); });
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
