@@ -121,7 +121,6 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* Focus visible ring for keyboard nav */
     a:focus-visible,
     button:focus-visible {
       outline: 2px solid var(--accent);
@@ -173,6 +172,12 @@
 
     .desktop-nav a:hover {
       color: var(--accent);
+    }
+
+    .desktop-nav .active-link {
+      color: var(--navy);
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 4px;
     }
 
     .btn-quote {
@@ -277,12 +282,12 @@
     }
 
     .nav-menu.active a:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
-
-    .nav-menu.active a:nth-child(5) {
-      transition-delay: 0.5s;
+    .nav-menu.active a:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(4) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(5) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(6) {
+      transition-delay: 0.4s;
       opacity: 1;
       transform: translateY(0);
       color: var(--accent);
@@ -308,7 +313,6 @@
       transform: translateY(0);
     }
 
-    /* Staggered reveal delays */
     .reveal:nth-child(1) { transition-delay: 0.1s; }
     .reveal:nth-child(2) { transition-delay: 0.2s; }
     .reveal:nth-child(3) { transition-delay: 0.3s; }
@@ -667,7 +671,6 @@
       text-align: center;
     }
 
-    /* Reduced motion */
     @media (prefers-reduced-motion: reduce) {
       body { transition: none; opacity: 1; }
       .reveal { opacity: 1; transform: none; transition: none; }
@@ -675,12 +678,12 @@
       .hero-video { display: none; }
     }
 
-    /* DESKTOP */
     @media (min-width: 900px) {
       .desktop-nav { display: block; }
       .hamburger { display: none; }
       .grid-3 { flex-direction: row; }
-      .service-card, .value-pillar { flex: 1; }
+      .service-card,
+      .value-pillar { flex: 1; }
       .about-spread { flex-direction: row; gap: 80px; }
       .boys-photo { max-width: 45%; }
       .hero { padding: 220px 0 180px; }
@@ -701,15 +704,16 @@
 
   <header>
     <div class="nav-container">
-      <a href="/" style="position: relative; z-index: 2100;">
+      <a href="/" style="display: inline-flex; position: relative; z-index: 2100;">
         <img src="logo.png" class="logo-img" alt="Donohoo & Sons Insurance">
       </a>
 
       <nav class="desktop-nav" aria-label="Main navigation">
-        <a href="/">Home</a>
+        <a href="/" class="active-link">Home</a>
         <a href="/families.html">Personal</a>
         <a href="/business.html">Business</a>
         <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
+        <a href="/insights.html">Insights</a>
         <a href="/quote.html" class="btn-quote">Get a Quote</a>
       </nav>
 
@@ -731,6 +735,7 @@
       <a href="/families.html">Personal</a>
       <a href="/business.html">Business</a>
       <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
+      <a href="/insights.html">Insights</a>
       <a href="/quote.html">Get a Quote</a>
     </nav>
   </header>
@@ -751,7 +756,6 @@
         <source src="hero-video.mp4" type="video/mp4">
       </video>
 
-      <!-- preload="none" — loaded on demand just before crossfade -->
       <video
         class="hero-video video-b"
         muted
@@ -838,7 +842,7 @@
 
       <div class="cta-box reveal">
         <h2>Protect what you've built.</h2>
-        <a href="quote.html" class="btn-white">Request a Review</a>
+        <a href="/quote.html" class="btn-white">Request a Review</a>
       </div>
     </div>
   </section>
@@ -865,11 +869,11 @@
   </footer>
 
   <script>
-    /* ─── Mobile nav toggle ─── */
     function toggleMenu() {
       const nav = document.getElementById('mobileNav');
       const btn = document.getElementById('hamburgerBtn');
       const isOpen = nav.classList.toggle('active');
+
       btn.classList.toggle('active', isOpen);
       btn.setAttribute('aria-expanded', isOpen);
       btn.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
@@ -877,7 +881,6 @@
       document.body.classList.toggle('nav-open', isOpen);
     }
 
-    /* Close mobile nav on outside tap */
     document.addEventListener('click', function(e) {
       const nav = document.getElementById('mobileNav');
       const btn = document.getElementById('hamburgerBtn');
@@ -886,7 +889,6 @@
       }
     });
 
-    /* Close mobile nav when a link is clicked */
     document.querySelectorAll('#mobileNav a').forEach(function(link) {
       link.addEventListener('click', function() {
         const nav = document.getElementById('mobileNav');
@@ -894,12 +896,10 @@
       });
     });
 
-    /* ─── Page load fade-in ─── */
     window.addEventListener('load', function() {
       document.body.classList.add('loaded');
     });
 
-    /* ─── Scroll reveal ─── */
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
@@ -913,8 +913,6 @@
       observer.observe(el);
     });
 
-    /* ─── Video crossfade loop ─── */
-    /* Respect reduced-motion preference — skip video entirely */
     var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (!prefersReducedMotion) {
@@ -931,14 +929,18 @@
         if (p !== undefined) p.catch(function() {});
       }
 
-      /* Load and prepare standby video on demand */
       function ensureStandbyLoaded(cb) {
-        if (standbyLoaded) { cb(); return; }
+        if (standbyLoaded) {
+          cb();
+          return;
+        }
+
         standbyVideo.addEventListener('canplay', function onCanPlay() {
           standbyVideo.removeEventListener('canplay', onCanPlay);
           standbyLoaded = true;
           cb();
         });
+
         standbyVideo.load();
       }
 
@@ -956,7 +958,7 @@
           var oldActive = activeVideo;
           activeVideo = standbyVideo;
           standbyVideo = oldActive;
-          standbyLoaded = false; /* reset so next cycle re-loads */
+          standbyLoaded = false;
 
           setTimeout(function() {
             standbyVideo.pause();
@@ -986,7 +988,6 @@
       attachLoopMonitor(videoA);
       attachLoopMonitor(videoB);
     } else {
-      /* Hide videos for reduced-motion users; poster image shows through */
       document.querySelectorAll('.hero-video').forEach(function(v) {
         v.style.display = 'none';
       });
