@@ -512,12 +512,69 @@
       transform: translateY(-3px);
     }
 
+    /* FOOTER */
     footer {
       background: var(--navy);
       color: white;
       padding: 60px 20px 40px;
-      text-align: center;
+      font-size: 15px;
       font-family: 'Inter', sans-serif;
+    }
+
+    .footer-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 30px;
+    }
+
+    .footer-logo {
+      height: 50px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-address p {
+      margin: 0;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .footer-address a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .footer-address a:hover {
+      color: var(--accent);
+    }
+
+    .email-link {
+      display: inline-block;
+      margin-top: 5px;
+      color: var(--accent) !important;
+    }
+
+    .email-link:hover {
+      color: white !important;
+    }
+
+    .footer-bottom {
+      width: 100%;
+      max-width: 1100px;
+      margin: 40px auto 0;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-align: center;
     }
 
     @media (min-width: 900px) {
@@ -534,6 +591,25 @@
       .audit-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 40px;
+      }
+
+      .footer-wrap {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        align-items: flex-end;
+      }
+
+      .footer-logo {
+        height: 80px;
+      }
+
+      .footer-address {
+        text-align: right;
+      }
+
+      .footer-bottom {
+        text-align: left;
       }
     }
   </style>
@@ -643,7 +719,24 @@
   </div>
 
   <footer>
-    <p>© 2026 Donohoo & Sons Insurance Agency | Wauwatosa, WI</p>
+    <div class="footer-wrap">
+      <div class="footer-left">
+        <img src="logo.png" alt="Donohoo & Sons Insurance" class="footer-logo" width="160" height="80" loading="lazy">
+      </div>
+
+      <div class="footer-address">
+        <p>
+          10425 W North Ave. Suite 226<br>
+          Wauwatosa, WI 53226<br>
+          <a href="tel:+14146981729">414.698.1729</a><br>
+          <a href="mailto:adonohoo@unisource-ins.com" class="email-link">adonohoo@unisource-ins.com</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      Independent Insurance Advisor
+    </div>
   </footer>
 
   <script>
