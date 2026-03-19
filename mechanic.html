@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Auto Shop Insurance | Donohoo & Sons</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    :root {
+      --bg: #fdfdfb;
+      --ink: #1a202c;
+      --navy: #002244; 
+      --accent: #b8860b;
+      --line: #e2e8f0;
+      --paper: #f4f7fa;
+      --muted: #5f6b7a;
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      font-family: 'Lora', serif; 
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 18px; 
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden; 
+      position: relative;
+    }
+    
+    body.loaded { opacity: 1; }
+    body.nav-open { overflow: hidden; } 
+
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 15px; text-align: center; }
+
+    header, .btn-quote, .btn-white, .nav-menu a, .clean-amp, .accordion-header { font-family: 'Inter', sans-serif; }
+
+    /* HEADER */
+    header { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 1000; padding: 12px 0; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .logo-img { height: 60px; width: auto; position: relative; z-index: 2100; }
+
+    /* DESKTOP NAV */
+    .desktop-nav { display: none; }
+    .desktop-nav a { margin-left: 28px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+    .desktop-nav a:hover { color: var(--accent); }
+    .desktop-nav .active-link { color: var(--navy); border-bottom: 1px solid var(--accent); padding-bottom: 4px; }
+    .btn-quote { background: var(--navy); color: white !important; padding: 12px 24px; border-radius: 4px; transition: background 0.3s; font-size: 13px; letter-spacing: 1px; }
+    .btn-quote:hover { background: var(--accent); }
+    .btn-quote:active { transform: scale(0.96); } 
+
+    /* MOBILE HAMBURGER */
+    .hamburger { cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; z-index: 2100; position: relative; }
+    .hamburger span { display: block; width: 24px; height: 2px; background-color: var(--navy); transition: 0.4s; position: absolute; }
+    .hamburger span:nth-child(1) { transform: translateY(-5px); }
+    .hamburger span:nth-child(2) { transform: translateY(5px); }
+    .hamburger.active span { background-color: white; } 
+    .hamburger.active span:nth-child(1) { transform: translateY(0) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { transform: translateY(0) rotate(-45deg); }
+
+    /* ELEGANT MOBILE MENU */
+    .nav-menu { 
+      position: fixed; top: 0; left: 0; width: 100%; height: 0; 
+      background: var(--navy); z-index: 2000; overflow: hidden; 
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-menu.active { height: 100vh; }
+    .nav-menu a { 
+      color: white; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 36px; 
+      margin: 12px 0; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; text-transform: none; letter-spacing: 0;
+    }
+    .nav-menu a:hover { color: var(--accent); }
+    .nav-menu.active a:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(5) { 
+      transition-delay: 0.5s; opacity: 1; transform: translateY(0); 
+      color: var(--accent); font-family: 'Inter', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; 
+      margin-top: 30px; border: 1px solid var(--accent); padding: 14px 35px; border-radius: 4px;
+    }
+
+    /* SCROLL REVEAL ANIMATIONS */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* HERO SECTION (VIDEO) */
+    .hero {
+      position: relative; 
+      overflow: hidden;   
+      background: var(--navy); 
+      color: white; 
+      padding: 160px 20px; 
+      text-align: center;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; 
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0,34,68,0.75), rgba(0,34,68,0.85)); 
+      z-index: 1;
+    }
+
+    .hero-text { 
+      position: relative; 
+      z-index: 2; 
+      animation: fadeUp 1s ease-out forwards; 
+      opacity: 0; 
+      transform: translateY(20px);
+    }
+    
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(38px, 8vw, 68px); margin: 0 0 10px; line-height: 1.1; color: white; letter-spacing: -0.5px; }
+    .hero-accent { color: var(--accent); font-style: italic; display: inline-block; }
+    .hero p { font-size: 22px; margin: 0; color: #cbd5e0; max-width: 700px; margin: 0 auto; line-height: 1.6; font-style: italic; }
+
+    /* SECTIONS & GRIDS */
+    .section { padding-top: 80px; padding-bottom: 80px; }
+    .bg-paper { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    
+    .grid-3 { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; text-align: left; }
+    .section-title { text-align: center; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 50px; font-size: 34px; }
+
+    /* EXPERTISE BLOCKS */
+    .expertise-block { padding: 20px; border-top: 1px solid var(--accent); }
+    .expertise-block i { font-size: 44px; color: var(--accent); margin-bottom: 20px; display: block; font-weight: normal; }
+    .expertise-block h3 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--navy); margin: 0 0 15px 0; }
+    .expertise-block p { color: var(--muted); margin: 0; line-height: 1.7; }
+
+    /* COVERAGE CARDS */
+    .coverage-card {
+      background: white; padding: 30px 20px; border: 1px solid var(--line); border-radius: 8px; border-top: 4px solid var(--accent);
+      box-shadow: 0 10px 30px rgba(0,34,68,0.02); text-align: left; transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+      width: 100%; box-sizing: border-box; 
+    }
+    .coverage-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,34,68,0.06); }
+    .coverage-card:active { transform: scale(0.98); box-shadow: 0 2px 10px rgba(0,0,0,0.04); transition: all 0.1s; }
+    .coverage-card h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--navy); margin: 0 0 12px 0; line-height: 1.3; overflow-wrap: break-word; word-wrap: break-word; }
+    .coverage-card h3 i { color: var(--accent); font-size: 30px; font-weight: normal; display: inline-block; vertical-align: middle; margin-right: 10px; margin-bottom: 4px; }
+    .coverage-card p { margin: 0; color: var(--muted); line-height: 1.6; font-size: 16px; }
+
+    /* THE 5-MINUTE AUDIT ACCORDION */
+    .audit-wrap { max-width: 900px; margin: 0 auto 80px; }
+    .audit-box { background: var(--navy); color: #fff; padding: 60px 20px; border-radius: 12px; text-align: left; box-shadow: 0 20px 40px rgba(0,34,68,0.1); }
+    .audit-box h2 { text-align: center; font-family: 'Playfair Display', serif; font-size: 34px; margin: 0 0 15px; color: white;}
+    .audit-box > p { text-align: center; color: #cbd5e0; margin: 0 auto 40px; font-size: 18px; font-style: italic; }
+    
+    .accordion-item { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 18px 0; }
+    .accordion-item:last-child { border-bottom: none; }
+    .accordion-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; font-size: 16px; color: white; line-height: 1.4; padding-right: 10px; }
+    .accordion-header i { color: var(--accent); font-size: 20px; transition: transform 0.3s ease; flex-shrink: 0; margin-left: 15px; }
+    .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: #cbd5e0; line-height: 1.6; font-size: 16px; font-family: 'Lora', serif; }
+    
+    .accordion-item.active .accordion-content { max-height: 300px; padding-top: 15px; }
+    .accordion-item.active .accordion-header i { transform: rotate(45deg); }
+
+    .audit-cta { text-align: center; margin-top: 40px; }
+    .btn-white { display: inline-block; background: #fff; color: var(--navy); padding: 16px 40px; border-radius: 4px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; transition: 0.2s; }
+    .btn-white:hover { background: var(--accent); color: white; transform: translateY(-3px); }
+    .btn-white:active { transform: scale(0.96); }
+
+    /* SPLIT FOOTER */
+    footer { background: var(--navy); color: white; padding: 60px 20px 40px; font-size: 15px; font-family: 'Inter', sans-serif; }
+    .footer-wrap { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 30px; }
+    .footer-logo { height: 60px; width: auto; filter: brightness(0) invert(1); }
+    .footer-address p { margin: 0; line-height: 1.8; color: rgba(255,255,255,0.8); }
+    .footer-address a { color: white; text-decoration: none; font-weight: 600; transition: color 0.2s; }
+    .footer-address a:hover { color: var(--accent); }
+    .email-link { display: inline-block; margin-top: 5px; color: var(--accent) !important; }
+    .email-link:hover { color: white !important; }
+    .footer-bottom { width: 100%; max-width: 1100px; margin: 40px auto 0; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; text-align: center; }
+
+    /* DESKTOP ADJUSTMENTS */
+    @media (min-width: 768px) {
+      .grid-3 { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+      .coverage-card { padding: 45px 35px; }
+      .coverage-card h3 { font-size: 24px; }
+      .coverage-card p { font-size: 18px; }
+      .audit-box { padding: 80px 50px; }
+      .accordion-header { font-size: 18px; }
+      .accordion-content { font-size: 18px; }
+    }
+    @media (min-width: 900px) {
+      .desktop-nav { display: block; }
+      .hamburger { display: none; }
+      .grid-3 { grid-template-columns: repeat(3, 1fr); gap: 40px; }
+      .hero { padding: 220px 0 180px; }
+      .hero-video { object-position: center 43%; }
+      .section-title { font-size: 40px; margin-bottom: 60px; }
+      
+      /* Desktop Split Footer */
+      .footer-wrap { flex-direction: row; justify-content: space-between; text-align: left; align-items: flex-end; }
+      .footer-logo { height: 100px; } 
+      .footer-address { text-align: right; }
+      .footer-bottom { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="/" style="display: inline-flex; position: relative; z-index: 2100;"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
+      <nav class="desktop-nav">
+        <a href="/">Home</a>
+        <a href="/families.html">Personal</a>
+        <a href="/business.html">Business</a>
+        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
+        <a href="/quote.html" class="btn-quote">Get a Quote</a>
+      </nav>
+      <div class="hamburger" id="hamburgerBtn" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <nav class="nav-menu" id="mobileNav">
+        <a href="/">Home</a>
+        <a href="/families.html">Personal</a>
+        <a href="/business.html">Business</a>
+        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
+        <a href="/quote.html">Get a Quote</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <video autoplay loop muted playsinline webkit-playsinline poster="andy-suit.jpg" class="hero-video">
+      <source src="mechanic-video-loop.mp4" type="video/mp4">
+    </video>
+    
+    <div class="hero-overlay"></div>
+
+    <div class="wrap hero-text">
+      <h1>Insurance built for<br><span class="hero-accent">shops like yours.</span></h1>
+      <p>Sophisticated risk management for auto repair, body shops, and restoration experts.</p>
+    </div>
+  </section>
+
+  <section class="section bg-paper">
+    <div class="wrap">
+      <div class="grid-3">
+        <div class="expertise-block reveal" style="transition-delay: 0.1s;">
+          <i class="ph-light ph-wrench"></i>
+          <h3>Industry Knowledge</h3>
+          <p>Before founding Donohoo <span class="clean-amp">&amp;</span> Sons, I spent a decade at Sentry Insurance protecting large auto dealership groups. I know the difference between a two-post lift and a frame rack, and more importantly, I know the unique liabilities associated with the work you do.</p>
+        </div>
+        <div class="expertise-block reveal" style="transition-delay: 0.2s;">
+          <i class="ph-light ph-car-profile"></i>
+          <h3>Specialized Markets</h3>
+          <p>Auto repair isn't a cookie-cutter business. As an independent advisor, I have direct access to top-rated commercial carriers that specialize specifically in the automotive industry, ensuring you don't pay for generic coverage that leaves dangerous gaps.</p>
+        </div>
+        <div class="expertise-block reveal" style="transition-delay: 0.3s;">
+          <i class="ph-light ph-phone-call"></i>
+          <h3>Direct Access</h3>
+          <p>When a customer's vehicle gets damaged on a test drive, or a tool box goes missing, you don't have time to navigate a 1-800 number. You have my direct cell phone number from day one to claim day. I am in your corner when you need answers fast.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2 class="section-title reveal">Garage-Specific Coverage</h2>
+      
+      <div class="grid-3">
+        <div class="coverage-card reveal" style="transition-delay: 0.1s;">
+          <h3><i class="ph-light ph-key"></i> Garagekeepers</h3>
+          <p>The most critical protection for your shop. Covers physical damage to your customers' vehicles while they are in your care, custody, or control—whether on the lift or parked in the lot overnight.</p>
+        </div>
+        <div class="coverage-card reveal" style="transition-delay: 0.2s;">
+          <h3><i class="ph-light ph-steering-wheel"></i> Garage Liability</h3>
+          <p>Protecting your business from third-party claims. This covers bodily injury or property damage resulting from your garage operations, including accidents during test drives.</p>
+        </div>
+        <div class="coverage-card reveal" style="transition-delay: 0.3s;">
+          <h3><i class="ph-light ph-toolbox"></i> Tools & Equipment</h3>
+          <p>Your mechanics invest heavily in their livelihood. We structure property coverage to protect expensive diagnostic equipment, lifts, and the highly valuable tools your technicians own.</p>
+        </div>
+        <div class="coverage-card reveal" style="transition-delay: 0.4s;">
+          <h3><i class="ph-light ph-first-aid"></i> Workers Comp</h3>
+          <p>Auto repair is physical, hazardous work. Protect your technicians and your bottom line by covering medical costs and lost wages for work-related injuries in the bay.</p>
+        </div>
+        <div class="coverage-card reveal" style="transition-delay: 0.5s;">
+          <h3><i class="ph-light ph-storefront"></i> Commercial Property</h3>
+          <p>Protecting the physical structure of your shop, the heavy equipment bolted to the floor, and your office assets against fire, severe weather, and unforeseen disasters.</p>
+        </div>
+        <div class="coverage-card reveal" style="transition-delay: 0.6s;">
+          <h3><i class="ph-light ph-laptop"></i> Cyber Liability</h3>
+          <p>Modern shops run on data. We protect your business from the financial fallout of data breaches, ransomware targeting your diagnostic software, and compromised customer payment information.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap audit-wrap">
+    <div class="audit-box reveal">
+      <h2>The 5-Minute Shop Audit</h2>
+      <p>Take a quick look at these five essential questions to ensure your shop has the comprehensive protection it deserves.</p>
+      
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          1. Is your Garagekeepers coverage structured to pay if a vehicle is stolen? <i class="ph-bold ph-plus"></i>
+        </div>
+        <div class="accordion-content">
+          If a customer's car is stolen from your lot overnight, standard "Legal Liability" might not cover it if you took reasonable security measures. "Direct Primary" coverage ensures the customer's vehicle is replaced regardless of who is at fault, protecting your shop's reputation.
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          2. Are your mechanics' personal tools explicitly covered? <i class="ph-bold ph-plus"></i>
+        </div>
+        <div class="accordion-content">
+          Your technicians invest tens of thousands into their personal toolboxes. Standard property policies often exclude employee-owned tools or only offer minimal sub-limits. A robust policy ensures their livelihood is protected in the event of a fire or break-in.
+        </div>
+      </div>
+      
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          3. Do you know your maximum limit for diagnostic equipment? <i class="ph-bold ph-plus"></i>
+        </div>
+        <div class="accordion-content">
+          Modern repair shops rely on expensive diagnostic scanners and specialized equipment. It's crucial to verify that your policy's maximum limits accurately reflect the true replacement cost of today's high-tech gear, without hidden depreciation clauses.
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          4. Will your Business Income coverage kick in immediately? <i class="ph-bold ph-plus"></i>
+        </div>
+        <div class="accordion-content">
+          If a fire shuts down your bays, you still have to pay the mortgage and your key staff. Many policies have a 72-hour waiting period before Business Income coverage starts. We structure policies to minimize downtime impact so your revenue stream stays strong.
+        </div>
+      </div>
+      
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          5. Are your service loaners covered under the right auto classification? <i class="ph-bold ph-plus"></i>
+        </div>
+        <div class="accordion-content">
+          If you provide courtesy cars or service loaners to customers, standard Garage Liability isn't enough. You need specific Owned Auto or Fleet coverage to ensure your business is fully protected while customers are driving your vehicles off the lot.
+        </div>
+      </div>
+
+      <div class="audit-cta">
+        <a href="quote.html" class="btn-white">Review My Shop's Policy</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-wrap">
+      <div class="footer-left">
+        <img src="logo.png" alt="Donohoo & Sons" class="footer-logo">
+      </div>
+      <div class="footer-address">
+        <p>
+          10425 W North Ave. Suite 226<br>
+          Wauwatosa, WI 53226<br>
+          <a href="tel:4146981729">414.698.1729</a><br>
+          <a href="mailto:adonohoo@unisource-ins.com" class="email-link">adonohoo@unisource-ins.com</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Independent Insurance Advisor
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileNav').classList.toggle('active');
+      document.getElementById('hamburgerBtn').classList.toggle('active');
+      document.body.classList.toggle('nav-open');
+    }
+
+    function toggleAccordion(element) {
+      const item = element.parentElement;
+      // Close other open items
+      document.querySelectorAll('.accordion-item').forEach(acc => {
+        if (acc !== item) acc.classList.remove('active');
+      });
+      item.classList.toggle('active');
+    }
+
+    window.addEventListener('load', () => { document.body.classList.add('loaded'); });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { 
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible'); 
+            observer.unobserve(entry.target); 
+        }
+      });
+    }, { threshold: 0.1 }); 
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
