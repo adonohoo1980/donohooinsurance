@@ -56,8 +56,6 @@
     .desktop-nav a:hover { color: var(--accent); }
     .desktop-nav .active-link { color: var(--navy); border-bottom: 1px solid var(--accent); padding-bottom: 4px; }
     .btn-quote { background: var(--navy); color: white !important; padding: 12px 24px; border-radius: 4px; transition: background 0.3s; font-size: 13px; letter-spacing: 1px; }
-    .btn-quote:hover { background: var(--accent); }
-    .btn-quote:active { transform: scale(0.96); } 
 
     /* MOBILE HAMBURGER */
     .hamburger { cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; z-index: 2100; position: relative; }
@@ -78,21 +76,10 @@
     .nav-menu.active { height: 100vh; }
     .nav-menu a { 
       color: white; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 36px; 
-      margin: 12px 0; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; text-transform: none; letter-spacing: 0;
+      margin: 12px 0; opacity: 0; transform: translateY(20px); transition: all 0.4s ease;
     }
     .nav-menu a:hover { color: var(--accent); }
     
-    .nav-menu.active a:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(4) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(5) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(6) { 
-      transition-delay: 0.4s; opacity: 1; transform: translateY(0); 
-      color: var(--accent); font-family: 'Inter', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; 
-      margin-top: 30px; border: 1px solid var(--accent); padding: 14px 35px; border-radius: 4px;
-    }
-
     /* SCROLL REVEAL ANIMATIONS */
     .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -134,25 +121,17 @@
     /* CTA */
     .cta-wrap { max-width: 1100px; margin: 0 auto 80px; padding: 0 15px; }
     .cta-box { background: var(--navy); color: #fff; padding: 80px 20px; border-radius: 12px; text-align: center; box-shadow: 0 20px 40px rgba(0,34,68,0.1); }
-    .cta-box h2 { font-family: 'Playfair Display', serif; font-size: 42px; margin: 0 0 20px; color: white;}
-    .cta-box p { color: #cbd5e0; max-width: 600px; margin: 0 auto 40px; font-size: 20px; font-style: italic; }
     .btn-white { display: inline-block; background: #fff; color: var(--navy); padding: 16px 40px; border-radius: 4px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; transition: 0.2s; }
-    .btn-white:hover { background: var(--accent); color: white; transform: translateY(-3px); }
 
     /* FOOTER */
     footer { background: var(--navy); color: white; padding: 60px 20px 40px; font-size: 15px; font-family: 'Inter', sans-serif; }
     .footer-wrap { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 30px; }
     .footer-logo { height: 60px; width: auto; filter: brightness(0) invert(1); }
-    .footer-address p { margin: 0; line-height: 1.8; color: rgba(255,255,255,0.8); }
-    .footer-address a { color: white; text-decoration: none; font-weight: 600; }
-    .email-link { display: inline-block; margin-top: 5px; color: var(--accent) !important; }
-    .footer-bottom { width: 100%; max-width: 1100px; margin: 40px auto 0; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; text-align: center; }
+    .footer-bottom { width: 100%; max-width: 1100px; margin: 40px auto 0; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.5); text-align: center; }
 
     @media (max-width: 768px) {
       .hero-short { padding: 100px 20px 80px; }
-      .section { padding-top: 50px; padding-bottom: 50px; }
       .article-card { padding: 30px 20px; }
-      .cta-box { padding: 60px 20px; }
     }
     @media (min-width: 768px) { .article-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 900px) {
@@ -185,7 +164,7 @@
         <a href="/">Home</a>
         <a href="/families.html">Personal</a>
         <a href="/business.html">Business</a>
-        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
+        <a href="/life.html">Life & Health</a>
         <a href="/insights.html">Insights</a>
         <a href="/quote.html">Get a Quote</a>
     </nav>
@@ -203,16 +182,16 @@
       <div class="article-grid">
         
         <a href="/article-life-minors.html" class="article-card reveal" style="transition-delay: 0.1s;">
-          <div class="article-category">Life & Health</div>
-          <h3>The $500k Blank Check: Why Minors Shouldn't Be Direct Beneficiaries</h3>
-          <p>You bought life insurance to protect your kids. But if you don't structure it correctly, the state courts will hand an 18-year-old a blank check.</p>
+          <div class="article-category">Protection Strategy</div>
+          <h3>The Million-Dollar Mistake: Why Your Kids Shouldn't Be Your Beneficiaries</h3>
+          <p>Naming a minor directly on your policy can create a legal barrier between your children and the money meant to protect them. Here is how to fix it.</p>
           <span class="read-more">Read Guide <i class="ph-bold ph-arrow-right"></i></span>
         </a>
 
         <a href="/article-umbrella.html" class="article-card reveal" style="transition-delay: 0.2s;">
           <div class="article-category">Personal Protection</div>
           <h3>The Wisconsin Law That Makes Umbrella Insurance Essential</h3>
-          <p>Why a standard $250k auto policy is often not enough to protect your home, savings, and future wages from the Collateral Source Rule.</p>
+          <p>Why a standard $250k auto policy is often not enough to protect your home and future wages from the Collateral Source Rule.</p>
           <span class="read-more">Read Guide <i class="ph-bold ph-arrow-right"></i></span>
         </a>
 
@@ -237,21 +216,12 @@
 
   <footer>
     <div class="footer-wrap">
-      <div class="footer-left">
-        <img src="logo.png" alt="Donohoo & Sons" class="footer-logo">
-      </div>
+      <div class="footer-left"><img src="logo.png" alt="Donohoo & Sons" class="footer-logo"></div>
       <div class="footer-address">
-        <p>
-          10425 W North Ave. Suite 226<br>
-          Wauwatosa, WI 53226<br>
-          <a href="tel:4146981729">414.698.1729</a><br>
-          <a href="mailto:adonohoo@unisource-ins.com" class="email-link">adonohoo@unisource-ins.com</a>
-        </p>
+        <p>10425 W North Ave. Suite 226<br>Wauwatosa, WI 53226<br>414.698.1729</p>
       </div>
     </div>
-    <div class="footer-bottom">
-      Independent Insurance Advisor
-    </div>
+    <div class="footer-bottom">Independent Insurance Advisor</div>
   </footer>
 
   <script>
@@ -262,12 +232,7 @@
     }
     window.addEventListener('load', () => { document.body.classList.add('loaded'); });
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { 
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible'); 
-            observer.unobserve(entry.target); 
-        }
-      });
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
     }, { threshold: 0.1 }); 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
