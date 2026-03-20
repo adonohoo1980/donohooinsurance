@@ -54,8 +54,8 @@
     .desktop-nav { display: none; }
     .desktop-nav a { margin-left: 28px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
     .desktop-nav a:hover { color: var(--accent); }
-    .desktop-nav .active-link { color: var(--navy); border-bottom: 1px solid var(--accent); padding-bottom: 4px; }
-    .btn-quote { background: var(--navy); color: white !important; padding: 12px 24px; border-radius: 4px; transition: background 0.3s; font-size: 13px; letter-spacing: 1px; }
+    .desktop-nav .active-link { color: var(--navy); border-bottom: 2px solid var(--accent); padding-bottom: 4px; }
+    .btn-quote { background: var(--navy); color: white !important; padding: 12px 24px; border-radius: 4px; transition: background 0.3s; font-size: 13px; letter-spacing: 1px; margin-left: 28px; }
 
     /* MOBILE HAMBURGER */
     .hamburger { cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; z-index: 2100; position: relative; background: none; border: none; }
@@ -90,7 +90,7 @@
     .hero-accent { color: var(--accent); font-style: italic; }
     .hero-short p { font-size: 22px; color: #cbd5e0; max-width: 700px; margin: 0 auto; font-style: italic; }
 
-    /* GRID & CARDS */
+    /* GRID & CARDS - UPDATED TO 2x2 */
     .section { padding-top: 80px; padding-bottom: 80px; }
     .article-grid { display: grid; grid-template-columns: 1fr; gap: 30px; text-align: left; }
     
@@ -109,11 +109,11 @@
     .cta-box { background: var(--navy); color: #fff; padding: 100px 20px; border-radius: 12px; text-align: center; box-shadow: 0 20px 40px rgba(0,34,68,0.1); margin: 0 auto 80px; }
     .btn-white { display: inline-block; background: #fff; color: var(--navy); padding: 16px 40px; border-radius: 4px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; transition: 0.2s; }
 
-    /* FOOTER - MATCHES BUSINESS PAGE */
+    /* FOOTER */
     footer { background: var(--navy); color: white; padding: 60px 20px 40px; font-size: 15px; font-family: 'Inter', sans-serif; }
     .footer-wrap { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 30px; }
     .footer-logo { height: 60px; width: auto; filter: brightness(0) invert(1); }
-    .footer-address p { margin: 0; line-height: 1.8; color: rgba(255,255,255,0.8); }
+    .footer-address p { margin: 0; line-height: 1.8; color: rgba(255, 255, 255, 0.8); }
     .footer-address a { color: white; text-decoration: none; font-weight: 600; transition: color 0.2s; }
     .footer-bottom { width: 100%; max-width: 1100px; margin: 40px auto 0; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.5); text-align: center; }
 
@@ -121,11 +121,12 @@
     .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    @media (min-width: 768px) { .article-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 768px) { 
+      .article-grid { grid-template-columns: repeat(2, 1fr); } /* Forced 2 Columns */
+    }
     @media (min-width: 900px) {
-      .desktop-nav { display: block; }
+      .desktop-nav { display: flex; align-items: center; }
       .hamburger { display: none; }
-      .article-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; }
       .footer-wrap { flex-direction: row; justify-content: space-between; text-align: left; align-items: flex-end; }
       .footer-logo { height: 80px; }
       .footer-address { text-align: right; }
@@ -142,7 +143,7 @@
         <a href="/">Home</a>
         <a href="/families.html">Personal</a>
         <a href="/business.html">Business</a>
-        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
+        <a href="/life.html">Life & Health</a>
         <a href="/insights.html" class="active-link">Insights</a>
         <a href="/quote.html" class="btn-quote">Get a Quote</a>
       </nav>
@@ -176,14 +177,18 @@
           <p>Naming a minor directly on your policy can create an unintentional barrier between your kids and the money they need. Here is how to fix it.</p>
           <span class="read-more">Read Guide <i class="ph-bold ph-arrow-right"></i></span>
         </a>
-
+        <a href="/article-sump-pump.html" class="article-card reveal">
+          <div class="article-category">Home Protection</div>
+          <h3>The Spring Thaw Trap: Why Your Sump Pump Isn't Enough</h3>
+          <p>The snow is melting, but the ground is still frozen. Here is why a standard policy might leave you $20,000 short after a basement flood.</p>
+          <span class="read-more">Read Guide <i class="ph-bold ph-arrow-right"></i></span>
+        </a>
         <a href="/article-umbrella.html" class="article-card reveal">
           <div class="article-category">Personal Protection</div>
           <h3>The Wisconsin Law That Makes Umbrella Insurance Essential</h3>
           <p>Why a standard $250k auto policy is often not enough to protect your home and future wages from the Collateral Source Rule.</p>
           <span class="read-more">Read Guide <i class="ph-bold ph-arrow-right"></i></span>
         </a>
-
         <a href="/article-roof-siding.html" class="article-card reveal">
           <div class="article-category">Home Protection</div>
           <h3>The Two Hidden Traps in Roof and Siding Claims</h3>
