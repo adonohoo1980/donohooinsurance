@@ -3,247 +3,287 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Request a Review | Donohoo & Sons</title>
+  <title>Medicare Planning | Donohoo & Sons</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
   <style>
     :root {
-      --bg: 
+      --bg: #fdfdfb;
+      --ink: #1a202c;
+      --navy: #002244; 
+      --accent: #b8860b;
+      --line: #e2e8f0;
+      --paper: #f4f7fa;
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
     body {
       margin: 0;
-      font-family: 'Inter', sans-serif; 
+      font-family: 'Lora', serif; 
       background: var(--bg);
       color: var(--ink);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      font-size: 18px; 
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      overflow-x: hidden; 
     }
+    body.loaded { opacity: 1; }
+    body.nav-open { overflow: hidden; } 
 
-    /* MINIMAL HEADER */
-    header { background: #fff; border-bottom: 1px solid var(--line); padding: 15px 20px; text-align: center; }
-    .logo-img { height: 45px; width: auto; }
-    .back-link { position: absolute; left: 20px; top: 25px; color: var(--navy); text-decoration: none; font-weight: 500; font-size: 14px; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; text-align: center; }
 
-    /* WIZARD CONTAINER */
-    .wizard-wrap { max-width: 600px; margin: 40px auto; padding: 0 20px; flex: 1; width: 100%; }
+    header, .btn-quote, .btn-white, .nav-menu a, .link-text, .clean-amp { font-family: 'Inter', sans-serif; }
+
+    /* HEADER */
+    header { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 1000; padding: 12px 0; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .logo-img { height: 60px; width: auto; position: relative; z-index: 2100; }
+
+    /* DESKTOP NAV */
+    .desktop-nav { display: none; }
+    .desktop-nav a { margin-left: 28px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+    .desktop-nav a:hover { color: var(--accent); }
+    .desktop-nav .active-link { color: var(--navy); border-bottom: 1px solid var(--accent); padding-bottom: 4px; }
+    .btn-quote { background: var(--navy); color: white !important; padding: 12px 24px; border-radius: 4px; transition: background 0.3s; font-size: 13px; letter-spacing: 1px; }
+    .btn-quote:hover { background: var(--accent); }
+    .btn-quote:active { transform: scale(0.96); } 
+
+    /* MOBILE HAMBURGER */
+    .hamburger { cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; z-index: 2100; position: relative; }
+    .hamburger span { display: block; width: 24px; height: 2px; background-color: var(--navy); transition: 0.4s; position: absolute; }
+    .hamburger span:nth-child(1) { transform: translateY(-5px); }
+    .hamburger span:nth-child(2) { transform: translateY(5px); }
+    .hamburger.active span { background-color: white; } 
+    .hamburger.active span:nth-child(1) { transform: translateY(0) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { transform: translateY(0) rotate(-45deg); }
+
+    /* ELEGANT MOBILE MENU */
+    .nav-menu { 
+      position: fixed; top: 0; left: 0; width: 100%; height: 0; 
+      background: var(--navy); z-index: 2000; overflow: hidden; 
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-menu.active { height: 100vh; }
+    .nav-menu a { 
+      color: white; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 36px; 
+      margin: 12px 0; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; text-transform: none; letter-spacing: 0;
+    }
+    .nav-menu a:hover { color: var(--accent); }
+    .nav-menu.active a:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
     
-    /* PROGRESS BAR */
-    .progress-container { width: 100%; background: #e2e8f0; height: 6px; border-radius: 10px; margin-bottom: 40px; overflow: hidden; }
-    .progress-bar { height: 100%; background: var(--accent); width: 20%; transition: width 0.4s ease; }
-
-    /* STEPS */
-    .step { display: none; animation: fadeIn 0.4s ease forwards; }
-    .step.active { display: block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-    .step h2 { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--navy); margin: 0 0 10px; line-height: 1.2; }
-    .step p { color: #4a5568; margin: 0 0 30px; font-size: 16px; line-height: 1.6; }
-
-    /* BIG TAP BUTTONS (Step 1 & 3) */
-    .option-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
-    .option-btn {
-      background: #fff; border: 2px solid var(--line); border-radius: 8px; padding: 20px;
-      text-align: left; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 15px;
+    .nav-menu.active a:nth-child(6) { 
+      transition-delay: 0.6s; opacity: 1; transform: translateY(0); 
+      color: var(--accent); font-family: 'Inter', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; 
+      margin-top: 30px; border: 1px solid var(--accent); padding: 14px 35px; border-radius: 4px;
     }
-    .option-btn i { font-size: 28px; color: var(--navy); }
-    .option-btn span { font-weight: 600; font-size: 16px; color: var(--ink); }
-    .option-btn:hover, .option-btn:active { border-color: var(--navy); background: #f8fafc; transform: translateY(-2px); }
 
-    /* INPUT FIELDS (Step 2 & 4) */
-    .input-group { margin-bottom: 20px; text-align: left; }
-    .input-group label { display: block; font-weight: 500; margin-bottom: 8px; font-size: 14px; color: var(--navy); }
-    .input-group input { 
-      width: 100%; padding: 16px; border: 2px solid var(--line); border-radius: 8px; 
-      font-size: 16px; font-family: 'Inter', sans-serif; transition: 0.3s;
-    }
-    .input-group input:focus { outline: none; border-color: var(--accent); }
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ACTION BUTTONS */
-    .btn-next {
-      background: var(--navy); color: #fff; border: none; padding: 18px 30px; border-radius: 8px;
-      font-size: 16px; font-weight: 600; width: 100%; cursor: pointer; transition: 0.2s; margin-top: 10px;
-    }
-    .btn-next:hover { background: var(--accent); }
-    .btn-next:active { transform: scale(0.98); }
+    /* HERO SECTION */
+    .hero { padding: 120px 20px 80px; text-align: center; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(42px, 8vw, 68px); color: var(--navy); margin: 0 0 20px; line-height: 1.1; letter-spacing: -0.5px; }
+    .hero p { font-size: 22px; margin: 0 auto; color: var(--muted); max-width: 750px; line-height: 1.6; font-style: italic; }
+
+    /* SECTIONS */
+    .section { padding-top: 80px; padding-bottom: 80px; }
+    .bg-paper { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+    /* TWO COL TEXT / HIGHLIGHT */
+    .strategy-spread { display: flex; flex-direction: column; gap: 50px; text-align: left; margin-top: 40px; }
+    .strategy-content { flex: 1; }
+    .strategy-content h2 { font-family: 'Playfair Display', serif; font-size: 36px; color: var(--navy); margin-top: 0; margin-bottom: 25px; line-height: 1.2; }
+    .strategy-content p { color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
     
-    .btn-back { background: transparent; border: none; color: #718096; font-weight: 500; font-size: 14px; cursor: pointer; margin-top: 20px; padding: 10px 0; }
-    .btn-back:hover { color: var(--navy); }
+    .strategy-highlight { 
+      flex: 1; background: white; padding: 45px; border-radius: 12px; 
+      border-top: 4px solid var(--accent); box-shadow: 0 20px 40px rgba(0,34,68,0.08); 
+    }
+    .strategy-highlight h3 { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--navy); margin: 0 0 15px 0; }
+    .strategy-highlight p { color: var(--ink); line-height: 1.7; margin-bottom: 20px; }
+    .strategy-highlight .badge { display: inline-block; background: var(--paper); color: var(--accent); font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; border: 1px solid var(--line); }
 
-    /* SUCCESS SCREEN */
-    .success-icon { font-size: 60px; color: var(--accent); margin-bottom: 20px; }
+    /* INTEGRATED PHOTO CSS (Matches brand aesthetics) */
+    .medicare-photo { 
+      width: 100%; max-width: 500px; aspect-ratio: 4/5; object-fit: cover; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,34,68,0.1); 
+      /* Added filter to match the site's tone */
+      filter: sepia(35%) saturate(115%) contrast(1.05); 
+    }
 
-    @media (min-width: 600px) {
-      .option-grid { grid-template-columns: 1fr 1fr; }
+    /* CARDS */
+    .card-grid { display: grid; grid-template-columns: 1fr; gap: 30px; text-align: left; }
+    .coverage-card {
+      background: white; padding: 45px 35px; border: 1px solid var(--line); border-radius: 8px; border-top: 4px solid var(--accent);
+      box-shadow: 0 10px 30px rgba(0,34,68,0.02); text-align: left; transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+    }
+    .coverage-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,34,68,0.06); }
+    .coverage-card h3 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--navy); margin: 0 0 15px 0; line-height: 1.3; }
+    .coverage-card h3 i { color: var(--accent); font-size: 36px; font-weight: normal; vertical-align: middle; margin-right: 12px; margin-bottom: 4px; display: inline-block; }
+    .coverage-card p { margin: 0; color: var(--muted); }
+
+    /* CTA BOX */
+    .cta-box { background: var(--navy); color: #fff; padding: 100px 20px; border-radius: 12px; text-align: center; box-shadow: 0 20px 40px rgba(0,34,68,0.15); margin: 0 auto; }
+    .cta-box h2 { font-family: 'Playfair Display', serif; font-size: 42px; margin: 0 0 30px; color: white; }
+    .btn-white { display: inline-block; background: #fff; color: var(--navy); padding: 16px 40px; border-radius: 4px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; transition: 0.2s; }
+    .btn-white:hover { background: var(--accent); color: white; transform: translateY(-3px); }
+
+    /* SPLIT FOOTER */
+    footer { background: var(--navy); color: white; padding: 60px 20px 40px; font-size: 15px; font-family: 'Inter', sans-serif; }
+    .footer-wrap { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 30px; }
+    .footer-logo { height: 60px; width: auto; filter: brightness(0) invert(1); }
+    .footer-address p { margin: 0; line-height: 1.8; color: rgba(255,255,255,0.8); }
+    .footer-address a { color: white; text-decoration: none; font-weight: 600; transition: color 0.2s; }
+    .footer-address a:hover { color: var(--accent); }
+    .footer-bottom { width: 100%; max-width: 1100px; margin: 40px auto 0; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; text-align: center; }
+
+    @media (min-width: 900px) {
+      .desktop-nav { display: block; }
+      .hamburger { display: none; }
+      .card-grid { grid-template-columns: repeat(3, 1fr); }
+      /* strategy-spread is Row on desktop */
+      .strategy-spread { flex-direction: row; gap: 60px; align-items: center; }
+      .medicare-photo { max-width: 45%; } /* Image size on desktop */
+      .footer-wrap { flex-direction: row; justify-content: space-between; text-align: left; align-items: flex-end; }
+      .footer-logo { height: 100px; } 
+      .footer-address { text-align: right; }
+      .footer-bottom { text-align: left; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <a href="/" class="back-link">&larr; Cancel</a>
-    <a href="/"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
+    <div class="nav-container">
+      <a href="/" style="position: relative; z-index: 2100;"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
+      <nav class="desktop-nav">
+        <a href="/">Home</a>
+        <a href="/families.html">Personal</a>
+        <a href="/business.html">Business</a>
+        <a href="/life.html">Life</a>
+        <a href="/medicare.html" class="active-link">Medicare</a>
+        <a href="/quote.html" class="btn-quote">Get a Quote</a>
+      </nav>
+      <div class="hamburger" id="hamburgerBtn" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <nav class="nav-menu" id="mobileNav">
+        <a href="/">Home</a>
+        <a href="/families.html">Personal</a>
+        <a href="/business.html">Business</a>
+        <a href="/life.html">Life</a>
+        <a href="/medicare.html">Medicare</a>
+        <a href="/quote.html">Get a Quote</a>
+    </nav>
   </header>
 
-  <div class="wizard-wrap">
-    <div class="progress-container" id="progressWrap">
-      <div class="progress-bar" id="progressBar"></div>
+  <div class="wrap">
+    <div class="hero reveal">
+      <h1>Smarter Medicare Planning.</h1>
+      <p>We don't just sell standard policies. We look outside the box to maximize your healthcare benefits while keeping your premiums low.</p>
     </div>
 
-    <div class="step active" id="step1">
-      <h2>Let's get started.</h2>
-      <p>What kind of protection are you looking for today?</p>
-      
-      <div class="option-grid">
-        <button class="option-btn" onclick="saveData('type', 'Personal'); nextStep(2)">
-          <i class="ph-light ph-house"></i>
-          <span>Home & Auto</span>
-        </button>
-        <button class="option-btn" onclick="saveData('type', 'Business'); nextStep(2)">
-          <i class="ph-light ph-storefront"></i>
-          <span>Business</span>
-        </button>
-        <button class="option-btn" onclick="saveData('type', 'Life'); nextStep(2)">
-          <i class="ph-light ph-heart"></i>
-          <span>Life & Health</span>
-        </button>
+    <div class="card-grid section" style="padding-top: 0;">
+      <div class="coverage-card reveal" style="transition-delay: 0.1s;">
+        <h3><i class="ph-light ph-first-aid"></i> Medicare Supplements</h3>
+        <p>Consistent, predictable coverage that fills the gaps in Original Medicare, giving you freedom to see any doctor.</p>
+      </div>
+      <div class="coverage-card reveal" style="transition-delay: 0.2s;">
+        <h3><i class="ph-light ph-stethoscope"></i> Medicare Advantage</h3>
+        <p>All-in-one Part C plans that often include extra benefits like dental, vision, and wellness programs.</p>
+      </div>
+      <div class="coverage-card reveal" style="transition-delay: 0.3s;">
+        <h3><i class="ph-light ph-pill"></i> Prescription Drug (Part D)</h3>
+        <p>Standalone coverage to ensure your specific medications are covered at the lowest possible out-of-pocket cost.</p>
       </div>
     </div>
-
-    <div class="step" id="step2">
-      <h2>Who are we speaking with?</h2>
-      <p>Just so we know who to ask for.</p>
-      
-      <div class="input-group">
-        <label>First Name</label>
-        <input type="text" id="firstName" placeholder="e.g. Andy" required>
-      </div>
-      <div class="input-group">
-        <label>Last Name</label>
-        <input type="text" id="lastName" placeholder="e.g. Donohoo" required>
-      </div>
-      
-      <button class="btn-next" onclick="nextStep(3)">Continue</button>
-      <button class="btn-back" onclick="prevStep(1)">&larr; Back</button>
-    </div>
-
-    <div class="step" id="step3">
-      <h2>What's your main goal?</h2>
-      <p>This helps us prepare before we reach out.</p>
-      
-      <div class="option-grid">
-        <button class="option-btn" onclick="saveData('goal', 'Better Coverage'); nextStep(4)">
-          <i class="ph-light ph-shield-check"></i>
-          <span>Better Coverage</span>
-        </button>
-        <button class="option-btn" onclick="saveData('goal', 'Lower Price'); nextStep(4)">
-          <i class="ph-light ph-piggy-bank"></i>
-          <span>Lower Price</span>
-        </button>
-        <button class="option-btn" onclick="saveData('goal', 'New Purchase'); nextStep(4)">
-          <i class="ph-light ph-keys"></i>
-          <span>New Purchase/Move</span>
-        </button>
-        <button class="option-btn" onclick="saveData('goal', 'General Review'); nextStep(4)">
-          <i class="ph-light ph-magnifying-glass"></i>
-          <span>Just checking options</span>
-        </button>
-      </div>
-      <button class="btn-back" onclick="prevStep(2)">&larr; Back</button>
-    </div>
-
-    <div class="step" id="step4">
-      <h2>Where should we send your info?</h2>
-      <p>We'll crunch the numbers and reach out directly. No spam, ever.</p>
-      
-      <div class="input-group">
-        <label>Email Address</label>
-        <input type="email" id="email" placeholder="you@example.com" required>
-      </div>
-      <div class="input-group">
-        <label>Phone Number</label>
-        <input type="tel" id="phone" placeholder="(414) 555-0123" required>
-      </div>
-      
-      <button class="btn-next" onclick="submitForm()">Get My Free Review</button>
-      <button class="btn-back" onclick="prevStep(3)">&larr; Back</button>
-    </div>
-
-    <div class="step" id="step5" style="text-align: center; padding-top: 40px;">
-      <i class="ph-light ph-check-circle success-icon"></i>
-      <h2>We're on it.</h2>
-      <p>Thanks for reaching out! I've received your information and will be in touch shortly to go over your options.</p>
-      <p style="font-style: italic; color: var(--navy);">— Andy</p>
-      <a href="/" class="btn-next" style="display: inline-block; text-decoration: none; margin-top: 20px;">Return to Homepage</a>
-    </div>
-
   </div>
 
+  <section class="section bg-paper">
+    <div class="wrap">
+      <div class="strategy-spread reveal">
+        
+        <img src="medicare-strategy.jpg" class="medicare-photo" alt="Custom Wisconsin SeniorCare Strategy Consultation">
+        
+        <div class="strategy-content">
+          <h2>Not Your Average Medicare Agent</h2>
+          <p>Too many people are placed into standard Medicare plans by agents who are just taking orders. Medicare isn't a one-size-fits-all product.</p>
+          
+          <div class="strategy-highlight">
+            <div class="badge">The Wisconsin Strategy</div>
+            <h3>Thinking Outside the Box</h3>
+            <p>As a local Wisconsin advisor, I know how to leverage regional programs to your advantage. For example, many folks don't realize they can enroll in <strong>Wisconsin SeniorCare</strong> for their prescription coverage, and pair it with a <strong>$0-premium, no-drug Medicare Part C plan</strong>.</p>
+            <p>This creative structure can dramatically lower your monthly costs while providing comprehensive health benefits. It's strategies like this that separate true advisors from the rest.</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta-box reveal">
+        <h2>Ready to review your options?</h2>
+        <p style="color: #cbd5e0; font-size: 20px; font-style: italic; margin: 0 auto 40px;">Let's find the strategy that works best for you.</p>
+        <a href="quote.html" class="btn-white">Schedule a Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-wrap">
+      <div class="footer-left">
+        <img src="logo.png" alt="Donohoo & Sons" class="footer-logo">
+      </div>
+      <div class="footer-address">
+        <p>
+          10425 W North Ave. Suite 226<br>
+          Wauwatosa, WI 53226<br>
+          <a href="tel:4146981729">414.698.1729</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Independent Insurance Advisor
+    </div>
+  </footer>
+
   <script>
-    let currentStep = 1;
-    let quoteData = {};
-
-    function saveData(key, value) {
-      quoteData[key] = value;
+    function toggleMenu() {
+      document.getElementById('mobileNav').classList.toggle('active');
+      document.getElementById('hamburgerBtn').classList.toggle('active');
+      document.body.classList.toggle('nav-open');
     }
 
-    function nextStep(step) {
-      // Very basic validation for inputs before moving forward
-      if (currentStep === 2) {
-        if (!document.getElementById('firstName').value || !document.getElementById('lastName').value) {
-          alert("Please enter your name to continue.");
-          return;
+    window.addEventListener('load', () => { document.body.classList.add('loaded'); });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { 
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible'); 
+            observer.unobserve(entry.target); 
         }
-        saveData('firstName', document.getElementById('firstName').value);
-        saveData('lastName', document.getElementById('lastName').value);
-      }
+      });
+    }, { threshold: 0.1 }); 
 
-      document.getElementById('step' + currentStep).classList.remove('active');
-      currentStep = step;
-      document.getElementById('step' + currentStep).classList.add('active');
-      updateProgress();
-    }
-
-    function prevStep(step) {
-      document.getElementById('step' + currentStep).classList.remove('active');
-      currentStep = step;
-      document.getElementById('step' + currentStep).classList.add('active');
-      updateProgress();
-    }
-
-    function updateProgress() {
-      const percentage = (currentStep / 5) * 100;
-      document.getElementById('progressBar').style.width = percentage + '%';
-      if(currentStep === 5) {
-        document.getElementById('progressWrap').style.display = 'none'; // Hide progress on success
-      }
-    }
-
-    function submitForm() {
-      const email = document.getElementById('email').value;
-      const phone = document.getElementById('phone').value;
-      
-      if(!email || !phone) {
-        alert("Please provide your email and phone number so we can reach you.");
-        return;
-      }
-      
-      saveData('email', email);
-      saveData('phone', phone);
-
-      // --- THIS IS WHERE YOU CONNECT TO YOUR EMAIL/CRM ---
-      // Right now it just console logs the data and moves to the success screen
-      console.log("New Quote Request:", quoteData);
-      
-      nextStep(5);
-    }
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
+
 </body>
 </html>
