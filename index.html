@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -69,6 +68,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
+  <noscript><style>body{opacity:1}</style></noscript>
+
   <style>
     :root {
       --bg: #fdfdfb;
@@ -78,6 +79,9 @@
       --line: #e2e8f0;
       --paper: #f4f7fa;
       --muted: #5f6b7a;
+
+      --focus: #005fcc;
+      --accent-text: #7a5700;
     }
 
     * {
@@ -124,9 +128,51 @@
 
     a:focus-visible,
     button:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-      border-radius: 3px;
+      outline: 3px solid var(--focus);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    a {
+      text-underline-offset: 0.18em;
+    }
+
+
+    .skip-link {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      z-index: 3000;
+      background: #fff;
+      color: var(--navy);
+      padding: 10px 14px;
+      border: 2px solid var(--focus);
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      text-decoration: none;
+      transform: translateY(-150%);
+      transition: transform 0.2s ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    [hidden] {
+      display: none !important;
     }
 
     /* HEADER */
@@ -172,7 +218,7 @@
     }
 
     .desktop-nav a:hover {
-      color: var(--accent);
+      color: var(--accent-text);
     }
 
     .desktop-nav .active-link {
@@ -491,8 +537,8 @@
     }
 
     .link-text {
-      color: var(--accent);
-      font-weight: 600;
+      color: var(--navy);
+      font-weight: 700;
       display: flex;
       align-items: center;
       font-size: 14px;
@@ -652,7 +698,8 @@
     .email-link {
       display: inline-block;
       margin-top: 5px;
-      color: var(--accent) !important;
+      color: #ffffff !important;
+      text-decoration: underline;
     }
 
     .email-link:hover {
@@ -673,6 +720,15 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+
       body { transition: none; opacity: 1; }
       .reveal { opacity: 1; transform: none; transition: none; }
       .hero-text { animation: none; opacity: 1; transform: none; }
@@ -703,14 +759,17 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <header>
+
     <div class="nav-container">
-      <a href="/" style="display: inline-flex; position: relative; z-index: 2100;">
+      <a href="/" aria-label="Donohoo & Sons Insurance home" style="display: inline-flex; position: relative; z-index: 2100;">
         <img src="logo.png" class="logo-img" alt="Donohoo & Sons Insurance">
       </a>
 
       <nav class="desktop-nav" aria-label="Main navigation">
-        <a href="/" class="active-link">Home</a>
+        <a href="/" class="active-link" aria-current="page">Home</a>
         <a href="/families.html">Personal</a>
         <a href="/business.html">Business</a>
         <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
@@ -724,15 +783,14 @@
         aria-label="Open navigation menu"
         aria-expanded="false"
         aria-controls="mobileNav"
-        onclick="toggleMenu()"
       >
         <span></span>
         <span></span>
       </button>
     </div>
 
-    <nav class="nav-menu" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
-      <a href="/">Home</a>
+    <nav class="nav-menu" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true" hidden>
+      <a href="/" aria-current="page">Home</a>
       <a href="/families.html">Personal</a>
       <a href="/business.html">Business</a>
       <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
@@ -741,7 +799,8 @@
     </nav>
   </header>
 
-  <section class="hero">
+  <main id="main-content">
+  <section class="hero" aria-labelledby="hero-title">
     <div class="hero-video-wrap" aria-hidden="true">
       <video
         class="hero-video video-a active"
@@ -774,14 +833,14 @@
     <div class="hero-overlay"></div>
 
     <div class="wrap hero-text">
-      <h1>From day one<br><span class="hero-accent">to claim day.</span></h1>
+      <h1 id="hero-title">From day one<br><span class="hero-accent">to claim day.</span></h1>
       <p>Helping Wisconsin families and business owners get the right coverage.</p>
     </div>
   </section>
 
-  <section class="section bg-paper">
+  <section class="section bg-paper" aria-labelledby="advantage-title">
     <div class="wrap">
-      <h2 class="section-title reveal">The Independent Advantage</h2>
+      <h2 id="advantage-title" class="section-title reveal">The Independent Advantage</h2>
       <div class="grid-3">
         <div class="value-pillar reveal">
           <i class="ph-light ph-phone" aria-hidden="true"></i>
@@ -804,23 +863,23 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" aria-labelledby="protect-title">
     <div class="wrap">
-      <h2 class="section-title reveal">What We Protect</h2>
+      <h2 id="protect-title" class="section-title reveal">What We Protect</h2>
       <div class="grid-3">
-        <a href="/families.html" class="service-card reveal">
+        <a href="/families.html" class="service-card reveal" aria-label="Learn more about personal insurance protection">
           <h3>Personal</h3>
           <p>Home, auto, and umbrella protection built around real life.</p>
           <span class="link-text">View Protection <span class="arrow" aria-hidden="true">&rarr;</span></span>
         </a>
 
-        <a href="/business.html" class="service-card reveal">
+        <a href="/business.html" class="service-card reveal" aria-label="Learn more about business insurance protection">
           <h3>Business</h3>
           <p>Coverage built for owners who want one dedicated advisor.</p>
           <span class="link-text">View Commercial <span class="arrow" aria-hidden="true">&rarr;</span></span>
         </a>
 
-        <a href="/life.html" class="service-card reveal">
+        <a href="/life.html" class="service-card reveal" aria-label="Learn more about life, disability, and long-term care planning">
           <h3>Life <span class="clean-amp">&amp;</span> Health</h3>
           <p>Life, Disability, &amp; Long-Term Care planning.</p>
           <span class="link-text">View Planning <span class="arrow" aria-hidden="true">&rarr;</span></span>
@@ -829,11 +888,11 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" aria-labelledby="commitment-title">
     <div class="wrap">
       <div class="about-spread reveal">
         <div class="about-content">
-          <h2>Our Commitment</h2>
+          <h2 id="commitment-title">Our Commitment</h2>
           <p>I built Donohoo <span class="clean-amp">&amp;</span> Sons with my wife Katie because insurance should feel simple and personal.</p>
           <blockquote class="pull">"I treat your protection like my own family's. The '<span class="clean-amp">&amp;</span> Sons' reminds me why I do this every day."</blockquote>
           <p>I am in from day one to claim day. I'm always available to my clients — no waiting, just a conversation.</p>
@@ -843,25 +902,26 @@
 
       <div class="cta-box reveal">
         <h2>Protect what you've built.</h2>
-        <a href="/quote.html" class="btn-white">Request a Review</a>
+        <a href="/quote.html" class="btn-white" aria-label="Request an insurance review">Request a Review</a>
       </div>
     </div>
   </section>
+  </main>
 
-  <footer>
+  <footer role="contentinfo">
     <div class="footer-wrap">
       <div class="footer-left">
         <img src="logo.png" alt="Donohoo & Sons Insurance" class="footer-logo" width="160" height="80" loading="lazy">
       </div>
 
-      <div class="footer-address">
+      <address class="footer-address">
         <p>
           10425 W North Ave. Suite 226<br>
           Wauwatosa, WI 53226<br>
           <a href="tel:+14146981729">414.698.1729</a><br>
           <a href="mailto:adonohoo@unisource-ins.com" class="email-link">adonohoo@unisource-ins.com</a>
         </p>
-      </div>
+      </address>
     </div>
 
     <div class="footer-bottom">
@@ -870,64 +930,116 @@
   </footer>
 
   <script>
-    function toggleMenu() {
-      const nav = document.getElementById('mobileNav');
-      const btn = document.getElementById('hamburgerBtn');
-      const isOpen = nav.classList.toggle('active');
+    const nav = document.getElementById('mobileNav');
+    const btn = document.getElementById('hamburgerBtn');
+    const mobileLinks = Array.from(document.querySelectorAll('#mobileNav a'));
 
+    function setMenuState(isOpen) {
       btn.classList.toggle('active', isOpen);
-      btn.setAttribute('aria-expanded', isOpen);
+      btn.setAttribute('aria-expanded', String(isOpen));
       btn.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
-      nav.setAttribute('aria-hidden', !isOpen);
+      nav.classList.toggle('active', isOpen);
+      nav.hidden = !isOpen;
+      nav.setAttribute('aria-hidden', String(!isOpen));
       document.body.classList.toggle('nav-open', isOpen);
+
+      if (isOpen && mobileLinks.length) {
+        mobileLinks[0].focus();
+      } else {
+        btn.focus();
+      }
     }
 
+    function toggleMenu() {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      setMenuState(!isOpen);
+    }
+
+    btn.addEventListener('click', toggleMenu);
+
     document.addEventListener('click', function(e) {
-      const nav = document.getElementById('mobileNav');
-      const btn = document.getElementById('hamburgerBtn');
-      if (nav.classList.contains('active') && !nav.contains(e.target) && !btn.contains(e.target)) {
-        toggleMenu();
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      if (isOpen && !nav.contains(e.target) && !btn.contains(e.target)) {
+        setMenuState(false);
       }
     });
 
-    document.querySelectorAll('#mobileNav a').forEach(function(link) {
+    document.addEventListener('keydown', function(e) {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      if (!isOpen) return;
+
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setMenuState(false);
+        return;
+      }
+
+      if (e.key === 'Tab') {
+        const focusable = [btn].concat(mobileLinks);
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+
+    mobileLinks.forEach(function(link) {
       link.addEventListener('click', function() {
-        const nav = document.getElementById('mobileNav');
-        if (nav.classList.contains('active')) toggleMenu();
+        if (btn.getAttribute('aria-expanded') === 'true') {
+          setMenuState(false);
+        }
       });
+    });
+
+    window.addEventListener('resize', function() {
+      if (window.innerWidth >= 900 && btn.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+      }
     });
 
     window.addEventListener('load', function() {
       document.body.classList.add('loaded');
     });
 
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        observer.observe(el);
       });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach(function(el) {
-      observer.observe(el);
-    });
-
-    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    } else {
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        el.classList.add('visible');
+      });
+    }
 
     if (!prefersReducedMotion) {
-      var videoA = document.querySelector('.video-a');
-      var videoB = document.querySelector('.video-b');
-      var activeVideo = videoA;
-      var standbyVideo = videoB;
-      var isTransitioning = false;
-      var standbyLoaded = false;
-      var fadeDuration = 0.8;
+      const videoA = document.querySelector('.video-a');
+      const videoB = document.querySelector('.video-b');
+      let activeVideo = videoA;
+      let standbyVideo = videoB;
+      let isTransitioning = false;
+      let standbyLoaded = false;
+      const fadeDuration = 0.8;
 
       function safePlay(video) {
-        var p = video.play();
-        if (p !== undefined) p.catch(function() {});
+        const playPromise = video.play();
+        if (playPromise !== undefined) playPromise.catch(function() {});
       }
 
       function ensureStandbyLoaded(cb) {
@@ -956,7 +1068,7 @@
           standbyVideo.classList.add('active');
           activeVideo.classList.remove('active');
 
-          var oldActive = activeVideo;
+          const oldActive = activeVideo;
           activeVideo = standbyVideo;
           standbyVideo = oldActive;
           standbyLoaded = false;
@@ -981,15 +1093,18 @@
         });
       }
 
-      videoA.addEventListener('loadedmetadata', function() {
-        videoA.currentTime = 0;
-        safePlay(videoA);
-      });
+      if (videoA && videoB) {
+        videoA.addEventListener('loadedmetadata', function() {
+          videoA.currentTime = 0;
+          safePlay(videoA);
+        });
 
-      attachLoopMonitor(videoA);
-      attachLoopMonitor(videoB);
+        attachLoopMonitor(videoA);
+        attachLoopMonitor(videoB);
+      }
     } else {
       document.querySelectorAll('.hero-video').forEach(function(v) {
+        v.pause();
         v.style.display = 'none';
       });
     }
