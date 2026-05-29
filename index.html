@@ -65,9 +65,14 @@
       --bg: #fdfdfb;
       --ink: #1a202c;
       --navy: #002244;
+
+      /* Keep the richer Donohoo gold for decorative accents */
       --accent: #b8860b;
+
+      /* Use these only when the gold is actual readable text */
       --accent-text: #6f4f00;
       --accent-on-dark: #e1b44f;
+
       --line: #e2e8f0;
       --paper: #f4f7fa;
       --muted: #4f5b68;
@@ -178,7 +183,7 @@
 
     .desktop-nav .active-link {
       color: var(--navy);
-      border-bottom: 1px solid var(--accent-text);
+      border-bottom: 1px solid var(--accent);
       padding-bottom: 4px;
     }
 
@@ -193,7 +198,7 @@
     }
 
     .btn-quote:hover {
-      background: #6f4f00;
+      background: #745300;
       color: #ffffff !important;
     }
 
@@ -384,7 +389,7 @@
 
     .value-pillar i {
       font-size: 44px;
-      color: var(--accent-text);
+      color: var(--accent);
       margin-bottom: 20px;
       font-weight: normal;
     }
@@ -406,7 +411,7 @@
       padding: 45px 35px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      border-top: 4px solid var(--accent-text);
+      border-top: 4px solid var(--accent);
       box-shadow: 0 10px 30px rgba(0, 34, 68, 0.02);
       text-align: left;
       text-decoration: none !important;
@@ -418,6 +423,12 @@
     .service-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 20px 40px rgba(0, 34, 68, 0.06);
+      border-top: 4px solid var(--navy);
+    }
+
+    .service-card:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 4px;
       border-top: 4px solid var(--navy);
     }
 
@@ -441,7 +452,7 @@
     }
 
     .link-text {
-      color: var(--accent-text);
+      color: var(--navy);
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -492,7 +503,7 @@
       color: var(--navy);
       margin: 35px 0;
       padding-left: 25px;
-      border-left: 4px solid var(--accent-text);
+      border-left: 4px solid var(--accent);
     }
 
     .boys-photo {
@@ -537,7 +548,7 @@
     }
 
     .btn-white:hover {
-      background: #6f4f00;
+      background: #745300;
       color: #ffffff;
       transform: translateY(-3px);
     }
