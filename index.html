@@ -5,12 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Donohoo & Sons Insurance | Milwaukee & Wauwatosa</title>
 
-  <!-- SEO Meta -->
   <meta name="description" content="Independent insurance agency serving Milwaukee & Wauwatosa. Home, auto, business, life, and disability coverage with direct agent access. Call 414.698.1729.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.donohooinsurance.com/">
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Donohoo & Sons Insurance | Milwaukee & Wauwatosa">
   <meta property="og:description" content="Independent insurance agency serving Milwaukee & Wauwatosa. Home, auto, business, and life coverage with direct agent access.">
@@ -18,13 +16,11 @@
   <meta property="og:image" content="https://www.donohooinsurance.com/boys.jpg">
   <meta property="og:locale" content="en_US">
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Donohoo & Sons Insurance | Milwaukee & Wauwatosa">
   <meta name="twitter:description" content="Independent insurance agency serving Milwaukee & Wauwatosa. Direct agent access. No automated prompts.">
   <meta name="twitter:image" content="https://www.donohooinsurance.com/boys.jpg">
 
-  <!-- Local Business Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,11 +40,6 @@
       "postalCode": "53226",
       "addressCountry": "US"
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 43.0522,
-      "longitude": -88.0357
-    },
     "areaServed": [
       { "@type": "City", "name": "Milwaukee" },
       { "@type": "City", "name": "Wauwatosa" }
@@ -59,7 +50,6 @@
   }
   </script>
 
-  <!-- Preload critical assets -->
   <link rel="preload" as="video" href="hero-video.mp4" type="video/mp4">
   <link rel="preload" as="image" href="boys.jpg">
 
@@ -76,11 +66,12 @@
       --ink: #1a202c;
       --navy: #002244;
       --accent: #b8860b;
+      --accent-text: #6f4f00;
+      --accent-on-dark: #e1b44f;
       --line: #e2e8f0;
       --paper: #f4f7fa;
-      --muted: #5f6b7a;
+      --muted: #4f5b68;
       --focus: #005fcc;
-      --accent-text: #7a5700;
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -101,11 +92,29 @@
     body.loaded { opacity: 1; }
     body.nav-open { overflow: hidden; }
 
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; text-align: center; }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: center;
+    }
 
-    header, .btn-quote, .btn-white, .nav-menu a, .link-text, .clean-amp { font-family: 'Inter', sans-serif; }
+    header,
+    .btn-quote,
+    .btn-white,
+    .nav-menu a,
+    .link-text,
+    .clean-amp {
+      font-family: 'Inter', sans-serif;
+    }
 
-    a:focus-visible, button:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; border-radius: 4px; }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
     a { text-underline-offset: 0.18em; }
 
     .skip-link {
@@ -113,7 +122,7 @@
       top: 8px;
       left: 8px;
       z-index: 3000;
-      background: #fff;
+      background: #ffffff;
       color: var(--navy);
       padding: 10px 14px;
       border: 2px solid var(--focus);
@@ -127,16 +136,67 @@
 
     .skip-link:focus { transform: translateY(0); }
 
-    header { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 1000; padding: 12px 0; }
-    .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    .logo-img { height: 60px; width: auto; position: relative; z-index: 2100; }
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 12px 0;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo-img {
+      height: 60px;
+      width: auto;
+      position: relative;
+      z-index: 2100;
+    }
 
     .desktop-nav { display: none; }
-    .desktop-nav a { margin-left: 28px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+
+    .desktop-nav a {
+      margin-left: 28px;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+
     .desktop-nav a:hover { color: var(--accent-text); }
-    .desktop-nav .active-link { color: var(--navy); border-bottom: 1px solid var(--accent); padding-bottom: 4px; }
-    .btn-quote { background: var(--navy); color: white !important; padding: 12px 24px; border-radius: 4px; transition: background 0.3s; font-size: 13px; letter-spacing: 1px; }
-    .btn-quote:hover { background: var(--accent); }
+
+    .desktop-nav .active-link {
+      color: var(--navy);
+      border-bottom: 1px solid var(--accent-text);
+      padding-bottom: 4px;
+    }
+
+    .btn-quote {
+      background: var(--navy);
+      color: #ffffff !important;
+      padding: 12px 24px;
+      border-radius: 4px;
+      transition: background 0.3s;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    .btn-quote:hover {
+      background: #6f4f00;
+      color: #ffffff !important;
+    }
+
     .btn-quote:active { transform: scale(0.96); }
 
     .hamburger {
@@ -154,82 +214,434 @@
       padding: 0;
     }
 
-    .hamburger span { display: block; width: 24px; height: 2px; background-color: var(--navy); transition: 0.4s; position: absolute; }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: var(--navy);
+      transition: 0.4s;
+      position: absolute;
+    }
+
     .hamburger span:nth-child(1) { transform: translateY(-5px); }
     .hamburger span:nth-child(2) { transform: translateY(5px); }
-    .hamburger.active span { background-color: white; }
+
+    .hamburger.active span { background-color: #ffffff; }
     .hamburger.active span:nth-child(1) { transform: translateY(0) rotate(45deg); }
     .hamburger.active span:nth-child(2) { transform: translateY(0) rotate(-45deg); }
 
-    .nav-menu { position: fixed; top: 0; left: 0; width: 100%; height: 0; background: var(--navy); z-index: 2000; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+    .nav-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      background: var(--navy);
+      z-index: 2000;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
     .nav-menu.active { height: 100vh; }
-    .nav-menu a { color: white; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 36px; margin: 12px 0; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; }
-    .nav-menu a:hover { color: var(--accent); }
+
+    .nav-menu a {
+      color: #ffffff;
+      text-decoration: none;
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      margin: 12px 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+    }
+
+    .nav-menu a:hover { color: var(--accent-on-dark); }
+
     .nav-menu.active a:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
     .nav-menu.active a:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
     .nav-menu.active a:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
     .nav-menu.active a:nth-child(4) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
     .nav-menu.active a:nth-child(5) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(6) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); color: var(--accent); font-family: 'Inter', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-top: 30px; border: 1px solid var(--accent); padding: 14px 35px; border-radius: 4px; }
 
-    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .nav-menu.active a:nth-child(6) {
+      transition-delay: 0.4s;
+      opacity: 1;
+      transform: translateY(0);
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 30px;
+      border: 1px solid var(--accent-on-dark);
+      padding: 14px 35px;
+      border-radius: 4px;
+    }
 
-    .hero { position: relative; overflow: hidden; background: var(--navy); color: white; padding: 220px 0 180px; text-align: center; }
-    .hero-video-wrap { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
-    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.8s ease; pointer-events: none; }
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--navy);
+      color: #ffffff;
+      padding: 220px 0 180px;
+      text-align: center;
+    }
+
+    .hero-video-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      pointer-events: none;
+    }
+
     .hero-video.active { opacity: 1; }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(0, 34, 68, 0.75), rgba(0, 34, 68, 0.85)); z-index: 1; }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(38px, 8vw, 68px); margin: 0 0 20px; line-height: 1.1; color: white; letter-spacing: -0.5px; }
-    .hero-accent { color: var(--accent); font-style: italic; }
-    .hero p { font-size: 22px; margin: 0 auto; color: #cbd5e0; max-width: 700px; line-height: 1.6; font-style: italic; }
 
-    .section { padding-top: 100px; padding-bottom: 100px; }
-    .bg-paper { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .grid-3 { display: flex; flex-direction: column; gap: 30px; }
-    .section-title { text-align: center; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 60px; font-size: 40px; }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(0, 34, 68, 0.82), rgba(0, 34, 68, 0.9));
+      z-index: 1;
+    }
 
-    .value-pillar { text-align: center; padding: 20px; }
-    .value-pillar i { font-size: 44px; color: var(--accent); margin-bottom: 20px; font-weight: normal; }
-    .value-pillar h4 { margin: 10px 0; font-family: 'Playfair Display', serif; font-size: 26px; color: var(--navy); }
-    .value-pillar p { color: var(--muted); margin: 0; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(38px, 8vw, 68px);
+      margin: 0 0 20px;
+      line-height: 1.1;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
 
-    .service-card { background: white; padding: 45px 35px; border: 1px solid var(--line); border-radius: 8px; border-top: 4px solid var(--accent); box-shadow: 0 10px 30px rgba(0, 34, 68, 0.02); text-align: left; text-decoration: none !important; color: var(--ink) !important; display: block; transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease; }
-    .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0, 34, 68, 0.06); border-top: 4px solid var(--navy); }
-    .service-card:active { transform: scale(0.98); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04); border-top: 4px solid var(--navy); transition: all 0.1s; }
-    .service-card h3 { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--navy); margin: 0 0 15px 0; }
-    .service-card p { margin: 0 0 25px 0; color: var(--muted); }
-    .link-text { color: var(--navy); font-weight: 700; display: flex; align-items: center; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
-    .arrow { display: inline-block; margin-left: 6px; font-size: 18px; transition: transform 0.3s ease; }
+    .hero-accent {
+      color: var(--accent-on-dark);
+      font-style: italic;
+    }
+
+    .hero p {
+      font-size: 22px;
+      margin: 0 auto;
+      color: #ffffff;
+      max-width: 700px;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    .section {
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+
+    .bg-paper {
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .grid-3 {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      color: var(--navy);
+      margin-bottom: 60px;
+      font-size: 40px;
+    }
+
+    .value-pillar {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .value-pillar i {
+      font-size: 44px;
+      color: var(--accent-text);
+      margin-bottom: 20px;
+      font-weight: normal;
+    }
+
+    .value-pillar h4 {
+      margin: 10px 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: var(--navy);
+    }
+
+    .value-pillar p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .service-card {
+      background: #ffffff;
+      padding: 45px 35px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      border-top: 4px solid var(--accent-text);
+      box-shadow: 0 10px 30px rgba(0, 34, 68, 0.02);
+      text-align: left;
+      text-decoration: none !important;
+      color: var(--ink) !important;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0, 34, 68, 0.06);
+      border-top: 4px solid var(--navy);
+    }
+
+    .service-card:active {
+      transform: scale(0.98);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+      border-top: 4px solid var(--navy);
+      transition: all 0.1s;
+    }
+
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: var(--navy);
+      margin: 0 0 15px 0;
+    }
+
+    .service-card p {
+      margin: 0 0 25px 0;
+      color: var(--muted);
+    }
+
+    .link-text {
+      color: var(--accent-text);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+
+    .arrow {
+      display: inline-block;
+      margin-left: 6px;
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+
     .service-card:hover .arrow { transform: translateX(6px); }
 
-    .about-spread { display: flex; flex-direction: column; gap: 40px; align-items: center; margin: 0 auto 80px auto; text-align: left; }
+    .about-spread {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      align-items: center;
+      margin: 0 auto 80px auto;
+      text-align: left;
+    }
+
     .about-content { flex: 1; }
-    .about-content h2 { font-family: 'Playfair Display', serif; font-size: 40px; color: var(--navy); margin-top: 0; line-height: 1.2; }
-    .about-content p { color: var(--muted); line-height: 1.8; }
-    .pull { font-family: 'Playfair Display', serif; font-style: italic; font-size: 26px; line-height: 1.4; color: var(--navy); margin: 35px 0; padding-left: 25px; border-left: 4px solid var(--accent); }
-    .boys-photo { width: 100%; max-width: 500px; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 12px; box-shadow: 0 20px 40px rgba(0, 34, 68, 0.1); filter: sepia(35%) saturate(115%) contrast(1.05); }
 
-    .cta-box { background: var(--navy); color: #fff; padding: 100px 20px; border-radius: 12px; text-align: center; box-shadow: 0 20px 40px rgba(0, 34, 68, 0.15); margin: 0 auto; }
-    .cta-box h2 { font-family: 'Playfair Display', serif; font-size: 42px; margin: 0 0 30px; color: white; }
-    .btn-white { display: inline-block; background: #fff; color: var(--navy); padding: 16px 40px; border-radius: 4px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; transition: 0.2s; }
-    .btn-white:hover { background: var(--accent); color: white; transform: translateY(-3px); }
+    .about-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      color: var(--navy);
+      margin-top: 0;
+      line-height: 1.2;
+    }
 
-    footer { background: var(--navy); color: white; padding: 60px 20px 40px; font-size: 15px; font-family: 'Inter', sans-serif; }
-    .footer-wrap { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 30px; }
-    .footer-logo { height: 50px; width: auto; filter: brightness(0) invert(1); }
-    .footer-address p { margin: 0; line-height: 1.8; color: rgba(255, 255, 255, 0.8); }
-    .footer-address a { color: white; text-decoration: none; font-weight: 600; transition: color 0.2s; }
-    .footer-address a:hover { color: var(--accent); }
-    .email-link { display: inline-block; margin-top: 5px; color: #ffffff !important; text-decoration: underline; }
-    .footer-disclaimer { width: 100%; max-width: 1100px; margin: 35px auto 0; padding-top: 25px; border-top: 1px solid rgba(255, 255, 255, 0.12); color: rgba(255, 255, 255, 0.72); font-size: 12px; line-height: 1.7; text-align: center; }
-    .footer-bottom { width: 100%; max-width: 1100px; margin: 40px auto 0; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 13px; color: rgba(255, 255, 255, 0.5); letter-spacing: 1px; text-transform: uppercase; text-align: center; }
+    .about-content p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .pull {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 26px;
+      line-height: 1.4;
+      color: var(--navy);
+      margin: 35px 0;
+      padding-left: 25px;
+      border-left: 4px solid var(--accent-text);
+    }
+
+    .boys-photo {
+      width: 100%;
+      max-width: 500px;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0, 34, 68, 0.1);
+      filter: sepia(35%) saturate(115%) contrast(1.05);
+    }
+
+    .cta-box {
+      background: var(--navy);
+      color: #ffffff;
+      padding: 100px 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 34, 68, 0.15);
+      margin: 0 auto;
+    }
+
+    .cta-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      margin: 0 0 30px;
+      color: #ffffff;
+    }
+
+    .btn-white {
+      display: inline-block;
+      background: #ffffff;
+      color: var(--navy);
+      padding: 16px 40px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .btn-white:hover {
+      background: #6f4f00;
+      color: #ffffff;
+      transform: translateY(-3px);
+    }
+
+    footer {
+      background: var(--navy);
+      color: #ffffff;
+      padding: 60px 20px 40px;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .footer-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 30px;
+    }
+
+    .footer-logo {
+      height: 50px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-address p {
+      margin: 0;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .footer-address a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .footer-address a:hover {
+      color: var(--accent-on-dark);
+    }
+
+    .email-link {
+      display: inline-block;
+      margin-top: 5px;
+      color: #ffffff !important;
+      text-decoration: underline;
+    }
+
+    .footer-disclaimer {
+      width: 100%;
+      max-width: 1100px;
+      margin: 35px auto 0;
+      padding-top: 25px;
+      border-top: 1px solid rgba(255, 255, 255, 0.25);
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 12px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .footer-bottom {
+      width: 100%;
+      max-width: 1100px;
+      margin: 40px auto 0;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.25);
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.78);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-align: center;
+    }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
-      body { transition: none; opacity: 1; }
-      .reveal { opacity: 1; transform: none; transition: none; }
-      .hero-text { animation: none; opacity: 1; transform: none; }
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      body {
+        transition: none;
+        opacity: 1;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .hero-text {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+
       .hero-video { display: none; }
     }
 
@@ -242,15 +654,22 @@
       .boys-photo { max-width: 45%; }
       .hero { padding: 220px 0 180px; }
       .hero-video { object-position: center 25%; }
-      .footer-wrap { flex-direction: row; justify-content: space-between; text-align: left; align-items: flex-end; }
+
+      .footer-wrap {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        align-items: flex-end;
+      }
+
       .footer-logo { height: 80px; }
       .footer-address { text-align: right; }
       .footer-bottom { text-align: left; }
     }
   </style>
 </head>
-<body>
 
+<body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <header>
@@ -291,92 +710,96 @@
   </header>
 
   <main id="main-content">
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="hero-video-wrap" aria-hidden="true">
-      <video class="hero-video video-a active" autoplay muted playsinline webkit-playsinline preload="auto" poster="boys.jpg" aria-hidden="true" tabindex="-1">
-        <source src="hero-video.mp4" type="video/mp4">
-      </video>
-      <video class="hero-video video-b" muted playsinline webkit-playsinline preload="none" poster="boys.jpg" aria-hidden="true" tabindex="-1">
-        <source src="hero-video.mp4" type="video/mp4">
-      </video>
-    </div>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-video-wrap" aria-hidden="true">
+        <video class="hero-video video-a active" autoplay muted playsinline webkit-playsinline preload="auto" poster="boys.jpg" aria-hidden="true" tabindex="-1">
+          <source src="hero-video.mp4" type="video/mp4">
+        </video>
 
-    <div class="hero-overlay"></div>
-
-    <div class="wrap hero-text">
-      <h1 id="hero-title">From day one<br><span class="hero-accent">to claim day.</span></h1>
-      <p>Helping Wisconsin families and business owners get the right coverage.</p>
-    </div>
-  </section>
-
-  <section class="section bg-paper" aria-labelledby="advantage-title">
-    <div class="wrap">
-      <h2 id="advantage-title" class="section-title reveal">The Independent Advantage</h2>
-      <div class="grid-3">
-        <div class="value-pillar reveal">
-          <i class="ph-light ph-phone" aria-hidden="true"></i>
-          <h4>Direct Contact</h4>
-          <p>No automated prompts. You have my direct cell phone number for whenever you need a quick answer.</p>
-        </div>
-
-        <div class="value-pillar reveal">
-          <i class="ph-light ph-map-pin" aria-hidden="true"></i>
-          <h4>Local Expertise</h4>
-          <p>Based in Milwaukee, we understand the specific risks and market nuances of Southeastern Wisconsin.</p>
-        </div>
-
-        <div class="value-pillar reveal">
-          <i class="ph-light ph-shield-check" aria-hidden="true"></i>
-          <h4>Claims Support</h4>
-          <p>I don't just sell the policy. If you have a claim, I'm in your corner to help you understand the process and advocate on your behalf.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="protect-title">
-    <div class="wrap">
-      <h2 id="protect-title" class="section-title reveal">What We Protect</h2>
-      <div class="grid-3">
-        <a href="/families.html" class="service-card reveal" aria-label="Learn more about personal insurance protection">
-          <h3>Personal</h3>
-          <p>Home, auto, and umbrella protection built around real life.</p>
-          <span class="link-text">View Protection <span class="arrow" aria-hidden="true">&rarr;</span></span>
-        </a>
-
-        <a href="/business.html" class="service-card reveal" aria-label="Learn more about business insurance protection">
-          <h3>Business</h3>
-          <p>Coverage built for owners who want one dedicated advisor.</p>
-          <span class="link-text">View Commercial <span class="arrow" aria-hidden="true">&rarr;</span></span>
-        </a>
-
-        <a href="/life.html" class="service-card reveal" aria-label="Learn more about life, disability, and long-term care planning">
-          <h3>Life <span class="clean-amp">&amp;</span> Health</h3>
-          <p>Life, Disability, &amp; Long-Term Care planning.</p>
-          <span class="link-text">View Planning <span class="arrow" aria-hidden="true">&rarr;</span></span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="commitment-title">
-    <div class="wrap">
-      <div class="about-spread reveal">
-        <div class="about-content">
-          <h2 id="commitment-title">Our Commitment</h2>
-          <p>I built Donohoo <span class="clean-amp">&amp;</span> Sons with my wife Katie because insurance should feel simple and personal.</p>
-          <blockquote class="pull">"I treat your protection like my own family's. The '<span class="clean-amp">&amp;</span> Sons' reminds me why I do this every day."</blockquote>
-          <p>I am in from day one to claim day. I'm always available to my clients — no waiting, just a conversation.</p>
-        </div>
-        <img src="boys.jpg" class="boys-photo" alt="The Donohoo family — the inspiration behind Donohoo & Sons Insurance" width="500" height="625" loading="lazy">
+        <video class="hero-video video-b" muted playsinline webkit-playsinline preload="none" poster="boys.jpg" aria-hidden="true" tabindex="-1">
+          <source src="hero-video.mp4" type="video/mp4">
+        </video>
       </div>
 
-      <div class="cta-box reveal">
-        <h2>Protect what you've built.</h2>
-        <a href="/quote.html" class="btn-white" aria-label="Request an insurance review">Request a Review</a>
+      <div class="hero-overlay"></div>
+
+      <div class="wrap hero-text">
+        <h1 id="hero-title">From day one<br><span class="hero-accent">to claim day.</span></h1>
+        <p>Helping Wisconsin families and business owners get the right coverage.</p>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section class="section bg-paper" aria-labelledby="advantage-title">
+      <div class="wrap">
+        <h2 id="advantage-title" class="section-title reveal">The Independent Advantage</h2>
+
+        <div class="grid-3">
+          <div class="value-pillar reveal">
+            <i class="ph-light ph-phone" aria-hidden="true"></i>
+            <h4>Direct Contact</h4>
+            <p>No automated prompts. You have my direct cell phone number for whenever you need a quick answer.</p>
+          </div>
+
+          <div class="value-pillar reveal">
+            <i class="ph-light ph-map-pin" aria-hidden="true"></i>
+            <h4>Local Expertise</h4>
+            <p>Based in Milwaukee, we understand the specific risks and market nuances of Southeastern Wisconsin.</p>
+          </div>
+
+          <div class="value-pillar reveal">
+            <i class="ph-light ph-shield-check" aria-hidden="true"></i>
+            <h4>Claims Support</h4>
+            <p>I don't just sell the policy. If you have a claim, I'm in your corner to help you understand the process and advocate on your behalf.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="protect-title">
+      <div class="wrap">
+        <h2 id="protect-title" class="section-title reveal">What We Protect</h2>
+
+        <div class="grid-3">
+          <a href="/families.html" class="service-card reveal" aria-label="Learn more about personal insurance protection">
+            <h3>Personal</h3>
+            <p>Home, auto, and umbrella protection built around real life.</p>
+            <span class="link-text">View Protection <span class="arrow" aria-hidden="true">&rarr;</span></span>
+          </a>
+
+          <a href="/business.html" class="service-card reveal" aria-label="Learn more about business insurance protection">
+            <h3>Business</h3>
+            <p>Coverage built for owners who want one dedicated advisor.</p>
+            <span class="link-text">View Commercial <span class="arrow" aria-hidden="true">&rarr;</span></span>
+          </a>
+
+          <a href="/life.html" class="service-card reveal" aria-label="Learn more about life, disability, and long-term care planning">
+            <h3>Life <span class="clean-amp">&amp;</span> Health</h3>
+            <p>Life, Disability, &amp; Long-Term Care planning.</p>
+            <span class="link-text">View Planning <span class="arrow" aria-hidden="true">&rarr;</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="commitment-title">
+      <div class="wrap">
+        <div class="about-spread reveal">
+          <div class="about-content">
+            <h2 id="commitment-title">Our Commitment</h2>
+            <p>I built Donohoo <span class="clean-amp">&amp;</span> Sons with my wife Katie because insurance should feel simple and personal.</p>
+            <blockquote class="pull">"I treat your protection like my own family's. The '<span class="clean-amp">&amp;</span> Sons' reminds me why I do this every day."</blockquote>
+            <p>I am in from day one to claim day. I'm always available to my clients — no waiting, just a conversation.</p>
+          </div>
+
+          <img src="boys.jpg" class="boys-photo" alt="The Donohoo family — the inspiration behind Donohoo & Sons Insurance" width="500" height="625" loading="lazy">
+        </div>
+
+        <div class="cta-box reveal">
+          <h2>Protect what you've built.</h2>
+          <a href="/quote.html" class="btn-white" aria-label="Request an insurance review">Request a Review</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer role="contentinfo">
@@ -434,6 +857,7 @@
 
     document.addEventListener('click', function(e) {
       const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
       if (isOpen && !nav.contains(e.target) && !btn.contains(e.target)) {
         setMenuState(false);
       }
