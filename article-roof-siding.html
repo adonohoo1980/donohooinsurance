@@ -4,13 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Two Hidden Traps in Roof and Siding Claims | Donohoo & Sons</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
-  
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
   <style>
     :root {
       --bg: #fdfdfb;
@@ -21,63 +18,35 @@
       --paper: #f4f7fa;
       --muted: #5f6b7a;
     }
-
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      font-family: 'Lora', serif; 
-      background: var(--bg);
-      color: var(--ink);
-      font-size: 18px; 
-      line-height: 1.8;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden; 
-    }
-    
+    html, body { margin: 0; padding: 0; width: 100%; font-family: 'Lora', serif; background: var(--bg); color: var(--ink); font-size: 18px; line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     body.loaded { opacity: 1; }
-
     header, .btn-quote, .btn-white, .nav-menu a, .clean-amp, .article-category { font-family: 'Inter', sans-serif; }
-
-    /* HEADER */
     header { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 1000; padding: 12px 0; }
     .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     .logo-img { height: 60px; width: auto; }
-
-    /* DESKTOP NAV */
     .desktop-nav { display: none; }
     .desktop-nav a { margin-left: 28px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
     .desktop-nav a:hover { color: var(--accent); }
     .desktop-nav .active-link { color: var(--navy); border-bottom: 1px solid var(--accent); padding-bottom: 4px; }
     .btn-quote { background: var(--navy); color: white !important; padding: 12px 24px; border-radius: 4px; transition: background 0.3s; font-size: 13px; letter-spacing: 1px; }
-
-    /* ARTICLE HERO */
     .article-hero { background: var(--navy); color: white; padding: 100px 20px 80px; text-align: center; }
     .article-wrap { max-width: 800px; margin: 0 auto; padding: 0 20px; }
     .article-category { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 20px; display: inline-block; }
     .article-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(34px, 6vw, 54px); margin: 0; line-height: 1.2; color: white; }
-
-    /* ARTICLE CONTENT */
     .article-content { padding: 60px 0 80px; font-size: 20px; color: var(--ink); }
     .article-content p { margin-bottom: 30px; }
     .article-content h2 { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--navy); margin: 50px 0 20px; line-height: 1.3; }
-    
     .pull-quote { font-family: 'Playfair Display', serif; font-size: 24px; line-height: 1.5; color: var(--navy); font-style: italic; margin: 50px 0; padding-left: 30px; border-left: 4px solid var(--accent); }
-
-    /* IMAGE STYLING */
     .featured-image-wrap { margin: 40px 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 15px 45px rgba(0,0,0,0.05); }
     .featured-image { width: 100%; height: auto; display: block; }
     .image-caption { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--muted); padding: 15px 20px; background: #fff; margin: 0; font-style: italic; border-top: 1px solid var(--line); }
-
     .cta-box { background: var(--paper); border: 1px solid var(--line); border-top: 4px solid var(--accent); padding: 60px 30px; border-radius: 12px; text-align: center; margin: 60px 0; }
     .btn-solid { display: inline-block; background: var(--navy); color: #fff; padding: 16px 40px; border-radius: 4px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; transition: 0.2s; }
     .btn-solid:hover { background: var(--accent); transform: translateY(-3px); }
-
     footer { background: var(--navy); color: white; padding: 60px 20px 40px; font-size: 15px; font-family: 'Inter', sans-serif; }
     .footer-wrap { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 30px; }
-
+    .footer-disclaimer { width: 100%; max-width: 1100px; margin: 35px auto 0; padding-top: 25px; border-top: 1px solid rgba(255, 255, 255, 0.12); color: rgba(255, 255, 255, 0.72); font-size: 12px; line-height: 1.7; text-align: center; }
     @media (min-width: 900px) {
       .desktop-nav { display: block; }
       .footer-wrap { flex-direction: row; justify-content: space-between; text-align: left; }
@@ -85,7 +54,6 @@
   </style>
 </head>
 <body>
-
   <header>
     <div class="nav-container">
       <a href="/"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
@@ -99,50 +67,36 @@
       </nav>
     </div>
   </header>
-
   <section class="article-hero">
     <div class="article-wrap">
       <span class="article-category">Home Protection</span>
       <h1>The Two Hidden Traps in Roof and Siding Claims</h1>
     </div>
   </section>
-
   <section class="article-content">
     <div class="article-wrap">
       <p>A major Midwestern hail storm rolls through Greendale. The next day, you see roofing contractors knocking on doors up and down the street. Your neighbor gets a brand new roof and new siding, telling you, "It only cost me my $1,000 deductible!"</p>
-
       <p>But when you call your insurance company, you receive a check for $4,000 against a $15,000 estimate, and an adjuster telling you they will only replace the damaged panels on the south side of your home. What went wrong?</p>
-
       <h2>Trap #1: The "Siding Matching" Nightmare</h2>
-
       <div class="featured-image-wrap">
         <img src="faded.png" alt="Mismatched siding illustration" class="featured-image">
         <p class="image-caption">The reality of a repair without "Matching Coverage": New siding (right) rarely matches the weathered, oxidized panels (left) of the same color.</p>
       </div>
-
       <p>Look at the image above. On the right, you see brand new vinyl siding. On the left, you see the exact same siding color—but after years of exposure to Wisconsin sun and snow, it has faded and oxidized. If a storm only damages one side of your house, most standard policies only pay to replace that specific side.</p>
-
       <p>If your siding color has been discontinued, or if the remaining siding is simply too faded to match, you're left with a "patchwork quilt" house. Unless your policy includes a specific <strong>Matching of Undamaged Siding/Roofing Endorsement</strong>, you are forced to choose between a mismatched home or paying out of pocket to reside the rest of the house so it looks right.</p>
-
       <div class="pull-quote">
         "I guide, you decide. My job is to make sure you know exactly how your siding will be handled BEFORE the hail hits."
       </div>
-
       <h2>Trap #2: The Actual Cash Value (ACV) Roof</h2>
-
       <p>To keep monthly premiums low, many "budget" policies include an <strong>Actual Cash Value (ACV)</strong> roof endorsement. In insurance terms, ACV means "Replacement Cost minus Depreciation."</p>
-
       <p>If your roof was designed to last 30 years and a storm hits in year 20, an ACV policy only pays you for the 10 years of "life" left in those shingles. You are essentially paying for a brand new roof out of your own pocket while the insurance company only pays for the used portion. On a $15,000 roof, that could mean you're on the hook for $10,000 plus your deductible.</p>
-
       <div class="cta-box">
         <h2>Are there hidden traps in your policy?</h2>
         <p>Send me a photo or PDF of your current homeowners declarations page. I can quickly review your declarations page and help identify how the roof appears to be valued, subject to policy terms and endorsements.</p>
         <a href="/quote.html" class="btn-solid">Request a Policy Review</a>
       </div>
-
     </div>
   </section>
-
   <footer>
     <div class="footer-wrap">
       <div class="footer-left">
@@ -152,7 +106,11 @@
         <p>10425 W North Ave. Suite 226<br>Wauwatosa, WI 53226<br>414.698.1729</p>
       </div>
     </div>
+    <div class="footer-disclaimer">
+      <p>
+        Coverage descriptions on this website are general in nature and are not a guarantee of coverage. Actual coverage depends on the specific policy forms, endorsements, exclusions, limits, deductibles, underwriting approval, and carrier claim determinations. Submitting a form or request through this website does not bind, change, or cancel coverage. Coverage changes are not effective until confirmed in writing by the agency and/or carrier. Donohoo &amp; Sons Insurance does not provide legal, tax, or financial advice.
+      </p>
+    </div>
   </footer>
-
 </body>
 </html>
