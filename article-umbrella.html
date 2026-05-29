@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Spring Thaw Trap: Sump Pump Insurance | Donohoo & Sons</title>
+  <title>The Wisconsin Law That Makes Umbrella Insurance Essential | Donohoo & Sons</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
@@ -41,37 +41,53 @@
     .nav-menu { position: fixed; top: 0; left: 0; width: 100%; height: 0; background: var(--navy); z-index: 2000; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
     .nav-menu.active { height: 100vh; }
     .nav-menu a { color: white; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 36px; margin: 12px 0; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; }
+    .nav-menu.active a:nth-child(6) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); color: var(--accent); font-family: 'Inter', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-top: 30px; border: 1px solid var(--accent); padding: 14px 35px; border-radius: 4px; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
     .article-hero { background: var(--navy); color: white; padding: 100px 20px 80px; text-align: center; }
     .article-wrap { max-width: 800px; margin: 0 auto; padding: 0 20px; }
     .article-category { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 20px; display: inline-block; }
-    .article-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 54px); margin: 0; line-height: 1.2; color: white; letter-spacing: -0.5px; }
+    .article-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(34px, 6vw, 54px); margin: 0; line-height: 1.2; color: white; letter-spacing: -0.5px; }
     .article-content { padding: 60px 0 80px; font-size: 20px; color: var(--ink); }
     .article-content p { margin-bottom: 30px; }
-    .article-content h2 { font-family: 'Playfair Display', serif; font-size: 30px; color: var(--navy); margin: 50px 0 20px; line-height: 1.3; }
-    .pull-quote { font-family: 'Playfair Display', serif; font-size: 28px; line-height: 1.4; color: var(--navy); font-style: italic; margin: 50px 0; padding-left: 30px; border-left: 4px solid var(--accent); }
+    .article-content h2 { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--navy); margin: 50px 0 20px; line-height: 1.3; }
+    .pull-quote { font-family: 'Playfair Display', serif; font-size: 24px; line-height: 1.5; color: var(--navy); font-style: italic; margin: 50px 0; padding-left: 30px; border-left: 4px solid var(--accent); }
     .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; margin-bottom: 30px; }
+    .back-link:hover i { transform: translateX(-4px); }
+    .checklist-grid { display: grid; grid-template-columns: 1fr; gap: 30px; margin: 40px 0; }
+    .checklist-box { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 30px; box-shadow: 0 10px 30px rgba(0,34,68,0.03); }
+    .checklist-box h4 { font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; margin: 0 0 20px 0; display: flex; align-items: center; gap: 10px; }
+    .checklist-box.safe h4 { color: #059669; }
+    .checklist-box.risk h4 { color: #dc2626; }
+    .checklist-box ul { list-style: none; padding: 0; margin: 0; }
+    .checklist-box li { position: relative; padding-left: 30px; margin-bottom: 15px; font-size: 18px; color: var(--ink); line-height: 1.5; }
+    .checklist-box.safe li::before { content: '✓'; color: #059669; position: absolute; left: 0; font-weight: bold; }
+    .checklist-box.risk li::before { content: '✕'; color: #dc2626; position: absolute; left: 0; font-weight: bold; }
+    .checklist-box p.note { font-size: 14px; color: var(--muted); margin-top: 20px; font-style: italic; line-height: 1.5; border-top: 1px solid var(--line); padding-top: 15px; }
     .cta-box { background: var(--paper); border: 1px solid var(--line); border-top: 4px solid var(--accent); padding: 60px 30px; border-radius: 12px; text-align: center; margin: 40px 0 80px; }
     .btn-solid { display: inline-block; background: var(--navy); color: #fff; padding: 16px 40px; border-radius: 4px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; font-family: 'Inter', sans-serif; transition: 0.2s; }
     .btn-solid:hover { background: var(--accent); transform: translateY(-3px); }
+    .disclaimer-text { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--muted); padding: 20px; background: rgba(0,0,0,0.03); border-radius: 8px; margin-top: 40px; font-style: italic; }
     footer { background: var(--navy); color: white; padding: 60px 20px 40px; font-size: 15px; font-family: 'Inter', sans-serif; }
     .footer-wrap { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 30px; }
+    .footer-logo { height: 60px; width: auto; filter: brightness(0) invert(1); }
+    .footer-address p { margin: 0; line-height: 1.8; color: rgba(255,255,255,0.8); }
+    .footer-address a { color: white; text-decoration: none; font-weight: 600; }
     .footer-disclaimer { width: 100%; max-width: 1100px; margin: 35px auto 0; padding-top: 25px; border-top: 1px solid rgba(255, 255, 255, 0.12); color: rgba(255, 255, 255, 0.72); font-size: 12px; line-height: 1.7; text-align: center; }
-    @media (min-width: 900px) {
-      .desktop-nav { display: block; }
-      .hamburger { display: none; }
-      .footer-wrap { flex-direction: row; justify-content: space-between; text-align: left; }
-    }
+    .footer-bottom { width: 100%; max-width: 1100px; margin: 40px auto 0; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; text-align: center; }
+    @media (min-width: 768px) { .checklist-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 900px) { .desktop-nav { display: block; } .hamburger { display: none; } .article-hero { padding: 140px 20px 100px; } .footer-wrap { flex-direction: row; justify-content: space-between; text-align: left; align-items: flex-end; } .footer-logo { height: 100px; } .footer-address { text-align: right; } .footer-bottom { text-align: left; } }
   </style>
 </head>
 <body>
   <header>
     <div class="nav-container">
-      <a href="/" style="display: inline-flex;"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
+      <a href="/" style="display: inline-flex; position: relative; z-index: 2100;"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
       <nav class="desktop-nav">
         <a href="/">Home</a>
         <a href="/families.html">Personal</a>
         <a href="/business.html">Business</a>
-        <a href="/life.html">Life & Health</a>
+        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
         <a href="/insights.html" class="active-link">Insights</a>
         <a href="/quote.html" class="btn-quote">Get a Quote</a>
       </nav>
@@ -83,48 +99,81 @@
         <a href="/">Home</a>
         <a href="/families.html">Personal</a>
         <a href="/business.html">Business</a>
-        <a href="/life.html">Life & Health</a>
+        <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
         <a href="/insights.html">Insights</a>
         <a href="/quote.html">Get a Quote</a>
     </nav>
   </header>
   <section class="article-hero">
     <div class="article-wrap">
-      <span class="article-category">Home Protection</span>
-      <h1>The Spring Thaw Trap: Why Your Sump Pump Isn't Enough</h1>
+      <span class="article-category">Personal Protection</span>
+      <h1>The Wisconsin Law That Makes Umbrella Insurance Essential</h1>
     </div>
   </section>
   <section class="article-content">
     <div class="article-wrap">
       <a href="/insights.html" class="back-link"><i class="ph-bold ph-arrow-left"></i> Back to Insights</a>
-      <p>The snow is finally melting across Wisconsin. For most homeowners, it feels like a relief—but for your basement, it’s the most dangerous time of the year.</p>
-      <p>As the "Spring Thaw" begins, massive amounts of water enter the soil. However, because the ground deeper down is often still frozen solid, that water has nowhere to go but sideways—directly into your foundation and your sump pit.</p>
-      <h2>The $5,000 Misconception</h2>
-      <p>Most homeowners assume that if they have a "Homeowners Insurance" policy, they are covered for water in the basement. **This is one of the most expensive assumptions you can make.**</p>
-      <p>Standard home insurance policies specifically exclude "Water Backup and Sump Overflow" unless you have added a specific endorsement (a rider) to your policy. </p>
-      <p>Even if you have the rider, many "budget" or "basic" policies cap the coverage at $5,000. If you have a finished basement with drywall, flooring, and electronics, a single pump failure can easily result in **$20,000 to $30,000 in damages.** A $5,000 limit won't even cover the professional drying and mold remediation, let alone the repairs.</p>
+      <p>If you look at your current auto insurance policy, you might see liability limits of $250,000 per person and $500,000 per accident. To most people, a quarter of a million dollars sounds like a massive amount of coverage. You might assume you're perfectly safe.</p>
+      <p>But there is a specific legal precedent in Wisconsin that changes the math completely. It's called the <strong>Collateral Source Rule</strong>, and it is a primary reason why a standard auto policy is often not enough to protect a family's financial future.</p>
+      <h2>The Billed vs. Paid Reality</h2>
+      <p>Imagine you cause a severe accident on I-94, and the other driver requires extensive surgery, a hospital stay, and physical therapy. The hospital generates a total bill of <strong>$150,000</strong>.</p>
+      <p>Normally, health insurance steps in. The injured driver's health insurance company negotiates with the hospital and settles the entire claim for a contracted rate of, say, <strong>$50,000</strong>.</p>
+      <p>Logically, you would think that if you are sued for causing the accident, your auto insurance would only have to pay out the $50,000 that was actually spent, right?</p>
+      <p><strong>Not necessarily.</strong></p>
       <div class="pull-quote">
-        "Your insurance policy shouldn't just cover the cleanup; it should cover the recovery."
+        "Wisconsin follows a version of the Collateral Source Rule, which can allow injured parties in certain situations to pursue damages based on the full billed cost of medical care—even if a lower amount was actually paid by health insurance."
       </div>
-      <h2>The Three-Point Spring Audit</h2>
-      <p>Before the next big rain hits, take these three steps to protect your home:</p>
-      <p><strong>1. The Battery Backup:</strong> If a spring storm knocks out your power, your sump pump is useless. Ensure you have a battery backup system or a water-powered backup installed and tested.</p>
-      <p><strong>2. The Discharge Line:</strong> Walk outside and check your discharge pipe. If it’s buried under a pile of ice or snow, the water can't get out. That pressure will cause the pump to burn out or the water to back up into your home.</p>
-      <p><strong>3. Check Your "Dec" Page:</strong> Look at your policy's Declarations Page for **"Water Backup of Sewers or Drains."** If that number is $5,000 or $10,000 and you have a finished basement, you are taking a massive financial risk.</p>
-      <h2>I Guide, You Decide</h2>
-      <p>You’ve worked too hard on your home to let a $50-a-year insurance gap ruin your basement. My goal is to make sure you understand the numbers before the water starts rising.</p>
-      <div class="cta-box">
-        <h2>Is your basement actually protected?</h2>
-        <p>Take a quick photo of your policy's "Water Backup" section and send it over. I can help estimate where your coverage may fall short based on the policy language.</p>
-        <a href="/quote.html" class="btn-solid">Request a Quick Policy Check</a>
+      <p>In this scenario, even though the hospital accepted $50,000, you could still be exposed to claims based on the higher billed amount. That means your liability exposure may be much higher than expected, especially when combined with claims for lost wages, pain and suffering, and other damages, causing that $250,000 auto limit to be exhausted quickly.</p>
+      <h2>What Happens When the Limits Run Out?</h2>
+      <p>Once your auto insurance pays out its maximum limit, the insurance company's job is done. But if a court awards the injured party more than your policy limit, you are personally responsible for the difference.</p>
+      <p>This is where an <strong>Umbrella Policy</strong> steps in. It provides an extra $1 Million to $5 Million (or more) of liability coverage that sits on top of your home and auto policies. If you don't have one, courts can pursue your personal assets to satisfy a judgment if your coverage is insufficient.</p>
+      <h3>The Asset Checklist: What's at Risk?</h3>
+      <p>A common misconception is that if you don't have a million dollars in the bank, you don't need a million-dollar umbrella. But courts don't just look at your checking account; they look at everything you own and everything you may earn.</p>
+      <div class="checklist-grid">
+        <div class="checklist-box risk">
+          <h4><i class="ph-fill ph-warning-circle"></i> Highly Exposed Assets</h4>
+          <ul>
+            <li><strong>Future Wages:</strong> Courts can garnish a portion of your wages (subject to federal and state limits), and judgments can remain enforceable for many years if renewed.</li>
+            <li><strong>Home Equity:</strong> Any equity in your home above Wisconsin's homestead exemption.</li>
+            <li><strong>Savings & Investments:</strong> Standard brokerage accounts, mutual funds, and checking accounts.</li>
+            <li><strong>Secondary Properties:</strong> Cabins, rental properties, or vacant land.</li>
+            <li><strong>Toys:</strong> Boats, RVs, and classic cars.</li>
+          </ul>
+        </div>
+        <div class="checklist-box safe">
+          <h4><i class="ph-fill ph-shield-check"></i> Generally Protected</h4>
+          <ul>
+            <li><strong>Qualified Retirement:</strong> Employer-sponsored ERISA plans like 401(k)s and 403(b)s are heavily protected.</li>
+            <li><strong>IRAs:</strong> Traditional and Roth IRAs are often protected from creditors under Wisconsin law, subject to certain limits and exceptions.</li>
+          </ul>
+          <p class="note">Note: Asset protection laws are complex. Improper handling or withdrawals can reduce or complicate the protections of these accounts.</p>
+        </div>
+      </div>
+      <h2>My Job is to Guide. You Decide.</h2>
+      <p>When I sit down with a new client, my job is not to blindly copy the limits from your old policy. My job is to explain the risks—like the nuances of the Collateral Source Rule and potential wage garnishment—so that you can make an educated decision about your own family's financial security.</p>
+      <p>An umbrella policy is often the most cost-effective peace of mind you can buy. Whether or not you decide to purchase one is entirely up to you. But as your advisor, I want to make sure you fully understand what is at stake before you decide.</p>
+      <div class="disclaimer-text">
+        <strong>Please Note:</strong> This article is for informational purposes and should not be construed as legal advice. Asset protection, liability laws, and court precedents are subject to change. Always consult with a qualified attorney regarding specific legal exposures and asset structuring.
+      </div>
+      <div class="cta-box reveal">
+        <h2>Are your assets properly shielded?</h2>
+        <p>Let's take a look at your current auto and home limits. We can review what you have built and see if an umbrella policy makes sense for your specific situation.</p>
+        <a href="/quote.html" class="btn-solid">Request a Review</a>
       </div>
     </div>
   </section>
   <footer>
     <div class="footer-wrap">
-      <div><img src="logo.png" alt="Donohoo & Sons" style="height:60px; filter: brightness(0) invert(1);"></div>
-      <div>
-        <p>10425 W North Ave. Suite 226<br>Wauwatosa, WI 53226<br>414.698.1729</p>
+      <div class="footer-left">
+        <img src="logo.png" alt="Donohoo & Sons" class="footer-logo">
+      </div>
+      <div class="footer-address">
+        <p>
+          10425 W North Ave. Suite 226<br>
+          Wauwatosa, WI 53226<br>
+          <a href="tel:4146981729">414.698.1729</a><br>
+          <a href="mailto:adonohoo@unisource-ins.com" class="email-link">adonohoo@unisource-ins.com</a>
+        </p>
       </div>
     </div>
     <div class="footer-disclaimer">
@@ -137,6 +186,8 @@
   <script>
     function toggleMenu() { document.getElementById('mobileNav').classList.toggle('active'); document.getElementById('hamburgerBtn').classList.toggle('active'); document.body.classList.toggle('nav-open'); }
     window.addEventListener('load', () => { document.body.classList.add('loaded'); });
+    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
