@@ -4,76 +4,82 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Business Insurance | Donohoo & Sons</title>
+  <meta name="description" content="Business insurance and risk management for Wisconsin business owners. General liability, commercial property, commercial auto, workers compensation, EPLI, cyber liability, and specialized auto repair shop coverage.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
-  
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <noscript><style>body{opacity:1}.reveal{opacity:1;transform:none}</style></noscript>
 
   <style>
     :root {
       --bg: #fdfdfb;
       --ink: #1a202c;
-      --navy: #002244; 
+      --navy: #002244;
       --accent: #b8860b;
+      --accent-text: #6f4f00;
+      --accent-on-dark: #e1b44f;
       --line: #e2e8f0;
       --paper: #f4f7fa;
-      --muted: #5f6b7a;
+      --muted: #4f5b68;
+      --focus: #005fcc;
     }
 
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
     body {
       margin: 0;
-      font-family: 'Lora', serif; 
+      font-family: 'Lora', serif;
       background: var(--bg);
       color: var(--ink);
-      font-size: 18px; 
+      font-size: 18px;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       opacity: 0;
       transition: opacity 0.8s ease-in-out;
-      overflow-x: hidden; 
+      overflow-x: hidden;
     }
 
-    body.loaded {
-      opacity: 1;
-    }
+    body.loaded { opacity: 1; }
+    body.nav-open { overflow: hidden; }
 
-    body.nav-open {
-      overflow: hidden;
-    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; text-align: center; }
 
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
-      text-align: center;
-    }
-
-    header,
-    .btn-quote,
-    .btn-white,
-    .nav-menu a,
-    .clean-amp,
-    .specialty-card h4 {
+    header, .btn-quote, .btn-white, .nav-menu a, .clean-amp, .specialty-card h4, .specialty-button {
       font-family: 'Inter', sans-serif;
     }
 
-    a:focus-visible,
-    button:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-      border-radius: 3px;
+    a { text-underline-offset: 0.18em; }
+
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 4px;
+      border-radius: 4px;
     }
 
-    /* HEADER */
+    .skip-link {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      z-index: 3000;
+      background: #ffffff;
+      color: var(--navy);
+      padding: 10px 14px;
+      border: 2px solid var(--focus);
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      text-decoration: none;
+      transform: translateY(-150%);
+      transition: transform 0.2s ease;
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
     header {
-      background: #fff;
+      background: #ffffff;
       border-bottom: 1px solid var(--line);
       position: sticky;
       top: 0;
@@ -90,17 +96,9 @@
       padding: 0 20px;
     }
 
-    .logo-img {
-      height: 60px;
-      width: auto;
-      position: relative;
-      z-index: 2100;
-    }
+    .logo-img { height: 60px; width: auto; position: relative; z-index: 2100; }
 
-    /* DESKTOP NAV */
-    .desktop-nav {
-      display: none;
-    }
+    .desktop-nav { display: none; }
 
     .desktop-nav a {
       margin-left: 28px;
@@ -113,19 +111,17 @@
       transition: color 0.3s;
     }
 
-    .desktop-nav a:hover {
-      color: var(--accent);
-    }
+    .desktop-nav a:hover { color: var(--accent-text); }
 
     .desktop-nav .active-link {
       color: var(--navy);
-      border-bottom: 1px solid var(--accent);
+      border-bottom: 1px solid var(--accent-text);
       padding-bottom: 4px;
     }
 
     .btn-quote {
       background: var(--navy);
-      color: white !important;
+      color: #ffffff !important;
       padding: 12px 24px;
       border-radius: 4px;
       transition: background 0.3s;
@@ -133,15 +129,9 @@
       letter-spacing: 1px;
     }
 
-    .btn-quote:hover {
-      background: var(--accent);
-    }
+    .btn-quote:hover { background: #6f4f00; color: #ffffff !important; }
+    .btn-quote:active { transform: scale(0.96); }
 
-    .btn-quote:active {
-      transform: scale(0.96);
-    }
-
-    /* MOBILE HAMBURGER */
     .hamburger {
       cursor: pointer;
       display: flex;
@@ -166,27 +156,12 @@
       position: absolute;
     }
 
-    .hamburger span:nth-child(1) {
-      transform: translateY(-5px);
-    }
+    .hamburger span:nth-child(1) { transform: translateY(-5px); }
+    .hamburger span:nth-child(2) { transform: translateY(5px); }
+    .hamburger.active span { background-color: #ffffff; }
+    .hamburger.active span:nth-child(1) { transform: translateY(0) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { transform: translateY(0) rotate(-45deg); }
 
-    .hamburger span:nth-child(2) {
-      transform: translateY(5px);
-    }
-
-    .hamburger.active span {
-      background-color: white;
-    }
-
-    .hamburger.active span:nth-child(1) {
-      transform: translateY(0) rotate(45deg);
-    }
-
-    .hamburger.active span:nth-child(2) {
-      transform: translateY(0) rotate(-45deg);
-    }
-
-    /* MOBILE MENU */
     .nav-menu {
       position: fixed;
       top: 0;
@@ -203,12 +178,10 @@
       transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .nav-menu.active {
-      height: 100vh;
-    }
+    .nav-menu.active { height: 100vh; }
 
     .nav-menu a {
-      color: white;
+      color: #ffffff;
       text-decoration: none;
       font-family: 'Playfair Display', serif;
       font-size: 36px;
@@ -220,44 +193,41 @@
       letter-spacing: 0;
     }
 
-    .nav-menu a:hover {
-      color: var(--accent);
-    }
+    .nav-menu a:hover { color: var(--accent-on-dark); }
 
     .nav-menu.active a:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
     .nav-menu.active a:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
     .nav-menu.active a:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
     .nav-menu.active a:nth-child(4) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
     .nav-menu.active a:nth-child(5) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+
     .nav-menu.active a:nth-child(6) {
       transition-delay: 0.4s;
       opacity: 1;
       transform: translateY(0);
-      color: var(--accent);
+      color: #ffffff;
       font-family: 'Inter', sans-serif;
       font-size: 14px;
       text-transform: uppercase;
       letter-spacing: 2px;
       margin-top: 30px;
-      border: 1px solid var(--accent);
+      border: 1px solid var(--accent-on-dark);
       padding: 14px 35px;
       border-radius: 4px;
     }
 
-    /* HERO */
     .hero {
       position: relative;
       overflow: hidden;
       background: var(--navy);
-      color: white;
+      color: #ffffff;
       padding: 160px 20px;
       text-align: center;
     }
 
     .hero-video {
       position: absolute;
-      top: 0;
-      left: 0;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -266,11 +236,8 @@
 
     .hero-overlay {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(rgba(0,34,68,0.75), rgba(0,34,68,0.85));
+      inset: 0;
+      background: linear-gradient(rgba(0, 34, 68, 0.82), rgba(0, 34, 68, 0.9));
       z-index: 1;
     }
 
@@ -283,10 +250,7 @@
     }
 
     @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .hero h1 {
@@ -294,11 +258,11 @@
       font-size: clamp(38px, 8vw, 68px);
       margin: 0 0 10px;
       line-height: 1.1;
-      color: white;
+      color: #ffffff;
     }
 
     .hero-accent {
-      color: var(--accent);
+      color: var(--accent-on-dark);
       font-style: italic;
       display: inline-block;
     }
@@ -306,15 +270,12 @@
     .hero p {
       font-size: 22px;
       margin: 0 auto;
-      color: #cbd5e0;
+      color: #ffffff;
       max-width: 700px;
       font-style: italic;
     }
 
-    /* SECTIONS */
-    .section {
-      padding: 100px 0;
-    }
+    .section { padding: 100px 0; }
 
     .bg-paper {
       background: var(--paper);
@@ -337,27 +298,22 @@
       font-size: 40px;
     }
 
-    /* REVEAL */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
       transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
     }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* EXPERTISE BLOCKS */
     .expertise-block {
       padding: 20px;
-      border-top: 1px solid var(--accent);
+      border-top: 1px solid var(--accent-text);
     }
 
     .expertise-block i {
       font-size: 44px;
-      color: var(--accent);
+      color: var(--accent-text);
       margin-bottom: 20px;
       display: block;
     }
@@ -374,22 +330,21 @@
       margin: 0;
     }
 
-    /* COVERAGE CARDS */
     .coverage-card {
-      background: white;
+      background: #ffffff;
       padding: 45px 35px;
       border: 1px solid var(--line);
       border-radius: 8px;
       border-top: 4px solid var(--navy);
-      box-shadow: 0 10px 30px rgba(0,34,68,0.02);
+      box-shadow: 0 10px 30px rgba(0, 34, 68, 0.02);
       text-align: left;
-      transition: transform 0.4s ease;
+      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
     }
 
     .coverage-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(0,34,68,0.06);
-      border-top: 4px solid var(--accent);
+      box-shadow: 0 20px 40px rgba(0, 34, 68, 0.06);
+      border-top: 4px solid var(--accent-text);
     }
 
     .coverage-card h3 {
@@ -403,7 +358,7 @@
     }
 
     .coverage-card h3 i {
-      color: var(--accent);
+      color: var(--accent-text);
       font-size: 34px;
     }
 
@@ -412,7 +367,6 @@
       color: var(--muted);
     }
 
-    /* SPECIALIZED SECTION */
     .specialty-wrap {
       padding: 100px 0;
       background: var(--paper);
@@ -420,12 +374,12 @@
       border-bottom: 1px solid var(--line);
     }
 
-    .specialty-card { 
+    .specialty-card {
       max-width: 850px;
       margin: 0 auto;
-      background: #fff;
+      background: #ffffff;
       border: 1px solid var(--line);
-      border-radius: 12px; 
+      border-radius: 12px;
       padding: 60px 40px;
       display: flex;
       flex-direction: column;
@@ -434,17 +388,17 @@
       transition: transform 0.4s ease, box-shadow 0.4s ease;
       text-decoration: none;
       color: inherit;
-      box-shadow: 0 10px 30px rgba(0,34,68,0.03);
+      box-shadow: 0 10px 30px rgba(0, 34, 68, 0.03);
     }
 
     .specialty-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0,34,68,0.1);
+      box-shadow: 0 20px 40px rgba(0, 34, 68, 0.1);
     }
 
     .specialty-card i {
       font-size: 54px;
-      color: var(--accent);
+      color: var(--accent-text);
       margin-bottom: 25px;
     }
 
@@ -452,8 +406,8 @@
       text-transform: uppercase;
       letter-spacing: 2px;
       font-size: 13px;
-      font-weight: 600;
-      color: var(--accent);
+      font-weight: 700;
+      color: var(--accent-text);
       margin-bottom: 12px;
     }
 
@@ -472,14 +426,24 @@
       line-height: 1.8;
     }
 
-    /* CTA BOX */
+    .specialty-button {
+      background: var(--navy);
+      color: #ffffff;
+      padding: 14px 30px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
     .cta-box {
       background: var(--navy);
-      color: #fff;
+      color: #ffffff;
       padding: 100px 20px;
       border-radius: 12px;
       text-align: center;
-      box-shadow: 0 20px 40px rgba(0,34,68,0.1);
+      box-shadow: 0 20px 40px rgba(0, 34, 68, 0.1);
       margin: 100px 0 80px;
     }
 
@@ -487,11 +451,11 @@
       font-family: 'Playfair Display', serif;
       font-size: 42px;
       margin: 0 0 20px;
-      color: white;
+      color: #ffffff;
     }
 
     .cta-box p {
-      color: #cbd5e0;
+      color: #ffffff;
       max-width: 600px;
       margin: 0 auto 35px;
       font-size: 20px;
@@ -500,12 +464,12 @@
 
     .btn-white {
       display: inline-block;
-      background: #fff;
+      background: #ffffff;
       color: var(--navy);
       padding: 16px 40px;
       border-radius: 4px;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
       font-size: 14px;
@@ -513,15 +477,14 @@
     }
 
     .btn-white:hover {
-      background: var(--accent);
-      color: white;
+      background: #6f4f00;
+      color: #ffffff;
       transform: translateY(-3px);
     }
 
-    /* FOOTER */
     footer {
       background: var(--navy);
-      color: white;
+      color: #ffffff;
       padding: 60px 20px 40px;
       font-size: 15px;
       font-family: 'Inter', sans-serif;
@@ -546,28 +509,37 @@
     .footer-address p {
       margin: 0;
       line-height: 1.8;
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.9);
     }
 
     .footer-address a {
-      color: white;
+      color: #ffffff;
       text-decoration: none;
       font-weight: 600;
       transition: color 0.2s;
     }
 
-    .footer-address a:hover {
-      color: var(--accent);
-    }
+    .footer-address a:hover { color: var(--accent-on-dark); }
 
     .email-link {
       display: inline-block;
       margin-top: 5px;
-      color: var(--accent) !important;
+      color: #ffffff !important;
+      text-decoration: underline;
     }
 
-    .email-link:hover {
-      color: white !important;
+    .email-link:hover { color: var(--accent-on-dark) !important; }
+
+    .footer-disclaimer {
+      width: 100%;
+      max-width: 1100px;
+      margin: 35px auto 0;
+      padding-top: 25px;
+      border-top: 1px solid rgba(255, 255, 255, 0.25);
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 12px;
+      line-height: 1.7;
+      text-align: center;
     }
 
     .footer-bottom {
@@ -575,33 +547,35 @@
       max-width: 1100px;
       margin: 40px auto 0;
       padding-top: 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.25);
       font-size: 13px;
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.78);
       letter-spacing: 1px;
       text-transform: uppercase;
       text-align: center;
     }
 
-    @media (min-width: 768px) {
-      .grid-3 {
-        grid-template-columns: repeat(2, 1fr);
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
       }
+
+      body { transition: none; opacity: 1; }
+      .reveal, .hero-text { opacity: 1; transform: none; transition: none; animation: none; }
+      .hero-video { display: none; }
+    }
+
+    @media (min-width: 768px) {
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (min-width: 900px) {
-      .desktop-nav {
-        display: block;
-      }
-
-      .hamburger {
-        display: none;
-      }
-
-      .grid-3 {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
-      }
+      .desktop-nav { display: block; }
+      .hamburger { display: none; }
+      .grid-3 { grid-template-columns: repeat(3, 1fr); gap: 40px; }
 
       .footer-wrap {
         flex-direction: row;
@@ -610,32 +584,25 @@
         align-items: flex-end;
       }
 
-      .footer-logo {
-        height: 80px;
-      }
-
-      .footer-address {
-        text-align: right;
-      }
-
-      .footer-bottom {
-        text-align: left;
-      }
+      .footer-logo { height: 80px; }
+      .footer-address { text-align: right; }
+      .footer-bottom { text-align: left; }
     }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <header>
     <div class="nav-container">
-      <a href="/" style="display: inline-flex; position: relative; z-index: 2100;">
+      <a href="/" aria-label="Donohoo & Sons Insurance home" style="display: inline-flex; position: relative; z-index: 2100;">
         <img src="logo.png" class="logo-img" alt="Donohoo & Sons Insurance">
       </a>
 
       <nav class="desktop-nav" aria-label="Main navigation">
         <a href="/">Home</a>
         <a href="/families.html">Personal</a>
-        <a href="/business.html" class="active-link">Business</a>
+        <a href="/business.html" class="active-link" aria-current="page">Business</a>
         <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
         <a href="/insights.html">Insights</a>
         <a href="/quote.html" class="btn-quote">Get a Quote</a>
@@ -647,104 +614,141 @@
         aria-label="Open navigation menu"
         aria-expanded="false"
         aria-controls="mobileNav"
-        onclick="toggleMenu()"
       >
         <span></span>
         <span></span>
       </button>
     </div>
 
-    <nav class="nav-menu" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
+    <nav class="nav-menu" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true" hidden>
       <a href="/">Home</a>
       <a href="/families.html">Personal</a>
-      <a href="/business.html">Business</a>
+      <a href="/business.html" aria-current="page">Business</a>
       <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
       <a href="/insights.html">Insights</a>
       <a href="/quote.html">Get a Quote</a>
     </nav>
   </header>
 
-  <section class="hero">
-    <video autoplay loop muted playsinline poster="andy.jpg" class="hero-video">
-      <source src="andy-video.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="wrap hero-text">
-      <h1>Protecting the business<br><span class="hero-accent">you've built.</span></h1>
-      <p>Sophisticated risk management for owners who need a partner, not just a policy.</p>
-    </div>
-  </section>
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-title">
+      <video autoplay loop muted playsinline poster="andy.jpg" class="hero-video" aria-hidden="true" tabindex="-1">
+        <source src="andy-video.mp4" type="video/mp4">
+      </video>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="grid-3">
-        <div class="expertise-block reveal">
-          <i class="ph-light ph-buildings"></i>
-          <h3>20 Years of Experience</h3>
-          <p>Before founding Donohoo & Sons, I spent two decades at Sentry Insurance protecting large auto dealership groups and complex commercial operations. I bring that high-level expertise and demanding standard of customer service to your business with passion and pride.</p>
-        </div>
-        <div class="expertise-block reveal">
-          <i class="ph-light ph-handshake"></i>
-          <h3>Independent Access</h3>
-          <p>I don't work for a single insurance carrier—I work for you. I have direct access to multiple top-rated commercial markets to build a custom package that fits your specific risk profile without compromise.</p>
-        </div>
-        <div class="expertise-block reveal">
-          <i class="ph-light ph-user-focus"></i>
-          <h3>One Point of Contact</h3>
-          <p>Your business and personal lives are intertwined. By handling both your commercial policies and your personal protection, I coordinate your coverage to help identify potential gaps and coordinate coverage where possible.</p>
+      <div class="hero-overlay"></div>
+
+      <div class="wrap hero-text">
+        <h1 id="hero-title">Protecting the business<br><span class="hero-accent">you've built.</span></h1>
+        <p>Sophisticated risk management for owners who need a partner, not just a policy.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="experience-title">
+      <div class="wrap">
+        <h2 id="experience-title" class="section-title reveal">Commercial Insurance Experience</h2>
+
+        <div class="grid-3">
+          <div class="expertise-block reveal">
+            <i class="ph-light ph-buildings" aria-hidden="true"></i>
+            <h3>20 Years of Experience</h3>
+            <p>Before founding Donohoo &amp; Sons, I spent two decades at Sentry Insurance protecting large auto dealership groups and complex commercial operations. I bring that high-level expertise and demanding standard of customer service to your business with passion and pride.</p>
+          </div>
+
+          <div class="expertise-block reveal">
+            <i class="ph-light ph-handshake" aria-hidden="true"></i>
+            <h3>Independent Access</h3>
+            <p>I don't work for a single insurance carrier—I work for you. I have direct access to multiple top-rated commercial markets to build a custom package that fits your specific risk profile without compromise.</p>
+          </div>
+
+          <div class="expertise-block reveal">
+            <i class="ph-light ph-user-focus" aria-hidden="true"></i>
+            <h3>One Point of Contact</h3>
+            <p>Your business and personal lives are intertwined. By handling both your commercial policies and your personal protection, I coordinate your coverage to help identify potential gaps and coordinate coverage where possible.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section bg-paper">
-    <div class="wrap">
-      <h2 class="section-title reveal">Comprehensive Coverage</h2>
-      <div class="grid-3">
-        <div class="coverage-card reveal"><h3><i class="ph-light ph-shield-check"></i>General Liability</h3><p>The foundation of your protection. Shielding your business from third-party claims of injury or damage.</p></div>
-        <div class="coverage-card reveal"><h3><i class="ph-light ph-storefront"></i>Commercial Property</h3><p>Protecting your physical assets—from your building to your inventory and heavy equipment.</p></div>
-        <div class="coverage-card reveal"><h3><i class="ph-light ph-truck"></i>Commercial Auto</h3><p>Comprehensive liability and physical damage protection for the vehicles that keep your business moving.</p></div>
-        <div class="coverage-card reveal"><h3><i class="ph-light ph-first-aid"></i>Workers Comp</h3><p>Protecting your team and your bottom line by covering medical costs and lost wages for injuries.</p></div>
-        <div class="coverage-card reveal"><h3><i class="ph-light ph-scales"></i>EPLI</h3><p>Defense against claims of discrimination, wrongful termination, or workplace harassment.</p></div>
-        <div class="coverage-card reveal"><h3><i class="ph-light ph-laptop"></i>Cyber Liability</h3><p>Crucial coverage for modern operations. Protecting your financial assets from digital threats.</p></div>
+    <section class="section bg-paper" aria-labelledby="coverage-title">
+      <div class="wrap">
+        <h2 id="coverage-title" class="section-title reveal">Comprehensive Coverage</h2>
+
+        <div class="grid-3">
+          <div class="coverage-card reveal">
+            <h3><i class="ph-light ph-shield-check" aria-hidden="true"></i>General Liability</h3>
+            <p>The foundation of your protection. Shielding your business from third-party claims of injury or damage.</p>
+          </div>
+
+          <div class="coverage-card reveal">
+            <h3><i class="ph-light ph-storefront" aria-hidden="true"></i>Commercial Property</h3>
+            <p>Protecting your physical assets—from your building to your inventory and heavy equipment.</p>
+          </div>
+
+          <div class="coverage-card reveal">
+            <h3><i class="ph-light ph-truck" aria-hidden="true"></i>Commercial Auto</h3>
+            <p>Comprehensive liability and physical damage protection for the vehicles that keep your business moving.</p>
+          </div>
+
+          <div class="coverage-card reveal">
+            <h3><i class="ph-light ph-first-aid" aria-hidden="true"></i>Workers Comp</h3>
+            <p>Protecting your team and your bottom line by covering medical costs and lost wages for injuries.</p>
+          </div>
+
+          <div class="coverage-card reveal">
+            <h3><i class="ph-light ph-scales" aria-hidden="true"></i>EPLI</h3>
+            <p>Defense against claims of discrimination, wrongful termination, or workplace harassment.</p>
+          </div>
+
+          <div class="coverage-card reveal">
+            <h3><i class="ph-light ph-laptop" aria-hidden="true"></i>Cyber Liability</h3>
+            <p>Crucial coverage for modern operations. Protecting your financial assets from digital threats.</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="specialty-wrap">
-    <div class="wrap">
-      <a href="/mechanic.html" class="specialty-card reveal">
-        <i class="ph-light ph-wrench"></i>
-        <h4>Niche Specialization</h4>
-        <h3>Auto Repair & Body Shops</h3>
-        <p>With 20 years of experience specifically protecting automotive operations, I understand the unique liabilities of your shop—from garagekeepers to diagnostic equipment limits. View our specialized automotive program and shop audit guide.</p>
-        <span style="background: var(--navy); color: white; padding: 14px 30px; border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">View Specialized Protection</span>
-      </a>
-    </div>
-  </section>
+    <section class="specialty-wrap" aria-labelledby="specialty-title">
+      <div class="wrap">
+        <a href="/mechanic.html" class="specialty-card reveal" aria-label="View specialized insurance protection for auto repair and body shops">
+          <i class="ph-light ph-wrench" aria-hidden="true"></i>
+          <h4>Niche Specialization</h4>
+          <h3 id="specialty-title">Auto Repair &amp; Body Shops</h3>
+          <p>With 20 years of experience specifically protecting automotive operations, I understand the unique liabilities of your shop—from garagekeepers to diagnostic equipment limits. View our specialized automotive program and shop audit guide.</p>
+          <span class="specialty-button">View Specialized Protection</span>
+        </a>
+      </div>
+    </section>
 
-  <section class="wrap">
-    <div class="cta-box reveal">
-      <h2>Ready for a fresh perspective?</h2>
-      <p>Get an expert set of eyes on your current business protection. Let's start a conversation.</p>
-      <a href="/quote.html" class="btn-white">Connect with Andy</a>
-    </div>
-  </section>
+    <section class="wrap" aria-labelledby="cta-title">
+      <div class="cta-box reveal">
+        <h2 id="cta-title">Ready for a fresh perspective?</h2>
+        <p>Get an expert set of eyes on your current business protection. Let's start a conversation.</p>
+        <a href="/quote.html" class="btn-white">Connect with Andy</a>
+      </div>
+    </section>
+  </main>
 
-  <footer>
+  <footer role="contentinfo">
     <div class="footer-wrap">
       <div class="footer-left">
         <img src="logo.png" alt="Donohoo & Sons Insurance" class="footer-logo" width="160" height="80" loading="lazy">
       </div>
 
-      <div class="footer-address">
+      <address class="footer-address">
         <p>
           10425 W North Ave. Suite 226<br>
           Wauwatosa, WI 53226<br>
           <a href="tel:+14146981729">414.698.1729</a><br>
           <a href="mailto:adonohoo@unisource-ins.com" class="email-link">adonohoo@unisource-ins.com</a>
         </p>
-      </div>
+      </address>
+    </div>
+
+    <div class="footer-disclaimer">
+      <p>
+        Coverage descriptions on this website are general in nature and are not a guarantee of coverage. Actual coverage depends on the specific policy forms, endorsements, exclusions, limits, deductibles, underwriting approval, and carrier claim determinations. Submitting a form or request through this website does not bind, change, or cancel coverage. Coverage changes are not effective until confirmed in writing by the agency and/or carrier. Donohoo &amp; Sons Insurance does not provide legal, tax, or financial advice.
+      </p>
     </div>
 
     <div class="footer-bottom">
@@ -753,50 +757,111 @@
   </footer>
 
   <script>
-    function toggleMenu() {
-      const nav = document.getElementById('mobileNav');
-      const btn = document.getElementById('hamburgerBtn');
-      const isOpen = nav.classList.toggle('active');
+    const nav = document.getElementById('mobileNav');
+    const btn = document.getElementById('hamburgerBtn');
+    const mobileLinks = Array.from(document.querySelectorAll('#mobileNav a'));
 
+    function setMenuState(isOpen) {
       btn.classList.toggle('active', isOpen);
-      btn.setAttribute('aria-expanded', isOpen);
+      btn.setAttribute('aria-expanded', String(isOpen));
       btn.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
-      nav.setAttribute('aria-hidden', !isOpen);
+      nav.classList.toggle('active', isOpen);
+      nav.hidden = !isOpen;
+      nav.setAttribute('aria-hidden', String(!isOpen));
       document.body.classList.toggle('nav-open', isOpen);
+
+      if (isOpen && mobileLinks.length) {
+        mobileLinks[0].focus();
+      } else if (!isOpen) {
+        btn.focus();
+      }
     }
 
+    function toggleMenu() {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      setMenuState(!isOpen);
+    }
+
+    btn.addEventListener('click', toggleMenu);
+
     document.addEventListener('click', function(e) {
-      const nav = document.getElementById('mobileNav');
-      const btn = document.getElementById('hamburgerBtn');
-      if (nav.classList.contains('active') && !nav.contains(e.target) && !btn.contains(e.target)) {
-        toggleMenu();
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      if (isOpen && !nav.contains(e.target) && !btn.contains(e.target)) {
+        setMenuState(false);
       }
     });
 
-    document.querySelectorAll('#mobileNav a').forEach(function(link) {
+    document.addEventListener('keydown', function(e) {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      if (!isOpen) return;
+
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setMenuState(false);
+        return;
+      }
+
+      if (e.key === 'Tab') {
+        const focusable = [btn].concat(mobileLinks);
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+
+    mobileLinks.forEach(function(link) {
       link.addEventListener('click', function() {
-        const nav = document.getElementById('mobileNav');
-        if (nav.classList.contains('active')) toggleMenu();
+        if (btn.getAttribute('aria-expanded') === 'true') {
+          setMenuState(false);
+        }
       });
+    });
+
+    window.addEventListener('resize', function() {
+      if (window.innerWidth >= 900 && btn.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+      }
     });
 
     window.addEventListener('load', function() {
       document.body.classList.add('loaded');
     });
 
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        observer.observe(el);
       });
-    }, { threshold: 0.1 });
+    } else {
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        el.classList.add('visible');
+      });
+    }
 
-    document.querySelectorAll('.reveal').forEach(function(el) {
-      observer.observe(el);
-    });
+    if (prefersReducedMotion) {
+      document.querySelectorAll('.hero-video').forEach(function(video) {
+        video.pause();
+        video.style.display = 'none';
+      });
+    }
   </script>
-
 </body>
 </html>
