@@ -610,14 +610,17 @@
     }
 
     .email-link {
-      display: inline-block;
-      margin-top: 5px;
-      color: #f0c24b !important;
-    }
+  display: inline-block;
+  margin-top: 5px;
+  color: white !important;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
 
-    .email-link:hover {
-      color: white !important;
-    }
+.email-link:hover,
+.email-link:focus-visible {
+  color: var(--accent-bright) !important;
+}
 
     .footer-disclaimer {
       width: 100%;
