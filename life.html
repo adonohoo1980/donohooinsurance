@@ -47,7 +47,6 @@
   }
   </script>
 
-  <link rel="preload" as="video" href="life-video-loop.mp4" type="video/mp4">
   <link rel="preload" as="image" href="Fishing.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,15 +60,21 @@
       --bg: #fdfdfb;
       --ink: #1a202c;
       --navy: #002244;
-      --accent: #b8860b;
-      --line: #e2e8f0;
+      --accent: #8a6508;
+      --accent-bright: #b8860b;
+      --line: #d8dee8;
       --paper: #f4f7fa;
-      --muted: #5f6b7a;
+      --muted: #4f5b6a;
+      --white: #ffffff;
     }
 
     * {
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -93,6 +98,25 @@
       overflow: hidden;
     }
 
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -100px;
+      z-index: 3000;
+      background: var(--white);
+      color: var(--navy);
+      padding: 10px 14px;
+      border: 2px solid var(--accent);
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
     .wrap {
       max-width: 1100px;
       margin: 0 auto;
@@ -111,12 +135,11 @@
 
     a:focus-visible,
     button:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-      border-radius: 3px;
+      outline: 3px solid #f0c24b;
+      outline-offset: 4px;
+      border-radius: 4px;
     }
 
-    /* HEADER */
     header {
       background: #fff;
       border-bottom: 1px solid var(--line);
@@ -135,14 +158,17 @@
       padding: 0 20px;
     }
 
-    .logo-img {
-      height: 60px;
-      width: auto;
+    .logo-link {
+      display: inline-flex;
       position: relative;
       z-index: 2100;
     }
 
-    /* DESKTOP NAV */
+    .logo-img {
+      height: 60px;
+      width: auto;
+    }
+
     .desktop-nav {
       display: none;
     }
@@ -160,11 +186,13 @@
 
     .desktop-nav a:hover {
       color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 5px;
     }
 
     .desktop-nav .active-link {
       color: var(--navy);
-      border-bottom: 1px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
       padding-bottom: 4px;
     }
 
@@ -173,28 +201,29 @@
       color: white !important;
       padding: 12px 24px;
       border-radius: 4px;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.2s;
       font-size: 13px;
       letter-spacing: 1px;
     }
 
     .btn-quote:hover {
       background: var(--accent);
+      color: #fff !important;
+      text-decoration: none !important;
     }
 
     .btn-quote:active {
       transform: scale(0.96);
     }
 
-    /* MOBILE HAMBURGER */
     .hamburger {
       cursor: pointer;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       z-index: 2100;
       position: relative;
       background: none;
@@ -204,19 +233,19 @@
 
     .hamburger span {
       display: block;
-      width: 24px;
-      height: 2px;
+      width: 26px;
+      height: 3px;
       background-color: var(--navy);
       transition: 0.4s;
       position: absolute;
     }
 
     .hamburger span:nth-child(1) {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
     }
 
     .hamburger span:nth-child(2) {
-      transform: translateY(5px);
+      transform: translateY(6px);
     }
 
     .hamburger.active span {
@@ -231,7 +260,6 @@
       transform: translateY(0) rotate(-45deg);
     }
 
-    /* MOBILE MENU */
     .nav-menu {
       position: fixed;
       top: 0;
@@ -256,7 +284,7 @@
       color: white;
       text-decoration: none;
       font-family: 'Playfair Display', serif;
-      font-size: 36px;
+      font-size: clamp(30px, 8vw, 42px);
       margin: 12px 0;
       opacity: 0;
       transform: translateY(20px);
@@ -266,7 +294,9 @@
     }
 
     .nav-menu a:hover {
-      color: var(--accent);
+      color: #f0c24b;
+      text-decoration: underline;
+      text-underline-offset: 6px;
     }
 
     .nav-menu.active a:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
@@ -278,18 +308,17 @@
       transition-delay: 0.4s;
       opacity: 1;
       transform: translateY(0);
-      color: var(--accent);
+      color: #f0c24b;
       font-family: 'Inter', sans-serif;
       font-size: 14px;
       text-transform: uppercase;
       letter-spacing: 2px;
       margin-top: 30px;
-      border: 1px solid var(--accent);
+      border: 2px solid #f0c24b;
       padding: 14px 35px;
       border-radius: 4px;
     }
 
-    /* HERO */
     .hero {
       position: relative;
       overflow: hidden;
@@ -312,7 +341,7 @@
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(rgba(0,34,68,0.75), rgba(0,34,68,0.85));
+      background: linear-gradient(rgba(0,34,68,0.78), rgba(0,34,68,0.88));
       z-index: 1;
     }
 
@@ -340,20 +369,19 @@
     }
 
     .hero-accent {
-      color: var(--accent);
+      color: #f0c24b;
       font-style: italic;
     }
 
     .hero p {
       font-size: 22px;
-      color: #cbd5e0;
+      color: #edf2f7;
       max-width: 700px;
       margin: 0 auto;
       line-height: 1.6;
       font-style: italic;
     }
 
-    /* REVEAL */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
@@ -365,18 +393,17 @@
       transform: translateY(0);
     }
 
-    /* SECTIONS - Space added here */
-    .section { 
-      padding-top: 100px; 
-      padding-bottom: 80px; 
-    }
-    .bg-paper { 
-      background: var(--paper); 
-      border-top: 1px solid var(--line); 
-      border-bottom: 1px solid var(--line); 
+    .section {
+      padding-top: 100px;
+      padding-bottom: 80px;
     }
 
-    /* CARDS */
+    .bg-paper {
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
     .card-grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
@@ -389,8 +416,8 @@
       padding: 45px 35px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      border-top: 4px solid var(--accent);
-      box-shadow: 0 10px 30px rgba(0,34,68,0.02);
+      border-top: 5px solid var(--accent);
+      box-shadow: 0 10px 30px rgba(0,34,68,0.04);
       transition: transform 0.4s ease;
     }
 
@@ -412,7 +439,6 @@
       vertical-align: middle;
     }
 
-    /* ABOUT CONTENT */
     .about-spread {
       max-width: 800px;
       margin: 80px auto;
@@ -432,7 +458,6 @@
       margin-bottom: 20px;
     }
 
-    /* AUDIT BOX */
     .audit-box {
       background: var(--navy);
       color: #fff;
@@ -442,15 +467,22 @@
       margin-bottom: 80px;
     }
 
+    .audit-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      margin-top: 0;
+    }
+
     .audit-toggle {
-      background: rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.08);
       padding: 6px;
       border-radius: 100px;
       display: inline-flex;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.22);
       margin-bottom: 50px;
       flex-wrap: wrap;
       justify-content: center;
+      gap: 4px;
     }
 
     .toggle-btn {
@@ -464,10 +496,11 @@
       border-radius: 100px;
       cursor: pointer;
       transition: 0.3s;
-      opacity: 0.6;
+      opacity: 0.85;
     }
 
-    .toggle-btn.active {
+    .toggle-btn.active,
+    .toggle-btn[aria-selected="true"] {
       background: #fff;
       color: var(--navy);
       opacity: 1;
@@ -494,10 +527,21 @@
       text-align: left;
     }
 
+    .audit-item h4 {
+      color: #fff;
+      font-size: 21px;
+      margin: 0 0 8px;
+    }
+
+    .audit-item p {
+      color: #edf2f7;
+      margin: 0;
+    }
+
     .num-accent {
       font-family: 'Playfair Display', serif;
       font-size: 32px;
-      color: var(--accent);
+      color: #f0c24b;
       font-style: italic;
       display: block;
       margin-bottom: 10px;
@@ -518,12 +562,11 @@
     }
 
     .btn-white:hover {
-      background: var(--accent);
-      color: white;
+      background: #f0c24b;
+      color: var(--navy);
       transform: translateY(-3px);
     }
 
-    /* FOOTER */
     footer {
       background: var(--navy);
       color: white;
@@ -551,38 +594,53 @@
     .footer-address p {
       margin: 0;
       line-height: 1.8;
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.9);
     }
 
     .footer-address a {
       color: white;
-      text-decoration: none;
+      text-decoration: underline;
+      text-underline-offset: 4px;
       font-weight: 600;
       transition: color 0.2s;
     }
 
     .footer-address a:hover {
-      color: var(--accent);
+      color: #f0c24b;
     }
 
     .email-link {
       display: inline-block;
       margin-top: 5px;
-      color: var(--accent) !important;
+      color: #f0c24b !important;
     }
 
     .email-link:hover {
       color: white !important;
     }
 
+    .footer-disclaimer {
+      width: 100%;
+      max-width: 1100px;
+      margin: 35px auto 0;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.86);
+      font-size: 13px;
+      line-height: 1.7;
+      text-align: left;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
     .footer-bottom {
       width: 100%;
       max-width: 1100px;
-      margin: 40px auto 0;
-      padding-top: 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin: 28px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
       font-size: 13px;
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.72);
       letter-spacing: 1px;
       text-transform: uppercase;
       text-align: center;
@@ -623,21 +681,75 @@
         text-align: left;
       }
     }
+
+    @media (max-width: 520px) {
+      body {
+        font-size: 17px;
+      }
+
+      .hero {
+        padding: 120px 18px;
+      }
+
+      .section {
+        padding-top: 70px;
+        padding-bottom: 60px;
+      }
+
+      .coverage-card {
+        padding: 34px 26px;
+      }
+
+      .audit-box {
+        padding: 70px 18px;
+      }
+
+      .toggle-btn {
+        width: 100%;
+      }
+
+      .audit-toggle {
+        border-radius: 18px;
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      body {
+        opacity: 1;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
   </style>
 </head>
+
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <header>
     <div class="nav-container">
-      <a href="/" style="display: inline-flex; position: relative; z-index: 2100;">
-        <img src="logo.png" class="logo-img" alt="Donohoo & Sons">
+      <a href="/" class="logo-link" aria-label="Donohoo & Sons Insurance home">
+        <img src="logo.png" class="logo-img" alt="Donohoo & Sons Insurance">
       </a>
 
       <nav class="desktop-nav" aria-label="Main navigation">
         <a href="/">Home</a>
         <a href="/families.html">Personal</a>
         <a href="/business.html">Business</a>
-        <a href="/life.html" class="active-link">Life <span class="clean-amp">&amp;</span> Health</a>
+        <a href="/life.html" class="active-link" aria-current="page">Life <span class="clean-amp">&amp;</span> Health</a>
         <a href="/insights.html">Insights</a>
         <a href="/quote.html" class="btn-quote">Get a Quote</a>
       </nav>
@@ -645,13 +757,13 @@
       <button
         class="hamburger"
         id="hamburgerBtn"
+        type="button"
         aria-label="Open navigation menu"
         aria-expanded="false"
         aria-controls="mobileNav"
-        onclick="toggleMenu()"
       >
-        <span></span>
-        <span></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </button>
     </div>
 
@@ -659,75 +771,103 @@
       <a href="/">Home</a>
       <a href="/families.html">Personal</a>
       <a href="/business.html">Business</a>
-      <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
+      <a href="/life.html" aria-current="page">Life <span class="clean-amp">&amp;</span> Health</a>
       <a href="/insights.html">Insights</a>
       <a href="/quote.html">Get a Quote</a>
     </nav>
   </header>
 
-  <section class="hero">
-    <video autoplay loop muted playsinline poster="Fishing.jpg" class="hero-video">
-      <source src="life-video-loop.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="wrap hero-text">
-      <h1>Protecting the people<br><span class="hero-accent">behind the plans.</span></h1>
-      <p>Straightforward life and health coverage designed to keep your family and business moving forward.</p>
-    </div>
-  </section>
-
-  <div class="wrap section">
-    <div class="card-grid">
-      <div class="coverage-card reveal">
-        <h3><i class="ph-light ph-heart"></i> Life Insurance</h3>
-        <p>Simple term or permanent options to protect your family's lifestyle or fund a business buy-sell agreement.</p>
+  <main id="main-content">
+    <section class="hero" aria-labelledby="page-title">
+      <video autoplay loop muted playsinline poster="Fishing.jpg" class="hero-video" aria-hidden="true">
+        <source src="life-video-loop.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="wrap hero-text">
+        <h1 id="page-title">Protecting the people<br><span class="hero-accent">behind the plans.</span></h1>
+        <p>Straightforward life and health coverage designed to keep your family and business moving forward.</p>
       </div>
-      <div class="coverage-card reveal">
-        <h3><i class="ph-light ph-briefcase"></i> Disability & Overhead</h3>
-        <p>Protect your personal income, or keep the business running if you can't work due to an injury or illness.</p>
-      </div>
-      <div class="coverage-card reveal">
-        <h3><i class="ph-light ph-hourglass-medium"></i> Long-Term Care</h3>
-        <p>Strategic planning that ensures a future health crisis doesn't wipe out the assets you've worked hard to build.</p>
-      </div>
-    </div>
+    </section>
 
-    <div class="about-spread reveal">
-      <div class="about-content">
-        <h2>Simple, Honest Advice</h2>
-        <p>I believe life insurance should be easy to understand. I focus on finding the right fit for your situation — whether that's protecting your home, replacing lost income, or ensuring your business survives a key-person loss.</p>
-        <p>No high-pressure sales or overly complex schemes. Just a direct, plain-English conversation about what you actually need to protect the people depending on you.</p>
-      </div>
-    </div>
+    <div class="wrap section">
+      <section class="card-grid" aria-label="Life and health insurance coverage options">
+        <article class="coverage-card reveal">
+          <h2><i class="ph-light ph-heart" aria-hidden="true"></i> Life Insurance</h2>
+          <p>Simple term or permanent options to protect your family's lifestyle or fund a business buy-sell agreement.</p>
+        </article>
 
-    <div class="audit-box reveal">
-      <h2>The 60-Second Audit</h2>
-      <p style="color:#cbd5e0; font-style:italic;">Select your focus to view the questions you should be asking.</p>
+        <article class="coverage-card reveal">
+          <h2><i class="ph-light ph-briefcase" aria-hidden="true"></i> Disability &amp; Overhead</h2>
+          <p>Protect your personal income, or keep the business running if you can't work due to an injury or illness.</p>
+        </article>
 
-      <div class="audit-toggle">
-        <button class="toggle-btn active" id="btn-personal" onclick="switchAudit('personal')">For Your Family</button>
-        <button class="toggle-btn" id="btn-business" onclick="switchAudit('business')">For Your Business</button>
-      </div>
+        <article class="coverage-card reveal">
+          <h2><i class="ph-light ph-hourglass-medium" aria-hidden="true"></i> Long-Term Care</h2>
+          <p>Strategic planning that ensures a future health crisis doesn't wipe out the assets you've worked hard to build.</p>
+        </article>
+      </section>
 
-      <div id="audit-personal" class="audit-content active">
-        <div class="audit-grid">
-          <div class="audit-item"><span class="num-accent">01.</span><h4>Income Replacement</h4><p>If your paycheck stopped tomorrow, how many months could your family maintain their current lifestyle?</p></div>
-          <div class="audit-item"><span class="num-accent">02.</span><h4>Debt & Liquidity</h4><p>Is there enough coverage to wipe the slate clean so your family can stay in their home?</p></div>
-          <div class="audit-item"><span class="num-accent">03.</span><h4>Asset Protection</h4><p>Is your retirement nest egg protected from the high out-of-pocket costs of long-term care?</p></div>
+      <section class="about-spread reveal" aria-labelledby="simple-advice-title">
+        <div class="about-content">
+          <h2 id="simple-advice-title">Simple, Honest Advice</h2>
+          <p>I believe life insurance should be easy to understand. I focus on finding the right fit for your situation — whether that's protecting your home, replacing lost income, or ensuring your business survives a key-person loss.</p>
+          <p>No high-pressure sales or overly complex schemes. Just a direct, plain-English conversation about what you actually need to protect the people depending on you.</p>
         </div>
-      </div>
+      </section>
 
-      <div id="audit-business" class="audit-content">
-        <div class="audit-grid">
-          <div class="audit-item"><span class="num-accent">01.</span><h4>Business Continuity</h4><p>Is your buy-sell agreement actually funded, or would it immediately drain company capital?</p></div>
-          <div class="audit-item"><span class="num-accent">02.</span><h4>Key Person Loss</h4><p>Could the business survive financially if your top leader suddenly couldn't work?</p></div>
-          <div class="audit-item"><span class="num-accent">03.</span><h4>Business Disability</h4><p>How will the business keep paying rent and payroll if a partner is out for an extended time?</p></div>
+      <section class="audit-box reveal" aria-labelledby="audit-title">
+        <h2 id="audit-title">The 60-Second Audit</h2>
+        <p style="color:#edf2f7; font-style:italic;">Select your focus to view the questions you should be asking.</p>
+
+        <div class="audit-toggle" role="tablist" aria-label="Audit focus">
+          <button class="toggle-btn active" id="btn-personal" type="button" role="tab" aria-selected="true" aria-controls="audit-personal">For Your Family</button>
+          <button class="toggle-btn" id="btn-business" type="button" role="tab" aria-selected="false" aria-controls="audit-business">For Your Business</button>
         </div>
-      </div>
 
-      <a href="/quote.html" class="btn-white">Request a Full Review</a>
+        <div id="audit-personal" class="audit-content active" role="tabpanel" aria-labelledby="btn-personal">
+          <div class="audit-grid">
+            <div class="audit-item">
+              <span class="num-accent" aria-hidden="true">01.</span>
+              <h3>Income Replacement</h3>
+              <p>If your paycheck stopped tomorrow, how many months could your family maintain their current lifestyle?</p>
+            </div>
+            <div class="audit-item">
+              <span class="num-accent" aria-hidden="true">02.</span>
+              <h3>Debt &amp; Liquidity</h3>
+              <p>Is there enough coverage to wipe the slate clean so your family can stay in their home?</p>
+            </div>
+            <div class="audit-item">
+              <span class="num-accent" aria-hidden="true">03.</span>
+              <h3>Asset Protection</h3>
+              <p>Is your retirement nest egg protected from the high out-of-pocket costs of long-term care?</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="audit-business" class="audit-content" role="tabpanel" aria-labelledby="btn-business" hidden>
+          <div class="audit-grid">
+            <div class="audit-item">
+              <span class="num-accent" aria-hidden="true">01.</span>
+              <h3>Business Continuity</h3>
+              <p>Is your buy-sell agreement actually funded, or would it immediately drain company capital?</p>
+            </div>
+            <div class="audit-item">
+              <span class="num-accent" aria-hidden="true">02.</span>
+              <h3>Key Person Loss</h3>
+              <p>Could the business survive financially if your top leader suddenly couldn't work?</p>
+            </div>
+            <div class="audit-item">
+              <span class="num-accent" aria-hidden="true">03.</span>
+              <h3>Business Disability</h3>
+              <p>How will the business keep paying rent and payroll if a partner is out for an extended time?</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="/quote.html" class="btn-white">Request a Full Review</a>
+      </section>
     </div>
-  </div>
+  </main>
 
   <footer>
     <div class="footer-wrap">
@@ -735,14 +875,18 @@
         <img src="logo.png" alt="Donohoo & Sons Insurance" class="footer-logo" width="160" height="80" loading="lazy">
       </div>
 
-      <div class="footer-address">
+      <address class="footer-address">
         <p>
           10425 W North Ave. Suite 226<br>
           Wauwatosa, WI 53226<br>
           <a href="tel:+14146981729">414.698.1729</a><br>
           <a href="mailto:adonohoo@unisource-ins.com" class="email-link">adonohoo@unisource-ins.com</a>
         </p>
-      </div>
+      </address>
+    </div>
+
+    <div class="footer-disclaimer">
+      Coverage descriptions on this website are general in nature and are not a guarantee of coverage. Actual coverage depends on the specific policy forms, endorsements, exclusions, limits, deductibles, underwriting approval, and carrier claim determinations. Submitting a form or request through this website does not bind, change, or cancel coverage. Coverage changes are not effective until confirmed in writing by the agency and/or carrier. Donohoo &amp; Sons Insurance does not provide legal, tax, or financial advice.
     </div>
 
     <div class="footer-bottom">
@@ -751,52 +895,89 @@
   </footer>
 
   <script>
-    function toggleMenu() {
-      const nav = document.getElementById('mobileNav');
-      const btn = document.getElementById('hamburgerBtn');
-      const isOpen = nav.classList.toggle('active');
+    const nav = document.getElementById('mobileNav');
+    const btn = document.getElementById('hamburgerBtn');
 
+    function toggleMenu(forceState) {
+      const isOpen = typeof forceState === 'boolean' ? forceState : !nav.classList.contains('active');
+
+      nav.classList.toggle('active', isOpen);
       btn.classList.toggle('active', isOpen);
-      btn.setAttribute('aria-expanded', isOpen);
+      btn.setAttribute('aria-expanded', String(isOpen));
       btn.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
-      nav.setAttribute('aria-hidden', !isOpen);
+      nav.setAttribute('aria-hidden', String(!isOpen));
       document.body.classList.toggle('nav-open', isOpen);
     }
 
+    btn.addEventListener('click', function() {
+      toggleMenu();
+    });
+
     document.addEventListener('click', function(e) {
-      const nav = document.getElementById('mobileNav');
-      const btn = document.getElementById('hamburgerBtn');
       if (nav.classList.contains('active') && !nav.contains(e.target) && !btn.contains(e.target)) {
-        toggleMenu();
+        toggleMenu(false);
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && nav.classList.contains('active')) {
+        toggleMenu(false);
+        btn.focus();
       }
     });
 
     document.querySelectorAll('#mobileNav a').forEach(function(link) {
       link.addEventListener('click', function() {
-        const nav = document.getElementById('mobileNav');
-        if (nav.classList.contains('active')) toggleMenu();
+        if (nav.classList.contains('active')) toggleMenu(false);
       });
     });
 
     function switchAudit(type) {
-      document.getElementById('btn-personal').classList.toggle('active', type === 'personal');
-      document.getElementById('btn-business').classList.toggle('active', type === 'business');
-      document.getElementById('audit-personal').classList.toggle('active', type === 'personal');
-      document.getElementById('audit-business').classList.toggle('active', type === 'business');
+      const personalBtn = document.getElementById('btn-personal');
+      const businessBtn = document.getElementById('btn-business');
+      const personalPanel = document.getElementById('audit-personal');
+      const businessPanel = document.getElementById('audit-business');
+      const isPersonal = type === 'personal';
+
+      personalBtn.classList.toggle('active', isPersonal);
+      businessBtn.classList.toggle('active', !isPersonal);
+
+      personalBtn.setAttribute('aria-selected', String(isPersonal));
+      businessBtn.setAttribute('aria-selected', String(!isPersonal));
+
+      personalPanel.classList.toggle('active', isPersonal);
+      businessPanel.classList.toggle('active', !isPersonal);
+
+      personalPanel.hidden = !isPersonal;
+      businessPanel.hidden = isPersonal;
     }
 
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach(function(el) {
-      observer.observe(el);
+    document.getElementById('btn-personal').addEventListener('click', function() {
+      switchAudit('personal');
     });
+
+    document.getElementById('btn-business').addEventListener('click', function() {
+      switchAudit('business');
+    });
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        observer.observe(el);
+      });
+    } else {
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        el.classList.add('visible');
+      });
+    }
 
     window.addEventListener('load', function() {
       document.body.classList.add('loaded');
