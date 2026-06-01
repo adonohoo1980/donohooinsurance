@@ -5,21 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Get a Quote | Donohoo & Sons</title>
 
+  <meta name="description" content="Request a custom insurance quote from Donohoo & Sons Insurance in Wauwatosa, WI. Home, auto, business, life, and health insurance reviews.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.donohooinsurance.com/quote.html">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
-  
+
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
   <style>
     :root {
       --bg: #fdfdfb;
       --ink: #1a202c;
-      --navy: #002244; 
-      --accent: #b8860b;
-      --line: #e2e8f0;
+      --navy: #002244;
+      --accent: #8a6508;
+      --accent-bright: #f0c24b;
+      --line: #d8dee8;
       --paper: #f4f7fa;
-      --muted: #5f6b7a;
+      --muted: #4f5b6a;
+      --white: #ffffff;
     }
 
     * {
@@ -27,19 +33,20 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    html, body {
+    html,
+    body {
       margin: 0;
       padding: 0;
       width: 100%;
-      font-family: 'Lora', serif; 
+      font-family: 'Lora', serif;
       background: var(--bg);
       color: var(--ink);
-      font-size: 18px; 
+      font-size: 18px;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
-    
+
     body {
       opacity: 0;
       transition: opacity 0.8s ease-in-out;
@@ -52,6 +59,25 @@
 
     body.nav-open {
       overflow: hidden;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 12px;
+      z-index: 5000;
+      background: #fff;
+      color: var(--navy);
+      padding: 10px 14px;
+      border: 2px solid var(--accent);
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      top: 12px;
     }
 
     header,
@@ -70,12 +96,11 @@
     select:focus-visible,
     textarea:focus-visible,
     input:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-      border-radius: 3px;
+      outline: 3px solid var(--accent-bright);
+      outline-offset: 4px;
+      border-radius: 4px;
     }
 
-    /* HEADER */
     header {
       background: #fff;
       border-bottom: 1px solid var(--line);
@@ -96,14 +121,17 @@
       padding: 0 20px;
     }
 
-    .logo-img {
-      height: 60px;
-      width: auto;
+    .logo-link {
+      display: inline-flex;
       position: relative;
       z-index: 3100;
     }
 
-    /* DESKTOP NAV */
+    .logo-img {
+      height: 60px;
+      width: auto;
+    }
+
     .desktop-nav {
       display: none;
     }
@@ -121,11 +149,13 @@
 
     .desktop-nav a:hover {
       color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 5px;
     }
 
     .desktop-nav .active-link {
       color: var(--navy);
-      border-bottom: 1px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
       padding-bottom: 4px;
     }
 
@@ -134,24 +164,25 @@
       color: white !important;
       padding: 12px 24px;
       border-radius: 4px;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.2s;
       font-size: 13px;
       letter-spacing: 1px;
     }
 
     .btn-quote-nav:hover {
       background: var(--accent);
+      color: #fff !important;
+      text-decoration: none !important;
     }
 
-    /* MOBILE HAMBURGER */
     .hamburger {
       cursor: pointer;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       z-index: 3100;
       position: relative;
       background: none;
@@ -161,19 +192,19 @@
 
     .hamburger span {
       display: block;
-      width: 24px;
-      height: 2px;
+      width: 26px;
+      height: 3px;
       background-color: var(--navy);
       transition: 0.4s;
       position: absolute;
     }
 
     .hamburger span:nth-child(1) {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
     }
 
     .hamburger span:nth-child(2) {
-      transform: translateY(5px);
+      transform: translateY(6px);
     }
 
     .hamburger.active span {
@@ -188,16 +219,15 @@
       transform: translateY(0) rotate(-45deg);
     }
 
-    /* MOBILE MENU */
-    .nav-menu { 
+    .nav-menu {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 0; 
+      height: 0;
       background: var(--navy);
       z-index: 3000;
-      overflow: hidden; 
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -209,11 +239,11 @@
       height: 100vh;
     }
 
-    .nav-menu a { 
+    .nav-menu a {
       color: white;
       text-decoration: none;
       font-family: 'Playfair Display', serif;
-      font-size: 36px; 
+      font-size: clamp(30px, 8vw, 42px);
       margin: 12px 0;
       opacity: 0;
       transform: translateY(20px);
@@ -223,7 +253,9 @@
     }
 
     .nav-menu a:hover {
-      color: var(--accent);
+      color: var(--accent-bright);
+      text-decoration: underline;
+      text-underline-offset: 6px;
     }
 
     .nav-menu.active a:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
@@ -231,22 +263,21 @@
     .nav-menu.active a:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
     .nav-menu.active a:nth-child(4) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
     .nav-menu.active a:nth-child(5) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
-    .nav-menu.active a:nth-child(6) { 
+    .nav-menu.active a:nth-child(6) {
       transition-delay: 0.4s;
       opacity: 1;
-      transform: translateY(0); 
-      color: var(--accent);
+      transform: translateY(0);
+      color: var(--accent-bright);
       font-family: 'Inter', sans-serif;
       font-size: 14px;
       text-transform: uppercase;
-      letter-spacing: 2px; 
+      letter-spacing: 2px;
       margin-top: 30px;
-      border: 1px solid var(--accent);
+      border: 2px solid var(--accent-bright);
       padding: 14px 35px;
       border-radius: 4px;
     }
 
-    /* REVEAL ANIMATIONS */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
@@ -258,7 +289,6 @@
       transform: translateY(0);
     }
 
-    /* PAGE LAYOUT */
     .contact-wrap {
       max-width: 1100px;
       margin: 80px auto;
@@ -278,7 +308,7 @@
       line-height: 1.1;
       letter-spacing: -0.5px;
     }
-    
+
     .hero-accent {
       color: var(--accent);
       font-style: italic;
@@ -301,12 +331,11 @@
       align-items: start;
     }
 
-    /* LEFT COLUMN: INFO */
     .contact-info h2 {
       font-family: 'Playfair Display', serif;
       font-size: 36px;
       color: var(--navy);
-      margin: 0 0 20px 0;
+      margin: 0 0 20px;
       line-height: 1.2;
     }
 
@@ -330,7 +359,7 @@
       margin-bottom: 10px;
       display: block;
     }
-    
+
     .info-data {
       font-family: 'Playfair Display', serif;
       font-size: 26px;
@@ -342,12 +371,15 @@
       line-height: 1.4;
     }
 
+    a.info-data {
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+
     a.info-data:hover {
-      opacity: 0.7;
       color: var(--accent);
     }
 
-    /* CALL & TEXT BUTTONS */
     .contact-actions {
       display: flex;
       gap: 12px;
@@ -355,12 +387,12 @@
       flex-wrap: wrap;
     }
 
-    .action-btn { 
+    .action-btn {
       padding: 14px 28px;
       border-radius: 4px;
       font-size: 14px;
       font-weight: 600;
-      text-decoration: none; 
+      text-decoration: none;
       transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
@@ -387,7 +419,7 @@
     .call-btn:active {
       transform: scale(0.96);
     }
-    
+
     .text-btn {
       background: var(--paper);
       color: var(--navy);
@@ -403,18 +435,17 @@
       transform: scale(0.96);
     }
 
-    /* RIGHT COLUMN: FORM */
-    .contact-form { 
+    .contact-form {
       background: #fff;
       padding: 45px 35px;
       border-radius: 12px;
-      border: 1px solid var(--line); 
-      border-top: 4px solid var(--accent);
-      box-shadow: 0 20px 40px rgba(0,34,68,0.06); 
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--accent);
+      box-shadow: 0 20px 40px rgba(0,34,68,0.06);
       position: relative;
-      min-height: 400px; 
+      min-height: 400px;
     }
-    
+
     .form-row {
       display: grid;
       grid-template-columns: 1fr;
@@ -435,16 +466,23 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-    
-    .form-control { 
+
+    .required-note {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0 0 20px;
+      line-height: 1.5;
+    }
+
+    .form-control {
       width: 100%;
       padding: 16px 15px;
-      border: 1px solid var(--line);
-      border-radius: 4px; 
+      border: 1px solid #b9c2cf;
+      border-radius: 4px;
       font-size: 16px;
-      background: var(--paper);
+      background: #fff;
       transition: all 0.3s ease;
-      box-sizing: border-box;
       color: var(--ink);
     }
 
@@ -452,7 +490,7 @@
       outline: none;
       border-color: var(--accent);
       background: #fff;
-      box-shadow: 0 0 0 3px rgba(184,134,11,0.1);
+      box-shadow: 0 0 0 3px rgba(138,101,8,0.2);
     }
 
     textarea.form-control {
@@ -460,13 +498,13 @@
       resize: vertical;
     }
 
-    .submit-btn { 
+    .submit-btn {
       width: 100%;
       background: var(--navy);
       color: #fff;
       padding: 18px;
       border-radius: 4px;
-      border: none; 
+      border: none;
       font-weight: 600;
       font-size: 15px;
       text-transform: uppercase;
@@ -486,7 +524,20 @@
       transform: scale(0.98);
     }
 
-    /* SUCCESS MESSAGE */
+    .submit-btn[disabled] {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .security-note {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 15px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
     #successMessage {
       display: none;
       text-align: center;
@@ -494,11 +545,11 @@
       animation: fadeIn 0.6s ease forwards;
     }
 
-    #successMessage h3 {
+    #successMessage h2 {
       font-family: 'Playfair Display', serif;
       font-size: 32px;
       color: var(--navy);
-      margin: 0 0 15px 0;
+      margin: 0 0 15px;
     }
 
     #successMessage p {
@@ -508,12 +559,20 @@
       font-family: 'Lora', serif;
     }
 
+    .form-status {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      margin-top: 15px;
+      color: var(--muted);
+      text-align: center;
+      min-height: 22px;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* FOOTER */
     footer {
       background: var(--navy);
       color: white;
@@ -539,47 +598,65 @@
       filter: brightness(0) invert(1);
     }
 
+    .footer-address {
+      font-style: normal;
+    }
+
     .footer-address p {
       margin: 0;
       line-height: 1.8;
-      color: rgba(255,255,255,0.8);
+      color: rgba(255,255,255,0.9);
     }
 
     .footer-address a {
       color: white;
-      text-decoration: none;
+      text-decoration: underline;
+      text-underline-offset: 4px;
       font-weight: 600;
       transition: color 0.2s;
     }
 
     .footer-address a:hover {
-      color: var(--accent);
+      color: var(--accent-bright);
     }
 
     .email-link {
       display: inline-block;
       margin-top: 5px;
-      color: var(--accent) !important;
+      color: var(--accent-bright) !important;
     }
 
     .email-link:hover {
       color: white !important;
     }
 
+    .footer-disclaimer {
+      width: 100%;
+      max-width: 1100px;
+      margin: 35px auto 0;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.86);
+      font-size: 13px;
+      line-height: 1.7;
+      text-align: left;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
     .footer-bottom {
       width: 100%;
       max-width: 1100px;
-      margin: 40px auto 0;
-      padding-top: 30px;
-      border-top: 1px solid rgba(255,255,255,0.1);
+      margin: 28px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.14);
       font-size: 13px;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.72);
       letter-spacing: 1px;
       text-transform: uppercase;
       text-align: center;
     }
 
-    /* MOBILE TWEAKS */
     @media (max-width: 768px) {
       .contact-form {
         padding: 30px 20px;
@@ -587,6 +664,14 @@
 
       .contact-wrap {
         margin: 60px auto 80px;
+      }
+
+      .contact-actions {
+        flex-direction: column;
+      }
+
+      .action-btn {
+        justify-content: center;
       }
     }
 
@@ -613,7 +698,7 @@
       .contact-wrap {
         margin: 100px auto 140px;
       }
-      
+
       .footer-wrap {
         flex-direction: row;
         justify-content: space-between;
@@ -633,13 +718,35 @@
         text-align: left;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      body {
+        opacity: 1;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
   </style>
 </head>
+
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <header>
     <div class="nav-container">
-      <a href="/" style="display: inline-flex; position: relative; z-index: 3100;">
+      <a href="/" class="logo-link" aria-label="Donohoo & Sons Insurance home">
         <img src="logo.png" class="logo-img" alt="Donohoo & Sons Insurance">
       </a>
 
@@ -649,19 +756,19 @@
         <a href="/business.html">Business</a>
         <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
         <a href="/insights.html">Insights</a>
-        <a href="/quote.html" class="btn-quote-nav active-link">Get a Quote</a>
+        <a href="/quote.html" class="btn-quote-nav active-link" aria-current="page">Get a Quote</a>
       </nav>
 
       <button
         class="hamburger"
         id="hamburgerBtn"
+        type="button"
         aria-label="Open navigation menu"
         aria-expanded="false"
         aria-controls="mobileNav"
-        onclick="toggleMenu()"
       >
-        <span></span>
-        <span></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </button>
     </div>
 
@@ -671,152 +778,181 @@
       <a href="/business.html">Business</a>
       <a href="/life.html">Life <span class="clean-amp">&amp;</span> Health</a>
       <a href="/insights.html">Insights</a>
-      <a href="/quote.html">Get a Quote</a>
+      <a href="/quote.html" aria-current="page">Get a Quote</a>
     </nav>
   </header>
 
-  <div class="contact-wrap">
-    <div class="contact-header reveal">
-      <h1>Let's build <span class="hero-accent">your quote.</span></h1>
-      <p>Real advice takes a real conversation. No instant generic numbers, just accurate, tailored protection.</p>
-    </div>
-
-    <div class="contact-grid">
-      
-      <div class="contact-info reveal" style="transition-delay: 0.1s;">
-        <h2>Direct access. Real advice.</h2>
-        <p>When you submit this form, your information doesn't disappear into a corporate "quote mill" or an automated queue. It goes directly to my personal inbox.</p>
-        <p>I review every single request myself. Whether you need a second opinion on your business coverage or a complete review of your family's protection, I take your request seriously. I handle every quote personally from day one, so you always know exactly who is in your corner and who is building your plan.</p>
-        
-        <div class="info-block" style="margin-top: 50px;">
-          <span class="info-label">Reach Out Directly</span>
-          <div class="contact-actions">
-            <a href="tel:+14146981729" class="action-btn call-btn"><i class="ph-light ph-phone"></i> (414) 698-1729</a>
-            <a href="sms:+14146981729?body=Hi%20Andy%2C%20I%20am%20reaching%20out%20from%20your%20website%20to%20discuss%20a%20quote." class="action-btn text-btn"><i class="ph-light ph-chat-text"></i> Send a Text</a>
-          </div>
-        </div>
-        
-        <div class="info-block">
-          <span class="info-label">Direct Email</span>
-          <a href="mailto:adonohoo@unisource-ins.com" class="info-data">adonohoo@unisource-ins.com</a>
-        </div>
-        
-        <div class="info-block">
-          <span class="info-label">Headquarters</span>
-          <span class="info-data" style="color: var(--ink); pointer-events: none;">
-            10425 W North Ave. Suite 226<br>
-            Wauwatosa, WI 53226<br>
-            <span style="font-family: 'Lora', serif; font-size: 16px; color: var(--muted); font-style: italic; font-weight: normal; margin-top: 8px; display: block;">Meetings by appointment only.</span>
-          </span>
-        </div>
+  <main id="main-content">
+    <section class="contact-wrap" aria-labelledby="quote-page-title">
+      <div class="contact-header reveal">
+        <h1 id="quote-page-title">Let's build <span class="hero-accent">your quote.</span></h1>
+        <p>Real advice takes a real conversation. No instant generic numbers, just accurate, tailored protection.</p>
       </div>
 
-      <div class="contact-form reveal" style="transition-delay: 0.2s;">
-        
-        <form id="contactForm" action="https://formsubmit.co/ajax/adonohoo@unisource-ins.com" method="POST">
-          
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_subject" value="New Quote Request from Website">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_replyto" value="%email%">
+      <div class="contact-grid">
+        <section class="contact-info reveal" style="transition-delay: 0.1s;" aria-labelledby="direct-access-title">
+          <h2 id="direct-access-title">Direct access. Real advice.</h2>
+          <p>When you submit this form, your information doesn't disappear into a corporate "quote mill" or an automated queue. It goes directly to my personal inbox.</p>
+          <p>I review every single request myself. Whether you need a second opinion on your business coverage or a complete review of your family's protection, I take your request seriously. I handle every quote personally from day one, so you always know exactly who is in your corner and who is building your plan.</p>
 
-          <div class="form-row">
-            <div class="form-group" style="margin-bottom: 0;">
-              <label for="firstName">First Name</label>
-              <input type="text" id="firstName" name="First Name" class="form-control" required placeholder="Jane">
-            </div>
-            <div class="form-group" style="margin-bottom: 0;">
-              <label for="lastName">Last Name</label>
-              <input type="text" id="lastName" name="Last Name" class="form-control" required placeholder="Doe">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group" style="margin-bottom: 0;">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="Email" class="form-control" required placeholder="jane@example.com">
-            </div>
-            <div class="form-group" style="margin-bottom: 0;">
-              <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="Phone" class="form-control" placeholder="(414) 555-0123">
+          <div class="info-block" style="margin-top: 50px;">
+            <span class="info-label">Reach Out Directly</span>
+            <div class="contact-actions">
+              <a href="tel:+14146981729" class="action-btn call-btn">
+                <i class="ph-light ph-phone" aria-hidden="true"></i>
+                <span>(414) 698-1729</span>
+              </a>
+              <a href="sms:+14146981729?body=Hi%20Andy%2C%20I%20am%20reaching%20out%20from%20your%20website%20to%20discuss%20a%20quote." class="action-btn text-btn">
+                <i class="ph-light ph-chat-text" aria-hidden="true"></i>
+                <span>Send a Text</span>
+              </a>
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="interest">What are you looking to protect?</label>
-            <select id="interest" name="Interest" class="form-control" required>
-              <option value="" disabled selected>Select an option...</option>
-              <option value="Personal (Home, Auto, Umbrella)">Personal (Home, Auto, Umbrella)</option>
-              <option value="Business & Commercial">Business & Commercial</option>
-              <option value="Life & Health">Life & Health</option>
-              <option value="Multiple / General Inquiry">Multiple / General Inquiry</option>
-            </select>
+          <div class="info-block">
+            <span class="info-label">Direct Email</span>
+            <a href="mailto:adonohoo@unisource-ins.com" class="info-data">adonohoo@unisource-ins.com</a>
           </div>
 
-          <div class="form-group">
-            <label for="message">Anything specific you'd like me to know?</label>
-            <textarea id="message" name="Message" class="form-control" required placeholder="E.g., I'm buying a new house next month, or I want to compare my current business policy..."></textarea>
+          <div class="info-block">
+            <span class="info-label">Headquarters</span>
+            <span class="info-data" style="color: var(--ink); pointer-events: none;">
+              10425 W North Ave. Suite 226<br>
+              Wauwatosa, WI 53226<br>
+              <span style="font-family: 'Lora', serif; font-size: 16px; color: var(--muted); font-style: italic; font-weight: normal; margin-top: 8px; display: block;">Meetings by appointment only.</span>
+            </span>
           </div>
+        </section>
 
-          <button type="submit" class="submit-btn" id="submitBtn">Request My Custom Quote</button>
-          
-          <p style="font-family: 'Inter', sans-serif; font-size: 11px; color: var(--muted); margin-top: 15px; text-align: center; line-height: 1.5;">For your security, please do not include sensitive personal information (such as Social Security numbers or specific medical history) in this initial message.</p>
-        </form>
+        <section class="contact-form reveal" style="transition-delay: 0.2s;" aria-labelledby="quote-form-title">
+          <h2 id="quote-form-title" style="position:absolute; left:-9999px;">Quote request form</h2>
 
-        <div id="successMessage">
-          <h3>Request Received</h3>
-          <p>Thank you for reaching out. I have received your information and will be in touch with you shortly to begin building your custom quote.</p>
-        </div>
-        
+          <form id="contactForm" action="https://formsubmit.co/ajax/adonohoo@unisource-ins.com" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="New Quote Request from Website">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_replyto" value="%email%">
+
+            <p class="required-note">Fields marked with an asterisk are required.</p>
+
+            <div class="form-row">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label for="firstName">First Name <span aria-hidden="true">*</span></label>
+                <input type="text" id="firstName" name="First Name" class="form-control" required autocomplete="given-name" placeholder="Jane" aria-required="true">
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0;">
+                <label for="lastName">Last Name <span aria-hidden="true">*</span></label>
+                <input type="text" id="lastName" name="Last Name" class="form-control" required autocomplete="family-name" placeholder="Doe" aria-required="true">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label for="email">Email Address <span aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="Email" class="form-control" required autocomplete="email" placeholder="jane@example.com" aria-required="true">
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0;">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="Phone" class="form-control" autocomplete="tel" placeholder="(414) 555-0123">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="interest">What are you looking to protect? <span aria-hidden="true">*</span></label>
+              <select id="interest" name="Interest" class="form-control" required aria-required="true">
+                <option value="" disabled selected>Select an option...</option>
+                <option value="Personal (Home, Auto, Umbrella)">Personal (Home, Auto, Umbrella)</option>
+                <option value="Business & Commercial">Business & Commercial</option>
+                <option value="Life & Health">Life & Health</option>
+                <option value="Multiple / General Inquiry">Multiple / General Inquiry</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Anything specific you'd like me to know? <span aria-hidden="true">*</span></label>
+              <textarea id="message" name="Message" class="form-control" required aria-required="true" placeholder="E.g., I'm buying a new house next month, or I want to compare my current business policy..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Request My Custom Quote</button>
+
+            <p class="security-note">
+              For your security, please do not include sensitive personal information, such as Social Security numbers or specific medical history, in this initial message.
+            </p>
+
+            <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+          </form>
+
+          <div id="successMessage" role="status" aria-live="polite">
+            <h2>Request Received</h2>
+            <p>Thank you for reaching out. I have received your information and will be in touch with you shortly to begin building your custom quote.</p>
+          </div>
+        </section>
       </div>
-
-    </div>
-  </div>
+    </section>
+  </main>
 
   <footer>
     <div class="footer-wrap">
       <div class="footer-left">
         <img src="logo.png" alt="Donohoo & Sons Insurance" class="footer-logo" width="160" height="80" loading="lazy">
       </div>
-      <div class="footer-address">
+
+      <address class="footer-address">
         <p>
           10425 W North Ave. Suite 226<br>
           Wauwatosa, WI 53226<br>
           <a href="tel:+14146981729">414.698.1729</a><br>
           <a href="mailto:adonohoo@unisource-ins.com" class="email-link">adonohoo@unisource-ins.com</a>
         </p>
-      </div>
+      </address>
     </div>
+
+    <div class="footer-disclaimer">
+      Coverage descriptions on this website are general in nature and are not a guarantee of coverage. Actual coverage depends on the specific policy forms, endorsements, exclusions, limits, deductibles, underwriting approval, and carrier claim determinations. Submitting a form or request through this website does not bind, change, or cancel coverage. Coverage changes are not effective until confirmed in writing by the agency and/or carrier. Donohoo &amp; Sons Insurance does not provide legal, tax, or financial advice.
+    </div>
+
     <div class="footer-bottom">
       Independent Insurance Advisor
     </div>
   </footer>
 
   <script>
-    function toggleMenu() {
-      const nav = document.getElementById('mobileNav');
-      const btn = document.getElementById('hamburgerBtn');
-      const isOpen = nav.classList.toggle('active');
+    const nav = document.getElementById('mobileNav');
+    const btn = document.getElementById('hamburgerBtn');
 
+    function toggleMenu(forceState) {
+      const isOpen = typeof forceState === 'boolean' ? forceState : !nav.classList.contains('active');
+
+      nav.classList.toggle('active', isOpen);
       btn.classList.toggle('active', isOpen);
-      btn.setAttribute('aria-expanded', isOpen);
+      btn.setAttribute('aria-expanded', String(isOpen));
       btn.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
-      nav.setAttribute('aria-hidden', !isOpen);
+      nav.setAttribute('aria-hidden', String(!isOpen));
       document.body.classList.toggle('nav-open', isOpen);
     }
 
+    btn.addEventListener('click', function() {
+      toggleMenu();
+    });
+
     document.addEventListener('click', function(e) {
-      const nav = document.getElementById('mobileNav');
-      const btn = document.getElementById('hamburgerBtn');
       if (nav.classList.contains('active') && !nav.contains(e.target) && !btn.contains(e.target)) {
-        toggleMenu();
+        toggleMenu(false);
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && nav.classList.contains('active')) {
+        toggleMenu(false);
+        btn.focus();
       }
     });
 
     document.querySelectorAll('#mobileNav a').forEach(function(link) {
       link.addEventListener('click', function() {
-        const nav = document.getElementById('mobileNav');
-        if (nav.classList.contains('active')) toggleMenu();
+        if (nav.classList.contains('active')) toggleMenu(false);
       });
     });
 
@@ -824,27 +960,33 @@
       document.body.classList.add('loaded');
     });
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { 
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible'); 
-          observer.unobserve(entry.target); 
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }
 
     const form = document.getElementById('contactForm');
     const successMessage = document.getElementById('successMessage');
     const submitBtn = document.getElementById('submitBtn');
+    const formStatus = document.getElementById('formStatus');
 
     form.addEventListener('submit', async function(e) {
-      e.preventDefault(); 
-      
+      e.preventDefault();
+
       const originalBtnText = submitBtn.innerText;
       submitBtn.innerText = 'Sending...';
-      submitBtn.style.opacity = '0.7';
-      submitBtn.style.pointerEvents = 'none';
+      submitBtn.disabled = true;
+      formStatus.textContent = 'Sending your request.';
 
       const data = new FormData(form);
 
@@ -858,20 +1000,20 @@
         if (response.ok) {
           form.style.display = 'none';
           successMessage.style.display = 'block';
+          successMessage.focus?.();
         } else {
           submitBtn.innerText = 'Oops! Try again.';
-          submitBtn.style.opacity = '1';
-          submitBtn.style.pointerEvents = 'auto';
+          submitBtn.disabled = false;
+          formStatus.textContent = 'Something went wrong. Please try again or call directly.';
           setTimeout(() => { submitBtn.innerText = originalBtnText; }, 3000);
         }
       } catch (error) {
         submitBtn.innerText = 'Error. Please call directly.';
-        submitBtn.style.opacity = '1';
-        submitBtn.style.pointerEvents = 'auto';
+        submitBtn.disabled = false;
+        formStatus.textContent = 'The form did not send. Please call or email directly.';
         setTimeout(() => { submitBtn.innerText = originalBtnText; }, 4000);
       }
     });
   </script>
-
 </body>
 </html>
